@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<olympics generated="2016-07-09T20:11:42+00:00" xmlns="http://feed.elasticstats.com/schema/olympics/v2/organization-profile.xsd" id="8edd3d51-d517-4c13-b7e0-4db22803617e" alias="OG">
+    <organization id="840a4893-d821-436b-8c62-f5639dcdb037" alias="IND" description="India">
+        <events>
+            <event id="2d4e01f6-d98e-40af-ae24-c408006af0f9" description="Men's 10km" gender="male" odf_id="OWM010" updated="2016-03-28T17:39:01+00:00">
+                <sport id="50961861-067b-49e4-b685-695e50c3d2dd" description="Aquatics" alias="AQ"/>
+                <discipline id="dd88ece4-1143-4a88-8e1e-3cc47477ccf5" description="Marathon Swimming" alias="OW"/>
+                <participants>
+                    <athlete updated="2016-03-28T17:39:01+00:00" id="6be9e4a9-d695-4782-8f1d-bc2b9bad568c" last_name="Divase" first_name="Anandrao" gender="male" weight_kg="72" weight_lb="158" height_cm="179" height_in="70" birth_date="1985-12-31" birth_place="" nationality="IND" print_name="DIVASE Anandrao" print_short_name="DIVASE Anandrao" tv_name="Anandrao DIVASE" tv_short_name="Anandrao DIVASE" status="active" odf_id="7370006"></athlete>
+                    <athlete updated="2016-03-22T14:27:13+00:00" id="bcfc3890-f508-4cf0-b1b8-22888b32a568" last_name="Divase" first_name="Mandar Anandrao" gender="male" weight_kg="72" weight_lb="158" height_cm="179" height_in="70" birth_date="1985-12-31" birth_place="" nationality="IND" print_name="DIVASE Mandar Anandrao" print_short_name="DIVASE Mandar Anandrao" tv_name="Mandar Anandrao DIVASE" tv_short_name="Mandar Anandrao DIVASE" status="active" odf_id="70000147"></athlete>
+                </participants>
+            </event>
+            <event id="71c033dd-b30c-48ac-88ec-1439b7f56722" description="Men's Individual" gender="male" updated="">
+                <sport id="4246eccf-40f6-4c8a-8fe7-a3035de529f7" description="Archery" alias="AR"/>
+                <discipline id="d1651095-0182-4a98-a947-3900e08225c6" description="Archery" alias="AR"/>
+                <participants>
+                    <athlete id="02c428e0-0606-4801-9660-83d2f4ead667" last_name="Champia" first_name="Mangal Singh" gender="male" weight="" height="" birth_date="1983-11-09" birth_place="" print_name="CHAMPIA Mangal Singh" print_short_name="CHAMPIA MS" tv_name="Mangal Singh CHAMPIA" tv_short_name="M.S. CHAMPIA" status="ACTIVE" updated="2016-01-06T14:31:30+00:00"></athlete>
+                    <athlete id="5598e788-de83-4edb-8563-8ebbd5ee81dd" last_name="Talukdar" first_name="Jayanta" gender="male" weight="" height="" birth_date="1986-03-02" birth_place="" print_name="TALUKDAR Jayanta" print_short_name="TALUKDAR J" tv_name="Jayanta TALUKDAR" tv_short_name="J. TALUKDAR" status="ACTIVE" updated="2016-01-06T14:34:07+00:00"></athlete>
+                    <athlete id="a864e596-b07b-4ad9-bc68-dea9639f4f4c" last_name="Banerjee" first_name="Rahul" gender="male" weight="" height="" birth_date="1986-12-15" birth_place="" print_name="BANERJEE Rahul" print_short_name="BANERJEE R" tv_name="Rahul BANERJEE" tv_short_name="R. BANERJEE" status="ACTIVE" updated="2016-01-06T14:36:40+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="e10b66f4-a9ce-4e74-8587-6191ee057b14" description="Men's Team" gender="male" updated="">
+                <sport id="4246eccf-40f6-4c8a-8fe7-a3035de529f7" description="Archery" alias="AR"/>
+                <discipline id="d1651095-0182-4a98-a947-3900e08225c6" description="Archery" alias="AR"/>
+                <teams>
+                    <team id="196b6d05-4e30-47c6-bf45-c9a51ba3a298" description="IND" updated="2016-01-06T14:34:56+00:00"></team>
+                </teams>
+            </event>
+            <event id="d8e9b229-ea1c-4a63-bfd5-734282efa767" description="Women's Team" gender="female" updated="">
+                <sport id="4246eccf-40f6-4c8a-8fe7-a3035de529f7" description="Archery" alias="AR"/>
+                <discipline id="d1651095-0182-4a98-a947-3900e08225c6" description="Archery" alias="AR"/>
+                <teams>
+                    <team id="9c98c4d1-8fa2-4ed6-af4c-6c3aa14e6e8c" description="IND" updated="2016-01-06T14:35:45+00:00"></team>
+                </teams>
+            </event>
+            <event id="29ea688a-517f-4f2c-9468-f6d9ed1be013" description="Women's Triple Jump" gender="female" updated="">
+                <sport id="f78eff80-fd3f-44ac-81ba-e1424f08450e" description="Athletics" alias="AT"/>
+                <discipline id="923a899f-62af-433f-846a-d3647e1df541" description="Athletics" alias="AT"/>
+                <participants>
+                    <athlete id="540a19b3-be44-4328-8f5a-5d84ddbd6870" last_name="Johny" first_name="Mayookha" gender="female" weight="" height="" birth_date="1988-04-09" birth_place="BOMBAY" print_name="JOHNY Mayookha" print_short_name="JOHNY M" tv_name="Mayookha JOHNY" tv_short_name="M. JOHNY" status="ACTIVE" updated="2016-01-06T14:34:05+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="7d6bf5e6-ad3f-4be1-9257-6a0b5729611c" description="Men's Singles" gender="male" odf_id="BDM001" updated="2016-03-28T17:54:51+00:00">
+                <sport id="ef2dcc4f-594f-4cbc-87ee-02ac1e9afbcf" description="Badminton" alias="BD"/>
+                <discipline id="c28fbfd8-3231-457a-99f6-3a6182885a03" description="Badminton" alias="BD"/>
+                <participants>
+                    <athlete updated="2016-03-28T17:54:51+00:00" id="9fc72146-d2b5-46dd-9f9d-11919c28649b" last_name="Parupalli" first_name="Kashyap" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1986-09-08" birth_place="HYDERABAD" nationality="IND" print_name="PARUPALLI Kashyap" print_short_name="PARUPALLI K" tv_name="Kashyap PARUPALLI" tv_short_name="K. PARUPALLI" status="active" odf_id="7021001"></athlete>
+                </participants>
+            </event>
+            <event id="69bfbde6-0dbb-44aa-8d62-545f608412e3" description="Women's Singles" gender="female" odf_id="BDW001" updated="2016-03-28T17:54:48+00:00">
+                <sport id="ef2dcc4f-594f-4cbc-87ee-02ac1e9afbcf" description="Badminton" alias="BD"/>
+                <discipline id="c28fbfd8-3231-457a-99f6-3a6182885a03" description="Badminton" alias="BD"/>
+                <participants>
+                    <athlete updated="2016-03-28T17:54:48+00:00" id="57713072-fd83-47ec-8c34-bf27031c8cb4" last_name="Nehwal" first_name="Saina" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1990-03-17" birth_place="HYEDERABAD" nationality="IND" print_name="NEHWAL Saina" print_short_name="NEHWAL S" tv_name="Saina NEHWAL" tv_short_name="S. NEHWAL" status="active" odf_id="7020947"></athlete>
+                </participants>
+            </event>
+            <event id="9bae3d85-77f4-4c86-ad7b-96bc4734d027" description="Women's Doubles" gender="female" odf_id="BDW002" updated="2016-03-28T17:54:48+00:00">
+                <sport id="ef2dcc4f-594f-4cbc-87ee-02ac1e9afbcf" description="Badminton" alias="BD"/>
+                <discipline id="c28fbfd8-3231-457a-99f6-3a6182885a03" description="Badminton" alias="BD"/>
+                <teams>
+                    <team updated="2016-03-28 17:54:48 +0000" id="77b75d96-2c9f-509e-a0e1-765387193477" description="India" odf_id="BDW002IND01">
+                        <athlete updated="2016-03-28T17:54:48+00:00" id="bd11e07e-0ce4-4c72-828c-06f37306e922" last_name="Gutta" first_name="Jwala" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1983-09-07" birth_place="HYDERABAD" nationality="IND" print_name="GUTTA Jwala" print_short_name="GUTTA J" tv_name="Jwala GUTTA" tv_short_name="J. GUTTA" status="active" odf_id="7020946"></athlete>
+                        <athlete updated="2016-03-28T17:54:48+00:00" id="b90a1a05-c980-44e1-b501-46344dbd4378" last_name="Ponnappa" first_name="Ashwini" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1989-09-18" birth_place="HYDERABAD" nationality="IND" print_name="PONNAPPA Ashwini" print_short_name="PONNAPPA A" tv_name="Ashwini PONNAPPA" tv_short_name="A. PONNAPPA" status="active" odf_id="7020948"></athlete>
+                    </team>
+                    <team updated="2016-03-28 17:54:48 +0000" id="a68baebe-5b9b-46bb-a84b-828fb0b3185e" description="India" odf_id="BDW002IND01">
+                        <athlete updated="2016-03-28T17:54:48+00:00" id="bd11e07e-0ce4-4c72-828c-06f37306e922" last_name="Gutta" first_name="Jwala" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1983-09-07" birth_place="HYDERABAD" nationality="IND" print_name="GUTTA Jwala" print_short_name="GUTTA J" tv_name="Jwala GUTTA" tv_short_name="J. GUTTA" status="active" odf_id="7020946"></athlete>
+                        <athlete updated="2016-03-28T17:54:48+00:00" id="b90a1a05-c980-44e1-b501-46344dbd4378" last_name="Ponnappa" first_name="Ashwini" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1989-09-18" birth_place="HYDERABAD" nationality="IND" print_name="PONNAPPA Ashwini" print_short_name="PONNAPPA A" tv_name="Ashwini PONNAPPA" tv_short_name="A. PONNAPPA" status="active" odf_id="7020948"></athlete>
+                    </team>
+                </teams>
+            </event>
+            <event id="a719a9d0-341c-4e5f-8478-bf221db18fe8" description="Mixed Doubles" gender="mixed" odf_id="BDX002" updated="2016-03-28T17:54:51+00:00">
+                <sport id="ef2dcc4f-594f-4cbc-87ee-02ac1e9afbcf" description="Badminton" alias="BD"/>
+                <discipline id="c28fbfd8-3231-457a-99f6-3a6182885a03" description="Badminton" alias="BD"/>
+                <teams>
+                    <team updated="2016-03-28 17:54:51 +0000" id="69a6b505-2ca7-4df9-9b95-e2b48014d882" description="India" odf_id="BDX002IND01">
+                        <athlete updated="2016-03-28T17:54:48+00:00" id="bd11e07e-0ce4-4c72-828c-06f37306e922" last_name="Gutta" first_name="Jwala" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1983-09-07" birth_place="HYDERABAD" nationality="IND" print_name="GUTTA Jwala" print_short_name="GUTTA J" tv_name="Jwala GUTTA" tv_short_name="J. GUTTA" status="active" odf_id="7020946"></athlete>
+                        <athlete updated="2016-03-28T17:54:51+00:00" id="fcc5858f-0630-4ccf-91ab-13810bdacbbe" last_name="V" first_name="Diju" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1981-01-04" birth_place="RAMANATTUKARA" nationality="IND" print_name="V Diju" print_short_name="V D" tv_name="Diju V" tv_short_name="D. V" status="active" odf_id="7021016"></athlete>
+                    </team>
+                    <team updated="2016-03-28 17:54:51 +0000" id="7882acd4-7477-5f20-9edb-7c0add934597" description="India" odf_id="BDX002IND01">
+                        <athlete updated="2016-03-28T17:54:48+00:00" id="bd11e07e-0ce4-4c72-828c-06f37306e922" last_name="Gutta" first_name="Jwala" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1983-09-07" birth_place="HYDERABAD" nationality="IND" print_name="GUTTA Jwala" print_short_name="GUTTA J" tv_name="Jwala GUTTA" tv_short_name="J. GUTTA" status="active" odf_id="7020946"></athlete>
+                        <athlete updated="2016-03-28T17:54:51+00:00" id="fcc5858f-0630-4ccf-91ab-13810bdacbbe" last_name="V" first_name="Diju" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1981-01-04" birth_place="RAMANATTUKARA" nationality="IND" print_name="V Diju" print_short_name="V D" tv_name="Diju V" tv_short_name="D. V" status="active" odf_id="7021016"></athlete>
+                    </team>
+                </teams>
+            </event>
+            <event id="62cfb264-ac29-4e9d-81d0-4ca4e3720ad6" description="Men's Light Fly (46-49kg)" gender="male" odf_id="BXM049" updated="2016-03-22T14:27:27+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:20:05+00:00" id="3b83f60a-d09c-47fd-90ef-e187d82031e6" last_name="Laishram" first_name="Devendro Singh" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1992-03-02" birth_place="" nationality="IND" print_name="LAISHRAM Devendro Singh" print_short_name="LAISHRAM D" tv_name="Devendro Singh LAISHRAM" tv_short_name="D. LAISHRAM" status="active" odf_id="7050141"></athlete>
+                    <athlete updated="2016-03-22T14:27:27+00:00" id="c2dfecd6-a2fe-4e0d-b001-f93484d91962" last_name="Laishram" first_name="Devendro Singh" gender="male" weight_kg="" weight_lb="0" height_cm="163" height_in="64" birth_date="1992-03-02" birth_place="" nationality="IND" print_name="LAISHRAM Devendro Singh" print_short_name="LAISHRAM D" tv_name="Devendro Singh LAISHRAM" tv_short_name="D. LAISHRAM" status="active" odf_id="6050141"></athlete>
+                </participants>
+            </event>
+            <event id="e77b39c2-f185-48a5-9370-40a70bba2533" description="Men's Bantam (56kg)" gender="male" odf_id="BXM056" updated="2016-03-22T14:26:11+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:18:27+00:00" id="1e9bd533-60ca-4476-910b-ef844ad3897a" last_name="Thapa" first_name="Shiva" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1993-12-08" birth_place="" nationality="IND" print_name="THAPA Shiva" print_short_name="THAPA S" tv_name="Shiva THAPA" tv_short_name="S. THAPA" status="active" odf_id="7050796"></athlete>
+                    <athlete updated="2016-03-22T14:26:11+00:00" id="a6c62112-29e4-462e-852c-70e1fec3f054" last_name="Thapa" first_name="Shiva" gender="male" weight_kg="" weight_lb="0" height_cm="166" height_in="65" birth_date="1993-12-08" birth_place="" nationality="IND" print_name="THAPA Shiva" print_short_name="THAPA S" tv_name="Shiva THAPA" tv_short_name="S. THAPA" status="active" odf_id="6050796"></athlete>
+                </participants>
+            </event>
+            <event id="3ae8c445-f9c8-47d6-ae03-c29e81b3e30b" description="Men's Light (60kg)" gender="male" odf_id="BXM060" updated="2016-03-29T12:56:48+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-29T12:56:48+00:00" id="3519cfb6-0ef5-41a0-9b8d-b0ea12d883ab" last_name="Jai Bhagwan" first_name="" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1985-05-11" birth_place="" nationality="IND" print_name="JAI BHAGWAN" print_short_name="JAI BHAGWAN" tv_name="JAI BHAGWAN" tv_short_name="JAI BHAGWAN" status="active" odf_id="7050142"></athlete>
+                    <athlete updated="2016-03-22T14:26:37+00:00" id="ae9824f5-0039-4288-8d43-2597d149a1d5" last_name="Jai Bhagwan" first_name="" gender="male" weight_kg="" weight_lb="0" height_cm="177" height_in="69" birth_date="1985-05-11" birth_place="" nationality="IND" print_name="JAI BHAGWAN" print_short_name="JAI BHAGWAN" tv_name="JAI BHAGWAN" tv_short_name="JAI BHAGWAN" status="active" odf_id="6050142"></athlete>
+                </participants>
+            </event>
+            <event id="fa75c70b-e9e3-4828-b206-0a912046af64" description="Men's Light Welter (64kg)" gender="male" odf_id="BXM064" updated="2016-03-22T14:29:15+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:22:34+00:00" id="6af687eb-2bcd-4a4c-b4b6-e43d77dc0251" last_name="Manoj Kumar" first_name="" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1986-12-10" birth_place="" nationality="IND" print_name="MANOJ KUMAR" print_short_name="MANOJ KUMAR" tv_name="MANOJ KUMAR" tv_short_name="MANOJ KUMAR" status="active" odf_id="7050143"></athlete>
+                    <athlete updated="2016-03-22T14:29:15+00:00" id="f197b624-b96c-45d4-b086-9a94a3e71d8a" last_name="Manoj Kumar" first_name="" gender="male" weight_kg="" weight_lb="0" height_cm="183" height_in="72" birth_date="1986-12-10" birth_place="" nationality="IND" print_name="MANOJ KUMAR" print_short_name="MANOJ KUMAR" tv_name="MANOJ KUMAR" tv_short_name="MANOJ KUMAR" status="active" odf_id="6050143"></athlete>
+                </participants>
+            </event>
+            <event id="6690f043-ab04-4307-962a-7e64dc93fd80" description="Men's Welter (69kg)" gender="male" odf_id="BXM069" updated="2016-03-22T14:28:38+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:19:25+00:00" id="304255c3-7cd4-434a-8b34-f554c4062071" last_name="Vikas" first_name="Krishan" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1992-02-10" birth_place="" nationality="IND" print_name="VIKAS Krishan" print_short_name="VIKAS K" tv_name="Krishan VIKAS" tv_short_name="K. VIKAS" status="active" odf_id="7050144"></athlete>
+                    <athlete updated="2016-03-22T14:28:38+00:00" id="e0762210-3ef6-47b9-b519-ab720c7e0bda" last_name="Vikas" first_name="Krishan" gender="male" weight_kg="" weight_lb="0" height_cm="165" height_in="64" birth_date="1992-02-10" birth_place="" nationality="IND" print_name="VIKAS Krishan" print_short_name="VIKAS K" tv_name="Krishan VIKAS" tv_short_name="K. VIKAS" status="active" odf_id="6050144"></athlete>
+                </participants>
+            </event>
+            <event id="e60d34d7-728c-4ef3-be22-7dd301f3a0e1" description="Men's Middle (75kg)" gender="male" odf_id="BXM075" updated="2016-03-22T14:27:03+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:17:59+00:00" id="14ddddf6-3060-4d57-b415-63d16f4349b6" last_name="Singh" first_name="Harpal" gender="male" weight_kg="" weight_lb="0" height_cm="180" height_in="70" birth_date="1992-10-27" birth_place="" nationality="IND" print_name="SINGH Harpal" print_short_name="SINGH H" tv_name="Harpal SINGH" tv_short_name="H. SINGH" status="active" odf_id="304414"></athlete>
+                    <athlete updated="2016-03-22T14:20:41+00:00" id="48ad9962-975e-40d8-85f4-ca879e07dd99" last_name="Vijender" first_name="" gender="male" weight_kg="" weight_lb="0" height_cm="180" height_in="70" birth_date="1985-10-29" birth_place="" nationality="IND" print_name="VIJENDER" print_short_name="VIJENDER" tv_name="VIJENDER" tv_short_name="VIJENDER" status="active" odf_id="6050797"></athlete>
+                    <athlete updated="2016-03-22T14:23:06+00:00" id="75d476a3-6fea-4777-84e2-38ce6fc9b7dd" last_name="Singh" first_name="Harpal" gender="male" weight_kg="" weight_lb="0" height_cm="180" height_in="70" birth_date="1992-10-27" birth_place="" nationality="IND" print_name="SINGH Harpal" print_short_name="SINGH H" tv_name="Harpal SINGH" tv_short_name="H. SINGH" status="active" odf_id="7050037"></athlete>
+                    <athlete updated="2016-03-22T14:27:03+00:00" id="b8d36173-83b5-4905-b1a5-78652e78fb78" last_name="Vijender" first_name="" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1985-10-29" birth_place="" nationality="IND" print_name="VIJENDER" print_short_name="VIJENDER" tv_name="VIJENDER" tv_short_name="VIJENDER" status="active" odf_id="7050797"></athlete>
+                </participants>
+            </event>
+            <event id="73da35db-fe34-47aa-a310-1ad5460f79ca" description="Men's Light Heavy (81kg)" gender="male" odf_id="BXM081" updated="2016-03-22T14:27:10+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:26:09+00:00" id="a5ebeb0c-f2a7-4623-b1d9-63e67ca70508" last_name="Sangwan" first_name="Sumit" gender="male" weight_kg="" weight_lb="0" height_cm="186" height_in="73" birth_date="1993-01-01" birth_place="" nationality="IND" print_name="SANGWAN Sumit" print_short_name="SANGWAN S" tv_name="Sumit SANGWAN" tv_short_name="S. SANGWAN" status="active" odf_id="6050798"></athlete>
+                    <athlete updated="2016-03-22T14:27:10+00:00" id="bbc8c442-2a63-4afa-a32f-f3563075882c" last_name="Sangwan" first_name="Sumit" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1993-01-01" birth_place="" nationality="IND" print_name="SANGWAN Sumit" print_short_name="SANGWAN S" tv_name="Sumit SANGWAN" tv_short_name="S. SANGWAN" status="active" odf_id="7050798"></athlete>
+                </participants>
+            </event>
+            <event id="1bf6679c-d3a4-4d7b-871d-a1fdc77c2141" description="Men's Heavy (91kg)" gender="male" odf_id="BXM091" updated="2016-03-29T12:56:48+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-29T12:56:48+00:00" id="3519cfb6-0ef5-41a0-9b8d-b0ea12d883ab" last_name="Jai Bhagwan" first_name="" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1985-05-11" birth_place="" nationality="IND" print_name="JAI BHAGWAN" print_short_name="JAI BHAGWAN" tv_name="JAI BHAGWAN" tv_short_name="JAI BHAGWAN" status="active" odf_id="7050142"></athlete>
+                </participants>
+            </event>
+            <event id="a371fa51-0eab-444f-b6db-15d6f5e46e84" description="Men's Super Heavy (+91kg)" gender="male" odf_id="BXM191" updated="2016-03-22T14:24:36+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:18:54+00:00" id="25df8618-313d-4d38-9295-88da2ad68136" last_name="Berwal" first_name="Narender" gender="male" weight_kg="" weight_lb="0" height_cm="185" height_in="72" birth_date="1994-11-14" birth_place="" nationality="IND" print_name="BERWAL Narender" print_short_name="BERWAL N" tv_name="Narender BERWAL" tv_short_name="N. BERWAL" status="active" odf_id="304417"></athlete>
+                    <athlete updated="2016-03-22T14:24:36+00:00" id="89feb704-6f64-4e65-97b3-23a8b0be0c50" last_name="Berwal" first_name="Narender" gender="male" weight_kg="" weight_lb="0" height_cm="185" height_in="72" birth_date="1994-11-14" birth_place="" nationality="IND" print_name="BERWAL Narender" print_short_name="BERWAL N" tv_name="Narender BERWAL" tv_short_name="N. BERWAL" status="active" odf_id="7050060"></athlete>
+                </participants>
+            </event>
+            <event id="fe40f6ef-14d8-44a7-a9ea-1d0135632016" description="Women's Fly (48-51kg)" gender="female" odf_id="BXW051" updated="2016-03-22T14:28:24+00:00">
+                <sport id="b24ae93f-346a-45b0-be67-17edc58a946d" description="Boxing" alias="BX"/>
+                <discipline id="e025bb74-3aeb-4837-97bc-cfe8a8625508" description="Boxing" alias="BX"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:20:24+00:00" id="421a0c3d-8122-4c89-8495-81ba09cdb201" last_name="Hmangte" first_name="Chungneijang Mery Kom" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1983-03-01" birth_place="" nationality="IND" print_name="HMANGTE Chungneijang Mery Kom" print_short_name="HMANGTE C" tv_name="Chungneijang Mery Kom HMANGTE" tv_short_name="C. HMANGTE" status="active" odf_id="7050804"></athlete>
+                    <athlete updated="2016-03-22T14:21:19+00:00" id="543e5b07-794e-450b-a817-6a2f78b28a1e" last_name="Hmangte" first_name="Chungneijang Mery Kom" gender="female" weight_kg="" weight_lb="0" height_cm="160" height_in="62" birth_date="1983-03-01" birth_place="" nationality="IND" print_name="HMANGTE Chungneijang Mery Kom" print_short_name="HMANGTE C" tv_name="Chungneijang Mery Kom HMANGTE" tv_short_name="C. HMANGTE" status="active" odf_id="6050804"></athlete>
+                    <athlete updated="2016-03-22T14:25:27+00:00" id="960d2721-ce15-4144-a598-a3cedb1418e3" last_name="Nanao Singh" first_name="Thokchom" gender="female" weight_kg="" weight_lb="0" height_cm="165" height_in="64" birth_date="1991-01-08" birth_place="" nationality="IND" print_name="NANAO SINGH Thokchom" print_short_name="NANAO SINGH T" tv_name="Thokchom NANAO SINGH" tv_short_name="T. NANAO SINGH" status="active" odf_id="306542"></athlete>
+                    <athlete updated="2016-03-22T14:28:24+00:00" id="da6ff612-85ea-445d-92ac-202586f0c6f6" last_name="Nanao Singh" first_name="Thokchom" gender="female" weight_kg="" weight_lb="0" height_cm="165" height_in="64" birth_date="1991-01-08" birth_place="" nationality="IND" print_name="NANAO SINGH Thokchom" print_short_name="NANAO SINGH T" tv_name="Thokchom NANAO SINGH" tv_short_name="T. NANAO SINGH" status="active" odf_id="7050066"></athlete>
+                </participants>
+            </event>
+            <event id="4bf5e61b-e680-4f49-bc83-9a01b2d610bf" description="Men's Individual Stroke Play" gender="male" odf_id="GOM001" updated="2016-03-28T17:38:46+00:00">
+                <sport id="e3f7b5c0-7d36-4464-bbdf-2a7f9da23c41" description="Golf" alias="GO"/>
+                <discipline id="ed3b270b-6d66-4f80-8580-28b16c6954f7" description="Golf" alias="GO"/>
+                <participants>
+                    <athlete updated="2016-03-28T17:38:46+00:00" id="43f55a3a-8e23-413a-a136-150ef7e76561" last_name="Parupalli" first_name="Kashyap" gender="male" weight_kg="0" weight_lb="0" height_cm="0" height_in="0" birth_date="1986-09-08" birth_place="HYDERABAD" nationality="IND" print_name="PARUPALLI Kashyap" print_short_name="PARUPALLI K" tv_name="Kashyap PARUPALLI" tv_short_name="K. PARUPALLI" status="active" odf_id="7360042"></athlete>
+                    <athlete updated="2016-03-22T14:23:31+00:00" id="7ae60f54-2217-5094-864c-fc3ef0588a3e" last_name="Parupalli" first_name="Kashyap" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1986-09-08" birth_place="HYDERABAD" nationality="IND" print_name="PARUPALLI Kashyap" print_short_name="PARUPALLI K" tv_name="Kashyap PARUPALLI" tv_short_name="K. PARUPALLI" status="active" odf_id="6360052"></athlete>
+                </participants>
+            </event>
+            <event id="a9a92edb-12e5-43b1-b40a-ea5a5eda0778" description="Women's Individual Stroke Play" gender="female" odf_id="GOW001" updated="2016-03-28T17:39:11+00:00">
+                <sport id="e3f7b5c0-7d36-4464-bbdf-2a7f9da23c41" description="Golf" alias="GO"/>
+                <discipline id="ed3b270b-6d66-4f80-8580-28b16c6954f7" description="Golf" alias="GO"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:18:00+00:00" id="1511c78b-697c-5f48-b1a5-dfd60c168b71" last_name="Ashok" first_name="Aditi" gender="female" weight_kg="54" weight_lb="119" height_cm="176" height_in="69" birth_date="1998-03-29" birth_place="" nationality="IND" print_name="ASHOK Aditi" print_short_name="ASHOK A" tv_name="Aditi ASHOK" tv_short_name="A. ASHOK" status="active" odf_id="6360108"></athlete>
+                    <athlete updated="2016-03-28T17:39:11+00:00" id="f5c08c14-dff6-4f1a-b091-055c6ae0980d" last_name="ASHOK" first_name="Aditi" gender="female" weight_kg="54" weight_lb="119" height_cm="176" height_in="69" birth_date="1998-03-29" birth_place="" nationality="IND" print_name="ASHOK Aditi" print_short_name="ASHOK A" tv_name="Aditi ASHOK" tv_short_name="A. ASHOK" status="active" odf_id="7360098"></athlete>
+                </participants>
+            </event>
+            <event id="8dd71d66-d809-4e80-9b53-37d71e1d52f5" description="Men" gender="male" updated="">
+                <sport id="6ff4b4b0-d2e9-4978-981e-c21f0271eb69" description="Hockey" alias="HO"/>
+                <discipline id="9f2025c8-7160-4374-96a6-3a359b8ff59a" description="Hockey" alias="HO"/>
+                <teams>
+                    <team id="3e0eb234-b5e9-480b-938f-477184e470c2" description="India" updated="2016-01-06T14:35:11+00:00"></team>
+                </teams>
+            </event>
+            <event id="1489c83b-2665-4fca-a1d7-329c6cd1c846" description="Women -63 kg" gender="female" updated="2016-03-18T16:41:26+00:00">
+                <sport id="668701fc-b4da-471a-a57e-a635d92cf921" description="Judo" alias="JU"/>
+                <discipline id="b2acb635-019f-4b50-93c9-ce8cadf6754d" description="Judo" alias="JU"/>
+                <participants>
+                    <athlete updated="2016-03-18T16:41:26+00:00" id="ae7cf39e-a6af-4763-a6d4-0b639613793b" last_name="Chaudhary" first_name="Garima" gender="female" weight_kg="63" weight_lb="138" height_cm="" height_in="0" birth_date="1990-04-02" birth_place="MEERUT" nationality="IND" print_name="CHAUDHARY Garima" print_short_name="CHAUDHARY G" tv_name="Garima CHAUDHARY" tv_short_name="G. CHAUDHARY" status="active"></athlete>
+                </participants>
+            </event>
+            <event id="ad2273af-6b65-411c-b85f-d89b2219368c" description="Men's Single Sculls" gender="male" updated="">
+                <sport id="b0b5d61f-3799-46f9-b90f-41bf04447243" description="Rowing" alias="RO"/>
+                <discipline id="8a916446-9ce2-4cad-a44a-b346fd8c8799" description="Rowing" alias="RO"/>
+                <participants>
+                    <athlete id="63e53c12-01f1-4fd2-abfa-30ad9dfac74f" last_name="Singh" first_name="Sawarn" gender="male" weight="80" height="" birth_date="1990-02-20" birth_place="" print_name="SINGH Sawarn" print_short_name="SINGH S" tv_name="Sawarn SINGH" tv_short_name="S. SINGH" status="ACTIVE" updated="2016-01-06T14:34:28+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="b906885a-1270-4f7b-9d08-4e9206defe47" description="Lightweight Men's Double Sculls" gender="male" updated="">
+                <sport id="b0b5d61f-3799-46f9-b90f-41bf04447243" description="Rowing" alias="RO"/>
+                <discipline id="8a916446-9ce2-4cad-a44a-b346fd8c8799" description="Rowing" alias="RO"/>
+                <teams>
+                    <team id="689ba961-a48b-4903-8c80-a454918ef2ec" description="India" updated="2016-01-06T14:35:26+00:00"></team>
+                </teams>
+            </event>
+            <event id="a2c9f98d-63f7-4f70-8332-991e9a1fac83" description="49er Men" gender="male" odf_id="SAM009" updated="2016-03-28T17:42:15+00:00">
+                <sport id="806a1df1-58b3-4773-8312-8d8e19077a02" description="Sailing" alias="SA"/>
+                <discipline id="5ebe924c-aa5a-4958-a0e3-45de43dae93c" description="Sailing" alias="SA"/>
+                <teams>
+                    <team updated="2016-03-28 17:42:15 +0000" id="338bf596-b6ee-4da2-96d7-b2aabfee96b2" description="India" odf_id="SAM009IND01">
+                        <athlete updated="2016-03-28T17:42:15+00:00" id="271d746d-ee06-4a56-ad7d-72fc1e90777c" last_name="Kelapanda" first_name="Ganapathy" gender="male" weight_kg="74" weight_lb="163" height_cm="173" height_in="68" birth_date="1995-11-18" birth_place="" nationality="IND" print_name="KELAPANDA Ganapathy" print_short_name="KELAPANDA G" tv_name="Ganapathy KELAPANDA" tv_short_name="G. KELAPANDA" status="active" odf_id="7241742"></athlete>
+                        <athlete updated="2016-03-28T17:42:15+00:00" id="a86da873-322c-4186-af8e-fe47f9db380e" last_name="Thakkar" first_name="Varum" gender="male" weight_kg="76" weight_lb="167" height_cm="193" height_in="75" birth_date="" birth_place="" nationality="IND" print_name="THAKKAR Varum" print_short_name="THAKKAR V" tv_name="Varum THAKKAR" tv_short_name="V. THAKKAR" status="active" odf_id="7241743"></athlete>
+                    </team>
+                    <team updated="2016-03-28 17:42:15 +0000" id="89591c5c-24da-433f-8e13-b1cd7c97f381" description="India" odf_id="SAM009IND01">
+                        <athlete updated="2016-03-28T17:42:15+00:00" id="271d746d-ee06-4a56-ad7d-72fc1e90777c" last_name="Kelapanda" first_name="Ganapathy" gender="male" weight_kg="74" weight_lb="163" height_cm="173" height_in="68" birth_date="1995-11-18" birth_place="" nationality="IND" print_name="KELAPANDA Ganapathy" print_short_name="KELAPANDA G" tv_name="Ganapathy KELAPANDA" tv_short_name="G. KELAPANDA" status="active" odf_id="7241742"></athlete>
+                        <athlete updated="2016-03-28T17:42:15+00:00" id="a86da873-322c-4186-af8e-fe47f9db380e" last_name="Thakkar" first_name="Varum" gender="male" weight_kg="76" weight_lb="167" height_cm="193" height_in="75" birth_date="" birth_place="" nationality="IND" print_name="THAKKAR Varum" print_short_name="THAKKAR V" tv_name="Varum THAKKAR" tv_short_name="V. THAKKAR" status="active" odf_id="7241743"></athlete>
+                    </team>
+                </teams>
+            </event>
+            <event id="e7a55fb8-955a-4e3f-8bb0-32965f2cb9d3" description="49er FX Women" gender="female" odf_id="SAW019" updated="2016-03-28T17:42:26+00:00">
+                <sport id="806a1df1-58b3-4773-8312-8d8e19077a02" description="Sailing" alias="SA"/>
+                <discipline id="5ebe924c-aa5a-4958-a0e3-45de43dae93c" description="Sailing" alias="SA"/>
+                <teams>
+                    <team updated="2016-03-28 17:42:26 +0000" id="27422827-60d9-4c8a-969a-e7b531be7732" description="India" odf_id="SAW019IND01">
+                        <athlete updated="2016-03-28T17:42:26+00:00" id="177677ea-c3c4-4c0f-83e4-19c5c8042881" last_name="Gautham" first_name="Varsha" gender="female" weight_kg="71" weight_lb="156" height_cm="175" height_in="68" birth_date="1998-01-12" birth_place="" nationality="IND" print_name="GAUTHAM Varsha" print_short_name="GAUTHAM V" tv_name="Varsha GAUTHAM" tv_short_name="V. GAUTHAM" status="active" odf_id="7241788"></athlete>
+                        <athlete updated="2016-03-28T17:42:26+00:00" id="aebeeb61-5f89-4c00-b097-68a977efb053" last_name="Nedunchezhiyan" first_name="Aishwarya" gender="female" weight_kg="84" weight_lb="185" height_cm="173" height_in="68" birth_date="1996-01-01" birth_place="" nationality="IND" print_name="NEDUNCHEZHIYAN Aishwarya" print_short_name="NEDUNCHEZHIYAN A" tv_name="Aishwarya NEDUNCHEZHIYAN" tv_short_name="A. NEDUNCHEZHIYAN" status="active" odf_id="7241789"></athlete>
+                    </team>
+                    <team updated="2016-03-28 17:42:26 +0000" id="8591de0e-ed38-4b42-a47a-c7a0aa678d1b" description="India" odf_id="SAW019IND01">
+                        <athlete updated="2016-03-28T17:42:26+00:00" id="177677ea-c3c4-4c0f-83e4-19c5c8042881" last_name="Gautham" first_name="Varsha" gender="female" weight_kg="71" weight_lb="156" height_cm="175" height_in="68" birth_date="1998-01-12" birth_place="" nationality="IND" print_name="GAUTHAM Varsha" print_short_name="GAUTHAM V" tv_name="Varsha GAUTHAM" tv_short_name="V. GAUTHAM" status="active" odf_id="7241788"></athlete>
+                        <athlete updated="2016-03-28T17:42:26+00:00" id="aebeeb61-5f89-4c00-b097-68a977efb053" last_name="Nedunchezhiyan" first_name="Aishwarya" gender="female" weight_kg="84" weight_lb="185" height_cm="173" height_in="68" birth_date="1996-01-01" birth_place="" nationality="IND" print_name="NEDUNCHEZHIYAN Aishwarya" print_short_name="NEDUNCHEZHIYAN A" tv_name="Aishwarya NEDUNCHEZHIYAN" tv_short_name="A. NEDUNCHEZHIYAN" status="active" odf_id="7241789"></athlete>
+                    </team>
+                </teams>
+            </event>
+            <event id="13133d89-23b8-48ca-8401-4f8706e89053" description="50m Rifle 3 Positions Men" gender="male" updated="">
+                <sport id="92c78d1b-5da4-4496-ac0b-aeb74ad04b23" description="Shooting" alias="SH"/>
+                <discipline id="b4e27630-87eb-4d18-b4e6-5375958e4bf4" description="Shooting" alias="SH"/>
+                <participants>
+                    <athlete id="37228495-94c9-4901-9ae8-34d653c09aba" last_name="Rajput" first_name="Sanjeev" gender="male" weight="" height="" birth_date="1981-01-05" birth_place="JAGADHRI HARYANA" print_name="RAJPUT Sanjeev" print_short_name="RAJPUT S" tv_name="Sanjeev RAJPUT" tv_short_name="S. RAJPUT" status="ACCRED" updated="2016-01-06T14:33:16+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="a93ace54-4287-417d-af5c-6bd212cc3250" description="50m Rifle Prone Men" gender="male" updated="">
+                <sport id="92c78d1b-5da4-4496-ac0b-aeb74ad04b23" description="Shooting" alias="SH"/>
+                <discipline id="b4e27630-87eb-4d18-b4e6-5375958e4bf4" description="Shooting" alias="SH"/>
+                <participants>
+                    <athlete id="e6e01553-ccf4-45d8-a5f5-8e8b81873905" last_name="Karmakar" first_name="Joydeep" gender="male" weight="" height="" birth_date="1979-12-07" birth_place="KOLKATA" print_name="KARMAKAR Joydeep" print_short_name="KARMAKAR J" tv_name="Joydeep KARMAKAR" tv_short_name="J. KARMAKAR" status="ACCRED" updated="2016-01-06T14:38:17+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="f59beff6-5255-4d55-a3a6-4ec16935512d" description="25m Rapid Fire Pistol Men" gender="male" updated="">
+                <sport id="92c78d1b-5da4-4496-ac0b-aeb74ad04b23" description="Shooting" alias="SH"/>
+                <discipline id="b4e27630-87eb-4d18-b4e6-5375958e4bf4" description="Shooting" alias="SH"/>
+                <participants>
+                    <athlete id="8d79ecef-c4d0-4607-a3d6-4bb1673462f8" last_name="Kumar" first_name="Vijay" gender="male" weight="" height="" birth_date="1985-08-19" birth_place="HARSOUR" print_name="KUMAR Vijay" print_short_name="KUMAR V" tv_name="Vijay KUMAR" tv_short_name="V. KUMAR" status="ACCRED" updated="2016-01-06T14:35:55+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="3596d7e2-3fd3-43d0-bba0-6f9a48a47829" description="10m Air Pistol Men" gender="male" updated="">
+                <sport id="92c78d1b-5da4-4496-ac0b-aeb74ad04b23" description="Shooting" alias="SH"/>
+                <discipline id="b4e27630-87eb-4d18-b4e6-5375958e4bf4" description="Shooting" alias="SH"/>
+                <participants>
+                    <athlete id="8d79ecef-c4d0-4607-a3d6-4bb1673462f8" last_name="Kumar" first_name="Vijay" gender="male" weight="" height="" birth_date="1985-08-19" birth_place="HARSOUR" print_name="KUMAR Vijay" print_short_name="KUMAR V" tv_name="Vijay KUMAR" tv_short_name="V. KUMAR" status="ACCRED" updated="2016-01-06T14:35:55+00:00"></athlete>
+                    <athlete id="fddce52a-3d83-4f2a-90f1-326d63d88353" last_name="Sidhu" first_name="Heena" gender="female" weight="" height="" birth_date="" birth_place="" print_name="SIDHU Heena" print_short_name="SIDHU H" tv_name="Heena SIDHU" tv_short_name="H. SIDHU" status="" updated="2016-01-06T14:38:50+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="0a6a86b7-9da8-440a-9052-89d112b912da" description="Double Trap Men" gender="male" updated="">
+                <sport id="92c78d1b-5da4-4496-ac0b-aeb74ad04b23" description="Shooting" alias="SH"/>
+                <discipline id="b4e27630-87eb-4d18-b4e6-5375958e4bf4" description="Shooting" alias="SH"/>
+                <participants>
+                    <athlete id="fcd6816d-acaa-463a-b31a-18d5aef2b80e" last_name="Sodhi" first_name="Ronjan" gender="male" weight="" height="" birth_date="1979-10-23" birth_place="FEROZEPUR" print_name="SODHI Ronjan" print_short_name="SODHI R" tv_name="Ronjan SODHI" tv_short_name="R. SODHI" status="ACCRED" updated="2016-01-06T14:38:49+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="fc413fd1-343a-44c0-b814-87ff277c073c" description="Trap Women" gender="female" updated="">
+                <sport id="92c78d1b-5da4-4496-ac0b-aeb74ad04b23" description="Shooting" alias="SH"/>
+                <discipline id="b4e27630-87eb-4d18-b4e6-5375958e4bf4" description="Shooting" alias="SH"/>
+                <participants>
+                    <athlete id="17a3250d-b159-40a3-a494-d9791cf8c24d" last_name="Chowdhary" first_name="Shagun" gender="female" weight="" height="" birth_date="1983-06-26" birth_place="NEW DELHI" print_name="CHOWDHARY Shagun" print_short_name="CHOWDHARY S" tv_name="Shagun CHOWDHARY" tv_short_name="S. CHOWDHARY" status="ACCRED" updated="2016-01-06T14:32:19+00:00"></athlete>
+                </participants>
+            </event>
+            <event id="b56a2d9a-a871-41a6-bf40-1cf009c2be9f" description="Men's Singles" gender="male" odf_id="TEM001" updated="2016-03-28T18:39:37+00:00">
+                <sport id="3fb71d5c-c257-4bbb-9c04-23b5f0826ab6" description="Tennis" alias="TE"/>
+                <discipline id="512f53dd-2ea4-4053-92a8-de712a8c7a05" description="Tennis" alias="TE"/>
+                <participants>
+                    <athlete updated="2016-03-28T18:39:34+00:00" id="ca2ea541-bcd5-49bd-a7bb-7e1e37a07706" last_name="Vardhan" first_name="Vishnu" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1987-07-27" birth_place="" nationality="IND" print_name="VARDHAN Vishnu" print_short_name="VARDHAN V" tv_name="Vishnu VARDHAN" tv_short_name="V. VARDHAN" status="active" odf_id="7280512"></athlete>
+                    <athlete updated="2016-03-28T18:39:33+00:00" id="cbe6ae0a-430f-4071-a4ba-a5d9892d49cb" last_name="Bopanna" first_name="Rohan" gender="male" weight_kg="86" weight_lb="189" height_cm="191" height_in="75" birth_date="1980-03-04" birth_place="" nationality="IND" print_name="BOPANNA Rohan" print_short_name="BOPANNA R" tv_name="Rohan BOPANNA" tv_short_name="R. BOPANNA" status="active" odf_id="7280505"></athlete>
+                    <athlete updated="2016-03-28T18:39:37+00:00" id="e5558630-b621-43af-97f7-825312d815d5" last_name="Bhupathi" first_name="Mahesh" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1974-06-07" birth_place="" nationality="IND" print_name="BHUPATHI Mahesh" print_short_name="BHUPATHI M" tv_name="Mahesh BHUPATHI" tv_short_name="M. BHUPATHI" status="active" odf_id="7280576"></athlete>
+                    <athlete updated="2016-03-28T18:39:33+00:00" id="eac1a674-78c4-4147-a743-b8abf1285f7c" last_name="Paes" first_name="Leander" gender="male" weight_kg="78" weight_lb="171" height_cm="178" height_in="70" birth_date="1973-06-17" birth_place="" nationality="IND" print_name="PAES Leander" print_short_name="PAES L" tv_name="Leander PAES" tv_short_name="L. PAES" status="active" odf_id="7280504"></athlete>
+                </participants>
+            </event>
+            <event id="35477eb4-dbbe-4b7d-bf54-faa61077e1c1" description="Women's Singles" gender="female" odf_id="TEW001" updated="2016-03-28T18:39:49+00:00">
+                <sport id="3fb71d5c-c257-4bbb-9c04-23b5f0826ab6" description="Tennis" alias="TE"/>
+                <discipline id="512f53dd-2ea4-4053-92a8-de712a8c7a05" description="Tennis" alias="TE"/>
+                <participants>
+                    <athlete updated="2016-03-28T18:39:34+00:00" id="1458fe6e-f13e-4631-931c-155ae08e8e83" last_name="Balu" first_name="Sharmada" gender="female" weight_kg="70" weight_lb="154" height_cm="175" height_in="68" birth_date="1993-08-09" birth_place="" nationality="IND" print_name="BALU Sharmada" print_short_name="BALU S" tv_name="Sharmada BALU" tv_short_name="S. BALU" status="active" odf_id="7280509"></athlete>
+                    <athlete updated="2016-03-28T18:39:37+00:00" id="5b30c9a1-441c-42dd-9fd8-8aefb97d20a3" last_name="Lakhani" first_name="Isha" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1985-04-29" birth_place="" nationality="IND" print_name="LAKHANI Isha" print_short_name="LAKHANI I" tv_name="Isha LAKHANI" tv_short_name="I. LAKHANI" status="active" odf_id="7280575"></athlete>
+                    <athlete updated="2016-03-28T18:39:49+00:00" id="d0ef592f-31fa-4875-b98f-2251771cfbb0" last_name="Shrof" first_name="Kyra Firdaus" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1992-10-17" birth_place="" nationality="IND" print_name="SHROF Kyra Firdaus" print_short_name="SHROF KF" tv_name="Kyra Firdaus SHROF" tv_short_name="K.F. SHROF" status="active" odf_id="7281123"></athlete>
+                </participants>
+            </event>
+            <event id="07487872-cd0e-4f1c-a705-cf6ae72b889e" description="Men's Doubles" gender="male" odf_id="TEM002" updated="2016-03-28T18:39:37+00:00">
+                <sport id="3fb71d5c-c257-4bbb-9c04-23b5f0826ab6" description="Tennis" alias="TE"/>
+                <discipline id="512f53dd-2ea4-4053-92a8-de712a8c7a05" description="Tennis" alias="TE"/>
+                <teams>
+                    <team updated="2016-03-28 18:39:33 +0000" id="51cb4366-fb6a-4fa4-8fc3-296242253309" description="India" odf_id="TEM002IND01">
+                        <athlete updated="2016-03-28T18:39:33+00:00" id="cbe6ae0a-430f-4071-a4ba-a5d9892d49cb" last_name="Bopanna" first_name="Rohan" gender="male" weight_kg="86" weight_lb="189" height_cm="191" height_in="75" birth_date="1980-03-04" birth_place="" nationality="IND" print_name="BOPANNA Rohan" print_short_name="BOPANNA R" tv_name="Rohan BOPANNA" tv_short_name="R. BOPANNA" status="active" odf_id="7280505"></athlete>
+                        <athlete updated="2016-03-28T18:39:33+00:00" id="eac1a674-78c4-4147-a743-b8abf1285f7c" last_name="Paes" first_name="Leander" gender="male" weight_kg="78" weight_lb="171" height_cm="178" height_in="70" birth_date="1973-06-17" birth_place="" nationality="IND" print_name="PAES Leander" print_short_name="PAES L" tv_name="Leander PAES" tv_short_name="L. PAES" status="active" odf_id="7280504"></athlete>
+                    </team>
+                    <team updated="2016-03-28 18:39:37 +0000" id="62f33586-974a-4c49-8e42-f4a93f2932b9" description="India" odf_id="TEM002IND01">
+                        <athlete updated="2016-03-28T18:39:33+00:00" id="cbe6ae0a-430f-4071-a4ba-a5d9892d49cb" last_name="Bopanna" first_name="Rohan" gender="male" weight_kg="86" weight_lb="189" height_cm="191" height_in="75" birth_date="1980-03-04" birth_place="" nationality="IND" print_name="BOPANNA Rohan" print_short_name="BOPANNA R" tv_name="Rohan BOPANNA" tv_short_name="R. BOPANNA" status="active" odf_id="7280505"></athlete>
+                        <athlete updated="2016-03-28T18:39:33+00:00" id="eac1a674-78c4-4147-a743-b8abf1285f7c" last_name="Paes" first_name="Leander" gender="male" weight_kg="78" weight_lb="171" height_cm="178" height_in="70" birth_date="1973-06-17" birth_place="" nationality="IND" print_name="PAES Leander" print_short_name="PAES L" tv_name="Leander PAES" tv_short_name="L. PAES" status="active" odf_id="7280504"></athlete>
+                    </team>
+                </teams>
+            </event>
+            <event id="b3cd2435-8366-4b53-9014-494011681b97" description="Women's Doubles" gender="female" odf_id="TEW002" updated="2016-03-28T18:39:37+00:00">
+                <sport id="3fb71d5c-c257-4bbb-9c04-23b5f0826ab6" description="Tennis" alias="TE"/>
+                <discipline id="512f53dd-2ea4-4053-92a8-de712a8c7a05" description="Tennis" alias="TE"/>
+                <teams>
+                    <team updated="2016-03-28 18:39:37 +0000" id="127fc181-058d-42b3-a0a0-a91279c3dd83" description="India" odf_id="TEW002IND01">
+                        <athlete updated="2016-03-28T18:39:33+00:00" id="a6a2021f-9136-48ed-bbc6-be881c880f6c" last_name="Mirza" first_name="Sania" gender="female" weight_kg="57" weight_lb="125" height_cm="173" height_in="68" birth_date="1986-11-15" birth_place="" nationality="IND" print_name="MIRZA Sania" print_short_name="MIRZA S" tv_name="Sania MIRZA" tv_short_name="S. MIRZA" status="active" odf_id="7280507"></athlete>
+                        <athlete updated="2016-03-28T18:39:34+00:00" id="1458fe6e-f13e-4631-931c-155ae08e8e83" last_name="Balu" first_name="Sharmada" gender="female" weight_kg="70" weight_lb="154" height_cm="175" height_in="68" birth_date="1993-08-09" birth_place="" nationality="IND" print_name="BALU Sharmada" print_short_name="BALU S" tv_name="Sharmada BALU" tv_short_name="S. BALU" status="active" odf_id="7280509"></athlete>
+                    </team>
+                    <team updated="2016-03-28 18:39:34 +0000" id="1fe2b14f-c7eb-4371-afcb-3ff4ec4f3a22" description="India" odf_id="TEW002IND01">
+                        <athlete updated="2016-03-28T18:39:33+00:00" id="a6a2021f-9136-48ed-bbc6-be881c880f6c" last_name="Mirza" first_name="Sania" gender="female" weight_kg="57" weight_lb="125" height_cm="173" height_in="68" birth_date="1986-11-15" birth_place="" nationality="IND" print_name="MIRZA Sania" print_short_name="MIRZA S" tv_name="Sania MIRZA" tv_short_name="S. MIRZA" status="active" odf_id="7280507"></athlete>
+                        <athlete updated="2016-03-28T18:39:34+00:00" id="1458fe6e-f13e-4631-931c-155ae08e8e83" last_name="Balu" first_name="Sharmada" gender="female" weight_kg="70" weight_lb="154" height_cm="175" height_in="68" birth_date="1993-08-09" birth_place="" nationality="IND" print_name="BALU Sharmada" print_short_name="BALU S" tv_name="Sharmada BALU" tv_short_name="S. BALU" status="active" odf_id="7280509"></athlete>
+                    </team>
+                </teams>
+            </event>
+            <event id="e4a91a7f-6128-419c-898e-ed5c067303b0" description="Mixed Doubles" gender="mixed" odf_id="TEX002" updated="2016-03-28T18:39:37+00:00">
+                <sport id="3fb71d5c-c257-4bbb-9c04-23b5f0826ab6" description="Tennis" alias="TE"/>
+                <discipline id="512f53dd-2ea4-4053-92a8-de712a8c7a05" description="Tennis" alias="TE"/>
+                <teams>
+                    <team updated="2016-03-28 18:39:37 +0000" id="117a7ba0-fc07-40bc-a2a9-0a01d83fbdda" description="India" odf_id="TEX002IND01">
+                        <athlete updated="2016-03-28T18:39:33+00:00" id="a6a2021f-9136-48ed-bbc6-be881c880f6c" last_name="Mirza" first_name="Sania" gender="female" weight_kg="57" weight_lb="125" height_cm="173" height_in="68" birth_date="1986-11-15" birth_place="" nationality="IND" print_name="MIRZA Sania" print_short_name="MIRZA S" tv_name="Sania MIRZA" tv_short_name="S. MIRZA" status="active" odf_id="7280507"></athlete>
+                        <athlete updated="2016-03-28T18:39:37+00:00" id="e5558630-b621-43af-97f7-825312d815d5" last_name="Bhupathi" first_name="Mahesh" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1974-06-07" birth_place="" nationality="IND" print_name="BHUPATHI Mahesh" print_short_name="BHUPATHI M" tv_name="Mahesh BHUPATHI" tv_short_name="M. BHUPATHI" status="active" odf_id="7280576"></athlete>
+                    </team>
+                </teams>
+            </event>
+            <event id="f53894ea-5ad8-48df-9505-67c54d2eaca0" description="Women's Singles" gender="female" odf_id="TTW001" updated="2016-03-28T17:46:47+00:00">
+                <sport id="2b87bd2b-205a-45ea-becf-ada03ccc2b04" description="Table Tennis" alias="TT"/>
+                <discipline id="bd47a884-fd01-4bb6-a859-3f424943143f" description="Table Tennis" alias="TT"/>
+                <participants>
+                    <athlete updated="2016-03-28T17:46:47+00:00" id="6339aa46-cfb8-45d3-925d-b38779ab599f" last_name="Das" first_name="Ankita" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1993-07-17" birth_place="DARJEELING" nationality="IND" print_name="DAS Ankita" print_short_name="DAS A" tv_name="Ankita DAS" tv_short_name="A. DAS" status="active" odf_id="7310382"></athlete>
+                </participants>
+            </event>
+            <event id="054d63b3-1824-4208-9ddf-76a92f7684b3" description="Men's Singles" gender="male" odf_id="TTM001" updated="2016-03-28T17:46:46+00:00">
+                <sport id="2b87bd2b-205a-45ea-becf-ada03ccc2b04" description="Table Tennis" alias="TT"/>
+                <discipline id="bd47a884-fd01-4bb6-a859-3f424943143f" description="Table Tennis" alias="TT"/>
+                <participants>
+                    <athlete updated="2016-03-28T17:46:46+00:00" id="1165148e-d8d1-412d-ab9c-06390a8ad91a" last_name="Ghosh" first_name="Soumyajit" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1993-05-10" birth_place="SILIGURI" nationality="IND" print_name="GHOSH Soumyajit" print_short_name="GHOSH S" tv_name="Soumyajit GHOSH" tv_short_name="S. GHOSH" status="active" odf_id="7310378"></athlete>
+                </participants>
+            </event>
+            <event id="9f8ecd5d-86cd-4b0c-aec3-4289abf2706a" description="Men's 69kg" gender="male" odf_id="WLM069" updated="2016-03-28T17:56:21+00:00">
+                <sport id="e3761a21-bcb3-4c56-9f0c-218660521b71" description="Weightlifting" alias="WL"/>
+                <discipline id="882f6634-7482-487f-83b0-475a9f095feb" description="Weightlifting" alias="WL"/>
+                <participants>
+                    <athlete updated="2016-03-28T17:56:21+00:00" id="b714535d-b320-4aeb-a0b7-33dcdb162b66" last_name="Katulu" first_name="Ravi Kumar" gender="male" weight_kg="69" weight_lb="152" height_cm="" height_in="0" birth_date="1988-04-24" birth_place="BERHAMPUR GANJAM" nationality="IND" print_name="KATULU Ravi Kumar" print_short_name="KATULU RK" tv_name="Ravi Kumar KATULU" tv_short_name="R.K. KATULU" status="active" odf_id="7330354"></athlete>
+                </participants>
+            </event>
+            <event id="8939da54-d042-4701-bbb5-5e435f3bbe49" description="Women's 48kg" gender="female" odf_id="WLW048" updated="2016-03-28T17:56:21+00:00">
+                <sport id="e3761a21-bcb3-4c56-9f0c-218660521b71" description="Weightlifting" alias="WL"/>
+                <discipline id="882f6634-7482-487f-83b0-475a9f095feb" description="Weightlifting" alias="WL"/>
+                <participants>
+                    <athlete updated="2016-03-28T17:56:21+00:00" id="368c26ef-f1dc-413d-a7eb-68a3e7b4ce7f" last_name="Chanu Ngangbam" first_name="Soniya" gender="female" weight_kg="46" weight_lb="101" height_cm="" height_in="0" birth_date="1980-02-15" birth_place="IMPHAL WEST" nationality="IND" print_name="CHANU NGANGBAM Soniya" print_short_name="CHANU NGANGBAM S" tv_name="Soniya CHANU NGANGBAM" tv_short_name="S. CHANU NGANGBAM" status="active" odf_id="7330352"></athlete>
+                </participants>
+            </event>
+            <event id="6b691511-a4c5-4480-8e76-ba98d201effc" description="Men's Freestyle 57 kg" gender="male" odf_id="WRM257" updated="2016-03-22T14:55:03+00:00">
+                <sport id="ce0a87e0-3e8c-452c-84f8-c9252a7d53b4" description="Wrestling" alias="WR"/>
+                <discipline id="15e197f0-0b37-47c4-8598-04dbcb4323c7" description="Wrestling" alias="WR"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:55:03+00:00" id="a4610371-2d20-484c-adef-7f8d00837898" last_name="Amit Kumar" first_name="Amit Kumar" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1993-12-15" birth_place="SONEPAT" nationality="IND" print_name="AMIT KUMAR Amit Kumar" print_short_name="AMIT KUMAR AK" tv_name="Amit Kumar AMIT KUMAR" tv_short_name="A.K. AMIT KUMAR" status="active" odf_id="7352570"></athlete>
+                </participants>
+            </event>
+            <event id="ab096b9f-96bc-4ab3-a4b2-1be4e7d0553f" description="Men's Freestyle 65 kg" gender="male" odf_id="WRM265" updated="2016-03-22T14:54:58+00:00">
+                <sport id="ce0a87e0-3e8c-452c-84f8-c9252a7d53b4" description="Wrestling" alias="WR"/>
+                <discipline id="15e197f0-0b37-47c4-8598-04dbcb4323c7" description="Wrestling" alias="WR"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:54:58+00:00" id="88d55305-adb5-4de4-80a8-d5973493e947" last_name="Sushil Kumar" first_name="Sushil Kumar" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1983-05-26" birth_place="DELHI" nationality="IND" print_name="SUSHIL KUMAR Sushil Kumar" print_short_name="SUSHIL KUMAR SK" tv_name="Sushil Kumar SUSHIL KUMAR" tv_short_name="S.K. SUSHIL KUMAR" status="active" odf_id="7351384"></athlete>
+                    <athlete updated="2016-03-22T14:54:58+00:00" id="fdcce8ee-87c0-4fb7-a2f8-40139e0ad6f5" last_name="Dutt" first_name="Yogeshwar" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1982-11-02" birth_place="DELHI" nationality="IND" print_name="DUTT Yogeshwar" print_short_name="DUTT Y" tv_name="Yogeshwar DUTT" tv_short_name="Y. DUTT" status="active" odf_id="7351385"></athlete>
+                </participants>
+            </event>
+            <event id="bd04a65b-3859-4a08-82ca-4712e45c36f4" description="Men's Freestyle 74 kg" gender="male" odf_id="WRM274" updated="2016-03-22T14:54:58+00:00">
+                <sport id="ce0a87e0-3e8c-452c-84f8-c9252a7d53b4" description="Wrestling" alias="WR"/>
+                <discipline id="15e197f0-0b37-47c4-8598-04dbcb4323c7" description="Wrestling" alias="WR"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:54:58+00:00" id="92f51957-eba6-438e-96e1-81267cbd3403" last_name="Yadav" first_name="Narsingh Pancham" gender="male" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1989-08-06" birth_place="VARANASI" nationality="IND" print_name="YADAV Narsingh Pancham" print_short_name="YADAV NP" tv_name="Narsingh Pancham YADAV" tv_short_name="N.P. YADAV" status="active" odf_id="7351387"></athlete>
+                </participants>
+            </event>
+            <event id="5cc9acc7-5347-47da-a06a-e967d4f1360c" description="Women's Freestyle 53 kg" gender="female" odf_id="WRW253" updated="2016-03-22T14:54:58+00:00">
+                <sport id="ce0a87e0-3e8c-452c-84f8-c9252a7d53b4" description="Wrestling" alias="WR"/>
+                <discipline id="15e197f0-0b37-47c4-8598-04dbcb4323c7" description="Wrestling" alias="WR"/>
+                <participants>
+                    <athlete updated="2016-03-22T14:54:58+00:00" id="5f6d1ff8-7de7-4ef0-856b-838a297b58e2" last_name="Geeta" first_name="Geeta" gender="female" weight_kg="" weight_lb="0" height_cm="" height_in="0" birth_date="1988-12-15" birth_place="BALALI" nationality="IND" print_name="GEETA Geeta" print_short_name="GEETA G" tv_name="Geeta GEETA" tv_short_name="G. GEETA" status="active" odf_id="7351394"></athlete>
+                </participants>
+            </event>
+        </events>
+    </organization>
+</olympics>

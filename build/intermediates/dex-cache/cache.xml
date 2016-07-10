@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/global/.gradle/caches/modules-2/files-2.1/org.simpleframework/simple-xml/2.7.1/dd91fb744c2ff921407475cb29a1e3fee397d411/simple-xml-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="dd91fb744c2ff921407475cb29a1e3fee397d411">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/simple-xml-2.7.1-ab80c2ff4c1dd2e405aeebaccd22c3b5d8b9056c.jar" />
+    </item>
+    <item
+        jar="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0-406aff8f1f1565bfaea65a99edd631b745569e6d.jar" />
+    </item>
+    <item
+        jar="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/classes-ff108d2e85d2525d2dd8de69a4aa96c05670b1bc.jar" />
+    </item>
+    <item
+        jar="/Users/global/Downloads/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0-448ac6088e5e43c324f8d0605a0783c38b4f879f.jar" />
+    </item>
+    <item
+        jar="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/classes-3987ba66af61118df363530922dd9f96ba192dda.jar" />
+    </item>
+    <item
+        jar="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/classes-9932f64dc8d76ccad90cf2086ed8a5eb7447eda1.jar" />
+    </item>
+    <item
+        jar="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/classes-1daba6e1afdca15ad57524852cc629e59accc271.jar" />
+    </item>
+    <item
+        jar="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/classes-d892a216e0ce9a65b3186dcd4aa28ee1bd2bc224.jar" />
+    </item>
+    <item
+        jar="/Users/global/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/gson-2.7-e0ffed778a9829535ba0c82b54263c441a22f718.jar" />
+    </item>
+    <item
+        jar="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/classes-f57daf43d430bf92bccb58ac8486195dfcc9cd94.jar" />
+    </item>
+    <item
+        jar="/Users/global/.gradle/caches/modules-2/files-2.1/stax/stax/1.2.0/c434800de5e4bbe1822805be5fb1c32d6834f830/stax-1.2.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c434800de5e4bbe1822805be5fb1c32d6834f830">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/stax-1.2.0-1f6c8b2eca1745a9bc9bf5ee225d33ea42c55546.jar" />
+    </item>
+    <item
+        jar="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/build/intermediates/pre-dexed/debug/classes-f8dd8e0061a9df96db93ff75e6053b32c6a429c9.jar" />
+    </item>
+
+</items>
