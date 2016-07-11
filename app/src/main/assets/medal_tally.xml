@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<olympics generated="2016-06-27T11:53:28+00:00" xmlns="http://feed.elasticstats.com/schema/olympics/v2/medals.xsd" id="8edd3d51-d517-4c13-b7e0-4db22803617e" alias="OG">
+    <organizations>
+        <organization id="0098ab4d-d378-4ea0-b6f0-ab094155c9eb" alias="REU" description="Réunion"/>
+        <organization id="02b1f8c5-6633-4888-b50f-61ff43f4500c" alias="NIG" description="Niger"/>
+        <organization id="0334a203-03a6-457c-80c8-22c3e2a58de3" alias="BEN" description="Benin"/>
+        <organization id="0672730d-8534-4342-9bc5-987a281a8ff0" alias="BAN" description="Bangladesh"/>
+        <organization id="07a5e908-0b25-4396-a90c-9520dee8cda5" alias="RWA" description="Rwanda"/>
+        <organization id="08026e51-62ae-4632-9a31-60adf280946a" alias="KAZ" description="Kazakhstan" gold="2" silver="3" bronze="2" total="7"/>
+        <organization id="0a337450-3f01-4e14-b034-d81be38761dd" alias="SJM" description="Svalbard and Jan Mayen"/>
+        <organization id="0a357a9d-948f-4b2e-bef8-79b554ff6156" alias="ALB" description="Albania"/>
+        <organization id="0afc1802-d0ad-4fe3-9bec-176b4e376cd5" alias="DEN" description="Denmark" gold="0" silver="2" bronze="1" total="3"/>
+        <organization id="0b097dfc-f6ab-4eaf-a55a-ce6168d22cb7" alias="IRL" description="Ireland" gold="3" silver="0" bronze="4" total="7"/>
+        <organization id="0b9e7949-d1b2-48c8-86e4-ba4c0498d0de" alias="BVT" description="Bouvet Island"/>
+        <organization id="0b9f1ef9-0c5c-4484-99ab-c2ab1d7d7693" alias="SEY" description="Seychelles" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="0ba5ac5e-636e-4906-8142-a8d9988630d8" alias="DOM" description="Dominican Republic" gold="0" silver="1" bronze="1" total="2"/>
+        <organization id="0bda1b2c-751e-4397-b11f-7eb8c8ab05f3" alias="UGA" description="Uganda"/>
+        <organization id="0be5cd7c-69e9-429c-bbb6-e5f9a19b2d29" alias="CMR" description="Cameroon"/>
+        <organization id="0cb5a033-a178-4340-b680-6212ea6213d7" alias="ZIM" description="Zimbabwe"/>
+        <organization id="0d147209-a03d-4de9-b7b8-e7fce316198a" alias="SSU" description="South Sudan"/>
+        <organization id="0d23bac2-41ae-44b3-889e-5f3fea363b9b" alias="IVB" description="Virgin Islands, British"/>
+        <organization id="0d4c8149-932f-4b49-ac79-742679190b18" alias="ETH" description="Ethiopia" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="0e64beef-83e6-4bd7-b7c5-e58a8fd6061c" alias="ANG" description="Angola"/>
+        <organization id="10103754-47eb-47cb-83cc-56d0b2e82728" alias="BOL" description="Bolivia"/>
+        <organization id="1029b274-bd9d-4cf3-8447-b54d31aec89a" alias="STP" description="Sao Tome and Principe"/>
+        <organization id="12ade32e-2edd-48e7-b643-7e7ab2d8a0ec" alias="CIV" description="Côte d'Ivoire" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="140e62d2-1117-41ff-a8da-3f7afb42d2a0" alias="SLE" description="Sierra Leone"/>
+        <organization id="14f04be9-b8f0-4069-9cdd-79dcd98e3608" alias="MEX" description="Mexico" gold="2" silver="2" bronze="0" total="4"/>
+        <organization id="153b28e1-e105-4441-93a8-dcf5f886650b" alias="JOR" description="Jordan" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="161d4751-71a0-4f00-807a-6ae8a85d7285" alias="AIA" description="Anguilla"/>
+        <organization id="174acb7e-f69e-4163-99e0-1e290879d84f" alias="SPM" description="Saint Pierre and Miquelon"/>
+        <organization id="17f9d87e-c327-429c-9980-0056f3aea0c6" alias="QAT" description="Qatar"/>
+        <organization id="182665a8-157b-436c-9366-c4f2e1446d97" alias="AFG" description="Afghanistan" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="194d4efb-bc29-4eb5-940e-f47cd4f828ee" alias="AND" description="Andorra"/>
+        <organization id="198cf4c5-95cc-49e2-8744-8281ba6f0f3c" alias="NFK" description="Norfolk Island"/>
+        <organization id="1a416473-0551-4c45-bdd9-42ef437fe4ce" alias="KSA" description="Saudi Arabia"/>
+        <organization id="1b9d72ee-86d8-4302-8e96-17007b32ac10" alias="SLO" description="Slovenia" gold="0" silver="0" bronze="2" total="2"/>
+        <organization id="1d092020-990e-49c3-9317-d4d124eb49a5" alias="FRG" description="Federal Republic of Germany"/>
+        <organization id="1d0b7b04-465f-44c2-ba89-ee632117dfad" alias="TPE" description="Chinese Taipei" gold="1" silver="1" bronze="1" total="3"/>
+        <organization id="1d6c239b-44b2-41f1-aa2f-5feb33a3b983" alias="ATA" description="Antarctica"/>
+        <organization id="1e1efdb7-a122-4edd-a68b-d2ac142d5580" alias="CAN" description="Canada" gold="6" silver="4" bronze="6" total="16"/>
+        <organization id="1ec0ec22-f45f-4a34-9e13-bb4f78668937" alias="NOR" description="Norway" gold="2" silver="0" bronze="2" total="4"/>
+        <organization id="204c6848-d547-45d6-8da7-e23c09f6e5a8" alias="EGY" description="Egypt" gold="3" silver="5" bronze="1" total="9"/>
+        <organization id="2075b41e-87ef-4bb8-a145-04c6d94c0ae2" alias="CRC" description="Costa Rica"/>
+        <organization id="2174aab9-bd13-442a-a396-7e464c62d528" alias="DMA" description="Dominica"/>
+        <organization id="22611227-d3da-40c4-a119-3ac63e8d3978" alias="APA" description="Stateless"/>
+        <organization id="228c0be9-2e80-4d69-a856-b25b06f21527" alias="SAM" description="Samoa" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="238a00d0-235a-4062-8c94-a6d05e5119b0" alias="YUG" description="The Federal Republic of Yugoslavia"/>
+        <organization id="24836804-ca3b-4e62-a6bd-353f69487f28" alias="COL" description="Colombia" gold="1" silver="1" bronze="0" total="2"/>
+        <organization id="2758870f-56b1-47a2-9622-c343071ae036" alias="KEN" description="Kenya"/>
+        <organization id="282b0cf9-8af6-4d7a-808e-2c5c0e92ecd5" alias="BIZ" description="Belize"/>
+        <organization id="2881b143-c0e8-4040-9706-b11e8e329547" alias="MYA" description="Myanmar"/>
+        <organization id="293e5a60-e9ab-43eb-9474-4617268f4115" alias="CPV" description="Cape Verde" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="298d92f9-8dae-4742-a2f1-76e9018e0240" alias="FRO" description="Faroe Islands"/>
+        <organization id="29a46bf1-4388-4e39-a4f4-882ff5851529" alias="MAW" description="Malawi"/>
+        <organization id="2b3e137b-272b-414f-965d-5d20aaee2fe6" alias="LBA" description="Libya"/>
+        <organization id="2b55bb96-363d-4625-9790-8c5f0ec3e8ae" alias="BUR" description="Burkina Faso"/>
+        <organization id="2b5ca692-fefe-4586-a9ec-5432b0209a19" alias="KUW" description="Kuwait"/>
+        <organization id="2b6b90ee-8a8f-4e86-a024-b2d08ce45c97" alias="IPA" description="Independent Paralympic Athlete"/>
+        <organization id="2bcebb1d-affd-47e1-9f9b-d019fed40f34" alias="MSR" description="Montserrat"/>
+        <organization id="2e6eaf2d-6915-458b-b35c-731f975a3c76" alias="PHI" description="Philippines" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="2ec5dbc3-104e-4137-af7e-82507732f258" alias="AZE" description="Azerbaijan" gold="1" silver="3" bronze="2" total="6"/>
+        <organization id="3015a76a-be5c-4395-a965-64a6251e502c" alias="SUR" description="Suriname"/>
+        <organization id="31126ec1-92a1-4ddd-9928-73ead821870c" alias="MDA" description="Republic of Moldova"/>
+        <organization id="314022d2-7f87-4f30-ab3c-6e0f3bee7d8b" alias="IPP" description="Independent Paralympic Participant"/>
+        <organization id="316dfb5e-d869-4c00-abac-f94e4fe7bb8d" alias="ARM" description="Armenia" gold="1" silver="0" bronze="1" total="2"/>
+        <organization id="3420422f-dbd0-4a0e-b975-2d992a1a7e24" alias="SVK" description="Slovakia" gold="0" silver="1" bronze="1" total="2"/>
+        <organization id="351fa2fd-f82d-4996-8dd5-b526019d4847" alias="KOR" description="Republic of Korea" gold="3" silver="4" bronze="4" total="11"/>
+        <organization id="3541f6c5-140a-4ea3-88e4-3b51bdafcb63" alias="LBR" description="Liberia"/>
+        <organization id="358f8d42-1507-4e19-8f00-9c75bb6b266b" alias="GRE" description="Greece"/>
+        <organization id="35ca697a-f792-4438-ac18-15cb5e6efaaa" alias="OMA" description="Oman"/>
+        <organization id="37f7517f-5b05-4a1d-be3f-2304dee5ad25" alias="VIN" description="St Vincent and the Grenadines"/>
+        <organization id="3895c498-088f-416f-a8d0-3d23c51a44b2" alias="SXM" description="Sint Maarten"/>
+        <organization id="3b52a42e-074c-4e67-86f8-91f6dc0118a6" alias="EUN" description="Unified Team"/>
+        <organization id="3b7f40db-8212-4a74-b19b-8f23ab6e5692" alias="TAH" description="Tahiti"/>
+        <organization id="3c1221b8-e885-4764-a40b-323b4a966b94" alias="LCA" description="Saint Lucia"/>
+        <organization id="3e7b8004-412f-4a23-9b87-245d1afb9215" alias="KOS" description="Kosovo"/>
+        <organization id="415417a5-6e91-4427-9429-d9b29d1ce1f6" alias="THA" description="Thailand" gold="1" silver="1" bronze="1" total="3"/>
+        <organization id="41c7c0ce-6b99-4caf-9fee-0e89a2de0564" alias="IMN" description="Isle of Man"/>
+        <organization id="45bc6f1c-f05a-4c35-96b6-6a51968a68b4" alias="IOA" description="Independent Olympic Athlete" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="489d6548-09ec-4de9-bcdd-8d73615d1170" alias="SYR" description="Syrian Arab Republic"/>
+        <organization id="48ffca4f-7070-4dcc-9d97-c62b314ef62a" alias="LIE" description="Liechtenstein"/>
+        <organization id="495029f7-a547-46ef-879a-31080044aa5a" alias="CUB" description="Cuba" gold="3" silver="3" bronze="1" total="7"/>
+        <organization id="49b69dff-6f4b-4853-9ff7-d11b2705aef7" alias="PLE" description="Palestine"/>
+        <organization id="4aa03835-2dac-4d73-9f01-a4de627b278a" alias="TJK" description="Tajikistan" gold="1" silver="0" bronze="1" total="2"/>
+        <organization id="4ab79fd7-230e-4cc9-8ea6-84eb2a9b0c0a" alias="KIR" description="Kiribati"/>
+        <organization id="4ae6bbc0-7b20-4491-be2f-dbb9e6c61bdb" alias="SRB" description="Serbia"/>
+        <organization id="4d1886ed-e962-49ce-921f-f3ba4f78cd73" alias="BES" description="Bonaire, Sint Eustatius and Saba"/>
+        <organization id="4d9a3007-7f99-45be-918b-e0f7a516626b" alias="GBR" description="Great Britain" gold="7" silver="8" bronze="6" total="21"/>
+        <organization id="4e4263fb-163c-4ccf-8b38-1ad92766c810" alias="BAH" description="Bahamas" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="4eafa131-f586-4ae0-a852-fa61cb36157f" alias="MNE" description="Montenegro" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="4f9e594d-b508-4674-8bb4-88010b715ffd" alias="ZAM" description="Zambia"/>
+        <organization id="511dd2bb-9684-43c1-998d-80a4c8ae634b" alias="MGL" description="Mongolia" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="52964906-8b33-4e7b-9130-c58d1b47eb27" alias="SOM" description="Somalia"/>
+        <organization id="547478ad-a292-4e74-82a8-83326a32644f" alias="NGR" description="Nigeria" gold="1" silver="0" bronze="1" total="2"/>
+        <organization id="560499d2-f6f8-4fd1-8f74-bc1364cbf9f4" alias="CHI" description="Chile" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="57015481-208d-421d-962a-74a3d0510a97" alias="FIJ" description="Fiji" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="5df7bba4-086d-4026-81bf-68dd10e079b9" alias="ROT" description="Refugee Olympic Team"/>
+        <organization id="5e36d023-a242-47ec-9b4c-5857c220c83b" alias="SOL" description="Solomon Islands"/>
+        <organization id="5e4da932-0432-47fe-a04c-1e440f808583" alias="ANZ" description="Australia/New Zealand"/>
+        <organization id="6059e880-0dd3-4ce7-bd77-c3df3ee39fcd" alias="UAE" description="United Arab Emirates" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="60c41c34-4f9d-4d48-ad45-249e357c85ad" alias="JPN" description="Japan" gold="8" silver="6" bronze="9" total="23"/>
+        <organization id="61c554c0-c309-4dd3-9e7c-b30f071fcb72" alias="TLS" description="Democratic Republic of Timor-Leste"/>
+        <organization id="623c7ac9-f30c-4f81-9156-51c8ba93c7d7" alias="VEN" description="Venezuela" gold="1" silver="3" bronze="7" total="11"/>
+        <organization id="656fbc28-efc9-43e7-a0bb-e5c09accb813" alias="PCN" description="Pitcairn Islands"/>
+        <organization id="658e578d-b02c-43b3-af59-3c7f4782e656" alias="PRK" description="Democratic People's Republic of Korea" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="661983da-1f8b-490b-bf45-5f17e1566e24" alias="GAM" description="Gambia"/>
+        <organization id="665dddc8-435a-43d9-9d4e-6cc43ef1014a" alias="GRL" description="Greenland"/>
+        <organization id="678d3b89-57d9-4146-8bef-d956dae46355" alias="LAT" description="Latvia" gold="2" silver="0" bronze="3" total="5"/>
+        <organization id="6912e8b4-3a6f-49f4-a118-143ec0dc0968" alias="MAR" description="Morocco" gold="2" silver="0" bronze="0" total="2"/>
+        <organization id="6916efbf-1212-4ae2-bd6a-cb12f33f2dee" alias="RUS" description="Russian Federation" gold="3" silver="4" bronze="14" total="21"/>
+        <organization id="6b48676a-b5f4-4e78-9c32-475b5431b972" alias="MAF" description="Saint-Martin"/>
+        <organization id="6b4c50ab-4ae2-4748-9255-c958d8177e59" alias="GUY" description="Guyana"/>
+        <organization id="6bcb6e60-934a-4a73-844b-68eb6d1e7a41" alias="GLP" description="Guadeloupe"/>
+        <organization id="6bf63956-1ed6-4880-8890-24adf44e4417" alias="CGO" description="Congo"/>
+        <organization id="6bfdcff0-c93a-4b19-8be4-eea8edebfd72" alias="URU" description="Uruguay"/>
+        <organization id="6c300d5c-e27b-4a6c-b3df-85b3914d6cc4" alias="TOG" description="Togo"/>
+        <organization id="6cdc8842-0a0b-45a5-bb96-39dd46ba0b6f" alias="NRU" description="Nauru" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="6ddb3cf8-8c45-4561-85ae-7eca8ef1dd72" alias="CRO" description="Croatia"/>
+        <organization id="6e2cec3a-78f0-4e9b-b2c5-a4a8c38b1b50" alias="SRI" description="Sri Lanka"/>
+        <organization id="6eeb6379-a4b7-4ffa-9bdb-78265b5a2c57" alias="ALA" description="Åland Islands"/>
+        <organization id="6efcfc35-fd48-4ce3-b3ee-e54ca3c289a7" alias="MAS" description="Malaysia" gold="0" silver="0" bronze="3" total="3"/>
+        <organization id="7056acb7-668f-41ee-a14b-ad3426a90a84" alias="WLF" description="Wallis and Futuna"/>
+        <organization id="721b5474-d33e-497d-b22f-516553b62f59" alias="GUF" description="French Guiana"/>
+        <organization id="7266f86d-90ca-4cdf-ac3c-ddb6bc43d2ba" alias="LIB" description="Lebanon"/>
+        <organization id="75651b55-4eae-4f9d-b669-09aa376b754a" alias="ISL" description="Iceland"/>
+        <organization id="7569445f-44f8-4d9e-b8ed-0b0bbaaa060f" alias="ALG" description="Algeria" gold="0" silver="0" bronze="2" total="2"/>
+        <organization id="765addbc-6723-4ae2-a263-34e9323d1060" alias="SUI" description="Switzerland" gold="2" silver="2" bronze="1" total="5"/>
+        <organization id="76c2105b-cd69-4159-a36f-86f09d3c9e9a" alias="CYP" description="Cyprus" gold="0" silver="0" bronze="2" total="2"/>
+        <organization id="772a9b61-504d-41c0-9374-35099f357552" alias="PAK" description="Pakistan"/>
+        <organization id="78f6cc6f-1e22-44e6-a6fb-2d7f8976eb4d" alias="CXR" description="Christmas Island"/>
+        <organization id="79295017-fd0d-4651-a66b-ba0dae56abb9" alias="MOZ" description="Mozambique"/>
+        <organization id="79febb57-45a6-43fb-b325-ac23a944d924" alias="VAT" description="Vatican"/>
+        <organization id="7b16cbb1-e432-4a1e-8184-d7798b3b6c1d" alias="USA" description="United States of America" gold="11" silver="14" bronze="11" total="36"/>
+        <organization id="7bb25841-606b-40d7-bcaa-63cb25e97976" alias="IRI" description="Islamic Republic of Iran" gold="1" silver="0" bronze="1" total="2"/>
+        <organization id="7bb68506-ba66-443c-9f50-e19cc07f03d4" alias="VIE" description="Vietnam"/>
+        <organization id="7dac416c-65a8-4177-81d1-995dd0c2cf9b" alias="HAI" description="Haiti"/>
+        <organization id="7e44fbf2-b06a-4cb4-8b22-558039531ac5" alias="MHL" description="Marshall Islands"/>
+        <organization id="7e6a46d1-f8fc-4f4f-9f79-2ab17f6b3f97" alias="LUX" description="Luxembourg"/>
+        <organization id="7fcce3f6-8f36-4b01-9f5e-b06fbdc9d3d2" alias="BRA" description="Brazil" gold="10" silver="2" bronze="7" total="19"/>
+        <organization id="806bd8ec-4619-4e87-948d-18a867d0053f" alias="VAN" description="Vanuatu"/>
+        <organization id="807cbba4-687e-41a8-980a-8c6471d7f79b" alias="ESA" description="El Salvador"/>
+        <organization id="81491f01-2c3c-4a28-b1b9-749f2948e4db" alias="PUR" description="Puerto Rico" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="82fb7b6b-b760-47bf-b822-e9ad1b5480da" alias="TCA" description="Turks and Caicos Islands"/>
+        <organization id="840a4893-d821-436b-8c62-f5639dcdb037" alias="IND" description="India" gold="0" silver="1" bronze="1" total="2"/>
+        <organization id="845bd825-5fb5-4bba-aefb-c1d0c2ca2387" alias="EST" description="Estonia" gold="0" silver="1" bronze="1" total="2"/>
+        <organization id="874e22ab-6c11-47f6-a307-c08d247485ac" alias="CCK" description="Cocos Islands"/>
+        <organization id="88aa208b-8f27-4e30-b175-4828519eddf2" alias="ATF" description="French Southern Territories"/>
+        <organization id="890d6360-008e-4676-b4c8-3f2fa22aa2a7" alias="ROA" description="Refugee Olympic Athletes"/>
+        <organization id="8b17335c-63c0-46b8-9857-ce4859626c72" alias="UMI" description="US Outlying Islands"/>
+        <organization id="8c24431c-5c64-4c79-a185-50b28be89333" alias="URS" description="USSR"/>
+        <organization id="8cabe99a-3404-4484-90fd-b8a38be48314" alias="TKL" description="Tokelau"/>
+        <organization id="8e1fbb45-9093-44f4-8e65-f9942b866ef3" alias="LES" description="Lesotho"/>
+        <organization id="90981fd9-2b74-4821-b228-4d372cc2f5dc" alias="BLM" description="Saint Barthélemy"/>
+        <organization id="9197fdff-fb04-4ea2-84df-5eea9ddb80b9" alias="BUL" description="Bulgaria" gold="1" silver="1" bronze="3" total="5"/>
+        <organization id="929f5ebf-4f76-4fb8-9826-4cbcb33b66f1" alias="NAM" description="Namibia" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="92fb0188-07a4-4189-95cc-9065b69d6283" alias="SHN" description="Saint Helena, Ascension and Tristan da Cunha"/>
+        <organization id="93411096-6da1-459d-af21-06b4b70e9749" alias="CAY" description="Cayman Islands"/>
+        <organization id="941cefe2-3973-40d8-81d6-956163287e5e" alias="SWZ" description="Swaziland"/>
+        <organization id="95106e57-3ab2-48e3-b3ba-9bac62d15344" alias="MNP" description="Northern Marianas Islands"/>
+        <organization id="95758552-e52a-4f07-9619-17f264afece5" alias="GBS" description="Guinea-Bissau"/>
+        <organization id="95d5b9ab-dad1-4899-a2d0-1eb2bedeb181" alias="MTN" description="Mauritania"/>
+        <organization id="978e7feb-6152-46ca-bf93-d15c28abc162" alias="GUI" description="Guinea"/>
+        <organization id="99d9c938-7115-4cc6-a9f6-f7736fe8352e" alias="PER" description="Peru"/>
+        <organization id="9a09b2e0-31a6-4628-bb1d-e72e52cbe0dc" alias="SMR" description="San Marino" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="9a58e588-2070-4029-ab89-35ed1b72d703" alias="GAB" description="Gabon"/>
+        <organization id="9b89c918-d86d-48c3-ba66-f4ac28b0735a" alias="PLW" description="Palau"/>
+        <organization id="9c451f7d-25e8-46be-9b9d-65bcd961fb85" alias="GHA" description="Ghana"/>
+        <organization id="9c75887d-76da-44db-8bf8-f17d266409bf" alias="BER" description="Bermuda"/>
+        <organization id="9cec3f9c-e825-456c-8d03-368e0756fbd3" alias="CZE" description="Czech Republic" gold="1" silver="1" bronze="3" total="5"/>
+        <organization id="9dc0aa39-8fc6-43cb-91d6-5999974aa69d" alias="MAD" description="Madagascar" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="9e4ed3b1-2fde-423b-a0e3-d52415bbc2b1" alias="BOT" description="Botswana"/>
+        <organization id="9e7c8c60-75ac-4409-ad86-2c5bb855e32b" alias="TUN" description="Tunisia" gold="2" silver="2" bronze="3" total="7"/>
+        <organization id="9f2839be-944c-49a0-95f5-30a023232479" alias="GEQ" description="Equatorial Guinea"/>
+        <organization id="9f418b2d-f11b-4d69-8a1a-f9a717118bfb" alias="ROU" description="Romania" gold="2" silver="1" bronze="2" total="5"/>
+        <organization id="a0e25703-c997-45e2-aebf-35f00b8758d2" alias="ESP" description="Spain" gold="3" silver="1" bronze="3" total="7"/>
+        <organization id="a13d1bc3-228a-49d2-bddd-fffdc34efbc0" alias="IOT" description="British Indian Ocean Territory"/>
+        <organization id="a1d361c7-7af1-476c-800e-a74012657bce" alias="PYF" description="French Polynesia"/>
+        <organization id="a1f01842-63e3-4a85-96b1-b4d2d19f990b" alias="TUV" description="Tuvalu"/>
+        <organization id="a3802b9c-386f-4d28-8b0f-008e862d4472" alias="TUR" description="Turkey" gold="2" silver="3" bronze="1" total="6"/>
+        <organization id="a406d662-117e-450d-b2ff-be2bf36df821" alias="JAM" description="Jamaica" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="a9488370-c22d-4c23-b501-b822ccfa930c" alias="GUA" description="Guatemala" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="aa42db90-8073-4e19-9d32-b8266d2a0926" alias="AHO" description="Netherlands Antilles"/>
+        <organization id="ab31b137-5c74-4281-912e-2284ca6993f1" alias="IOP" description="Independent Olympic Participant"/>
+        <organization id="abf44d04-4be1-4878-a04c-13928d24cf8f" alias="NIU" description="Niue"/>
+        <organization id="ac040f1f-9fc9-4a6c-b300-3eeb94821316" alias="BRN" description="Bahrain"/>
+        <organization id="ac525692-c9e8-448c-8b38-1e362def80b0" alias="MON" description="Monaco"/>
+        <organization id="ad1ec889-7f55-4ee5-95a7-3c51bee90b9f" alias="ASA" description="American Samoa"/>
+        <organization id="ad357e25-0f68-4621-80eb-b1421c8f2525" alias="HKG" description="Hong Kong, China" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="ad77bd17-ce85-4308-a9bd-3a682191b80d" alias="HMD" description="Heard Island and McDonald Islands"/>
+        <organization id="ad942ed6-ec79-4b9c-bf9b-fc8b24e5ce12" alias="ARG" description="Argentina" gold="1" silver="0" bronze="1" total="2"/>
+        <organization id="aea080c2-e7dd-45a3-9bd1-1e79bc1e4c60" alias="SWE" description="Sweden" gold="0" silver="2" bronze="2" total="4"/>
+        <organization id="af08b0ac-49ec-470d-91b7-b207bb6483b8" alias="SIN" description="Singapore" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="afaff5ff-ab44-45b9-abe5-5a28518fecf1" alias="CIS" description="Commonwealth of Independent States"/>
+        <organization id="b0aacc1e-0ce7-4a3c-a2fd-bc13932cf7f2" alias="COD" description="Democratic Republic of the Congo"/>
+        <organization id="b1fbb7a6-7845-4800-93f4-6a2d6dbd5cbc" alias="MRI" description="Mauritius"/>
+        <organization id="b3f91af2-dc16-4f6b-8908-be6f67208d85" alias="SEN" description="Senegal"/>
+        <organization id="b4642cfa-c279-455c-a421-ed3e5812440e" alias="SSD" description="South Sudan"/>
+        <organization id="b4f45fa6-da7c-4117-8562-c21660e1ad46" alias="DJI" description="Djibouti"/>
+        <organization id="b5574265-f5ee-43e0-9bad-955f23c0b464" alias="ARU" description="Aruba" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="b5b24cb6-13fb-4b5c-aba4-7a986acb42ed" alias="ESH" description="Western Sahara"/>
+        <organization id="b64b5434-69f2-478d-a40d-6860e25f2e7c" alias="MAC" description="Macao, China"/>
+        <organization id="b6c6498e-ba5b-43a7-a552-ad1fde38b3e1" alias="BRU" description="Brunei Darussalam"/>
+        <organization id="b72304cd-25f7-4558-a61b-2ae4af0b6a07" alias="COK" description="Cook Islands"/>
+        <organization id="b7291587-3333-481d-9def-c0f372633f3d" alias="TTO" description="Trinidad and Tobago"/>
+        <organization id="b78480b1-46bb-4829-8fe5-cb1bdfd99788" alias="BDI" description="Burundi"/>
+        <organization id="b8c2895d-0653-4377-8eb7-564be2a1c8bc" alias="MLI" description="Mali"/>
+        <organization id="ba84c1b4-566c-4292-af9c-acc09047694a" alias="MYT" description="Mayotte"/>
+        <organization id="bc96b5e8-180a-442f-9194-43b12cbab56f" alias="NZL" description="New Zealand" gold="1" silver="1" bronze="2" total="4"/>
+        <organization id="bd5b18ff-8dcc-4595-afcc-9a0827dd5e95" alias="GIB" description="Gibraltar"/>
+        <organization id="bead8a62-e05e-4348-a630-4da125316f0d" alias="ECU" description="Ecuador" gold="1" silver="1" bronze="2" total="4"/>
+        <organization id="c06dc5a0-b8d5-42bd-a747-610619ace3b2" alias="GRN" description="Grenada" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="c0ea2ba0-4222-4c2e-8977-89bff9d30601" alias="NED" description="Netherlands" gold="3" silver="1" bronze="3" total="7"/>
+        <organization id="c11cfa67-81c1-4509-930d-3efba0bc365e" alias="ANT" description="Antigua and Barbuda"/>
+        <organization id="c2c9dc68-7546-4a0f-b283-413e1dc895af" alias="YEM" description="Yemen" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="c3119c96-39bc-463b-a474-a3cc9adf313c" alias="IRQ" description="Iraq"/>
+        <organization id="c319687c-04ca-4cc2-a58a-8a18315e4d09" alias="MDV" description="Maldives" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="c54e22f0-5d76-48e8-89d6-0ceba8bc7fae" alias="GUM" description="Guam" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="c7828c1c-30fc-4239-a1be-74a20977422b" alias="SUD" description="Sudan"/>
+        <organization id="c7e2c5f6-4c1d-4c64-acfe-17ded6ee4b82" alias="PAN" description="Panama"/>
+        <organization id="cc2b8854-05cc-4026-8622-cc8526258660" alias="FIN" description="Finland" gold="2" silver="3" bronze="3" total="8"/>
+        <organization id="cd7a70e9-37e5-45f3-b693-9a1d2147a269" alias="SCG" description="Serbia and Montenegro"/>
+        <organization id="ce7e3d71-89e4-4061-a414-1c3acfb41f9b" alias="BAR" description="Barbados"/>
+        <organization id="cf15a9a2-6627-4578-a030-61453a047821" alias="BEL" description="Belgium" gold="1" silver="1" bronze="2" total="4"/>
+        <organization id="d01b42c7-3e09-4c06-b717-f7ae012dc95b" alias="FSM" description="Federated States of Micronesia" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="d20ecc91-5f44-45cd-972c-f85df9373c87" alias="NCA" description="Nicaragua" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="d2a48558-72ab-49e0-a346-32cc34f9cc48" alias="FRA" description="France" gold="5" silver="6" bronze="5" total="16"/>
+        <organization id="d3b44a28-45b8-4ddf-b911-488d56a733f8" alias="TAN" description="United Republic of Tanzania"/>
+        <organization id="d4aaf478-1421-40c9-8ee1-0bc08623e2db" alias="CAM" description="Cambodia" gold="0" silver="0" bronze="2" total="2"/>
+        <organization id="d59d7495-5628-44fa-86b7-df88f776e152" alias="GEO" description="Georgia" gold="2" silver="1" bronze="0" total="3"/>
+        <organization id="d6f1158c-50aa-4bac-ad94-4424b4f47b7c" alias="HON" description="Honduras" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="d73f99d2-73e9-45e1-b8bc-42cd4dde1c72" alias="BLR" description="Belarus" gold="1" silver="3" bronze="1" total="5"/>
+        <organization id="d76b510c-bc21-4c3e-8ed6-bb1673385ac7" alias="CAF" description="Central African Republic" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="dad2d531-9afa-449d-aef7-8c28f8426b25" alias="MTQ" description="Martinique"/>
+        <organization id="daf7f917-44ad-47d2-bc16-375d7e36f7ac" alias="JER" description="Jersey"/>
+        <organization id="db700a2d-87a6-45ad-9097-2ed18e98bd58" alias="ITA" description="Italy" gold="9" silver="3" bronze="4" total="16"/>
+        <organization id="dc13950a-654d-4535-9d6f-b11bca95db25" alias="UZB" description="Uzbekistan" gold="2" silver="2" bronze="1" total="5"/>
+        <organization id="dcedcda0-284f-4bcf-b843-3907e7dded3d" alias="PNG" description="Papua New Guinea"/>
+        <organization id="dd19684b-7e0e-4298-b808-73273a230115" alias="UKR" description="Ukraine" gold="4" silver="4" bronze="0" total="8"/>
+        <organization id="de24f008-564f-4369-a533-46586fdb489f" alias="AUT" description="Austria" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="df9688b7-ae25-491b-8f49-510985caaad1" alias="CHA" description="Chad"/>
+        <organization id="e0e4ef21-82c8-44b9-a420-24f6a2a89797" alias="GDR" description="GDR"/>
+        <organization id="e2db15aa-fd8b-4b65-9786-75e34c0b19af" alias="CUW" description="Curaçao"/>
+        <organization id="e3955cd1-fde4-4427-b4e8-2c5d1dd38ca0" alias="INA" description="Indonesia" gold="1" silver="0" bronze="1" total="2"/>
+        <organization id="e3f98929-4ce5-4d70-ace0-fb5a1bf66c58" alias="TKM" description="Turkmenistan"/>
+        <organization id="e5e96053-ebad-429f-98c6-e297041e6ce7" alias="ERI" description="Eritrea" gold="1" silver="0" bronze="0" total="1"/>
+        <organization id="e5ef0628-e6cd-4f47-80b0-02e787189645" alias="LTU" description="Lithuania" gold="0" silver="0" bronze="2" total="2"/>
+        <organization id="e5fd0a30-246b-4a80-8192-75e83b1ce721" alias="LAO" description="Lao People's Democratic Republic"/>
+        <organization id="e67b5375-a922-400c-9ca0-272ee2329491" alias="PAR" description="Paraguay" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="e9f06d1e-8b5a-4f8f-9e12-4c832847e4fa" alias="NEP" description="Nepal"/>
+        <organization id="e9f1d475-fb68-4a95-afaf-32a2806505a5" alias="HUN" description="Hungary" gold="2" silver="0" bronze="4" total="6"/>
+        <organization id="ecb93219-df9e-4ed2-be65-33216a967392" alias="CHN" description="People's Republic of China" gold="13" silver="8" bronze="10" total="31"/>
+        <organization id="ee121af8-c35d-46d5-9f6e-038c6d8fb926" alias="TCH" description="Czechoslovakia"/>
+        <organization id="ee82907d-57ea-483b-b855-201eeedb3051" alias="KGZ" description="Kyrgyzstan" gold="0" silver="0" bronze="1" total="1"/>
+        <organization id="ef2aa3f4-9e30-4a1f-b108-0338ff5decd2" alias="FLK" description="Falkland Islands"/>
+        <organization id="f097988d-3a22-4932-b1a3-d20180da7546" alias="ISV" description="Virgin Islands, US"/>
+        <organization id="f4fd4c2a-25a5-4cab-8046-8eb3c749c7fa" alias="GGY" description="Guernsey"/>
+        <organization id="f543262f-10bc-4555-b42d-739b13203cf4" alias="POL" description="Poland" gold="6" silver="5" bronze="0" total="11"/>
+        <organization id="f54ff1b0-9387-48b2-adab-bafb93451927" alias="ISR" description="Israel"/>
+        <organization id="f5aa07b4-deef-47c9-8087-57530294bab2" alias="BHU" description="Bhutan"/>
+        <organization id="f5d7b941-3320-4da1-85ae-44da05da393d" alias="SKN" description="Saint Kitts and Nevis"/>
+        <organization id="f66a3cab-c7e7-4aa6-922f-19b6a31f5462" alias="MKD" description="The Former Yugoslav Republic of Macedonia"/>
+        <organization id="f67557ba-14fc-40a6-9ad5-e09ed45b3cde" alias="SGS" description="South Georgia and the South Sandwich Islands"/>
+        <organization id="f71b095d-3d4b-4042-a348-1987b02c80eb" alias="COM" description="Comoros"/>
+        <organization id="fa870e90-4a5e-409b-b6c0-16307b6c2c5e" alias="RSA" description="South Africa" gold="1" silver="1" bronze="1" total="3"/>
+        <organization id="fcf1e458-6895-4727-b4b6-33a790ea2209" alias="AUS" description="Australia" gold="4" silver="9" bronze="6" total="19"/>
+        <organization id="fcf64aae-578b-46ed-b20c-c1e7680fc7bb" alias="TGA" description="Tonga"/>
+        <organization id="fda56580-e3b6-4079-9d2d-8c7136fdeb81" alias="BIH" description="Bosnia and Herzegovina"/>
+        <organization id="febc9f20-4f92-4fc3-86e8-43fc83585912" alias="GER" description="Germany" gold="5" silver="6" bronze="8" total="19"/>
+        <organization id="ff04a019-4f5e-48ca-8b20-489bd2183f5f" alias="MLT" description="Malta" gold="0" silver="1" bronze="0" total="1"/>
+        <organization id="ff273bf6-4505-4817-9fbd-2cbd236639d4" alias="POR" description="Portugal" gold="1" silver="0" bronze="2" total="3"/>
+        <organization id="ffd66255-4f04-466f-bea8-fcd74f9e4243" alias="NCL" description="New Caledonia"/>
+    </organizations>
+</olympics>

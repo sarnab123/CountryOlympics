@@ -12,7 +12,8 @@ public enum OlympicRequestQueries
 
     COUNTRY_LIST(Request.Method.GET,"/organization/list.xml", true , true),
     COUNTRY_CONFIG(Request.Method.GET,"/organization/2016/{countryID}/profile.xml", true , true),
-    COMPLETE_SCHEDULE(Request.Method.GET,"/2016/schedule.xml", true , true);
+    COMPLETE_SCHEDULE(Request.Method.GET,"/2016/schedule.xml", true , true),
+    MEDAL_TALLY(Request.Method.GET, "/2016/medals.xml?api_key=5hkjft4mvnbzc26875u6c2zv",true, true);
 
 
     private int httpRequestType;
