@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by sarnab.poddar on 7/10/16.
  */
-public class AthleteModel
+public class Athlete
 {
     private String athleteName;
 

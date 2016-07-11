@@ -1,11 +1,17 @@
 package com.olympics.olympicsandroid.model.presentationModel;
 
+import com.olympics.olympicsandroid.model.IResponseModel;
+import com.olympics.olympicsandroid.utility.DateUtils;
+
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sarnab.poddar on 7/10/16.
  */
-public class CountryEventUnitModel {
+public class CountryEventUnitModel implements IResponseModel, Serializable {
 
     private String countryName;
 
@@ -13,15 +19,15 @@ public class CountryEventUnitModel {
 
     private String countryID;
 
-    private List<AthleteModel> athleteModelList;
+    private List<Athlete> athleteList;
 
-    private List<DateSportsModel> datesCountryMapping;
+    private Map<String, DateSportsModel> datesCountryMapping;
 
-    public List<AthleteModel> getAthleteModelList() {
-        return athleteModelList;
+    public List<Athlete> getAthleteList() {
+        return athleteList;
     }
 
-    public List<DateSportsModel> getDatesCountryMapping() {
+    public Map<String, DateSportsModel> getDatesCountryMapping() {
         return datesCountryMapping;
     }
 
@@ -33,8 +39,8 @@ public class CountryEventUnitModel {
         return countryName;
     }
 
-    public void setAthleteModelList(List<AthleteModel> athleteModelList) {
-        this.athleteModelList = athleteModelList;
+    public void setAthleteList(List<Athlete> athleteList) {
+        this.athleteList = athleteList;
     }
 
     public void setCountryAlias(String countryAlias) {
@@ -53,8 +59,22 @@ public class CountryEventUnitModel {
         this.countryID = countryID;
     }
 
-    public void setDatesCountryMapping(List<DateSportsModel> datesCountryMapping) {
+    public void setDatesCountryMapping(Map<String, DateSportsModel> datesCountryMapping) {
         this.datesCountryMapping = datesCountryMapping;
+    }
+
+    public void initializeEmptyDateSportsMapping() {
+
+        Map<String, DateSportsModel> dateSportsModelMap = new HashMap<>();
+        long eventDate = DateUtils.OLYMPIC_EVENT_START_DATE;
+
+        while (eventDate < DateUtils.OLYMPIC_EVENT_END_DATE) {
+            DateSportsModel dateSportsModel = new DateSportsModel();
+            dateSportsModelMap.put(String.valueOf(eventDate), dateSportsModel);
+            eventDate += DateUtils.NUM_OF_MILISECONDS_IN_DAY;
+        }
+
+        setDatesCountryMapping(dateSportsModelMap);
     }
 
 }

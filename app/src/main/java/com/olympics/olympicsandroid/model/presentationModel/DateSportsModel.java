@@ -1,49 +1,56 @@
 package com.olympics.olympicsandroid.model.presentationModel;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sarnab.poddar on 7/10/16.
  */
-public class DateSportsModel
+public class DateSportsModel implements Serializable
 {
 
-    private String dateString;
+    private long dateString;
 
-    private List<SportsEventsUnits> allSportsForDate;
+    private Map<String, SportsEventsUnits> allSportsForDate;
 
-    public List<SportsEventsUnits> getAllSportsForDate() {
+    public Map<String, SportsEventsUnits> getAllSportsForDate() {
         return allSportsForDate;
     }
 
-    public String getDateString() {
+    public Collection<SportsEventsUnits> getSportsEventsUnits(){
+        return allSportsForDate.values();
+    }
+
+    public long getDateString() {
         return dateString;
     }
 
-    public void setAllSportsForDate(List<SportsEventsUnits> allSportsForDate) {
+    public void setAllSportsForDate(Map<String, SportsEventsUnits> allSportsForDate) {
         this.allSportsForDate = allSportsForDate;
     }
 
-    public void setDateString(String dateString) {
+    public void setDateString(long dateString) {
         this.dateString = dateString;
     }
 
-    public class SportsEventsUnits
+    public  static class SportsEventsUnits
     {
         private String sportsTitle;
 
-        private List<EventUnitModel> eventsModelList;
+        private List<EventUnitModel> eventUnits;
 
-        public List<EventUnitModel> getEventsModelList() {
-            return eventsModelList;
+        public List<EventUnitModel> getEventUnits() {
+            return eventUnits;
         }
 
         public String getSportsTitle() {
             return sportsTitle;
         }
 
-        public void setEventsModelList(List<EventUnitModel> eventsModelList) {
-            this.eventsModelList = eventsModelList;
+        public void setEventUnits(List<EventUnitModel> eventUnits) {
+            this.eventUnits = eventUnits;
         }
 
         public void setSportsTitle(String sportsTitle) {
