@@ -4,18 +4,32 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
+import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
+import com.olympics.olympicsandroid.utility.DateUtils;
+
 /**
  * Created by sarnab.poddar on 7/7/16.
  */
 public class DateEventAdapter extends FragmentPagerAdapter
 {
-    public DateEventAdapter(FragmentManager fm) {
+    private CountryEventUnitModel mCountryEventUnitModel;
+
+    public DateEventAdapter(FragmentManager fm, CountryEventUnitModel countryEventUnitModel) {
         super(fm);
+        this.mCountryEventUnitModel = countryEventUnitModel;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return EventListFragment.newInstance(position);
+
+        EventListFragment eventListFragment = EventListFragment.newInstance(getSportsOfTheDay(position));
+        return eventListFragment;
+    }
+
+    private DateSportsModel getSportsOfTheDay (int position) {
+         return mCountryEventUnitModel.getDatesCountryMapping().get(String.valueOf(DateUtils.OLYMPIC_EVENT_START_DATE +  (
+                 (position) * DateUtils.NUM_OF_MILISECONDS_IN_DAY)));
     }
 
     @Override

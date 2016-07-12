@@ -23,6 +23,12 @@ public class Organization {
     @ElementList
     private List<OlympicEvent> events;
 
+    public Organization() {
+        this.id = "840a4893-d821-436b-8c62-f5639dcdb037";
+        this.alias = "IND";
+        this.description = "India";
+    }
+
     public String getAlias() {
         return alias;
     }

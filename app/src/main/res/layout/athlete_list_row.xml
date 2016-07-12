@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+    >
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/id_gender_icon"/>
+
+    <TextView
+        android:id="@+id/id_athlete_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp"
+        android:layout_toRightOf="@id/id_gender_icon"
+        android:text="12"
+        />
+
+    <TextView
+        android:id="@+id/id_participating_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/id_athlete_name"
+        android:layout_below="@id/id_athlete_name"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/id_gender_icon"
+        android:textSize="24sp"
+        />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/darker_gray" />
+
+    </RelativeLayout>

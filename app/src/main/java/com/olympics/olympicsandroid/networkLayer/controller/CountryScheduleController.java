@@ -7,6 +7,8 @@ import com.android.volley.VolleyError;
 import com.olympics.olympicsandroid.model.CountryProfileEvents;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.OlympicSchedule;
+import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
+import com.olympics.olympicsandroid.model.presentationModel.helper.CountryEventsHelper;
 import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
@@ -127,7 +129,10 @@ public class CountryScheduleController
      */
     private void createCountryEventMapping(OlympicSchedule olympicScheduleModel)
     {
-
+        CountryEventUnitModel countryEventData = new CountryEventsHelper(countryProfileModel,
+            olympicScheduleModel)
+            .createCountryEventUnitModel();
+        listenerWeakReference.get().onSuccess(countryEventData);
     }
 
     protected Response.ErrorListener createCountryProfileFailureListener() {
