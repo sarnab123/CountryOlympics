@@ -11,6 +11,8 @@ public class Athlete
 
     private String athleteGender;
 
+    private String sportName;
+
     private List<EventUnitModel> eventsParticipating;
 
     public String getAthleteGender() {
@@ -33,4 +35,11 @@ public class Athlete
         return eventsParticipating;
     }
 
+    public String getSportName() {
+        return sportName;
+    }
+
+    public void setSportName(String sportName) {
+        this.sportName = sportName;
+    }
 }
