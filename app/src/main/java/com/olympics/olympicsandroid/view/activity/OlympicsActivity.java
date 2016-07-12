@@ -1,5 +1,6 @@
 package com.olympics.olympicsandroid.view.activity;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -113,6 +114,15 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+        if (id == R.id.nav_events) {
+
+        } else if (id == R.id.nav_medal) {
+            OlympicsActivity.this.startActivity(new Intent(OlympicsActivity.this, MedalTallyActivity
+                    .class));
+        } else if (id == R.id.nav_athletes) {
+            OlympicsActivity.this.startActivity(new Intent(OlympicsActivity.this, AthleteActivity
+                    .class));
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

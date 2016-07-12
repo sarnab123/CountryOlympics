@@ -84,6 +84,10 @@ public class CountryEventsHelper {
                 Athlete athlete = new Athlete();
                 athlete.setAthleteName(participant.getPrint_name());
                 athlete.setAthleteGender(participant.getGender());
+                if (everyEvent.getSport() != null) {
+                    athlete.setSportName(everyEvent.getSport().getDescription());
+                }
+                athleteList.add(athlete);
             }
 
         }
