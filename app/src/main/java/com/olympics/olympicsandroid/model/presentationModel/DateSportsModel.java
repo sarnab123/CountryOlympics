@@ -35,7 +35,7 @@ public class DateSportsModel implements Serializable
         this.dateString = dateString;
     }
 
-    public  static class SportsEventsUnits
+    public  static class SportsEventsUnits implements Serializable
     {
         private String sportsTitle;
 

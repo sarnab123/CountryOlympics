@@ -1,11 +1,10 @@
 package com.olympics.olympicsandroid;
 
 import android.app.Application;
+import android.content.Context;
 
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Tracker;
 import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
-import com.olympics.olympicsandroid.networkLayer.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 
 //import com.google.android.gms.analytics.Tracker;
 
@@ -17,17 +16,20 @@ public class OlympicsApplication extends Application
 
     OlympicsPrefs olympicsPrefs;
     VolleySingleton volleySingleton;
-    private Tracker mTracker;
-    private static OlympicsApplication applicationInstance;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        instance = this;
         olympicsPrefs = OlympicsPrefs.getInstance(this);
         volleySingleton = VolleySingleton.getInstance(this);
         applicationInstance = this;
 
+    }
+
+    public static Context getAppContext()
+    {
+        return instance.getApplicationContext();
     }
 
     public static OlympicsApplication getInstance() {

@@ -6,6 +6,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.olympics.olympicsandroid.model.CountryProfileEvents;
 import com.olympics.olympicsandroid.model.ErrorModel;
+import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.OlympicSchedule;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.model.presentationModel.helper.CountryEventsHelper;
@@ -13,7 +14,9 @@ import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
 import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
-import com.olympics.olympicsandroid.networkLayer.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.cache.helper.DataCacheHelper;
 import com.olympics.olympicsandroid.networkLayer.parse.IParseListener;
 import com.olympics.olympicsandroid.networkLayer.parse.ParseTask;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
@@ -41,6 +44,30 @@ public class CountryScheduleController
     }
 
     public void getCountryDetails()
+    {
+        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,
+                OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(),createNewCacheListener());
+
+    }
+
+    private ICacheListener createNewCacheListener() {
+        return new ICacheListener() {
+            @Override
+            public void datafromCache(IResponseModel responseModel) {
+                if(responseModel == null || !(responseModel instanceof CountryEventUnitModel))
+                {
+                    getDataFromServerAndCache();
+                }
+                else{
+
+                    CountryEventUnitModel countryEventData = (CountryEventUnitModel)responseModel;
+                    listenerWeakReference.get().onSuccess(countryEventData);
+                }
+            }
+        };
+    }
+
+    private void getDataFromServerAndCache()
     {
         // Set Request Policy
         RequestPolicy requestPolicy = new RequestPolicy();
@@ -132,6 +159,7 @@ public class CountryScheduleController
         CountryEventUnitModel countryEventData = new CountryEventsHelper(countryProfileModel,
             olympicScheduleModel)
             .createCountryEventUnitModel();
+        DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,countryEventData);
         listenerWeakReference.get().onSuccess(countryEventData);
     }
 

@@ -20,7 +20,7 @@ public class Organization {
     @Attribute
     private String description;
 
-    @ElementList
+    @ElementList(required = false)
     private List<OlympicEvent> events;
 
     public Organization() {

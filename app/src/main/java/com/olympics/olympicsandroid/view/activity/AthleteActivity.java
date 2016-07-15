@@ -29,16 +29,26 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 .OnNavigationItemSelectedListener, IUIListener {
 
     public static final String MALE = "male";
+    private AthleteListAdapter athleteListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_athlete);
 
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.athlete_recyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setHasFixedSize(true);
+
+        athleteListAdapter = new AthleteListAdapter();
+        mRecyclerView.setAdapter(athleteListAdapter);
+
         //Request for Athlete Data through Controller
         CountryScheduleController scheduleController = new CountryScheduleController(new
                 WeakReference<IUIListener>(this), getApplication());
         scheduleController.getCountryDetails();
+
     }
 
     @Override
@@ -47,15 +57,9 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         if (responseModel instanceof CountryEventUnitModel) {
 
             CountryEventUnitModel countryEventUnitModel = (CountryEventUnitModel) responseModel;
-
-            RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.athlete_recyclerView);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-            mRecyclerView.setLayoutManager(layoutManager);
-            mRecyclerView.setHasFixedSize(true);
-
-            AthleteListAdapter athleteListAdapter = new AthleteListAdapter();
             athleteListAdapter.setAthleteList(countryEventUnitModel.getAthleteList());
-            mRecyclerView.setAdapter(athleteListAdapter);
+            athleteListAdapter.notifyDataSetChanged();
+
         }
     }
 
@@ -123,5 +127,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         public int getItemCount() {
             return athleteList != null ?athleteList.size() :0;
         }
+
+
     }
 }

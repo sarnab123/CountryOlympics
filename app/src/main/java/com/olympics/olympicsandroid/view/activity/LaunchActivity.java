@@ -3,7 +3,7 @@ package com.olympics.olympicsandroid.view.activity;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.olympics.olympicsandroid.networkLayer.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 
 /**

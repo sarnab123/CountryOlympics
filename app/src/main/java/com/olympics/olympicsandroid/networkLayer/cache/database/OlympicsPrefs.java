@@ -1,4 +1,4 @@
-package com.olympics.olympicsandroid.networkLayer.database;
+package com.olympics.olympicsandroid.networkLayer.cache.database;
 
 import android.content.Context;
 import android.content.SharedPreferences;

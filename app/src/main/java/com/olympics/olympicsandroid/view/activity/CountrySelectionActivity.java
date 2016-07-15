@@ -19,7 +19,7 @@ import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.Organization;
 import com.olympics.olympicsandroid.networkLayer.controller.CountryListController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
-import com.olympics.olympicsandroid.networkLayer.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 
 import java.lang.ref.WeakReference;
