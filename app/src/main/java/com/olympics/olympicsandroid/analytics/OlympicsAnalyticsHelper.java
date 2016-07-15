@@ -11,7 +11,8 @@ public class OlympicsAnalyticsHelper {
 
     public static void capturePageSelection(String pageName) {
 
-        Tracker tracker = OlympicsApplication.getInstance().getDefaultTracker();
+        Tracker tracker = ((OlympicsApplication)OlympicsApplication.getAppContext())
+                .getDefaultTracker();
         if (tracker != null) {
             tracker.setScreenName("OlympicsPage-" + pageName);
             tracker.send(new HitBuilders.ScreenViewBuilder().build());
@@ -20,7 +21,8 @@ public class OlympicsAnalyticsHelper {
 
     public static void captureAction (String actionName) {
 
-        Tracker tracker = OlympicsApplication.getInstance().getDefaultTracker();
+        Tracker tracker = ((OlympicsApplication)OlympicsApplication.getAppContext())
+                .getDefaultTracker();
         if (tracker != null) {
             tracker.send(new HitBuilders.EventBuilder()
                     .setCategory("Action")
