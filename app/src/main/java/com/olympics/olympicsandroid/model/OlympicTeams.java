@@ -21,4 +21,7 @@ public class OlympicTeams
     @ElementList(inline=true, entry="resource",required = false)
     private List<OlympicAthlete> athlete;
 
+    public List<OlympicAthlete> getAthlete() {
+        return athlete;
+    }
 }

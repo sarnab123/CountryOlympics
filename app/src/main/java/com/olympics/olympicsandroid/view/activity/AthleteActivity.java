@@ -23,22 +23,32 @@ import com.olympics.olympicsandroid.networkLayer.controller.CountryScheduleContr
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 
 import java.lang.ref.WeakReference;
-import java.util.List;
+import java.util.LinkedHashSet;
 
 public class AthleteActivity extends AppCompatActivity implements NavigationView
 .OnNavigationItemSelectedListener, IUIListener {
 
     public static final String MALE = "male";
+    private AthleteListAdapter athleteListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_athlete);
 
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.athlete_recyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setHasFixedSize(true);
+
+        athleteListAdapter = new AthleteListAdapter();
+        mRecyclerView.setAdapter(athleteListAdapter);
+
         //Request for Athlete Data through Controller
         CountryScheduleController scheduleController = new CountryScheduleController(new
                 WeakReference<IUIListener>(this), getApplication());
         scheduleController.getCountryDetails();
+
     }
 
     @Override
@@ -47,15 +57,9 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         if (responseModel instanceof CountryEventUnitModel) {
 
             CountryEventUnitModel countryEventUnitModel = (CountryEventUnitModel) responseModel;
-
-            RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.athlete_recyclerView);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-            mRecyclerView.setLayoutManager(layoutManager);
-            mRecyclerView.setHasFixedSize(true);
-
-            AthleteListAdapter athleteListAdapter = new AthleteListAdapter();
             athleteListAdapter.setAthleteList(countryEventUnitModel.getAthleteList());
-            mRecyclerView.setAdapter(athleteListAdapter);
+            athleteListAdapter.notifyDataSetChanged();
+
         }
     }
 
@@ -71,9 +75,9 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 
     class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.ViewHolder>
     {
-        List<Athlete> athleteList;
+        LinkedHashSet<Athlete> athleteList;
 
-        protected void setAthleteList(List<Athlete> athleteList)
+        protected void setAthleteList(LinkedHashSet<Athlete> athleteList)
         {
             this.athleteList = athleteList;
         }
@@ -105,7 +109,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         @Override
         public void onBindViewHolder(AthleteListAdapter.ViewHolder holder, int position)
         {
-            Athlete athleteObj = athleteList.get(position);
+            Athlete athleteObj = (Athlete)athleteList.toArray()[position];
             if (athleteObj != null) {
                 holder.athleteNameView.setText(athleteObj.getAthleteName());
                 holder.eventView.setText(athleteObj.getSportName());

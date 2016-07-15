@@ -1,21 +1,23 @@
 package com.olympics.olympicsandroid.model.presentationModel;
 
+import java.io.Serializable;
+
 /**
  * Created by sarnab.poddar on 7/10/16.
  */
-public class EventUnitModel
+public class EventUnitModel implements Serializable
 {
 
-    private static final byte INDIVIDUAL_EVENT = 0x00;
-    private static final byte TEAM_EVENT = 0x01;
+    public static final byte INDIVIDUAL_EVENT = 0x00;
+    public static final byte TEAM_EVENT = 0x01;
 
-    private static final byte UNIT_STATUS_SCHEDULED = 0x00;
-    private static final byte UNIT_STATUS_INPROGRESS = 0x01;
-    private static final byte UNIT_STATUS_NOT_SCHEDULED = 0x02;
-    private static final byte UNIT_STATUS_CLOSED = 0x03;
+    public static final byte UNIT_STATUS_SCHEDULED = 0x00;
+    public static final byte UNIT_STATUS_INPROGRESS = 0x01;
+    public static final byte UNIT_STATUS_NOT_SCHEDULED = 0x02;
+    public static final byte UNIT_STATUS_CLOSED = 0x03;
 
-    private static final byte UNIT_MEDAL_GOLD = 0x00;
-    private static final byte UNIT_MEDAL_BRONZE = 0x01;
+    public static final byte UNIT_MEDAL_GOLD = 0x00;
+    public static final byte UNIT_MEDAL_BRONZE = 0x01;
 
     private String eventID;
     private String unitName;

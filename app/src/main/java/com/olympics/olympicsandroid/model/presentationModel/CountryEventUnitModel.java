@@ -5,7 +5,7 @@ import com.olympics.olympicsandroid.utility.DateUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 /**
@@ -19,11 +19,11 @@ public class CountryEventUnitModel implements IResponseModel, Serializable {
 
     private String countryID;
 
-    private List<Athlete> athleteList;
+    private LinkedHashSet<Athlete> athleteList;
 
     private Map<String, DateSportsModel> datesCountryMapping;
 
-    public List<Athlete> getAthleteList() {
+    public LinkedHashSet<Athlete> getAthleteList() {
         return athleteList;
     }
 
@@ -39,7 +39,7 @@ public class CountryEventUnitModel implements IResponseModel, Serializable {
         return countryName;
     }
 
-    public void setAthleteList(List<Athlete> athleteList) {
+    public void setAthleteList(LinkedHashSet<Athlete> athleteList) {
         this.athleteList = athleteList;
     }
 

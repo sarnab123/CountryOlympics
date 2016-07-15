@@ -1,6 +1,5 @@
 package com.olympics.olympicsandroid.view.activity;
 
-import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -23,9 +22,10 @@ import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.Organization;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.controller.CountryScheduleController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
-import com.olympics.olympicsandroid.networkLayer.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 import com.olympics.olympicsandroid.view.fragment.DateEventAdapter;
 
 import java.lang.ref.WeakReference;
@@ -117,11 +117,9 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         if (id == R.id.nav_events) {
 
         } else if (id == R.id.nav_medal) {
-            OlympicsActivity.this.startActivity(new Intent(OlympicsActivity.this, MedalTallyActivity
-                    .class));
+            ActivityFactory.openMedalActivity(this, null);
         } else if (id == R.id.nav_athletes) {
-            OlympicsActivity.this.startActivity(new Intent(OlympicsActivity.this, AthleteActivity
-                    .class));
+            ActivityFactory.openAthleteActivity(this,null);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

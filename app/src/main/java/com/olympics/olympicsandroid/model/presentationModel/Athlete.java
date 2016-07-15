@@ -1,11 +1,12 @@
 package com.olympics.olympicsandroid.model.presentationModel;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by sarnab.poddar on 7/10/16.
  */
-public class Athlete
+public class Athlete implements Serializable
 {
     private String athleteName;
 
