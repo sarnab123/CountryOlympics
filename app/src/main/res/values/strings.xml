@@ -3,10 +3,11 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_medal_tally">Medal Tally</string>
     <string name="title_activity_athlete">Athletes For Country</string>
     <string name="title_activity_olympicsbase">OlympicsbaseActivity</string>
+
+    <string name="rank_str"><b>Rank</b> %1$s %2$s %3$s</string>
+    <string name="medal_total_str">medal total</string>
 
 </resources>
