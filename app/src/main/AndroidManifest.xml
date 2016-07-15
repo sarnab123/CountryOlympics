@@ -40,10 +40,6 @@
             android:label="@string/title_activity_athlete"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".view.activity.OlympicsbaseActivity"
-            android:label="@string/title_activity_olympicsbase" >
-        </activity>
     </application>
 
 </manifest>

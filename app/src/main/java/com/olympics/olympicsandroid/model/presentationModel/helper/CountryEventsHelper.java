@@ -18,7 +18,6 @@ import com.olympics.olympicsandroid.utility.DateUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -77,7 +76,7 @@ public class CountryEventsHelper {
 
         Map<String, OlympicEvent> allEventsMap = populateEventMapFromAllEventsSchedule();
 
-        LinkedHashSet<Athlete> athleteList = new LinkedHashSet<>();
+        List<Athlete> athleteList = new ArrayList<>();
 
         // Get each event that selected country is participating in
         for (OlympicEvent participatingEvent : countryProfileEvents.getOrganization().getEvents()) {

@@ -23,7 +23,7 @@ import com.olympics.olympicsandroid.networkLayer.controller.CountryScheduleContr
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 
 import java.lang.ref.WeakReference;
-import java.util.LinkedHashSet;
+import java.util.List;
 
 public class AthleteActivity extends AppCompatActivity implements NavigationView
 .OnNavigationItemSelectedListener, IUIListener {
@@ -75,9 +75,9 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 
     class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.ViewHolder>
     {
-        LinkedHashSet<Athlete> athleteList;
+        List<Athlete> athleteList;
 
-        protected void setAthleteList(LinkedHashSet<Athlete> athleteList)
+        protected void setAthleteList(List<Athlete> athleteList)
         {
             this.athleteList = athleteList;
         }
@@ -109,7 +109,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         @Override
         public void onBindViewHolder(AthleteListAdapter.ViewHolder holder, int position)
         {
-            Athlete athleteObj = (Athlete)athleteList.toArray()[position];
+            Athlete athleteObj = athleteList.get(position);
             if (athleteObj != null) {
                 holder.athleteNameView.setText(athleteObj.getAthleteName());
                 holder.eventView.setText(athleteObj.getSportName());
@@ -127,5 +127,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         public int getItemCount() {
             return athleteList != null ?athleteList.size() :0;
         }
+
+
     }
 }
