@@ -7,28 +7,28 @@ import org.simpleframework.xml.Root;
  * Created by tkmagz4 on 7/11/16.
  */
 @Root(name = "organization", strict = false)
-public class MedalTallyOrganization {
+public class MedalTallyOrganization implements Comparable<MedalTallyOrganization>{
 
     @Attribute
     private String id;
 
     @Attribute
-    private String description;
-
-    @Attribute
     private String alias;
 
-    @Attribute(required = false)
-    private String gold;
+    @Attribute
+    private String description;
 
     @Attribute(required = false)
-    private String silver;
+    private String gold = "0";
 
     @Attribute(required = false)
-    private String bronze;
+    private String silver = "0";
 
     @Attribute(required = false)
-    private String total;
+    private String bronze = "0";
+
+    @Attribute(required = false)
+    private String total = "0";
 
         public String getAlias() {
             return alias;
@@ -53,5 +53,20 @@ public class MedalTallyOrganization {
         public String getBronze() {
             return bronze;
         }
+
+        public String getCountryName() {
+            return description;
+        }
+
+    @Override
+    public int compareTo(MedalTallyOrganization medalObj) {
+
+        try {
+            return Integer.parseInt(medalObj.total) - Integer.parseInt(this.total);
+        } catch (Exception ex) {
+            return 0;
+        }
+    }
+
     }
 
