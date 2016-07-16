@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
  * Created by tkmagz4 on 7/11/16.
  */
 @Root(name = "organization", strict = false)
-public class MedalTallyOrganization implements Comparable<MedalTallyOrganization>{
+public class MedalTallyOrganization {
 
     @Attribute
     private String id;
@@ -30,43 +30,43 @@ public class MedalTallyOrganization implements Comparable<MedalTallyOrganization
     @Attribute(required = false)
     private String total = "0";
 
-        public String getAlias() {
-            return alias;
-        }
+    @Attribute(required = false)
+    private int rank;
 
-        public String getTotal() {
-            return total;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public String getSilver() {
-            return silver;
-        }
-
-        public String getGold() {
-            return gold;
-        }
-
-        public String getBronze() {
-            return bronze;
-        }
-
-        public String getCountryName() {
-            return description;
-        }
-
-    @Override
-    public int compareTo(MedalTallyOrganization medalObj) {
-
-        try {
-            return Integer.parseInt(medalObj.total) - Integer.parseInt(this.total);
-        } catch (Exception ex) {
-            return 0;
-        }
+    public String getAlias() {
+        return alias;
     }
 
+    public String getTotal() {
+        return total;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getSilver() {
+        return silver;
+    }
+
+    public String getGold() {
+        return gold;
+    }
+
+    public String getBronze() {
+        return bronze;
+    }
+
+    public String getCountryName() {
+        return description;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+}
 
