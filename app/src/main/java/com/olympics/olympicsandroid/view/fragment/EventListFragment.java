@@ -48,21 +48,36 @@ public class EventListFragment extends Fragment
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,
                 false));
         this.mDateSportsModel = (DateSportsModel) getArguments().getSerializable(DISPLAY_DATA);
-        recyclerview.setAdapter(new ExpandableListAdapter(getData()));
+        recyclerview.setAdapter(new ExpandableListAdapter(getData(), createItemClickListener()));
 
       return rootView;
     }
+
+    private IItemClickListener createItemClickListener() {
+        return new IItemClickListener() {
+            @Override
+            public void handleItemClick(ExpandableListAdapter.Item itemClicked) {
+
+            }
+        };
+    }
+
 
     private List<ExpandableListAdapter.Item> getData() {
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
         if (mDateSportsModel != null && mDateSportsModel.getAllSportsForDate() != null) {
             for (Map.Entry<String, DateSportsModel.SportsEventsUnits> entry : mDateSportsModel.getAllSportsForDate().entrySet()) {
 
-                data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.SPORTS_TITLE_HEADER, entry.getKey()));
+
                 if (entry.getValue() != null) {
                     DateSportsModel.SportsEventsUnits sportsEventsUnit = entry.getValue();
                     if (sportsEventsUnit != null &&  sportsEventsUnit.getEventUnits() != null) {
+                        String sportsDiscipline = null;
                         for (EventUnitModel eventUnitModel : sportsEventsUnit.getEventUnits()) {
+                            if(sportsDiscipline == null || !sportsDiscipline.equalsIgnoreCase(eventUnitModel.getParentDisciple()))
+                            {
+                                data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.EVENT_HEADER, eventUnitModel));
+                            }
                             data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.EVENT_DETAIL, eventUnitModel));
                         }
                     }

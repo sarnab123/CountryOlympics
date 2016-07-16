@@ -210,6 +210,10 @@ public class CountryEventsHelper {
             eventUnitModel.setEventType(EventUnitModel.INDIVIDUAL_EVENT);
         }
 
+        if(olympicEvent.getDiscipline() != null) {
+            eventUnitModel.setParentDisciple(olympicEvent.getDiscipline().getDescription());
+        }
+
         if(!TextUtils.isEmpty(olympicUnit.getStatus()))
         {
             if(olympicUnit.getStatus().equalsIgnoreCase("scheduled"))

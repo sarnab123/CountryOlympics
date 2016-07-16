@@ -1,6 +1,7 @@
 package com.olympics.olympicsandroid.view.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
@@ -21,9 +22,9 @@ public class LaunchActivity extends Activity
     private void decideLaunchActivity() {
         if(OlympicsPrefs.getInstance(null).getUserSelectedCountry() == null)
         {
-            Bundle extras = new Bundle();
-            extras.putBoolean("first_launch", true);
-            ActivityFactory.openCountrySelectionScreen(this,extras);
+            Intent intent = new Intent();
+            intent.putExtra("first_launch", true);
+            ActivityFactory.openCountrySelectionScreen(this,intent);
         }
         else{
             ActivityFactory.openMainActivity(this,null);
