@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "500789596972",
+    "project_id": "firebase-olympics"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500789596972:android:026a6f25d928ac24",
+        "android_client_info": {
+          "package_name": "com.olympics.olympicsandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9pxfdQF7yZiqnMA7DCeJeToyhnzqLUJc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-47542706-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
