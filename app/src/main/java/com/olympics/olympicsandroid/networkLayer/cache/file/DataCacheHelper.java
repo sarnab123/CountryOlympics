@@ -1,7 +1,6 @@
-package com.olympics.olympicsandroid.networkLayer.cache.helper;
+package com.olympics.olympicsandroid.networkLayer.cache.file;
 
 import android.os.AsyncTask;
-import android.util.ArraySet;
 import android.util.Log;
 
 import com.olympics.olympicsandroid.model.IResponseModel;
@@ -16,6 +15,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -27,7 +27,7 @@ public class DataCacheHelper {
 
     private static DataCacheHelper ourInstance = new DataCacheHelper();
 
-    Set<ICacheListener> cacheListeners = new ArraySet<>();
+    Set<ICacheListener> cacheListeners = new HashSet<>();
 
     public static DataCacheHelper getInstance() {
         return ourInstance;

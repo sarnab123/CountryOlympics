@@ -16,7 +16,7 @@ import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
 import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
-import com.olympics.olympicsandroid.networkLayer.cache.helper.DataCacheHelper;
+import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
 import com.olympics.olympicsandroid.networkLayer.parse.IParseListener;
 import com.olympics.olympicsandroid.networkLayer.parse.ParseTask;
 import com.olympics.olympicsandroid.utility.UtilityMethods;

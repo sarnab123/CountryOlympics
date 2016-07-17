@@ -11,5 +11,6 @@ public interface IUIListener
 
     public void onSuccess(IResponseModel responseModel);
     public void onFailure(ErrorModel errorModel);
+    public void handleLoadingIndicator(boolean showLoadingInd);
 
 }

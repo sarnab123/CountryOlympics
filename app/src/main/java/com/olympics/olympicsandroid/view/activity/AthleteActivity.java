@@ -69,6 +69,11 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
     }
 
     @Override
+    public void handleLoadingIndicator(boolean showLoadingInd) {
+
+    }
+
+    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;
     }

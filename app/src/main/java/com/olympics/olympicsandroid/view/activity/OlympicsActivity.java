@@ -155,4 +155,9 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     public void onFailure(ErrorModel errorModel) {
 
     }
+
+    @Override
+    public void handleLoadingIndicator(boolean showLoadingInd) {
+
+    }
 }

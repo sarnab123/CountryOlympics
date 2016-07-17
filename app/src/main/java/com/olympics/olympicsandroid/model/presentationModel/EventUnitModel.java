@@ -11,10 +11,10 @@ public class EventUnitModel implements Serializable
     public static final byte INDIVIDUAL_EVENT = 0x00;
     public static final byte TEAM_EVENT = 0x01;
 
-    public static final byte UNIT_STATUS_SCHEDULED = 0x00;
-    public static final byte UNIT_STATUS_INPROGRESS = 0x01;
-    public static final byte UNIT_STATUS_NOT_SCHEDULED = 0x02;
-    public static final byte UNIT_STATUS_CLOSED = 0x03;
+    public static final String UNIT_STATUS_SCHEDULED = "scheduled";
+    public static final String UNIT_STATUS_INPROGRESS = "inprogress";
+    public static final String UNIT_STATUS_NOT_SCHEDULED = "not_scheduled";
+    public static final String UNIT_STATUS_CLOSED = "closed";
 
     public static final byte UNIT_MEDAL_GOLD = 0x00;
     public static final byte UNIT_MEDAL_BRONZE = 0x01;
@@ -22,13 +22,32 @@ public class EventUnitModel implements Serializable
     private String eventID;
     private String unitName;
     private String eventGender;
+    private String eventName;
     private byte eventType;
     private String unitVenue;
-    private byte unitStatus;
+    private String unitStatus;
     private long eventStartTime;
     private byte unitMedalType;
+    private String unitID;
 
     private String parentDisciple;
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public String getUnitID() {
+        return unitID;
+    }
+
+    public void setUnitID(String unitID)
+    {
+        this.unitID = unitID;
+    }
 
     public void setParentDisciple(String parentDisciple) {
         this.parentDisciple = parentDisciple;
@@ -38,11 +57,11 @@ public class EventUnitModel implements Serializable
         return parentDisciple;
     }
 
-    public byte getUnitStatus() {
+    public String getUnitStatus() {
         return unitStatus;
     }
 
-    public void setUnitStatus(byte unitStatus) {
+    public void setUnitStatus(String unitStatus) {
         this.unitStatus = unitStatus;
     }
 

@@ -78,6 +78,11 @@ public class CountrySelectionActivity extends Activity implements IUIListener
 
     }
 
+    @Override
+    public void handleLoadingIndicator(boolean showLoadingInd) {
+
+    }
+
     class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.ViewHolder>
     {
 

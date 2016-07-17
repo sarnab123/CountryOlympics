@@ -168,7 +168,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public void bind(final Item item) {
             refferalItem = item;
-            eventDescription.setText(item.eventUnitModel.getUnitName());
+            eventDescription.setText(item.eventUnitModel.getEventName());
             eventStartDate.setText(item.eventUnitModel.getEventStartTime() +"");
             eventVenue.setText(item.eventUnitModel.getUnitVenue());
             itemView.setOnClickListener(new View.OnClickListener() {

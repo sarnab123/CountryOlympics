@@ -80,6 +80,11 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
+    public void handleLoadingIndicator(boolean showLoadingInd) {
+
+    }
+
+    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;
     }
@@ -137,7 +142,7 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
         {
             //Change row for selected country
             if (position == 0) {
-                holder.medalRowLayout.setBackgroundResource(R.drawable.medal_first_row_border);
+//                holder.medalRowLayout.setBackgroundResource(R.drawable.medal_first_row_border);
                 holder.dividerView.setVisibility(View.GONE);
             }
 

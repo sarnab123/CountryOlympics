@@ -2,7 +2,10 @@ package com.olympics.olympicsandroid.model;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import java.util.List;
 
 /**
  * Created by sarnab.poddar on 7/9/16.
@@ -31,6 +34,8 @@ public class OlympicUnit
     @Element(required = false)
     private OlympicVenue venue;
 
+    @ElementList(required = false)
+    private List<EventResultCompetitor> results;
 
     public String getId() {
         return id;
@@ -86,5 +91,9 @@ public class OlympicUnit
 
     public void setVenue(OlympicVenue venue) {
         this.venue = venue;
+    }
+
+    public List<EventResultCompetitor> getResults() {
+        return results;
     }
 }

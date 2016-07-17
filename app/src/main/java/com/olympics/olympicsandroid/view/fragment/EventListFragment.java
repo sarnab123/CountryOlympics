@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
+import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ public class EventListFragment extends Fragment
         return new IItemClickListener() {
             @Override
             public void handleItemClick(ExpandableListAdapter.Item itemClicked) {
-
+                ActivityFactory.handleItemClickActivity(getActivity(),itemClicked);
             }
         };
     }
@@ -73,12 +74,18 @@ public class EventListFragment extends Fragment
                     DateSportsModel.SportsEventsUnits sportsEventsUnit = entry.getValue();
                     if (sportsEventsUnit != null &&  sportsEventsUnit.getEventUnits() != null) {
                         String sportsDiscipline = null;
+                        String eventID = null;
+
                         for (EventUnitModel eventUnitModel : sportsEventsUnit.getEventUnits()) {
                             if(sportsDiscipline == null || !sportsDiscipline.equalsIgnoreCase(eventUnitModel.getParentDisciple()))
                             {
                                 data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.EVENT_HEADER, eventUnitModel));
+                                sportsDiscipline = eventUnitModel.getParentDisciple();
                             }
-                            data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.EVENT_DETAIL, eventUnitModel));
+                            if(eventID == null || !eventID.equalsIgnoreCase(eventUnitModel.getEventID())) {
+                                data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.EVENT_DETAIL, eventUnitModel));
+                                eventID = eventUnitModel.getEventID();
+                            }
                         }
                     }
                 }

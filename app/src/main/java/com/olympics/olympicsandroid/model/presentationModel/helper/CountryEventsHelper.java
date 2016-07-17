@@ -199,9 +199,10 @@ public class CountryEventsHelper {
             olympicEvent) {
 
         EventUnitModel eventUnitModel = new EventUnitModel();
-        eventUnitModel.setEventID(olympicUnit.getId());
+        eventUnitModel.setEventID(olympicEvent.getId());
         eventUnitModel.setUnitName(olympicUnit.getName());
         eventUnitModel.setEventGender(olympicEvent.getGender());
+        eventUnitModel.setEventName(olympicEvent.getDescription());
         if(olympicEvent.getTeams() != null && olympicEvent.getTeams().size() > 0)
         {
             eventUnitModel.setEventType(EventUnitModel.TEAM_EVENT);
@@ -231,11 +232,12 @@ public class CountryEventsHelper {
             }
             else if(olympicUnit.getStatus().equalsIgnoreCase("closed"))
             {
-                eventUnitModel.setUnitStatus(EventUnitModel.UNIT_STATUS_INPROGRESS);
+                eventUnitModel.setUnitStatus(EventUnitModel.UNIT_STATUS_CLOSED);
 
             }
         }
         eventUnitModel.setUnitVenue(olympicUnit.getVenue().getName());
+        eventUnitModel.setUnitID(olympicUnit.getId());
 //        eventUnitModel.setUnitMedalType(olympicUnit.getMe
 
         //eventUnitModel.setEventStartTime(DateUtils.prepareDate

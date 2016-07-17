@@ -8,6 +8,7 @@ import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 
 import com.google.android.gms.analytics.Tracker;
+import com.olympics.olympicsandroid.utility.SportsUtility;
 
 /**
  * Created by sarnab.poddar on 7/8/16.
@@ -20,13 +21,15 @@ public class OlympicsApplication extends Application
     private static OlympicsApplication instance;
     private Tracker mTracker;
 
+    private SportsUtility sportsUtility;
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
         olympicsPrefs = OlympicsPrefs.getInstance(this);
         volleySingleton = VolleySingleton.getInstance(this);
-
+        sportsUtility = SportsUtility.getInstance();
     }
 
     public static Context getAppContext()

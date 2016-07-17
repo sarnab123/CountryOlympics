@@ -9,5 +9,13 @@
     <string name="event_refresh">Refresh Event</string>
     <string name="rank_str"><b>Rank</b> %1$s %2$s %3$s</string>
     <string name="medal_total_str">medal total</string>
+    <string name="header_title_athName">Athlete Name</string>
+    <string name="number_rounds">Number of rounds</string>
+    <string name="score_txt">Score</string>
+    <string name="current_rank">Current Rank</string>
+    <string name="id_country_header">Country Alias</string>
+    <string name="id_competitor_header">Competitors</string>
+    <string name="win_loss">Win/Loss/Draw</string>
+    <string name="id_outcome">Outcome</string>
 
 </resources>

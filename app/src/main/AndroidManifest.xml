@@ -40,6 +40,9 @@
             android:label="@string/title_activity_athlete"
             android:screenOrientation="portrait" >
         </activity>
+        <activity android:name=".view.activity.eventActivities.EventActivity"
+            android:screenOrientation="portrait"
+            android:theme= "@android:style/Theme.Translucent.NoTitleBar"/>
     </application>
 
 </manifest>
