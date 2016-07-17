@@ -1,5 +1,6 @@
 package com.olympics.olympicsandroid.view.activity;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -86,6 +87,14 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             int rid = getResources().getIdentifier(countryInfo.getAlias().toLowerCase(), "raw", getPackageName());
             try {
                 countryImageView.setImageBitmap(BitmapFactory.decodeStream(getResources().openRawResource(rid)));
+                countryImageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent();
+                        intent.putExtra("first_launch",false);
+                        ActivityFactory.openCountrySelectionScreen(OlympicsActivity.this,intent);
+                    }
+                });
             } catch (Exception ex) {
                 System.out.println("Exeptipn == " + ex);
             }

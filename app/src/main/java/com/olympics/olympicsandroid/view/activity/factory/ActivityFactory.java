@@ -16,11 +16,11 @@ import com.olympics.olympicsandroid.view.activity.OlympicsActivity;
 public class ActivityFactory
 {
 
-    public static void openCountrySelectionScreen(Context originCTX,Bundle extras)
+    public static void openCountrySelectionScreen(Context originCTX,Intent countrySelectionLaunch)
     {
-        Intent countrySelectionLaunch = new Intent(originCTX,CountrySelectionActivity.class);
+        countrySelectionLaunch.setClass(originCTX,CountrySelectionActivity.class);
 
-        originCTX.startActivity(countrySelectionLaunch,extras);
+        originCTX.startActivity(countrySelectionLaunch);
     }
 
     public static void openMainActivity(Context originCTX, Bundle extras)
@@ -42,4 +42,5 @@ public class ActivityFactory
         originAct.startActivity(homeLaunch);
 
     }
+
 }

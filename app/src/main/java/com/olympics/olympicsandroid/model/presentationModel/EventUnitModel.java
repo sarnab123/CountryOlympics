@@ -28,6 +28,16 @@ public class EventUnitModel implements Serializable
     private long eventStartTime;
     private byte unitMedalType;
 
+    private String parentDisciple;
+
+    public void setParentDisciple(String parentDisciple) {
+        this.parentDisciple = parentDisciple;
+    }
+
+    public String getParentDisciple() {
+        return parentDisciple;
+    }
+
     public byte getUnitStatus() {
         return unitStatus;
     }
