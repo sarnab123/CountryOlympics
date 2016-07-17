@@ -140,13 +140,6 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
                             .append(WOMEN_SPORTS_STR).toString();
                 }
                 holder.eventView.setText(athleteDetail);
-
-                if (!TextUtils.isEmpty(athleteObj.getAthleteGender()) && athleteObj
-                        .getAthleteGender().equalsIgnoreCase(MALE)) {
-                    holder.genderIconView.setImageResource(R.drawable.athlete_male);
-                } else {
-                    holder.genderIconView.setImageResource(R.drawable.athlete_female);
-                }
             }
         }
 
