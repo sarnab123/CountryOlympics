@@ -99,7 +99,14 @@ public class CountryEventsHelper {
                         continue;
                     }
                     Athlete athlete = new Athlete();
-                    athlete.setAthleteName(participant.getPrint_name());
+                    String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" :
+                                    participant.getFirst_name();
+                    String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" :
+                            participant.getLast_name();
+                    StringBuilder stringBuilder = new StringBuilder(firstName).append(" ").append
+                            (lastName);
+
+                    athlete.setAthleteName(stringBuilder.toString());
                     athlete.setAthleteGender(participant.getGender());
                     if (participatingEvent.getSport() != null) {
                         athlete.setSportName(participatingEvent.getSport().getDescription());
@@ -115,7 +122,14 @@ public class CountryEventsHelper {
                     if(olympicTeams != null && olympicTeams.getAthlete() != null) {
                         for (OlympicAthlete participant : olympicTeams.getAthlete()) {
                             Athlete athlete = new Athlete();
-                            athlete.setAthleteName(participant.getPrint_name());
+                            String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" :
+                                    participant.getFirst_name();
+                            String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" :
+                                    participant.getLast_name();
+                            StringBuilder stringBuilder = new StringBuilder(firstName).append(" ").append
+                                    (lastName);
+
+                            athlete.setAthleteName(stringBuilder.toString());
                             athlete.setAthleteGender(participant.getGender());
                             if (participatingEvent.getSport() != null) {
                                 athlete.setSportName(participatingEvent.getSport().getDescription());
