@@ -31,11 +31,18 @@ public class OlympicUnit
     @Attribute(required = false)
     private String start_date;
 
+    @Attribute(required = false)
+    private String medal;
+
     @Element(required = false)
     private OlympicVenue venue;
 
     @ElementList(required = false)
     private List<EventResultCompetitor> results;
+
+    public String getMedal() {
+        return medal;
+    }
 
     public String getId() {
         return id;

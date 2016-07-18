@@ -10,6 +10,7 @@ import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
+import com.olympics.olympicsandroid.model.presentationModel.UnitResultsViewModel;
 import com.olympics.olympicsandroid.networkLayer.cache.database.DBUnitStatusHelper;
 import com.olympics.olympicsandroid.networkLayer.controller.EventResultsController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
@@ -25,6 +26,7 @@ public class EventActivity extends Activity implements IUIListener
     private String unitID;
     private String unitName;
     private String disciplineName;
+    private long eventStartTime;
 
     RecyclerView eventunitView;
 
@@ -52,7 +54,7 @@ public class EventActivity extends Activity implements IUIListener
         {
             unitID = getIntent().getStringExtra("event_unit_id");
         }
-
+            eventStartTime = getIntent().getLongExtra("event_date", 0L);
         eventunitView = (RecyclerView)findViewById(R.id.event_list);
 
         mLayoutManager = new LinearLayoutManager(this);
@@ -74,20 +76,26 @@ public class EventActivity extends Activity implements IUIListener
             DBUnitStatusHelper dbUnitStatusHelper = new DBUnitStatusHelper();
             unitStatus  = dbUnitStatusHelper.getStatusofUnit(unitID);
         }
-
-        if(unitStatus.equalsIgnoreCase(EventUnitModel.UNIT_STATUS_NOT_SCHEDULED))
-        {
+//
+//        if(!unitStatus.equalsIgnoreCase(EventUnitModel.UNIT_STATUS_CLOSED))
+//        {
             if(eventResultsController == null)
             {
                 eventResultsController = new EventResultsController(new WeakReference<IUIListener>(this),this);
             }
-            eventResultsController.getEventResults(eventID);
-        }
+            eventResultsController.getEventResults(eventID,eventStartTime);
+//        }
 
     }
 
     @Override
-    public void onSuccess(IResponseModel responseModel) {
+    public void onSuccess(IResponseModel responseModel)
+    {
+        UnitResultsViewModel resultsViewModel = (UnitResultsViewModel) responseModel;
+
+
+
+
 
     }
 

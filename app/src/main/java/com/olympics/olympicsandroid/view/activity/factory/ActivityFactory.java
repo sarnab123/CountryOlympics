@@ -52,6 +52,7 @@ public class ActivityFactory
             intentExtra.putExtra("event_unit_name",item.eventUnitModel.getUnitName());
             intentExtra.putExtra("discipline_name",item.eventUnitModel.getParentDisciple());
             intentExtra.putExtra("event_unit_id",item.eventUnitModel.getUnitID());
+            intentExtra.putExtra("event_date",item.eventUnitModel.getEventStartTime());
 
             ctx.startActivity(intentExtra);
     }

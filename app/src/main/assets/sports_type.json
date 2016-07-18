@@ -1,24 +1,28 @@
 {
   "corelation":[
     {
-      "discipline":"Diving",
-      "type":"ind"
+      "discipline":"diving",
+      "type":"ind",
+      "score_type":"points"
     },
     {
-      "discipline":"Swimming",
+      "discipline":"swimming",
       "type":"ind",
       "subDiscipline": [{
         "keyword":"relay",
         "type": "team"
-      }]
+      }],
+      "score_type":"time"
     },
     {
-      "discipline":"Synchronized Swimming",
-      "type":"team"
+      "discipline":"synchronized Swimming",
+      "type":"team",
+      "score_type":"points"
     },
     {
       "discipline":"Water polo",
-      "type":"team_head2head"
+      "type":"team_head2head",
+      "score_type":"goals"
     },
     {
       "discipline":"Archery",
@@ -32,7 +36,14 @@
           "type":"team_head2head"
         }
       ],
-      "type":"ind_head2head"
+      "type":"ind_head2head",
+      "score_type":"sets",
+      "scoring_type":[
+        {
+          "type": "ranking",
+          "value": "points"
+        }
+      ]
     },
     {
       "discipline":"Athletics",
@@ -40,7 +51,23 @@
       "subDiscipline": [{
         "keyword":"relay",
         "type": "team"
-      }]
+      }],
+      "score_type":"time",
+      "scoring_type":[
+        {
+          "type": "jump",
+          "value": "distance"
+        },
+        {
+          "type": "throw",
+          "value": "distance"
+        },
+        {
+          "type": "vault",
+          "value": "distance"
+        }
+      ]
+
     },
     {
       "discipline":"Badminton",
@@ -48,19 +75,23 @@
       "subDiscipline": [{
         "keyword":"double",
         "type": "team_head2head"
-      }]
+      }],
+      "score_type":"sets"
     },
     {
       "discipline":"Basketball",
-      "type":"team_head2head"
+      "type":"team_head2head",
+      "score_type":"points"
     },
     {
       "discipline":"Boxing",
-      "type":"ind_head2head"
+      "type":"ind_head2head",
+      "score_type":"points"
     },
     {
       "discipline":"Canoeing",
       "type":"team",
+      "score_type":"time",
       "subDiscipline": [
         {
         "keyword":"K1",
@@ -77,7 +108,8 @@
       "subDiscipline": [{
         "keyword":"team",
         "type": "team"
-      }]
+      }],
+      "score_type":"time"
     },
     {
       "discipline":"Equestrian",
@@ -85,7 +117,8 @@
       "subDiscipline": [{
         "keyword":"team",
         "type": "team"
-      }]
+      }],
+      "score_type":"points"
     },
     {
       "discipline":"Fencing",
@@ -93,19 +126,23 @@
       "subDiscipline": [{
         "keyword":"team",
         "type": "team_head2head"
-      }]
+      }],
+      "score_type":"points"
     },
     {
       "discipline":"Hockey",
-      "type":"team_head2head"
+      "type":"team_head2head",
+      "score_type":"goals"
     },
     {
       "discipline":"Football",
-      "type":"team_head2head"
+      "type":"team_head2head",
+      "score_type":"goals"
     },
     {
       "discipline":"Golf",
-      "type":"ind"
+      "type":"ind",
+      "score_type":"points"
     },
     {
       "discipline":"Gymnastics",
@@ -113,19 +150,23 @@
       "subDiscipline": [{
         "keyword":"team",
         "type": "team"
-      }]
+      }],
+      "score_type":"points"
     },
     {
       "discipline":"Handball",
-      "type":"team_head2head"
+      "type":"team_head2head",
+      "score_type":"goals"
     },
     {
       "discipline":"Judo",
-      "type":"ind_head2head"
+      "type":"ind_head2head",
+      "score_type":"points"
     },
     {
       "discipline":"pentathlon",
-      "type":"ind"
+      "type":"ind",
+      "score_type":"points"
     },
     {
       "discipline":"rowing",
@@ -133,11 +174,13 @@
         "keyword":"single",
         "type": "ind"
       }],
-      "type":"team"
+      "type":"team",
+      "score_type":"time"
     },
     {
       "discipline":"Rugby",
-      "type":"team_head2head"
+      "type":"team_head2head",
+      "score_type":"points"
     },
     {
       "discipline":"Sailing",
@@ -153,11 +196,13 @@
           "keyword":"finn",
           "type": "ind"
         }],
-      "type":"team"
+      "type":"team",
+      "score_type":"points"
     },
     {
       "discipline":"shooting",
-      "type":"Ind"
+      "type":"Ind",
+      "score_type":"points"
     },
     {
       "discipline":"table tennis",
@@ -165,11 +210,13 @@
       "subDiscipline": [{
         "keyword":"team",
         "type": "team_head2head"
-      }]
+      }],
+      "score_type":"sets"
     },
     {
       "discipline":"Taekwondo",
-      "type":"ind_head2head"
+      "type":"ind_head2head",
+      "score_type":"points"
     },
     {
       "discipline":"tennis",
@@ -177,23 +224,28 @@
       "subDiscipline": [{
         "keyword":"doubles",
         "type": "team_head2head"
-      }]
+      }],
+      "score_type":"sets"
     },
     {
       "discipline":"Triathlon",
-      "type":"Ind"
+      "type":"Ind",
+      "score_type":"points"
     },
     {
       "discipline":"Volleyball",
-      "type":"team_head2head"
+      "type":"team_head2head",
+      "score_type":"sets"
     },
     {
       "discipline":"Weightlifting",
-      "type":"Ind"
+      "type":"Ind",
+      "score_type":"weight"
     },
     {
       "discipline":"Wrestling",
-      "type":"Ind_head2head"
+      "type":"Ind_head2head",
+      "score_type":"points"
     }
   ]
 }

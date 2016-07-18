@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.olympics.olympicsandroid.R;
-import com.olympics.olympicsandroid.model.EventResultsModel;
+import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
 import com.olympics.olympicsandroid.utility.SportsUtility;
 import com.olympics.olympicsandroid.view.fragment.IItemClickListener;
 
@@ -20,7 +20,7 @@ import java.util.List;
 public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
 
-    List<EventResultsModel> resultsModels;
+    List<EventResultsViewModel> resultsModels;
     IItemClickListener itemClickListener;
 
     public EventListAdapter(IItemClickListener itemClickListener)
@@ -28,7 +28,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         this.itemClickListener = itemClickListener;
     }
 
-    public void updateData(List<EventResultsModel> resultsModels)
+    public void updateData(List<EventResultsViewModel> resultsModels)
     {
         this.resultsModels = resultsModels;
     }

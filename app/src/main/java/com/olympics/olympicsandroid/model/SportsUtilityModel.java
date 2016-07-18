@@ -1,7 +1,9 @@
 package com.olympics.olympicsandroid.model;
 
+import com.google.gson.annotations.Expose;
 import com.olympics.olympicsandroid.utility.SportsUtility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,24 +11,28 @@ import java.util.List;
  */
 public class SportsUtilityModel
 {
-    Corelation corelation;
+    @Expose
+    ArrayList<SportRelation> corelation;
 
-    public Corelation getCorelation() {
+    public ArrayList<SportRelation> getCorelation() {
         return corelation;
     }
 
-    public class Corelation {
-
-        List<SportRelation> sportRelations;
-
-        public List<SportRelation> getSportRelations() {
-            return sportRelations;
-        }
 
         public class SportRelation {
             private String discipline;
             private List<SubDiscipline> subDiscipline;
+            private List<PointType> scoring_type;
             private String type;
+            private String score_type;
+
+            public String getScore_type() {
+                return score_type;
+            }
+
+            public List<PointType> getPointTypes() {
+                return scoring_type;
+            }
 
             public List<SubDiscipline> getSubDiscipline() {
                 return subDiscipline;
@@ -88,6 +94,18 @@ public class SportsUtilityModel
                     return keyword;
                 }
             }
+
+            public class PointType {
+                private String type;
+                private String value;
+
+                public String getType() {
+                    return type;
+                }
+
+                public String getValue() {
+                    return value;
+                }
+            }
         }
-    }
 }

@@ -33,11 +33,33 @@ public class EventResultCompetitor
     @Attribute(required = false)
     private String rank;
 
+    @Attribute(required = false)
+    private String organization;
+
+    @Attribute(required = false)
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
     @ElementList(name = "extended-results",required = false)
     List<ExtendedResult> extendedResults;
 
     @ElementList(required = false)
     List<ScoreModel> scoring;
+
+    @Attribute(required = false)
+    private String outcome;
+
+
+    public String getOutcome() {
+        return outcome;
+    }
 
     public void setResult(String result) {
         this.result = result;

@@ -62,7 +62,9 @@ public enum OlympicRequestQueries
                 break;
             }
         }
-        relativeURL = relativeURL.replace(stringToReplace, urlReplacement);
+        if(!TextUtils.isEmpty(stringToReplace) && !TextUtils.isEmpty(urlReplacement)) {
+            relativeURL = relativeURL.replace(stringToReplace, urlReplacement);
+        }
         return relativeURL;
     }
 

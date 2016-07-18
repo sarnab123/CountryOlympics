@@ -18,6 +18,7 @@ public class EventUnitModel implements Serializable
 
     public static final byte UNIT_MEDAL_GOLD = 0x00;
     public static final byte UNIT_MEDAL_BRONZE = 0x01;
+    public static final byte UNIT_MEDAL_NONE = 0x02;
 
     private String eventID;
     private String unitName;

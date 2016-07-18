@@ -5,6 +5,8 @@ import android.content.Context;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.olympics.olympicsandroid.model.EventResultsModel;
+import com.olympics.olympicsandroid.model.presentationModel.UnitResultsViewModel;
+import com.olympics.olympicsandroid.model.presentationModel.helper.EventResultsHelper;
 import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
@@ -19,6 +21,7 @@ public class EventResultsController
 {
     protected WeakReference<IUIListener> listenerWeakReference;
     protected Context mCtx;
+    private long eventDate;
 
     public EventResultsController(WeakReference<IUIListener> listenerWeakReference, Context mCtx)
     {
@@ -26,8 +29,9 @@ public class EventResultsController
         this.mCtx = mCtx;
     }
 
-    public void getEventResults(String eventID)
+    public void getEventResults(String eventID , long eventDate)
     {
+        this.eventDate = eventDate;
         // Set Request Policy
         RequestPolicy requestPolicy = new RequestPolicy();
         requestPolicy.setUrlReplacement(eventID);
@@ -51,8 +55,15 @@ public class EventResultsController
         return new Response.Listener<EventResultsModel>() {
             @Override
             public void onResponse(EventResultsModel response) {
+                EventResultsHelper eventResultsHelper = new EventResultsHelper(response);
 
+                UnitResultsViewModel unitResultsViewModel = eventResultsHelper.cacheAndFilter
+                        (eventResultsHelper.getListOfEventUnits(), eventDate);
+
+
+                listenerWeakReference.get().onSuccess(unitResultsViewModel);
             }
         };
     }
+
 }

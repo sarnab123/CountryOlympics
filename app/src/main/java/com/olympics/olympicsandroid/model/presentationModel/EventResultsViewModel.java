@@ -1,11 +1,13 @@
 package com.olympics.olympicsandroid.model.presentationModel;
 
+import com.olympics.olympicsandroid.model.IResponseModel;
+
 import java.util.List;
 
 /**
  * Created by sarnab.poddar on 7/17/16.
  */
-public class EventResultsViewModel
+public class EventResultsViewModel implements IResponseModel
 {
 
     // Name of the Unit, for ex: Men's Classification 5th-6th Place
@@ -22,7 +24,7 @@ public class EventResultsViewModel
     private String unit_gender;
 
     // Whether Gold/Bronze medal match
-    private String unit_medal_type;
+    private byte unit_medal_type;
 
     // Status of the unit : UNIT_STATUS_SCHEDULED,UNIT_STATUS_INPROGRESS,
     // UNIT_STATUS_NOT_SCHEDULED,UNIT_STATUS_CLOSED
@@ -30,6 +32,28 @@ public class EventResultsViewModel
 
     // This is to update the score header , this can be : points/sets/time
     private String unit_scoring_type;
+
+
+    // Maintain the fact whether the unit is for the country user has selected
+    private boolean isSelectedCountry;
+
+    private String start_date;
+
+    public boolean isSelectedCountry() {
+        return isSelectedCountry;
+    }
+
+    public void setIsSelectedCountry(boolean isSelectedCountry) {
+        this.isSelectedCountry = isSelectedCountry;
+    }
+
+    public String getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
+    }
 
     public int getUnit_type() {
         return unit_type;
@@ -47,7 +71,7 @@ public class EventResultsViewModel
         return unit_id;
     }
 
-    public String getUnit_medal_type() {
+    public byte getUnit_medal_type() {
         return unit_medal_type;
     }
 
@@ -75,7 +99,7 @@ public class EventResultsViewModel
         this.unit_id = unit_id;
     }
 
-    public void setUnit_medal_type(String unit_medal_type) {
+    public void setUnit_medal_type(byte unit_medal_type) {
         this.unit_medal_type = unit_medal_type;
     }
 
@@ -105,12 +129,22 @@ public class EventResultsViewModel
         private String competitorID;
         private String competitorName;
 
+        private String rank;
+
         // win/loss/draw
         private String outcome;
 
         // if status = closed , then the result from competitor.
         // else if status = in progress, then the result from score object.
         private String result;
+
+        public String getRank() {
+            return rank;
+        }
+
+        public void setRank(String rank) {
+            this.rank = rank;
+        }
 
         public String getCountryAlias() {
             return countryAlias;

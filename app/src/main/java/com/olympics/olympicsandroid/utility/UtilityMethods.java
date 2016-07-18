@@ -15,7 +15,7 @@ import java.io.InputStream;
 public class UtilityMethods
 {
 
-    public static boolean isSimulated = true;
+    public static boolean isSimulated = false;
     public static final int CACHE_DIR = 1001;
 
     public static final int EXTERNAL_CACHE_DIR = CACHE_DIR + 1;
