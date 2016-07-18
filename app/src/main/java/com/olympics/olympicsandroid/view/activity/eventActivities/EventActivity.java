@@ -26,7 +26,6 @@ public class EventActivity extends Activity implements IUIListener
     private String unitID;
     private String unitName;
     private String disciplineName;
-    private long eventStartTime;
 
     RecyclerView eventunitView;
 
@@ -54,7 +53,6 @@ public class EventActivity extends Activity implements IUIListener
         {
             unitID = getIntent().getStringExtra("event_unit_id");
         }
-            eventStartTime = getIntent().getLongExtra("event_date", 0L);
         eventunitView = (RecyclerView)findViewById(R.id.event_list);
 
         mLayoutManager = new LinearLayoutManager(this);
@@ -83,7 +81,7 @@ public class EventActivity extends Activity implements IUIListener
             {
                 eventResultsController = new EventResultsController(new WeakReference<IUIListener>(this),this);
             }
-            eventResultsController.getEventResults(eventID,eventStartTime);
+            eventResultsController.getEventResults(eventID);
 //        }
 
     }

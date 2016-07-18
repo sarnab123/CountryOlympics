@@ -27,7 +27,7 @@ public class EventUnitModel implements Serializable
     private byte eventType;
     private String unitVenue;
     private String unitStatus;
-    private long eventStartTime;
+    private String eventStartTime;
     private byte unitMedalType;
     private String unitID;
 
@@ -79,7 +79,7 @@ public class EventUnitModel implements Serializable
         return eventID;
     }
 
-    public long getEventStartTime() {
+    public String getEventStartTime() {
         return eventStartTime;
     }
 
@@ -119,7 +119,7 @@ public class EventUnitModel implements Serializable
         this.unitVenue = unitVenue;
     }
 
-    public void setEventStartTime(long eventStartTime) {
+    public void setEventStartTime(String eventStartTime) {
         this.eventStartTime = eventStartTime;
     }
 

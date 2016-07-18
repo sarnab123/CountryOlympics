@@ -101,7 +101,7 @@ public class EventResultsHelper
     }
 
 
-    public UnitResultsViewModel cacheAndFilter(UnitResultsViewModel listOfEventUnits, long eventDate) {
+    public UnitResultsViewModel cacheAndFilter(UnitResultsViewModel listOfEventUnits) {
 
         List<EventResultsViewModel> allResultModels = listOfEventUnits.getEventResultsViewModels();
 
@@ -111,10 +111,7 @@ public class EventResultsHelper
         {
             if(eventResultsViewModel.isSelectedCountry())
             {
-                if(DateUtils.getDateLongInMillis(eventResultsViewModel.getStart_date()) == eventDate)
-                {
                     filteredResultModels.add(eventResultsViewModel);
-                }
             }
         }
 

@@ -188,18 +188,17 @@ public class SportsUtility {
                 return competitor.getResult();
             }
 
-             for(ExtendedResult result:competitor.getExtendedResults())
-                {
-                    if(result.getCode() != null && result.getCode().equalsIgnoreCase("SET_PT_COUNT"))
-                    {
+            if(competitor.getExtendedResults() != null) {
+                for (ExtendedResult result : competitor.getExtendedResults()) {
+                    if (result.getCode() != null && result.getCode().equalsIgnoreCase("SET_PT_COUNT")) {
                         return result.getValue();
                     }
 
-                    if(result.getCode() != null && result.getCode().equalsIgnoreCase("PTS"))
-                    {
+                    if (result.getCode() != null && result.getCode().equalsIgnoreCase("PTS")) {
                         return result.getValue();
                     }
                 }
+            }
 
 
         }

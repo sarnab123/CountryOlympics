@@ -21,7 +21,6 @@ public class EventResultsController
 {
     protected WeakReference<IUIListener> listenerWeakReference;
     protected Context mCtx;
-    private long eventDate;
 
     public EventResultsController(WeakReference<IUIListener> listenerWeakReference, Context mCtx)
     {
@@ -29,9 +28,8 @@ public class EventResultsController
         this.mCtx = mCtx;
     }
 
-    public void getEventResults(String eventID , long eventDate)
+    public void getEventResults(String eventID)
     {
-        this.eventDate = eventDate;
         // Set Request Policy
         RequestPolicy requestPolicy = new RequestPolicy();
         requestPolicy.setUrlReplacement(eventID);
@@ -58,7 +56,7 @@ public class EventResultsController
                 EventResultsHelper eventResultsHelper = new EventResultsHelper(response);
 
                 UnitResultsViewModel unitResultsViewModel = eventResultsHelper.cacheAndFilter
-                        (eventResultsHelper.getListOfEventUnits(), eventDate);
+                        (eventResultsHelper.getListOfEventUnits());
 
 
                 listenerWeakReference.get().onSuccess(unitResultsViewModel);

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -170,7 +171,15 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             refferalItem = item;
             eventDescription.setText(item.eventUnitModel.getEventName());
             eventStartDate.setText(item.eventUnitModel.getEventStartTime() +"");
-            eventVenue.setText(item.eventUnitModel.getUnitVenue());
+            byte spbyte[] = new byte[0];
+            try {
+
+                spbyte = item.eventUnitModel.getUnitVenue().getBytes("ISO-8859-1");
+                String str = new String(spbyte);
+                eventVenue.setText(str);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -44,27 +44,4 @@ public class DateUtils {
 
     }
 
-
-    public static long getDateLongInMillis(String dateStr) {
-
-        if (TextUtils.isEmpty(dateStr)) {
-            return 0;
-        } else {
-            Date date = null;
-            try {
-                date = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT).parse(dateStr);
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(date);
-                calendar.set(Calendar.HOUR, 0);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.SECOND, 0);
-                return calendar.getTime().getTime();
-
-            } catch (ParseException e) {
-                return 0;
-            }
-        }
-
-    }
-
 }
