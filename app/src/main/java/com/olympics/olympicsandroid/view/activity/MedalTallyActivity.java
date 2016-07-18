@@ -45,6 +45,23 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
         MedalTallyController medalTallyController = new MedalTallyController(new
                 WeakReference<IUIListener>(this), getApplication());
         medalTallyController.getMedalTallyData();
+
+        //Setup Actionbar
+        setActionBar();
+    }
+
+    private void setActionBar() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
