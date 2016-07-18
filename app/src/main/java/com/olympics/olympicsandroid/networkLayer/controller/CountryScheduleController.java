@@ -114,7 +114,7 @@ public class CountryScheduleController
         requestPolicy.setForceCache(true);
         requestPolicy.setMaxAge(60 * 60 * 24);
 
-        if(UtilityMethods.isSimulated)
+        if(true)
         {
             String configString =
                     UtilityMethods.loadDataFromAsset(mCtx,

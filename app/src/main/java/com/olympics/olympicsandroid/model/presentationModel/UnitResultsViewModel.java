@@ -13,6 +13,16 @@ public class UnitResultsViewModel implements IResponseModel
 
     List<EventResultsViewModel> eventResultsViewModels = new ArrayList<>();
 
+    private int eventType;
+
+    public int getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(int eventType) {
+        this.eventType = eventType;
+    }
+
     public List<EventResultsViewModel> getEventResultsViewModels() {
         return eventResultsViewModels;
     }

@@ -4,12 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
-import com.olympics.olympicsandroid.utility.SportsUtility;
 import com.olympics.olympicsandroid.view.fragment.IItemClickListener;
 
 import java.util.List;
@@ -20,7 +20,13 @@ import java.util.List;
 public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
 
-    List<EventResultsViewModel> resultsModels;
+    public final static int TYPE_UNIT_HEADER = 1;
+    public final static int TYPE_IND_COMPETITOR = 2;
+    public final static int TYPE_IND_HEAD2HEAD_COMPET = 3;
+    public final static int TYPE_TEAM_COMPETITOR = 4;
+    public final static int TYPE_TEAM_HEAD2HEAD_COMPET = 5;
+
+    List<EventListAdapter.Result> resultsModels;
     IItemClickListener itemClickListener;
 
     public EventListAdapter(IItemClickListener itemClickListener)
@@ -28,7 +34,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         this.itemClickListener = itemClickListener;
     }
 
-    public void updateData(List<EventResultsViewModel> resultsModels)
+    public void updateData(List<EventListAdapter.Result> resultsModels)
     {
         this.resultsModels = resultsModels;
     }
@@ -39,7 +45,16 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         View view = null;
         switch(viewType)
         {
-            case SportsUtility.TYPE_INDIVUDUAL:
+
+            case TYPE_UNIT_HEADER:
+                view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.list_unit_header, parent, false);
+
+                ListUnitHeaderHolder viewHolder = new ListUnitHeaderHolder(view);
+
+                return viewHolder;
+
+            case TYPE_IND_COMPETITOR:
 
                 view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.event_cardview_ind_rounds, parent, false);
@@ -48,7 +63,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 ListIndividualCardViewHolder listIndividualCard = new ListIndividualCardViewHolder(view);
                 return listIndividualCard;
 
-            case SportsUtility.TYPE_TEAM:
+            case TYPE_TEAM_COMPETITOR:
                 view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.event_cardview_ind_rounds, parent, false);
 
@@ -56,7 +71,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 ListTeamCardViewHolder listTeamCardViewHolderCard = new ListTeamCardViewHolder(view);
                 return listTeamCardViewHolderCard;
 
-            case SportsUtility.TYPE_INDIVUDUAL_HEAD2HEAD:
+            case TYPE_IND_HEAD2HEAD_COMPET:
                 view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.event_cardview_ind_rounds, parent, false);
 
@@ -64,7 +79,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 ListIndH2HCardViewHolder listIndH2HCardViewHolder = new ListIndH2HCardViewHolder(view);
                 return listIndH2HCardViewHolder;
 
-            case SportsUtility.TYPE_TEAM_HEAD2HEAD:
+            case TYPE_TEAM_HEAD2HEAD_COMPET:
                 view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.event_cardview_ind_rounds, parent, false);
 
@@ -78,13 +93,57 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
+    {
+        switch (resultsModels.get(position).type)
+        {
+            case TYPE_IND_COMPETITOR:
+
+                ListIndividualCardViewHolder cardViewHolder = (ListIndividualCardViewHolder) holder;
+                cardViewHolder.id_athlete_name.setText(resultsModels.get(position).competitorModel.getCompetitorName());
+                cardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
+                cardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
+                break;
+            case TYPE_TEAM_COMPETITOR:
+                break;
+            case TYPE_IND_HEAD2HEAD_COMPET:
+                break;
+            case TYPE_TEAM_HEAD2HEAD_COMPET:
+                break;
+            case TYPE_UNIT_HEADER:
+                break;
+        }
 
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return resultsModels.get(position).type;
+    }
+
+    @Override
     public int getItemCount() {
-        return 0;
+        if(resultsModels == null)
+        {
+            return 0;
+        }
+        return resultsModels.size();
+    }
+
+    private class ListUnitHeaderHolder extends RecyclerView.ViewHolder
+    {
+
+        private TextView unitName;
+        private ImageView medalImage;
+        private Button refreshButton;
+
+
+        public ListUnitHeaderHolder(View itemView) {
+            super(itemView);
+            unitName = (TextView) itemView.findViewById(R.id.id_unit_title);
+            medalImage = (ImageView) itemView.findViewById(R.id.id_medal_image);
+            refreshButton = (Button) itemView.findViewById(R.id.id_buttn_refresh);
+        }
     }
 
     private class ListIndividualCardViewHolder extends RecyclerView.ViewHolder
@@ -175,6 +234,31 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             id_outcome_1 =(TextView) itemView.findViewById(R.id.id_outcome);
             id_athlete_name_1 =(TextView) itemView.findViewById(R.id.id_athlete_name_1);
             id_score_1 =(TextView) itemView.findViewById(R.id.id_score_1);
+        }
+    }
+
+    public static class Result {
+        private EventResultsViewModel.CompetitorViewModel competitorModel;
+        public int type;
+        private EventResultsViewModel.CompetitorHeadtoHeadViewModel competitorheadModel;
+        private EventResultsViewModel sportsTitle;
+
+        public Result() {
+        }
+
+        public Result(int type, EventResultsViewModel.CompetitorHeadtoHeadViewModel competitorheadModel) {
+            this.type = type;
+            this.competitorheadModel = competitorheadModel;
+        }
+
+        public Result(int type, EventResultsViewModel sportsTitle) {
+            this.type = type;
+            this.sportsTitle = sportsTitle;
+        }
+
+        public Result(int type, EventResultsViewModel.CompetitorViewModel competitorModel) {
+            this.type = type;
+            this.competitorModel = competitorModel;
         }
     }
 

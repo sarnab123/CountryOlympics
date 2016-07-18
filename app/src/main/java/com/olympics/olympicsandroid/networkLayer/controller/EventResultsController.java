@@ -44,7 +44,7 @@ public class EventResultsController
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println("error == "+error);
+                System.out.println("error == " + error);
             }
         };
     }
@@ -55,8 +55,7 @@ public class EventResultsController
             public void onResponse(EventResultsModel response) {
                 EventResultsHelper eventResultsHelper = new EventResultsHelper(response);
 
-                UnitResultsViewModel unitResultsViewModel = eventResultsHelper.cacheAndFilter
-                        (eventResultsHelper.getListOfEventUnits());
+                UnitResultsViewModel unitResultsViewModel = eventResultsHelper.getListOfEventUnits();
 
 
                 listenerWeakReference.get().onSuccess(unitResultsViewModel);

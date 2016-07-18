@@ -238,6 +238,11 @@
       "score_type":"sets"
     },
     {
+      "discipline":"Beach Volleyball",
+      "type":"team_head2head",
+      "score_type":"sets"
+    },
+    {
       "discipline":"Weightlifting",
       "type":"Ind",
       "score_type":"weight"

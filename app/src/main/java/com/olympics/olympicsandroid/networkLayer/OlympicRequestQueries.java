@@ -24,7 +24,7 @@ public enum OlympicRequestQueries
 
     private String baseURL = "https://api.sportradar.us/oly-testing2";
 
-    private OlympicRequestQueries(int httpRequestType, String relativeURL , boolean isCacheable, boolean needAPIKey)
+    OlympicRequestQueries(int httpRequestType, String relativeURL , boolean isCacheable, boolean needAPIKey)
     {
         this.httpRequestType = httpRequestType;
         this.relativeURL = relativeURL;
@@ -39,8 +39,9 @@ public enum OlympicRequestQueries
     public String getURL(String urlReplacement) {
         StringBuilder finalRequestString = new StringBuilder(baseURL);
         if(!TextUtils.isEmpty(relativeURL)) {
-            relativeURL = editURLIfReqd(relativeURL,urlReplacement);
-            finalRequestString.append(relativeURL);
+            String relativeTempURL = new String(relativeURL);
+            relativeTempURL = editURLIfReqd(relativeTempURL,urlReplacement);
+            finalRequestString.append(relativeTempURL);
         }
         if(needAPIKey)
         {
@@ -51,8 +52,8 @@ public enum OlympicRequestQueries
         return finalRequestString.toString();
     }
 
-    private String editURLIfReqd(String relativeURL,String urlReplacement) {
-        String[] allRelativeURL = relativeURL.split("/");
+    private String editURLIfReqd(String relativeTempURL,String urlReplacement) {
+        String[] allRelativeURL = relativeTempURL.split("/");
         String stringToReplace = null;
         for(String data:allRelativeURL)
         {
@@ -63,9 +64,9 @@ public enum OlympicRequestQueries
             }
         }
         if(!TextUtils.isEmpty(stringToReplace) && !TextUtils.isEmpty(urlReplacement)) {
-            relativeURL = relativeURL.replace(stringToReplace, urlReplacement);
+            relativeTempURL = relativeTempURL.replace(stringToReplace, urlReplacement);
         }
-        return relativeURL;
+        return relativeTempURL;
     }
 
 
