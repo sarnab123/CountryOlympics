@@ -1,15 +1,21 @@
 package com.olympics.olympicsandroid.view.activity;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.olympics.olympicsandroid.R;
@@ -17,23 +23,25 @@ import com.olympics.olympicsandroid.model.CountryModel;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.Organization;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.controller.CountryListController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
-import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by sarnab.poddar on 7/7/16.
  */
-public class CountrySelectionActivity extends Activity implements IUIListener
+public class CountrySelectionActivity extends AppCompatActivity implements IUIListener, SearchView.OnQueryTextListener
 {
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private CountryListAdapter countryListAdapter;
+    private List<Organization> countryList;
 
     private boolean isFirstLaunch;
 
@@ -51,14 +59,18 @@ public class CountrySelectionActivity extends Activity implements IUIListener
         isFirstLaunch = getIntent().getBooleanExtra("first_launch",false);
 
         getCountryData();
+
+        setActionbar();
+    }
+
+    private void setActionbar() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void getCountryData()
     {
-
-        CountryListController countryListController = new CountryListController(new WeakReference<IUIListener>(this), getApplication());
+       CountryListController countryListController = new CountryListController(new WeakReference<IUIListener>(this), getApplication());
         countryListController.getCountryData();
-
     }
 
     @Nullable
@@ -67,7 +79,8 @@ public class CountrySelectionActivity extends Activity implements IUIListener
         if(responseModel instanceof CountryModel)
         {
             CountryModel countryModel = (CountryModel) responseModel;
-            countryListAdapter.setCountryModelList(countryModel.getOrganization());
+            countryList = countryModel.getOrganization();
+            countryListAdapter.setCountryModelList(countryList);
             countryListAdapter.notifyDataSetChanged();
         }
 
@@ -76,6 +89,25 @@ public class CountrySelectionActivity extends Activity implements IUIListener
     @Override
     public void onFailure(ErrorModel errorModel) {
 
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        List<Organization> filteredCountryList = new ArrayList<>();
+        for (Organization country : countryList) {
+            if (country != null && country.getDescription().toLowerCase().contains(newText)) {
+                filteredCountryList.add(country);
+            }
+        }
+        countryListAdapter.setCountryModelList(filteredCountryList);
+        countryListAdapter.notifyDataSetChanged();
+        return true;
     }
 
     class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.ViewHolder>
@@ -156,4 +188,20 @@ public class CountrySelectionActivity extends Activity implements IUIListener
         }
         finish();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.country_selection, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
 }

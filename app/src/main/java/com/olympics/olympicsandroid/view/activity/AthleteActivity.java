@@ -29,6 +29,8 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 .OnNavigationItemSelectedListener, IUIListener {
 
     public static final String MALE = "male";
+    private static final String MEN_SPORTS_STR = " - Men";
+    private static final String WOMEN_SPORTS_STR = " - Women";
     private AthleteListAdapter athleteListAdapter;
 
     @Override
@@ -49,6 +51,22 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
                 WeakReference<IUIListener>(this), getApplication());
         scheduleController.getCountryDetails();
 
+        //Setup Actionbar
+        setActionBar();
+    }
+
+    private void setActionBar() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -112,14 +130,16 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
             Athlete athleteObj = athleteList.get(position);
             if (athleteObj != null) {
                 holder.athleteNameView.setText(athleteObj.getAthleteName());
-                holder.eventView.setText(athleteObj.getSportName());
 
-                if (!TextUtils.isEmpty(athleteObj.getAthleteGender()) && athleteObj
-                        .getAthleteGender().equalsIgnoreCase(MALE)) {
-                    holder.genderIconView.setImageResource(R.drawable.athlete_male);
-                } else {
-                    holder.genderIconView.setImageResource(R.drawable.athlete_female);
+                String athleteDetail = "";
+                if (!TextUtils.isEmpty(athleteObj.getSportName())) {
+
+                    StringBuilder stringBuilder = new StringBuilder(athleteObj.getSportName());
+                    athleteDetail = athleteObj.getAthleteGender().equalsIgnoreCase
+                            (MALE) ? stringBuilder.append(MEN_SPORTS_STR).toString() : stringBuilder
+                            .append(WOMEN_SPORTS_STR).toString();
                 }
+                holder.eventView.setText(athleteDetail);
             }
         }
 
