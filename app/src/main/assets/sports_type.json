@@ -15,17 +15,17 @@
       "score_type":"Time"
     },
     {
-      "discipline":"synchronized Swimming",
+      "discipline":"synchronized swimming",
       "type":"team",
       "score_type":"Points"
     },
     {
-      "discipline":"Water polo",
+      "discipline":"water polo",
       "type":"team_head2head",
       "score_type":"Goals"
     },
     {
-      "discipline":"Archery",
+      "discipline":"archery",
       "subDiscipline": [
         {
           "keyword":"ranking",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "discipline":"Athletics",
+      "discipline":"athletics",
       "type":"ind",
       "subDiscipline": [{
         "keyword":"relay",
@@ -70,7 +70,7 @@
 
     },
     {
-      "discipline":"Badminton",
+      "discipline":"badminton",
       "type":"ind_head2head",
       "subDiscipline": [{
         "keyword":"double",
@@ -79,17 +79,17 @@
       "score_type":"Sets"
     },
     {
-      "discipline":"Basketball",
+      "discipline":"basketball",
       "type":"team_head2head",
       "score_type":"Points"
     },
     {
-      "discipline":"Boxing",
+      "discipline":"boxing",
       "type":"ind_head2head",
       "score_type":"Points"
     },
     {
-      "discipline":"Canoeing",
+      "discipline":"canoeing",
       "type":"team",
       "score_type":"Time",
       "subDiscipline": [
@@ -103,7 +103,7 @@
         }]
     },
     {
-      "discipline":"Cycling",
+      "discipline":"cycling",
       "type":"ind",
       "subDiscipline": [{
         "keyword":"team",
@@ -121,7 +121,7 @@
       "score_type":"Points"
     },
     {
-      "discipline":"Fencing",
+      "discipline":"fencing",
       "type":"ind_head2head",
       "subDiscipline": [{
         "keyword":"team",

@@ -60,10 +60,14 @@ public class SportsUtility {
     }
 
 
-    public int getTypeofSport(final String discipline, final String unitName) {
+    public int getTypeofSport(final String discipline, String unitName) {
+        if(!TextUtils.isEmpty(unitName))
+        {
+            unitName = unitName.toLowerCase();
+        }
         for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
             if(discipline.equalsIgnoreCase(sportRelation.getDiscipline())) {
-                if (sportRelation.getSubDiscipline() != null && sportRelation.getSubDiscipline().size() > 0)
+                if (sportRelation.getSubDiscipline() != null && sportRelation.getSubDiscipline().size() > 0 && !TextUtils.isEmpty(unitName))
                 {
                     for(SportsUtilityModel.SportRelation.SubDiscipline subDiscipline: sportRelation.getSubDiscipline())
                     {

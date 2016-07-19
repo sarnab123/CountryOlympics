@@ -3,55 +3,48 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginTop="9dp"
+    android:layout_marginBottom="9dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@android:color/white"
     card_view:cardCornerRadius="3dp"
-    card_view:cardElevation="0.50dp">
+    card_view:cardElevation="2dp">
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
-        android:shrinkColumns="*"
         android:stretchColumns="*">
 
         <TableRow
             android:id="@+id/id_headers"
             android:layout_width="match_parent"
+            android:gravity="center_horizontal"
             android:layout_height="wrap_content">
 
-            <TextView
+            <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
                 android:id="@+id/id_country_name_header"
-                android:layout_weight="1"
+                android:layout_span="1"
                 android:background="#dcdcdc"
                 android:gravity="center"
-                android:padding="20dip"
+                android:padding="20dp"
                 android:text="@string/id_country_header"
                 android:textColor="#000000" />
 
-            <TextView
-                android:id="@+id/id_number_rounds_header"
-                android:layout_weight="1"
-                android:background="#d3d3d3"
-                android:gravity="center"
-                android:padding="20dip"
-                android:text="@string/number_rounds"
-                android:textColor="#000000" />
-
-            <TextView
+            <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
                 android:id="@+id/id_score_header"
-                android:layout_weight="1"
+                android:layout_span="1"
                 android:background="#cac9c9"
                 android:gravity="center"
-                android:padding="20dip"
+                android:padding="20dp"
                 android:text="@string/score_txt"
                 android:textColor="#000000" />
 
-            <TextView
+            <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
                 android:id="@+id/id_rank_header"
-                android:layout_weight="1"
+                android:layout_span="1"
                 android:background="#cac9c9"
                 android:gravity="center"
-                android:padding="20dip"
+                android:padding="20dp"
                 android:text="@string/current_rank"
                 android:textColor="#000000" />
 
@@ -66,45 +59,38 @@
                 android:layout_weight="1"
                 android:background="#dcdcdc"
                 android:gravity="center"
-                android:padding="20dip">
+                android:padding="5dp">
 
                 <ImageView
                     android:id="@+id/id_country_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <TextView
+                <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                     android:id="@+id/id_country_alias"
                     android:layout_width="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:layout_toRightOf="@id/id_country_image"
                     android:layout_height="wrap_content"
                     android:background="#dcdcdc"
                     android:gravity="center"
-                    android:padding="20dip"
                     android:textColor="#000000" />
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/id_number_rounds"
-                android:layout_weight="1"
-                android:background="#d3d3d3"
-                android:gravity="center"
-                android:padding="20dip"
-                android:textColor="#000000" />
-
-            <TextView
+            <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_score"
                 android:layout_weight="1"
                 android:background="#cac9c9"
                 android:gravity="center"
-                android:padding="20dip"
+                android:padding="10dp"
                 android:textColor="#000000" />
 
-            <TextView
+            <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_rank"
                 android:layout_weight="1"
                 android:background="#cac9c9"
                 android:gravity="center"
-                android:padding="20dip"
+                android:padding="10dp"
                 android:textColor="#000000" />
 
         </TableRow>

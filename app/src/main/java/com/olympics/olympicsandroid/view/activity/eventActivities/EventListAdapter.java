@@ -1,5 +1,6 @@
 package com.olympics.olympicsandroid.view.activity.eventActivities;
 
+import android.graphics.BitmapFactory;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -67,7 +68,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             case TYPE_TEAM_COMPETITOR:
                 view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.event_cardview_ind_rounds, parent, false);
+                        .inflate(R.layout.event_cardview_team_rounds, parent, false);
 
 
                 ListTeamCardViewHolder listTeamCardViewHolderCard = new ListTeamCardViewHolder(view);
@@ -108,6 +109,22 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 cardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
                 break;
             case TYPE_TEAM_COMPETITOR:
+
+                ListTeamCardViewHolder teamCardViewHolder = (ListTeamCardViewHolder) holder;
+                teamCardViewHolder.id_country_alias.setText(resultsModels.get(position).competitorModel.getCountryAlias());
+                int rid = OlympicsApplication.getAppContext().getResources()
+                        .getIdentifier(resultsModels.get(position).competitorModel.getCountryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
+                try {
+                    teamCardViewHolder.id_country_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid)));
+                }
+                catch (Exception ex)
+                {
+                    teamCardViewHolder.id_country_image.setVisibility(View.GONE);
+                    System.out.println("Exeptipn == "+ex);
+                }
+                teamCardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
+                teamCardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
+                teamCardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
                 break;
             case TYPE_IND_HEAD2HEAD_COMPET:
                 break;
@@ -178,7 +195,6 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     {
         private TextView id_country_alias;
         private ImageView id_country_image;
-        private TextView id_number_rounds;
         private TextView id_score;
         private TextView id_rank;
         private TextView id_score_header;
@@ -188,7 +204,6 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             id_rank =(TextView) itemView.findViewById(R.id.id_rank);
             id_country_image = (ImageView) itemView.findViewById(R.id.id_country_image);
             id_country_alias =(TextView) itemView.findViewById(R.id.id_country_alias);
-            id_number_rounds =(TextView) itemView.findViewById(R.id.id_number_rounds);
             id_score =(TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
         }
