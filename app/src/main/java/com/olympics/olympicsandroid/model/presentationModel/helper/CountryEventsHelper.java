@@ -100,7 +100,7 @@ public class CountryEventsHelper {
                     }
                     Athlete athlete = new Athlete();
                     String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" :
-                                    participant.getFirst_name();
+                            participant.getFirst_name();
                     String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" :
                             participant.getLast_name();
                     StringBuilder stringBuilder = new StringBuilder(firstName).append(" ").append
@@ -158,7 +158,7 @@ public class CountryEventsHelper {
 
                 //Set sports
                 Map<String, DateSportsModel.SportsEventsUnits> sportsEventsUnits =
-                            dateSportsModel.getAllSportsForDate();
+                        dateSportsModel.getAllSportsForDate();
 
                 if (sportsEventsUnits == null) {
                     sportsEventsUnits = new HashMap<>();

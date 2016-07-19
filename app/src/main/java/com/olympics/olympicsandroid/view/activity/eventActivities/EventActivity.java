@@ -64,7 +64,7 @@ public class EventActivity extends Activity implements IUIListener
         {
             unitID = getIntent().getStringExtra("event_unit_id");
         }
-        eventunitView = (RecyclerView)findViewById(R.id.event_list);
+        eventunitView = (RecyclerView)findViewById(R.id.eventlist_recycler_view);
 
         mLayoutManager = new LinearLayoutManager(this);
         eventunitView.setPadding(10, 10, 10, 10);
