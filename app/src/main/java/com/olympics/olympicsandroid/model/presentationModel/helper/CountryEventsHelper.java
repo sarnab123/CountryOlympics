@@ -110,6 +110,7 @@ public class CountryEventsHelper {
                     athlete.setAthleteGender(participant.getGender());
                     if (participatingEvent.getSport() != null) {
                         athlete.setSportName(participatingEvent.getSport().getDescription());
+                        athlete.setSportsAlias(participatingEvent.getSport().getAlias());
                     }
                     athleteList.add(athlete);
                 }
@@ -133,6 +134,7 @@ public class CountryEventsHelper {
                             athlete.setAthleteGender(participant.getGender());
                             if (participatingEvent.getSport() != null) {
                                 athlete.setSportName(participatingEvent.getSport().getDescription());
+                                athlete.setSportsAlias(participatingEvent.getSport().getAlias());
                             }
                             athleteList.add(athlete);
                         }
@@ -151,6 +153,11 @@ public class CountryEventsHelper {
 
                 if (dateSportsModel == null) {
                     dateSportsModel = new DateSportsModel();
+
+//                    Log.e("UNIT START DATE", olympicEventUnit.getStart_date());
+//                    Log.e("UNIT START DATE MILI", DateUtils.getDateTimeInMillis(olympicEventUnit
+//                            .getStart_date()));
+//                    Log.e("UNIT NAME", olympicEventUnit.getName());
                     dateSportsModel.setDateString(Long.parseLong(unitStartDate));
                     dateSportsMapping.put(unitStartDate, dateSportsModel);
                     continue;
@@ -215,8 +222,8 @@ public class CountryEventsHelper {
         EventUnitModel eventUnitModel = new EventUnitModel();
         eventUnitModel.setEventID(olympicEvent.getId());
         eventUnitModel.setUnitName(olympicUnit.getName());
-        eventUnitModel.setEventStartTime(DateUtils.getDateTimeInMillis(olympicUnit
-                .getStart_date()));
+        eventUnitModel.setEventStartTime(DateUtils.getDateTimeInMillis(olympicUnit.getStart_date
+                ()));
         eventUnitModel.setEventGender(olympicEvent.getGender());
         eventUnitModel.setEventName(olympicEvent.getDescription());
         if(olympicEvent.getTeams() != null && olympicEvent.getTeams().size() > 0)

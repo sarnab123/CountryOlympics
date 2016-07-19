@@ -1,6 +1,7 @@
 package com.olympics.olympicsandroid.view.activity;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -107,14 +108,14 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 
         class ViewHolder extends RecyclerView.ViewHolder
         {
-            private ImageView genderIconView;
+            private ImageView sportsIconView;
             private TextView athleteNameView;
             private TextView eventView;
 
             public ViewHolder(View itemView) {
                 super(itemView);
 
-                genderIconView = (ImageView)itemView.findViewById(R.id.id_gender_icon);
+                sportsIconView = (ImageView)itemView.findViewById(R.id.id_sports_icon);
                 athleteNameView = (TextView)itemView.findViewById(R.id.id_athlete_name);
                 eventView = (TextView)itemView.findViewById(R.id.id_participating_event);
             }
@@ -145,6 +146,16 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
                             .append(WOMEN_SPORTS_STR).toString();
                 }
                 holder.eventView.setText(athleteDetail);
+
+                int rid = getResources()
+                        .getIdentifier(athleteObj.getSportsAlias().toLowerCase(), "raw", getPackageName());
+                try {
+                    holder.sportsIconView.setImageBitmap(BitmapFactory.decodeStream(getResources
+                            ().openRawResource(rid)));
+                } catch (Exception ex)
+                {
+                    System.out.println("Exeptipn == "+ex);
+                }
             }
         }
 
@@ -152,7 +163,6 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         public int getItemCount() {
             return athleteList != null ?athleteList.size() :0;
         }
-
 
     }
 }

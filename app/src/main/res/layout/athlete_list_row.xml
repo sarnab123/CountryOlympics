@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-
-    >
+                android:layout_height="wrap_content">
 
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"
-        android:background="@drawable/player"
-        android:id="@+id/id_gender_icon"/>
+        android:id="@+id/id_sports_icon"/>
 
     <TextView
         android:id="@+id/id_athlete_name"
@@ -23,7 +19,7 @@
         android:textStyle="bold"
         android:paddingTop="15dp"
         android:layout_marginLeft="35dp"
-        android:layout_toRightOf="@id/id_gender_icon"
+        android:layout_toRightOf="@id/id_sports_icon"
         android:text="12"
         />
 
@@ -34,7 +30,7 @@
         android:layout_alignLeft="@id/id_athlete_name"
         android:layout_below="@id/id_athlete_name"
         android:layout_marginBottom="15dp"
-        android:layout_toRightOf="@id/id_gender_icon"
+        android:layout_toRightOf="@id/id_sports_icon"
         android:textSize="14sp"
         />
 

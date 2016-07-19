@@ -137,7 +137,11 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 if(resultsModels.get(position).sportsTitle.getUnit_medal_type() != EventUnitModel.UNIT_MEDAL_NONE)
                 {
                     unitHeaderHolder.medalImage.setVisibility(View.VISIBLE);
-                    unitHeaderHolder.medalImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.goldmedal, null));
+                    if(resultsModels.get(position).sportsTitle.getUnit_medal_type() ==  EventUnitModel.UNIT_MEDAL_GOLD) {
+                        unitHeaderHolder.medalImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.goldmedal, null));
+                    } else if(resultsModels.get(position).sportsTitle.getUnit_medal_type() ==  EventUnitModel.UNIT_MEDAL_BRONZE) {
+                        unitHeaderHolder.medalImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.bronzemedal, null));
+                    }
                 }
                 else{
                     unitHeaderHolder.medalImage.setVisibility(View.GONE);

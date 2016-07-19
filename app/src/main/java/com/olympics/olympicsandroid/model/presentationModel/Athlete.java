@@ -1,7 +1,6 @@
 package com.olympics.olympicsandroid.model.presentationModel;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by sarnab.poddar on 7/10/16.
@@ -14,7 +13,7 @@ public class Athlete implements Serializable
 
     private String sportName;
 
-    private List<EventUnitModel> eventsParticipating;
+    private String sportsAlias;
 
     public String getAthleteGender() {
         return athleteGender;
@@ -32,15 +31,19 @@ public class Athlete implements Serializable
         this.athleteName = athleteName;
     }
 
-    public List<EventUnitModel> getEventsParticipating() {
-        return eventsParticipating;
-    }
-
     public String getSportName() {
         return sportName;
     }
 
     public void setSportName(String sportName) {
         this.sportName = sportName;
+    }
+
+    public String getSportsAlias() {
+        return sportsAlias;
+    }
+
+    public void setSportsAlias(String sportsAlias) {
+        this.sportsAlias = sportsAlias;
     }
 }
