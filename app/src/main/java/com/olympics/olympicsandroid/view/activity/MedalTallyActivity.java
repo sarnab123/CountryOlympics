@@ -158,9 +158,13 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
         public void onBindViewHolder(MedalTallyListAdapter.ViewHolder holder, int position)
         {
             //Change row for selected country
-            if (position == 0) {
-//                holder.medalRowLayout.setBackgroundResource(R.drawable.medal_first_row_border);
+            if (medalTallyList.get(position).getCountryName().equalsIgnoreCase(OlympicsPrefs
+                    .getInstance(null).getUserSelectedCountry().getDescription())) {
+                holder.medalRowLayout.setBackgroundResource(R.drawable.medal_first_row_border);
                 holder.dividerView.setVisibility(View.GONE);
+            } else {
+                holder.medalRowLayout.setBackgroundResource(0);
+                holder.dividerView.setVisibility(View.VISIBLE);
             }
 
             MedalTallyOrganization medalTallyObj = medalTallyList.get(position);
