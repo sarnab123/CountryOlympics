@@ -33,7 +33,7 @@ public class EventResultsController
         // Set Request Policy
         RequestPolicy requestPolicy = new RequestPolicy();
         requestPolicy.setUrlReplacement(eventID);
-
+        listenerWeakReference.get().handleLoadingIndicator(true);
         CustomXMLRequest<EventResultsModel> countryRequest =
                 new CustomXMLRequest<EventResultsModel>(OlympicRequestQueries.EVENT_RESULTS,EventResultsModel.class,createEventSuccessListener(),createEventFailureListener(),requestPolicy);
         VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
@@ -44,6 +44,7 @@ public class EventResultsController
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                listenerWeakReference.get().handleLoadingIndicator(false);
                 System.out.println("error == " + error);
             }
         };
@@ -57,7 +58,7 @@ public class EventResultsController
 
                 UnitResultsViewModel unitResultsViewModel = eventResultsHelper.getListOfEventUnits();
 
-
+                listenerWeakReference.get().handleLoadingIndicator(false);
                 listenerWeakReference.get().onSuccess(unitResultsViewModel);
             }
         };

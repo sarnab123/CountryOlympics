@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
@@ -40,6 +41,8 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
     private LinearLayoutManager mLayoutManager;
 
     private EventListAdapter eventListAdapter;
+    private CircleProgressBar mProgressView;
+    private View mNoItemsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,10 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(disciplineName);
         toolbar.setNavigationOnClickListener(navigationClickListener);
+
+
+        mProgressView = (CircleProgressBar)findViewById(R.id.task_progress);
+        mNoItemsView = findViewById(R.id.tv_no_units);
 
 
         eventunitView = (RecyclerView) findViewById(R.id.eventlist_recycler_view);
@@ -122,6 +129,14 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         UnitResultsViewModel resultsViewModel = (UnitResultsViewModel) responseModel;
 
         List<EventListAdapter.Result> results = prepareData(resultsViewModel);
+
+        if(results == null || results.size() == 0)
+        {
+            mNoItemsView.setVisibility(View.VISIBLE);
+        }
+        else{
+            mNoItemsView.setVisibility(View.GONE);
+        }
 
         eventListAdapter.updateData(results);
         eventListAdapter.notifyDataSetChanged();
@@ -264,11 +279,19 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
     @Override
     public void onFailure(ErrorModel errorModel) {
-
+        mNoItemsView.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void handleLoadingIndicator(boolean showLoadingInd) {
+    public void handleLoadingIndicator(boolean showLoadingInd)
+    {
+        if(showLoadingInd)
+        {
+            mProgressView.setVisibility(View.VISIBLE);
+        }
+        else{
+            mProgressView.setVisibility(View.GONE);
+        }
 
     }
 }

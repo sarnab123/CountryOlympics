@@ -25,6 +25,13 @@ public class ActivityFactory
         originCTX.startActivity(countrySelectionLaunch);
     }
 
+    public static void openCountrySelectionScreenForResult(Activity originCTX,Intent countrySelectionLaunch, int resultCode)
+    {
+        countrySelectionLaunch.setClass(originCTX,CountrySelectionActivity.class);
+
+        originCTX.startActivityForResult(countrySelectionLaunch,resultCode);
+    }
+
     public static void openMainActivity(Context originCTX, Bundle extras)
     {
         Intent homeLaunch = new Intent(originCTX,OlympicsActivity.class);

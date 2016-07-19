@@ -20,6 +20,11 @@ public class DateEventAdapter extends FragmentPagerAdapter
         this.mCountryEventUnitModel = countryEventUnitModel;
     }
 
+    public void updateModel(CountryEventUnitModel countryEventUnitModel)
+    {
+        this.mCountryEventUnitModel = countryEventUnitModel;
+    }
+
     @Override
     public Fragment getItem(int position) {
 

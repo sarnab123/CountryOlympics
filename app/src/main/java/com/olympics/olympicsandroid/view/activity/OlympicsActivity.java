@@ -45,6 +45,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
     private ViewPager mViewPager;
 
+    private static int REQUEST_CODE_COUNTRY = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +63,13 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        setUpData();
 
+    }
+
+
+    private void setUpData()
+    {
         //Display country information in navigation drawer
         displaySelectedCountryInfo();
 
@@ -76,7 +84,6 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         medalTallyController.getMedalTallyData();
 
         View headerLayout = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
-
     }
 
 
@@ -117,11 +124,24 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                     public void onClick(View v) {
                         Intent intent = new Intent();
                         intent.putExtra("first_launch",false);
-                        ActivityFactory.openCountrySelectionScreen(OlympicsActivity.this,intent);
+                        ActivityFactory.openCountrySelectionScreenForResult(OlympicsActivity.this, intent,REQUEST_CODE_COUNTRY);
                     }
                 });
             } catch (Exception ex) {
                 System.out.println("Exeptipn == " + ex);
+            }
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REQUEST_CODE_COUNTRY)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                String countryCode =data.getStringExtra("COUNTRY_CODE");
+                setUpData();
             }
         }
     }
@@ -164,15 +184,21 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     @Override
     public void onSuccess(IResponseModel responseModel) {
         if (responseModel instanceof CountryEventUnitModel) {
-            mSectionsPagerAdapter = new DateEventAdapter(getSupportFragmentManager(),
-                    (CountryEventUnitModel) responseModel);
+            if(mSectionsPagerAdapter == null) {
+                mSectionsPagerAdapter = new DateEventAdapter(getSupportFragmentManager(),
+                        (CountryEventUnitModel) responseModel);
 
-            // Set up the ViewPager with the sections adapter.
-            mViewPager = (ViewPager) findViewById(R.id.container);
-            mViewPager.setAdapter(mSectionsPagerAdapter);
+                // Set up the ViewPager with the sections adapter.
+                mViewPager = (ViewPager) findViewById(R.id.container);
+                mViewPager.setAdapter(mSectionsPagerAdapter);
 
-            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-            tabLayout.setupWithViewPager(mViewPager);
+                TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+                tabLayout.setupWithViewPager(mViewPager);
+            }
+            else{
+                mSectionsPagerAdapter.updateModel((CountryEventUnitModel) responseModel);
+                mSectionsPagerAdapter.notifyDataSetChanged();
+            }
         } else if (responseModel instanceof MedalTally)
         {
             //Display Medal info

@@ -3,6 +3,7 @@ package com.olympics.olympicsandroid.view.activity;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -192,6 +193,11 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
         if(isFirstLaunch)
         {
             ActivityFactory.openMainActivity(this, null);
+        }
+        else{
+            Intent intent=new Intent();
+            intent.putExtra("COUNTRY_CODE",OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias());
+            setResult(RESULT_OK,intent);
         }
         finish();
     }

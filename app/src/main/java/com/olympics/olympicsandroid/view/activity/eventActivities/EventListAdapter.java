@@ -302,7 +302,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             id_score =(TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
 
-            id_outcome_1 =(TextView) itemView.findViewById(R.id.id_outcome);
+            id_outcome_1 =(TextView) itemView.findViewById(R.id.id_outcome_1);
             id_athlete_name_1 =(TextView) itemView.findViewById(R.id.id_athlete_name_1);
             id_score_1 =(TextView) itemView.findViewById(R.id.id_score_1);
         }

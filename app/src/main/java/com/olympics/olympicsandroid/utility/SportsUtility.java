@@ -25,10 +25,11 @@ public class SportsUtility {
     public static final int TYPE_MIXED = 5;
 
 
-    public static final String OUTCOME_WIN = "outcome_win";
-    public static final String OUTCOME_LOSS = "outcome_loss";
-    public static final String OUTCOME_ONGOING = "outcome_ongoing";
-    public static final String OUTCOME_TIE = "outcome_tie";
+    public static final String OUTCOME_WIN = "WIN";
+    public static final String OUTCOME_LOSS = "LOSS";
+    public static final String OUTCOME_ONGOING = "LIVE";
+    public static final String OUTCOME_TIE = "TIE";
+    public static final String OUTCOME_SCHEDULED = "Scheduled";
 
     public static final String SPORT_FOOTBALL = "football";
     public static final String SPORT_TENNIS = "tennis";
@@ -183,7 +184,7 @@ public class SportsUtility {
                 return OUTCOME_ONGOING;
             }
         }
-        return OUTCOME_ONGOING;
+        return OUTCOME_SCHEDULED;
     }
 
     public String getResult(String disciplineName, EventResultsViewModel eventResultsViewModel, EventResultCompetitor competitor)
@@ -231,7 +232,8 @@ public class SportsUtility {
                 {
                     if (sportRelation.getPointTypes() != null) {
                         for (SportsUtilityModel.SportRelation.PointType pointType : sportRelation.getPointTypes()) {
-                            if (eventResultsViewModel.getUnit_name().contains(pointType.getType())) {
+                            if (!TextUtils.isEmpty(eventResultsViewModel.getUnit_name()) &&
+                                    eventResultsViewModel.getUnit_name().toLowerCase().contains(pointType.getType().toLowerCase())) {
                                 return pointType.getValue();
                             }
                         }

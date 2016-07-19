@@ -13,22 +13,18 @@
     android:gravity="center"
     >
 
-    <ProgressBar
+    <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
         android:id="@+id/task_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:mlpb_progress_color="#566da9"
+        app:mlpb_show_arrow="true"
+        app:mlpb_enable_circle_background="false"
+        app:mlpb_arrow_height="10dp"
+        app:mlpb_arrow_width="20dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:visibility="gone" />
-    <ImageView
-        android:id="@+id/iv_preview"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        android:scaleType="fitCenter"
-        />
 
 
     <!-- A RecyclerView with some commonly used attributes -->

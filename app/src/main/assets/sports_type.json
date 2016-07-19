@@ -32,8 +32,12 @@
       "discipline":"archery",
       "subDiscipline": [
         {
-          "keyword":"ranking",
+          "keyword":"individual ranking",
           "type":"ind"
+        },
+        {
+          "keyword":"team ranking",
+          "type":"team"
         },
         {
           "keyword":"team",
@@ -44,8 +48,12 @@
       "score_type":"Sets",
       "scoring_type":[
         {
-          "type": "ranking",
+          "type": "individual ranking",
           "value": "Points"
+        },
+        {
+          "type":"team ranking",
+          "value":"Points"
         }
       ]
     },
