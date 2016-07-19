@@ -21,15 +21,21 @@ import android.widget.TextView;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
+import com.olympics.olympicsandroid.model.MedalTally;
+import com.olympics.olympicsandroid.model.MedalTallyOrganization;
 import com.olympics.olympicsandroid.model.Organization;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.controller.CountryScheduleController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
+import com.olympics.olympicsandroid.networkLayer.controller.MedalTallyController;
+import com.olympics.olympicsandroid.utility.MedalTallyComparator;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 import com.olympics.olympicsandroid.view.fragment.DateEventAdapter;
 
 import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.List;
 
 public class OlympicsActivity extends AppCompatActivity implements NavigationView
         .OnNavigationItemSelectedListener, IUIListener {
@@ -62,7 +68,19 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         CountryScheduleController scheduleController = new CountryScheduleController(new
                 WeakReference<IUIListener>(this), getApplication());
         scheduleController.getCountryDetails();
+
+        //Call MedalTally API through controller
+        //Request for MedalTally Data through controller
+        MedalTallyController medalTallyController = new MedalTallyController(new
+                WeakReference<IUIListener>(this), getApplication());
+        medalTallyController.getMedalTallyData();
+
+        View headerLayout = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
+
     }
+
+
+
 
     /**
      * This method displays country information in navigation drawer
@@ -75,6 +93,13 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         View headerLayout = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
 
         if (headerLayout != null) {
+            headerLayout.findViewById(R.id.CountryView).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(OlympicsActivity.this,CountrySelectionActivity.class));
+                }
+            });
+
             //Setup Selected Country Name
             TextView countryNameTxt = (TextView) headerLayout.findViewById(R.id.countryTextView);
             if (countryNameTxt != null && !TextUtils.isEmpty(countryInfo.getDescription())) {
@@ -148,6 +173,43 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
             TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
             tabLayout.setupWithViewPager(mViewPager);
+        } else if (responseModel instanceof MedalTally)
+        {
+            //Display Medal info
+            displayMedalInfoForCountry((MedalTally) responseModel);
+        }
+    }
+
+    /**
+     * This method is responsible for displaying selected country's medal tally.
+     * @param medalTallyObj
+     */
+    private void displayMedalInfoForCountry(MedalTally medalTallyObj) {
+
+        if (medalTallyObj != null && medalTallyObj.getOrganization() != null && !medalTallyObj
+                .getOrganization().isEmpty()) {
+
+            List<MedalTallyOrganization> medaltallyOrgList = medalTallyObj.getOrganization();
+
+            Collections.sort(medaltallyOrgList, new MedalTallyComparator(OlympicsPrefs.getInstance(null)
+                    .getUserSelectedCountry()));
+
+            View headerLayout = ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0);
+
+            if (headerLayout != null) {
+                if (!TextUtils.isEmpty(medaltallyOrgList.get(0).getGold())) {
+                    ((TextView) headerLayout.findViewById(R.id.gold_medal_count)).setText(medaltallyOrgList.get(0).getGold());
+                }
+                if (!TextUtils.isEmpty(medaltallyOrgList.get(0).getSilver())) {
+                    ((TextView) headerLayout.findViewById(R.id.silver_medal_count)).setText
+                            (medaltallyOrgList.get(0).getSilver());
+                }
+                if (!TextUtils.isEmpty(medaltallyOrgList.get(0).getBronze())) {
+                    ((TextView) headerLayout.findViewById(R.id.bronze_medal_count)).setText(medaltallyOrgList
+                            .get
+                            (0).getBronze());
+                }
+            }
         }
     }
 

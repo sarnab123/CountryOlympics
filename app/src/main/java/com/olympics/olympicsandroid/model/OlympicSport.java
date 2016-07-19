@@ -15,6 +15,9 @@ public class OlympicSport
     @Attribute
     private String description;
 
+    @Attribute
+    private String alias;
+
     @ElementList(required = false)
     private List<OlympicDiscipline> disciplines;
 
@@ -24,5 +27,9 @@ public class OlympicSport
 
     public String getDescription() {
         return description;
+    }
+
+    public String getAlias() {
+        return alias;
     }
 }
