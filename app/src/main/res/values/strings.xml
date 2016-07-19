@@ -18,5 +18,6 @@
     <string name="id_outcome">Outcome</string>
     <string name="country_page_name">Country</string>
     <string name="schedule_page_name">Schedule</string>
+    <string name="list_tasks_noitem_msg">No Competitors from the Selected Country</string>
 
 </resources>

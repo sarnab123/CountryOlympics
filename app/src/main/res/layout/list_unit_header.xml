@@ -10,11 +10,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <com.olympics.olympicsandroid.view.customView.GothamBookTextView
-        android:id="@+id/id_event_title"
-        android:textSize="18sp"
+        android:id="@+id/id_unit_title"
+        android:textSize="12sp"
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
         android:textColor="@android:color/white"
         android:layout_height="match_parent"
         />
+    <ImageView
+        android:id="@+id/id_medal_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/id_unit_title"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"/>
 </RelativeLayout>

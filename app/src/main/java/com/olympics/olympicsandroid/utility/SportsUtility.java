@@ -24,7 +24,7 @@ public class SportsUtility {
 
     public static final String OUTCOME_WIN = "outcome_win";
     public static final String OUTCOME_LOSS = "outcome_loss";
-    public static final String OUTCOME_ONGOING = "outcome_outgoing";
+    public static final String OUTCOME_ONGOING = "outcome_ongoing";
     public static final String OUTCOME_TIE = "outcome_tie";
 
     public static final String SPORT_FOOTBALL = "football";
@@ -149,11 +149,11 @@ public class SportsUtility {
             {
                 if(!TextUtils.isEmpty(competitor.getOutcome()))
                 {
-                    if(competitor.getOutcome().equalsIgnoreCase("loss"))
+                    if(competitor.getOutcome().equalsIgnoreCase("loss") || competitor.getOutcome().equalsIgnoreCase("defeat"))
                     {
                         return OUTCOME_LOSS;
                     }
-                    else if(competitor.getOutcome().equalsIgnoreCase("win"))
+                    else if(competitor.getOutcome().equalsIgnoreCase("win") || competitor.getOutcome().equalsIgnoreCase("victory"))
                     {
                         return OUTCOME_WIN;
                     }

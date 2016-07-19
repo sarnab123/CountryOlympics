@@ -122,8 +122,97 @@ public class EventResultsViewModel implements IResponseModel
 
     private List<CompetitorViewModel> competitorViewModelList;
 
+    private CompetitorHeadtoHeadViewModel competitorH2HViewModel;
+
+    public CompetitorHeadtoHeadViewModel getCompetitorH2HViewModel() {
+        return competitorH2HViewModel;
+    }
+
+    public void setCompetitorH2HViewModel(CompetitorHeadtoHeadViewModel competitorH2HViewModel) {
+        this.competitorH2HViewModel = competitorH2HViewModel;
+    }
+
     public class CompetitorViewModel
     {
+        private String countryAlias;
+
+        private String competitorID;
+        private String competitorName;
+
+        private String rank;
+
+        // This is to update the score header , this can be : points/sets/time
+        private String unit_scoring_type;
+
+        // win/loss/draw
+        private String outcome;
+
+        // if status = closed , then the result from competitor.
+        // else if status = in progress, then the result from score object.
+        private String result;
+
+        public String getUnit_scoring_type() {
+            return unit_scoring_type;
+        }
+
+        public void setUnit_scoring_type(String unit_scoring_type) {
+            this.unit_scoring_type = unit_scoring_type;
+        }
+
+        public String getRank() {
+            return rank;
+        }
+
+        public void setRank(String rank) {
+            this.rank = rank;
+        }
+
+        public String getCountryAlias() {
+            return countryAlias;
+        }
+
+        public String getCompetitorID() {
+            return competitorID;
+        }
+
+        public String getCompetitorName() {
+            return competitorName;
+        }
+
+        public String getOutcome() {
+            return outcome;
+        }
+
+        public String getResult() {
+            return result;
+        }
+
+        public void setCompetitorID(String competitorID) {
+            this.competitorID = competitorID;
+        }
+
+        public void setCompetitorName(String competitorName) {
+            this.competitorName = competitorName;
+        }
+
+        public void setCountryAlias(String countryAlias) {
+            this.countryAlias = countryAlias;
+        }
+
+        public void setOutcome(String outcome) {
+            this.outcome = outcome;
+        }
+
+        public void setResult(String result) {
+            this.result = result;
+        }
+    }
+
+    public class CompetitorHeadtoHeadViewModel
+    {
+
+        private String unitID;
+
         private String countryAlias;
 
         private String competitorID;
@@ -137,6 +226,87 @@ public class EventResultsViewModel implements IResponseModel
         // if status = closed , then the result from competitor.
         // else if status = in progress, then the result from score object.
         private String result;
+
+        // This is to update the score header , this can be : points/sets/time
+        private String unit_scoring_type;
+
+        private String opp_countryAlias;
+
+        private String opp_competitorID;
+        private String opp_competitorName;
+
+        private String opp_rank;
+
+        // win/loss/draw
+        private String opp_outcome;
+
+        // if status = closed , then the result from competitor.
+        // else if status = in progress, then the result from score object.
+        private String opp_result;
+
+        public String getUnitID() {
+            return unitID;
+        }
+
+        public String getOpp_competitorID() {
+            return opp_competitorID;
+        }
+
+        public String getOpp_competitorName() {
+            return opp_competitorName;
+        }
+
+        public String getOpp_countryAlias() {
+            return opp_countryAlias;
+        }
+
+        public String getOpp_outcome() {
+            return opp_outcome;
+        }
+
+        public String getOpp_rank() {
+            return opp_rank;
+        }
+
+        public String getOpp_result() {
+            return opp_result;
+        }
+
+        public String getUnit_scoring_type() {
+            return unit_scoring_type;
+        }
+
+        public void setUnit_scoring_type(String unit_scoring_type) {
+            this.unit_scoring_type = unit_scoring_type;
+        }
+
+        public void setOpp_competitorID(String opp_competitorID) {
+            this.opp_competitorID = opp_competitorID;
+        }
+
+        public void setOpp_competitorName(String opp_competitorName) {
+            this.opp_competitorName = opp_competitorName;
+        }
+
+        public void setOpp_countryAlias(String opp_countryAlias) {
+            this.opp_countryAlias = opp_countryAlias;
+        }
+
+        public void setOpp_outcome(String opp_outcome) {
+            this.opp_outcome = opp_outcome;
+        }
+
+        public void setOpp_rank(String opp_rank) {
+            this.opp_rank = opp_rank;
+        }
+
+        public void setOpp_result(String opp_result) {
+            this.opp_result = opp_result;
+        }
+
+        public void setUnitID(String unitID) {
+            this.unitID = unitID;
+        }
 
         public String getRank() {
             return rank;
