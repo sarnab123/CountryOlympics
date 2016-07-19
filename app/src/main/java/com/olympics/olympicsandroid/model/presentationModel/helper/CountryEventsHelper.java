@@ -152,16 +152,17 @@ public class CountryEventsHelper {
                 DateSportsModel dateSportsModel = dateSportsMapping.get(unitStartDate);
 
                 if (dateSportsModel == null) {
-                    dateSportsModel = new DateSportsModel();
+                    continue;
+                }
 
 //                    Log.e("UNIT START DATE", olympicEventUnit.getStart_date());
 //                    Log.e("UNIT START DATE MILI", DateUtils.getDateTimeInMillis(olympicEventUnit
 //                            .getStart_date()));
 //                    Log.e("UNIT NAME", olympicEventUnit.getName());
-                    dateSportsModel.setDateString(Long.parseLong(unitStartDate));
-                    dateSportsMapping.put(unitStartDate, dateSportsModel);
-                    continue;
-                }
+                dateSportsModel.setDateString(Long.parseLong(unitStartDate));
+                dateSportsMapping.put(unitStartDate, dateSportsModel);
+
+
 
                 //Set sports
                 Map<String, DateSportsModel.SportsEventsUnits> sportsEventsUnits =
@@ -177,24 +178,25 @@ public class CountryEventsHelper {
 
                 if (sportsEventsUnit == null) {
                     sportsEventsUnit = new DateSportsModel.SportsEventsUnits();
-                    sportsEventsUnit.setSportsTitle(participatingEvent.getSport().getDescription());
-                    sportsEventsUnits.put(participatingEvent.getSport().getDescription(), sportsEventsUnit);
                 }
+                    sportsEventsUnit.setSportsTitle(participatingEvent.getSport().getDescription());
+                    sportsEventsUnits.put(participatingEvent.getSport().getDescription(),
+                            sportsEventsUnit);
+
 
                 List<EventUnitModel> eventUnitModelList = sportsEventsUnit.getEventUnits();
                 if (eventUnitModelList == null) {
                     eventUnitModelList = new ArrayList<>();
-                    sportsEventsUnit.setEventUnits(eventUnitModelList);
                 }
+                    sportsEventsUnit.setEventUnits(eventUnitModelList);
+
 
                 eventUnitModelList.add(populateEventUnitData(olympicEventUnit, participatingEvent));
             }
         }
-
+        countryEventUnitModel.setDatesCountryMapping(dateSportsMapping);
         countryEventUnitModel.setAthleteList(athleteList);
-
-
-    }
+  }
 
     /**
      * Populates map of <EventID, Event> from schedule API.
