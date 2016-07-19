@@ -31,6 +31,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ResultsTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/AthletecolorPrimary</item>
+        <item name="colorPrimaryDark">@color/AthletecolorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="MedalTallyTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@android:color/holo_blue_dark</item>

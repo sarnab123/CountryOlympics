@@ -3,6 +3,10 @@
     {
       "discipline":"diving",
       "type":"ind",
+      "subDiscipline": [{
+      "keyword":"sync",
+      "type": "team"
+    }],
       "score_type":"Points"
     },
     {
@@ -15,7 +19,7 @@
       "score_type":"Time"
     },
     {
-      "discipline":"synchronized swimming",
+      "discipline":"synchronised swimming",
       "type":"team",
       "score_type":"Points"
     },
@@ -89,16 +93,16 @@
       "score_type":"Points"
     },
     {
-      "discipline":"canoeing",
+      "discipline":"canoe",
       "type":"team",
       "score_type":"Time",
       "subDiscipline": [
         {
-        "keyword":"K1",
+        "keyword":"k1",
         "type": "ind"
       },
         {
-          "keyword":"C1",
+          "keyword":"c1",
           "type": "ind"
         }]
     },
@@ -118,7 +122,7 @@
         "keyword":"team",
         "type": "team"
       }],
-      "score_type":"Points"
+      "score_type":"Time"
     },
     {
       "discipline":"fencing",

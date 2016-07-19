@@ -76,7 +76,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             case TYPE_IND_HEAD2HEAD_COMPET:
                 view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.event_cardview_ind_rounds, parent, false);
+                        .inflate(R.layout.event_cardview_ind_head, parent, false);
 
 
                 ListIndH2HCardViewHolder listIndH2HCardViewHolder = new ListIndH2HCardViewHolder(view);
@@ -84,7 +84,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             case TYPE_TEAM_HEAD2HEAD_COMPET:
                 view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.event_cardview_ind_rounds, parent, false);
+                        .inflate(R.layout.event_cardview_team_head, parent, false);
 
 
                 ListTeamH2HCardViewHolder listTeamH2HCardViewHolder = new ListTeamH2HCardViewHolder(view);
@@ -103,7 +103,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case TYPE_IND_COMPETITOR:
 
                 ListIndividualCardViewHolder cardViewHolder = (ListIndividualCardViewHolder) holder;
-                cardViewHolder.id_athlete_name.setText(resultsModels.get(position).competitorModel.getCompetitorName());
+                cardViewHolder.id_athlete_name.setText(resultsModels.get(position).competitorModel.getCompetitorName() + "("+ resultsModels.get(position).competitorModel.getCountryAlias() +")");
                 cardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
                 cardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
                 cardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
@@ -127,8 +127,50 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 teamCardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
                 break;
             case TYPE_IND_HEAD2HEAD_COMPET:
+
+                ListIndH2HCardViewHolder indh2hHolder = (ListIndH2HCardViewHolder) holder;
+                indh2hHolder.id_athlete_name.setText(resultsModels.get(position).competitorheadModel.getCompetitorName() + "("+ resultsModels.get(position).competitorheadModel.getCountryAlias() +")");
+                indh2hHolder.id_athlete_name_1.setText(resultsModels.get(position).competitorheadModel.getOpp_competitorName()+ "("+ resultsModels.get(position).competitorheadModel.getOpp_countryAlias() +")");
+                indh2hHolder.id_outcome.setText(resultsModels.get(position).competitorheadModel.getOutcome());
+                indh2hHolder.id_outcome_1.setText(resultsModels.get(position).competitorheadModel.getOpp_outcome());
+                indh2hHolder.id_score.setText(resultsModels.get(position).competitorheadModel.getResult());
+                indh2hHolder.id_score_1.setText(resultsModels.get(position).competitorheadModel.getOpp_result());
+                indh2hHolder.id_score_header.setText(resultsModels.get(position).competitorheadModel.getUnit_scoring_type());
                 break;
             case TYPE_TEAM_HEAD2HEAD_COMPET:
+
+                ListTeamH2HCardViewHolder teamh2hviewHolder = (ListTeamH2HCardViewHolder) holder;
+                teamh2hviewHolder.id_country1_alias.setText(resultsModels.get(position).competitorheadModel.getCountryAlias());
+                teamh2hviewHolder.id_country2_alias.setText(resultsModels.get(position).competitorheadModel.getOpp_countryAlias());
+                int rid_1 = OlympicsApplication.getAppContext().getResources()
+                        .getIdentifier(resultsModels.get(position).competitorheadModel.getCountryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
+                try {
+                    teamh2hviewHolder.id_country1_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid_1)));
+                }
+                catch (Exception ex)
+                {
+                    teamh2hviewHolder.id_country1_image.setVisibility(View.GONE);
+                    System.out.println("Exeptipn == "+ex);
+                }
+
+                int rid_2 = OlympicsApplication.getAppContext().getResources()
+                        .getIdentifier(resultsModels.get(position).competitorheadModel.getOpp_countryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
+                try {
+                    teamh2hviewHolder.id_country2_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid_2)));
+                }
+                catch (Exception ex)
+                {
+                    teamh2hviewHolder.id_country2_image.setVisibility(View.GONE);
+                    System.out.println("Exeptipn == "+ex);
+                }
+
+                teamh2hviewHolder.id_outcome.setText(resultsModels.get(position).competitorheadModel.getOutcome());
+                teamh2hviewHolder.id_outcome_1.setText(resultsModels.get(position).competitorheadModel.getOpp_outcome());
+
+                teamh2hviewHolder.id_score.setText(resultsModels.get(position).competitorheadModel.getResult());
+                teamh2hviewHolder.id_score_1.setText(resultsModels.get(position).competitorheadModel.getOpp_result());
+                teamh2hviewHolder.id_score_header.setText(resultsModels.get(position).competitorheadModel.getUnit_scoring_type());
+
                 break;
             case TYPE_UNIT_HEADER:
 

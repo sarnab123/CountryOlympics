@@ -17,10 +17,13 @@ import com.olympics.olympicsandroid.networkLayer.parse.ParseTask;
  */
 public class SportsUtility {
 
+    public static final int TYPE_NOT_SET = 0;
     public static final int TYPE_INDIVUDUAL = 1;
     public static final int TYPE_TEAM = 2;
     public static final int TYPE_TEAM_HEAD2HEAD = 3;
     public static final int TYPE_INDIVUDUAL_HEAD2HEAD = 4;
+    public static final int TYPE_MIXED = 5;
+
 
     public static final String OUTCOME_WIN = "outcome_win";
     public static final String OUTCOME_LOSS = "outcome_loss";
@@ -60,18 +63,25 @@ public class SportsUtility {
     }
 
 
-    public int getTypeofSport(final String discipline, String unitName) {
+    public int getTypeofSport( String discipline, String unitName) {
         if(!TextUtils.isEmpty(unitName))
         {
             unitName = unitName.toLowerCase();
         }
+        if(!TextUtils.isEmpty(discipline))
+        {
+            discipline = discipline.toLowerCase();
+        }
+        else{
+            return TYPE_INDIVUDUAL;
+        }
         for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
-            if(discipline.equalsIgnoreCase(sportRelation.getDiscipline())) {
+            if (discipline.contains(sportRelation.getDiscipline().toLowerCase())) {
                 if (sportRelation.getSubDiscipline() != null && sportRelation.getSubDiscipline().size() > 0 && !TextUtils.isEmpty(unitName))
                 {
                     for(SportsUtilityModel.SportRelation.SubDiscipline subDiscipline: sportRelation.getSubDiscipline())
                     {
-                        if(unitName.contains(subDiscipline.getKeyword()))
+                        if(!TextUtils.isEmpty(subDiscipline.getKeyword()) && unitName.contains(subDiscipline.getKeyword().toLowerCase()))
                         {
                             return subDiscipline.getType();
                         }
@@ -210,23 +220,26 @@ public class SportsUtility {
         return "-";
     }
 
-    public String getPointType(String disciplineName, EventResultsViewModel eventResultsViewModel)
-    {
-        if(TextUtils.isEmpty(disciplineName))
-            return null;
-
+    public String getPointType(String disciplineName, EventResultsViewModel eventResultsViewModel) {
+        if (!TextUtils.isEmpty(disciplineName)) {
+            disciplineName = disciplineName.toLowerCase();
+        } else {
+            return "points";
+        }
         for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
-            if(disciplineName.equalsIgnoreCase(sportRelation.getDiscipline()))
-            {
-                if(sportRelation.getPointTypes() != null) {
-                    for (SportsUtilityModel.SportRelation.PointType pointType : sportRelation.getPointTypes()) {
-                        if (eventResultsViewModel.getUnit_name().contains(pointType.getType())) {
-                            return pointType.getValue();
+            if (disciplineName.contains(sportRelation.getDiscipline().toLowerCase())) {
+                {
+                    if (sportRelation.getPointTypes() != null) {
+                        for (SportsUtilityModel.SportRelation.PointType pointType : sportRelation.getPointTypes()) {
+                            if (eventResultsViewModel.getUnit_name().contains(pointType.getType())) {
+                                return pointType.getValue();
+                            }
                         }
                     }
+
+                    return sportRelation.getScore_type();
                 }
 
-                return sportRelation.getScore_type();
             }
 
         }
