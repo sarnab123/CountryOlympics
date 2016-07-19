@@ -9,9 +9,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -104,7 +106,9 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
 
         List<Organization> filteredCountryList = new ArrayList<>();
         for (Organization country : countryList) {
-            if (country != null && country.getDescription().toLowerCase().contains(newText)) {
+            if (country != null && (!TextUtils.isEmpty(country.getDescription()) && country
+                    .getDescription().toLowerCase().contains(newText)) || (!TextUtils.isEmpty
+                    (country.getAlias()) && country.getAlias().toLowerCase().contains(newText))) {
                 filteredCountryList.add(country);
             }
         }
@@ -205,6 +209,16 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(this);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
