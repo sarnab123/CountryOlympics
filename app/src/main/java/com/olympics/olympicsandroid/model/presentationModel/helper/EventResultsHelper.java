@@ -17,13 +17,11 @@ import java.util.List;
 /**
  * Created by sarnab.poddar on 7/17/16.
  */
-public class EventResultsHelper
-{
+public class EventResultsHelper {
 
     private EventResultsModel eventResultsModel;
 
-    public EventResultsHelper(EventResultsModel eventResultsModel)
-    {
+    public EventResultsHelper(EventResultsModel eventResultsModel) {
         this.eventResultsModel = eventResultsModel;
     }
 
@@ -37,21 +35,18 @@ public class EventResultsHelper
      *
      * This seemed very convuluted to me :(
      */
-    public UnitResultsViewModel getListOfEventUnits()
-    {
+    public UnitResultsViewModel getListOfEventUnits() {
 
         UnitResultsViewModel unitResultsViewModel = new UnitResultsViewModel();
 
         List<EventResultsViewModel> eventResultsViewModelList = new ArrayList<>();
 
-        if(eventResultsModel != null && eventResultsModel.getEvent() != null && eventResultsModel.getEvent().getUnits() != null
-                && eventResultsModel.getEvent().getUnits().size() > 0)
-        {
+        if (eventResultsModel != null && eventResultsModel.getEvent() != null && eventResultsModel.getEvent().getUnits() != null
+                && eventResultsModel.getEvent().getUnits().size() > 0) {
             String disciplineName = eventResultsModel.getEvent().getDiscipline().getDescription();
             String sportName = eventResultsModel.getEvent().getSport().getDescription();
 
-            for(OlympicUnit olympicUnit:eventResultsModel.getEvent().getUnits())
-            {
+            for (OlympicUnit olympicUnit : eventResultsModel.getEvent().getUnits()) {
                 EventResultsViewModel eventResultsViewModel = new EventResultsViewModel();
 
                 eventResultsViewModel.setUnit_id(olympicUnit.getId());
@@ -66,25 +61,23 @@ public class EventResultsHelper
 
                 eventResultsViewModel.setStart_date(DateUtils.getDateTimeInMillis(olympicUnit.getStart_date()));
 
-                if(olympicUnit.getResults() != null)
-                {
+                eventResultsViewModel.setUnit_scoring_type(SportsUtility.getInstance().getPointType(disciplineName, eventResultsViewModel));
+
+                if (olympicUnit.getResults() != null) {
                     List<EventResultsViewModel.CompetitorViewModel> listOfCompetitors = new ArrayList<>();
                     List<EventResultsViewModel.CompetitorHeadtoHeadViewModel> listOfH2HCompetitors = new ArrayList<>();
                     EventResultsViewModel.CompetitorHeadtoHeadViewModel tempCompetitors = null;
 
-                    if(eventResultsViewModel.getUnit_type() == SportsUtility.TYPE_INDIVUDUAL_HEAD2HEAD || eventResultsViewModel.getUnit_type() == SportsUtility.TYPE_TEAM_HEAD2HEAD)
-                    {
+                    if (eventResultsViewModel.getUnit_type() == SportsUtility.TYPE_INDIVUDUAL_HEAD2HEAD || eventResultsViewModel.getUnit_type() == SportsUtility.TYPE_TEAM_HEAD2HEAD) {
                         tempCompetitors = eventResultsViewModel.new CompetitorHeadtoHeadViewModel();
                         tempCompetitors.setUnitID(eventResultsViewModel.getUnit_id());
                     }
 
-                    for(EventResultCompetitor competitor:olympicUnit.getResults())
-                    {
-                        if(tempCompetitors == null)
+                    for (EventResultCompetitor competitor : olympicUnit.getResults()) {
+                        if (tempCompetitors == null)
                         {
                             EventResultsViewModel.CompetitorViewModel competitorViewModel = eventResultsViewModel.new CompetitorViewModel();
-                            if(!TextUtils.isEmpty(competitor.getGender()))
-                            {
+                            if (!TextUtils.isEmpty(competitor.getGender())) {
                                 eventResultsViewModel.setUnit_gender(competitor.getGender());
                             }
 
@@ -94,8 +87,7 @@ public class EventResultsHelper
 
                             competitorViewModel.setCountryAlias(competitor.getOrganization());
 
-                            if(competitorViewModel.getCountryAlias().equalsIgnoreCase(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias()))
-                            {
+                            if (competitorViewModel.getCountryAlias().equalsIgnoreCase(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias())) {
                                 eventResultsViewModel.setIsSelectedCountry(true);
                             }
 
@@ -103,21 +95,18 @@ public class EventResultsHelper
 
                             competitorViewModel.setResult(SportsUtility.getInstance().getResult(disciplineName, eventResultsViewModel, competitor));
                             competitorViewModel.setRank(competitor.getRank());
+                            competitorViewModel.setUnit_scoring_type(eventResultsViewModel.getUnit_scoring_type());
 
-                            if(competitorViewModel.getCountryAlias().equalsIgnoreCase(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias()))
-                            {
+                            if(competitorViewModel.getCountryAlias().equalsIgnoreCase(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias())) {
                                 listOfCompetitors.add(competitorViewModel);
                             }
-                        } else{
-                            if(competitor.getOrganization().equalsIgnoreCase
-                                    (OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias()))
-                            {
+                        }else{
+                            if (competitor.getOrganization().equalsIgnoreCase
+                                    (OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias())) {
                                 eventResultsViewModel.setIsSelectedCountry(true);
                             }
-                            if(tempCompetitors.getCompetitorID() == null)
-                            {
-                                if(!TextUtils.isEmpty(competitor.getGender()))
-                                {
+                            if (tempCompetitors.getCompetitorID() == null) {
+                                if (!TextUtils.isEmpty(competitor.getGender())) {
                                     eventResultsViewModel.setUnit_gender(competitor.getGender());
                                 }
 
@@ -127,8 +116,7 @@ public class EventResultsHelper
 
                                 tempCompetitors.setCountryAlias(competitor.getOrganization());
 
-                                if(tempCompetitors.getCountryAlias().equalsIgnoreCase(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias()))
-                                {
+                                if (tempCompetitors.getCountryAlias().equalsIgnoreCase(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias())) {
                                     eventResultsViewModel.setIsSelectedCountry(true);
                                 }
 
@@ -137,10 +125,8 @@ public class EventResultsHelper
                                 tempCompetitors.setResult(SportsUtility.getInstance().getResult(disciplineName, eventResultsViewModel, competitor));
                                 tempCompetitors.setRank(competitor.getRank());
 
-                            } else
-                            {
-                                if(!TextUtils.isEmpty(competitor.getGender()))
-                                {
+                            } else {
+                                if (!TextUtils.isEmpty(competitor.getGender())) {
                                     eventResultsViewModel.setUnit_gender(competitor.getGender());
                                 }
 
@@ -150,8 +136,7 @@ public class EventResultsHelper
 
                                 tempCompetitors.setOpp_countryAlias(competitor.getOrganization());
 
-                                if(tempCompetitors.getCountryAlias().equalsIgnoreCase(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias()))
-                                {
+                                if (tempCompetitors.getCountryAlias().equalsIgnoreCase(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias())) {
                                     eventResultsViewModel.setIsSelectedCountry(true);
                                 }
 
@@ -163,19 +148,17 @@ public class EventResultsHelper
                         }
 
 
-
                     }
 
-                    if(eventResultsViewModel.isSelectedCountry() && tempCompetitors != null)
-                    {
+                    if (eventResultsViewModel.isSelectedCountry() && tempCompetitors != null) {
                         eventResultsViewModel.setCompetitorH2HViewModel(tempCompetitors);
                     }
 
                     eventResultsViewModel.setCompetitorViewModelList(listOfCompetitors);
-                    eventResultsViewModel.setUnit_scoring_type(SportsUtility.getInstance().getPointType(disciplineName, eventResultsViewModel));
+
                 }
 
-                if(eventResultsViewModel.isSelectedCountry()) {
+                if (eventResultsViewModel.isSelectedCountry()) {
                     eventResultsViewModelList.add(eventResultsViewModel);
                 }
             }

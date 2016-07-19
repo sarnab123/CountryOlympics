@@ -141,12 +141,23 @@ public class EventResultsViewModel implements IResponseModel
 
         private String rank;
 
+        // This is to update the score header , this can be : points/sets/time
+        private String unit_scoring_type;
+
         // win/loss/draw
         private String outcome;
 
         // if status = closed , then the result from competitor.
         // else if status = in progress, then the result from score object.
         private String result;
+
+        public String getUnit_scoring_type() {
+            return unit_scoring_type;
+        }
+
+        public void setUnit_scoring_type(String unit_scoring_type) {
+            this.unit_scoring_type = unit_scoring_type;
+        }
 
         public String getRank() {
             return rank;
@@ -216,6 +227,8 @@ public class EventResultsViewModel implements IResponseModel
         // else if status = in progress, then the result from score object.
         private String result;
 
+        // This is to update the score header , this can be : points/sets/time
+        private String unit_scoring_type;
 
         private String opp_countryAlias;
 
@@ -257,6 +270,14 @@ public class EventResultsViewModel implements IResponseModel
 
         public String getOpp_result() {
             return opp_result;
+        }
+
+        public String getUnit_scoring_type() {
+            return unit_scoring_type;
+        }
+
+        public void setUnit_scoring_type(String unit_scoring_type) {
+            this.unit_scoring_type = unit_scoring_type;
         }
 
         public void setOpp_competitorID(String opp_competitorID) {

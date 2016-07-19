@@ -9,7 +9,7 @@
     android:background="@color/headerBkg"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <TextView
+    <com.olympics.olympicsandroid.view.customView.GothamBookTextView
         android:id="@+id/id_event_title"
         android:textSize="18sp"
         android:gravity="center_vertical"

@@ -60,7 +60,7 @@
         </activity>
         <activity android:name=".view.activity.eventActivities.EventActivity"
             android:screenOrientation="portrait"
-            android:theme= "@android:style/Theme.Translucent.NoTitleBar"/>
+            android:theme="@style/AthleteTheme"/>
     </application>
 
 </manifest>

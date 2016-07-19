@@ -1,15 +1,17 @@
 package com.olympics.olympicsandroid.view.activity.eventActivities;
 
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
+import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
 import com.olympics.olympicsandroid.view.fragment.IItemClickListener;
 
 import java.util.List;
@@ -103,6 +105,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 cardViewHolder.id_athlete_name.setText(resultsModels.get(position).competitorModel.getCompetitorName());
                 cardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
                 cardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
+                cardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
                 break;
             case TYPE_TEAM_COMPETITOR:
                 break;
@@ -111,6 +114,17 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case TYPE_TEAM_HEAD2HEAD_COMPET:
                 break;
             case TYPE_UNIT_HEADER:
+
+                ListUnitHeaderHolder unitHeaderHolder = (ListUnitHeaderHolder) holder;
+                unitHeaderHolder.unitName.setText(resultsModels.get(position).sportsTitle.getUnit_name());
+                if(resultsModels.get(position).sportsTitle.getUnit_medal_type() != EventUnitModel.UNIT_MEDAL_NONE)
+                {
+                    unitHeaderHolder.medalImage.setVisibility(View.VISIBLE);
+                    unitHeaderHolder.medalImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.goldmedal, null));
+                }
+                else{
+                    unitHeaderHolder.medalImage.setVisibility(View.GONE);
+                }
                 break;
         }
 
@@ -135,21 +149,18 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         private TextView unitName;
         private ImageView medalImage;
-        private Button refreshButton;
 
 
         public ListUnitHeaderHolder(View itemView) {
             super(itemView);
             unitName = (TextView) itemView.findViewById(R.id.id_unit_title);
             medalImage = (ImageView) itemView.findViewById(R.id.id_medal_image);
-            refreshButton = (Button) itemView.findViewById(R.id.id_buttn_refresh);
         }
     }
 
     private class ListIndividualCardViewHolder extends RecyclerView.ViewHolder
     {
         private TextView id_athlete_name;
-        private TextView id_number_rounds;
         private TextView id_score;
         private TextView id_rank;
         private TextView id_score_header;
@@ -158,7 +169,6 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             super(itemView);
             id_rank =(TextView) itemView.findViewById(R.id.id_rank);
             id_athlete_name =(TextView) itemView.findViewById(R.id.id_athlete_name);
-            id_number_rounds =(TextView) itemView.findViewById(R.id.id_number_rounds);
             id_score =(TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
         }

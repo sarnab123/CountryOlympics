@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -191,11 +190,9 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private static class ListEventHeaderViewHolder extends RecyclerView.ViewHolder {
         public TextView event_title;
-        public Button refreshButton;
 
         public ListEventHeaderViewHolder(View itemView) {
             super(itemView);
-            refreshButton = (Button) itemView.findViewById(R.id.id_buttn_refresh);
             event_title = (TextView) itemView.findViewById(R.id.id_event_title);
         }
 

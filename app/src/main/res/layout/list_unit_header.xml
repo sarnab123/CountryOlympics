@@ -9,26 +9,19 @@
     android:background="@color/headerBkg"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <TextView
+    <com.olympics.olympicsandroid.view.customView.GothamBookTextView
         android:id="@+id/id_unit_title"
-        android:textSize="18sp"
+        android:textSize="12sp"
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
         android:textColor="@android:color/white"
         android:layout_height="match_parent"
         />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:textColor="@android:color/white"
-        android:visibility="gone"
-        android:id="@+id/id_buttn_refresh"
-        android:text="@string/event_refresh"
-        android:layout_alignParentRight="true"/>
     <ImageView
         android:id="@+id/id_medal_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/id_unit_title"
+        android:layout_alignParentRight="true"
         android:visibility="gone"/>
 </RelativeLayout>
