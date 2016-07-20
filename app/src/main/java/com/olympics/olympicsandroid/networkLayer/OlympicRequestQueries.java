@@ -14,8 +14,12 @@ public enum OlympicRequestQueries
     COUNTRY_CONFIG(Request.Method.GET,"/organization/2016/{countryID}/profile.xml", true , true),
     COMPLETE_SCHEDULE(Request.Method.GET,"/2016/schedule.xml", true , true),
     MEDAL_TALLY(Request.Method.GET, "/2016/medals.xml",true, true),
-    EVENT_RESULTS(Request.Method.GET,"/event/{eventID}/results.xml", true , true);
-
+    EVENT_RESULTS(Request.Method.GET,"/event/{eventID}/results.xml", true , true),
+    SPORTS_TYPE(Request.Method.GET, "https://olympics.mybluemix.net/config/getSportsData", null,
+                true, true),
+    APP_VERSION_DATA(Request.Method.GET, "https://olympics.mybluemix.net/config/getAppVersion",
+            null,
+            true, true);
 
     private int httpRequestType;
     private String relativeURL;
@@ -26,6 +30,16 @@ public enum OlympicRequestQueries
 
     OlympicRequestQueries(int httpRequestType, String relativeURL , boolean isCacheable, boolean needAPIKey)
     {
+        this.httpRequestType = httpRequestType;
+        this.relativeURL = relativeURL;
+        this.isCacheable = isCacheable;
+        this.needAPIKey = needAPIKey;
+    }
+
+    OlympicRequestQueries(int httpRequestType, String baseURL, String relativeURL , boolean
+            isCacheable, boolean needAPIKey)
+    {
+        this.baseURL = baseURL;
         this.httpRequestType = httpRequestType;
         this.relativeURL = relativeURL;
         this.isCacheable = isCacheable;
