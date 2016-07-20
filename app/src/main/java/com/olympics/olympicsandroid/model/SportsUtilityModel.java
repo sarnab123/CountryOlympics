@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by sarnab.poddar on 7/16/16.
  */
-public class SportsUtilityModel
+public class SportsUtilityModel implements IResponseModel
 {
     @Expose
     ArrayList<SportRelation> corelation;
