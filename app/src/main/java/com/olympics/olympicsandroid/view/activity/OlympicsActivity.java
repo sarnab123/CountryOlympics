@@ -64,9 +64,13 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         setUpData();
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        displaySelectedCountryInfo();
+    }
 
     private void setUpData()
     {
@@ -82,12 +86,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         MedalTallyController medalTallyController = new MedalTallyController(new
                 WeakReference<IUIListener>(this), getApplication());
         medalTallyController.getMedalTallyData();
-
-        View headerLayout = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
-    }
-
-
-
+   }
 
     /**
      * This method displays country information in navigation drawer
