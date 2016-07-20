@@ -47,6 +47,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
     private static int REQUEST_CODE_COUNTRY = 1;
 
+    private MedalTally medalTallyObj;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     protected void onResume() {
         super.onResume();
         displaySelectedCountryInfo();
+        displayMedalInfoForCountry();
     }
 
     private void setUpData()
@@ -201,15 +204,15 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         } else if (responseModel instanceof MedalTally)
         {
             //Display Medal info
-            displayMedalInfoForCountry((MedalTally) responseModel);
+            medalTallyObj = (MedalTally) responseModel;
+            displayMedalInfoForCountry();
         }
     }
 
     /**
      * This method is responsible for displaying selected country's medal tally.
-     * @param medalTallyObj
      */
-    private void displayMedalInfoForCountry(MedalTally medalTallyObj) {
+    private void displayMedalInfoForCountry() {
 
         if (medalTallyObj != null && medalTallyObj.getOrganization() != null && !medalTallyObj
                 .getOrganization().isEmpty()) {
