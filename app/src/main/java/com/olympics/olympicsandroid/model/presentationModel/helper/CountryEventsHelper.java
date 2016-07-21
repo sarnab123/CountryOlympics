@@ -155,14 +155,8 @@ public class CountryEventsHelper {
                     continue;
                 }
 
-//                    Log.e("UNIT START DATE", olympicEventUnit.getStart_date());
-//                    Log.e("UNIT START DATE MILI", DateUtils.getDateTimeInMillis(olympicEventUnit
-//                            .getStart_date()));
-//                    Log.e("UNIT NAME", olympicEventUnit.getName());
                 dateSportsModel.setDateString(Long.parseLong(unitStartDate));
                 dateSportsMapping.put(unitStartDate, dateSportsModel);
-
-
 
                 //Set sports
                 Map<String, DateSportsModel.SportsEventsUnits> sportsEventsUnits =

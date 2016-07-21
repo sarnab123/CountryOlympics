@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="@dimen/nav_header_height"
-              android:gravity="top"
-              android:orientation="vertical"
-              android:paddingBottom="@dimen/activity_vertical_margin"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingTop="@dimen/activity_vertical_margin"
-              android:theme="@style/ThemeOverlay.AppCompat.Dark">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/nav_header_height"
+                android:background="@color/NavigarionHeader"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
         android:id="@+id/HeaderView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="@dimen/nav_header_vertical_spacing"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/drawer_header"/>
 
-    <RelativeLayout
-        android:id="@+id/CountryView"
+    <TextView
+        android:id="@+id/countryTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/HeaderView"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countryTextView"
+        android:layout_centerHorizontal="true">
 
         <ImageView
             android:id="@+id/countryImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="@dimen/nav_header_vertical_spacing"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
             android:src="@android:drawable/sym_def_app_icon"/>
-
-        <TextView
-            android:id="@+id/countryTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/countryImageView"
-            android:layout_toRightOf="@id/countryImageView"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/medal_tally_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/CountryView">
 
         <TextView
             android:id="@+id/gold_medal_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/countryImageView"
             android:background="@drawable/gold_medal_for_drawer"
             android:gravity="center"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="10sp"
             />
 
@@ -61,11 +55,11 @@
             android:id="@+id/silver_medal_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/gold_medal_count"
             android:background="@drawable/silver_medal_for_drawer"
             android:gravity="center"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="10sp"/>
 
         <TextView
@@ -75,8 +69,7 @@
             android:layout_toRightOf="@id/silver_medal_count"
             android:background="@drawable/bronze_medal_for_drawer"
             android:gravity="center"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="10sp"/>
-
     </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

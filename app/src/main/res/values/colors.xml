@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+
+    <color name="colorPrimaryDark">#0091ca</color>
     <color name="colorAccent">#FF4081</color>
     <color name="headerBkg">#DDDDDD</color>
-    <color name="AthletecolorPrimary">#ee7600</color>
-    <color name="SchedulecolorPrimary">#95c96f</color>
+    <color name="AthletecolorPrimary">#f05b22</color>
+    <color name="SchedulecolorPrimary">#39961b</color>
+    <color name="NavigarionHeader">#003388</color>
+
 </resources>
