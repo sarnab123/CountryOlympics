@@ -1,6 +1,7 @@
 package com.olympics.olympicsandroid.view.activity.eventActivities;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -43,6 +44,7 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
     private EventListAdapter eventListAdapter;
     private CircleProgressBar mProgressView;
     private View mNoItemsView;
+    private SwipeRefreshLayout event_refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,10 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
         eventunitView = (RecyclerView) findViewById(R.id.eventlist_recycler_view);
 
+        event_refresh = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
+        event_refresh.setColorSchemeColors(R.color.colorPrimary,R.color.AthletecolorPrimary,R.color.SchedulecolorPrimary);
+        event_refresh.setOnRefreshListener(createRefreshListener());
+
         mLayoutManager = new LinearLayoutManager(this);
         eventunitView.setPadding(10, 10, 10, 10);
         eventunitView.setAdapter(eventListAdapter);
@@ -87,6 +93,15 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         eventunitView.setHasFixedSize(true);
 
         handleUnit();
+    }
+
+    private SwipeRefreshLayout.OnRefreshListener createRefreshListener() {
+        return new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                handleUnit();
+            }
+        };
     }
 
     private View.OnClickListener navigationClickListener = new View.OnClickListener() {
@@ -292,6 +307,7 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         else{
             mProgressView.setVisibility(View.GONE);
         }
+        event_refresh.setRefreshing(false);
 
     }
 }

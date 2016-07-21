@@ -4,43 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".view.activity.eventActivities.EventActivity"
-    tools:showIn="@layout/event_results"
-    android:gravity="center"
-    >
+    tools:showIn="@layout/event_results">
 
     <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
         android:id="@+id/task_progress"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:mlpb_progress_color="#566da9"
-        app:mlpb_show_arrow="true"
-        app:mlpb_enable_circle_background="false"
-        app:mlpb_arrow_height="10dp"
-        app:mlpb_arrow_width="20dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:visibility="gone" />
-
-
-    <!-- A RecyclerView with some commonly used attributes -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/eventlist_recycler_view"
-        android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-    <TextView
-        android:id="@+id/tv_no_units"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/list_tasks_noitem_msg"
-        android:textColor="@color/colorAccent"
         android:visibility="gone"
-        />
+        app:mlpb_arrow_height="10dp"
+        app:mlpb_arrow_width="20dp"
+        app:mlpb_enable_circle_background="false"
+        app:mlpb_progress_color="#566da9"
+        app:mlpb_show_arrow="true" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/activity_main_swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- A RecyclerView with some commonly used attributes -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/eventlist_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+
+        <TextView
+            android:id="@+id/tv_no_units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/list_tasks_noitem_msg"
+            android:textColor="@color/colorAccent"
+            android:visibility="gone" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>
