@@ -49,7 +49,13 @@ public class EventListFragment extends Fragment
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,
                 false));
         this.mDateSportsModel = (DateSportsModel) getArguments().getSerializable(DISPLAY_DATA);
-        recyclerview.setAdapter(new ExpandableListAdapter(getData(), createItemClickListener()));
+
+        if (mDateSportsModel == null || mDateSportsModel.getAllSportsForDate() ==null ||
+                mDateSportsModel.getAllSportsForDate().isEmpty()) {
+            rootView.findViewById(R.id.empty_schedule).setVisibility(View.VISIBLE);
+        }else {
+            recyclerview.setAdapter(new ExpandableListAdapter(getData(), createItemClickListener()));
+        }
 
       return rootView;
     }

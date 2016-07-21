@@ -102,7 +102,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         View headerLayout = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
 
         if (headerLayout != null) {
-            headerLayout.findViewById(R.id.CountryView).setOnClickListener(new View.OnClickListener() {
+            headerLayout.findViewById(R.id.countryTextView).setOnClickListener(new View
+                    .OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(OlympicsActivity.this,CountrySelectionActivity.class));
