@@ -2,7 +2,8 @@ package com.olympics.olympicsandroid.view.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
@@ -11,7 +12,7 @@ import com.olympics.olympicsandroid.utility.DateUtils;
 /**
  * Created by sarnab.poddar on 7/7/16.
  */
-public class DateEventAdapter extends FragmentPagerAdapter
+public class DateEventAdapter extends FragmentStatePagerAdapter
 {
     private CountryEventUnitModel mCountryEventUnitModel;
 
@@ -30,6 +31,11 @@ public class DateEventAdapter extends FragmentPagerAdapter
 
         EventListFragment eventListFragment = EventListFragment.newInstance(getSportsOfTheDay(position));
         return eventListFragment;
+    }
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        return super.instantiateItem(container, position);
     }
 
     private DateSportsModel getSportsOfTheDay (int position) {
@@ -87,5 +93,8 @@ public class DateEventAdapter extends FragmentPagerAdapter
             default:
                 return "X";
         }
+    }
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
 }
