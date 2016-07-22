@@ -3,10 +3,14 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="9dp"
-    card_view:cardBackgroundColor="@android:color/white"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardCornerRadius="3dp"
     card_view:cardElevation="2dp">
+
+    <FrameLayout
+        android:background="@drawable/cardview_border"
+        android:layout_width="4dp"
+        android:layout_height="match_parent"/>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
