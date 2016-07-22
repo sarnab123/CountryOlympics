@@ -8,7 +8,6 @@ import com.olympics.olympicsandroid.model.OlympicUnit;
 import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
 import com.olympics.olympicsandroid.model.presentationModel.UnitResultsViewModel;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
-import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.SportsUtility;
 
 import java.util.ArrayList;
@@ -62,7 +61,7 @@ public class EventResultsHelper {
 
                 eventResultsViewModel.setUnit_medal_type(SportsUtility.getInstance().getMedalType(olympicUnit.getMedal()));
 
-                eventResultsViewModel.setStart_date(DateUtils.getDateTimeInMillis(olympicUnit.getStart_date()));
+                eventResultsViewModel.setStart_date(olympicUnit.getStart_date());
 
                 eventResultsViewModel.setUnit_scoring_type(SportsUtility.getInstance().getPointType(disciplineName, eventResultsViewModel));
 

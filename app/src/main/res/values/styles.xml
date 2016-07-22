@@ -49,4 +49,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="EventTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/SchedulecolorPrimary</item>
+        <item name="colorPrimaryDark">@color/SchedulecolorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 </resources>

@@ -8,5 +8,7 @@
     <color name="AthletecolorPrimary">#f05b22</color>
     <color name="SchedulecolorPrimary">#39961b</color>
     <color name="NavigarionHeader">#003388</color>
+    <color name="event_title_color">#39961b</color>
+    <color name="athlete_color">#376CDE</color>
 
 </resources>

@@ -3,6 +3,7 @@ package com.olympics.olympicsandroid.view.activity.eventActivities;
 import android.graphics.BitmapFactory;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
+import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.view.fragment.IItemClickListener;
 
 import java.util.List;
@@ -20,8 +22,7 @@ import java.util.List;
 /**
  * Created by sarnab.poddar on 7/16/16.
  */
-public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-{
+public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public final static int TYPE_UNIT_HEADER = 1;
     public final static int TYPE_IND_COMPETITOR = 2;
@@ -32,22 +33,18 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     List<EventListAdapter.Result> resultsModels;
     IItemClickListener itemClickListener;
 
-    public EventListAdapter(IItemClickListener itemClickListener)
-    {
+    public EventListAdapter(IItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
-    public void updateData(List<EventListAdapter.Result> resultsModels)
-    {
+    public void updateData(List<EventListAdapter.Result> resultsModels) {
         this.resultsModels = resultsModels;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = null;
-        switch(viewType)
-        {
+        switch (viewType) {
 
             case TYPE_UNIT_HEADER:
                 view = LayoutInflater.from(parent.getContext())
@@ -96,14 +93,12 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
-    {
-        switch (resultsModels.get(position).type)
-        {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        switch (resultsModels.get(position).type) {
             case TYPE_IND_COMPETITOR:
 
                 ListIndividualCardViewHolder cardViewHolder = (ListIndividualCardViewHolder) holder;
-                cardViewHolder.id_athlete_name.setText(resultsModels.get(position).competitorModel.getCompetitorName() + "("+ resultsModels.get(position).competitorModel.getCountryAlias() +")");
+                cardViewHolder.id_athlete_name.setText(resultsModels.get(position).competitorModel.getCompetitorName() + "(" + resultsModels.get(position).competitorModel.getCountryAlias() + ")");
                 cardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
                 cardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
                 cardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
@@ -116,11 +111,9 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         .getIdentifier(resultsModels.get(position).competitorModel.getCountryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
                 try {
                     teamCardViewHolder.id_country_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid)));
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     teamCardViewHolder.id_country_image.setVisibility(View.GONE);
-                    System.out.println("Exeptipn == "+ex);
+                    System.out.println("Exeptipn == " + ex);
                 }
                 teamCardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
                 teamCardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
@@ -129,8 +122,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case TYPE_IND_HEAD2HEAD_COMPET:
 
                 ListIndH2HCardViewHolder indh2hHolder = (ListIndH2HCardViewHolder) holder;
-                indh2hHolder.id_athlete_name.setText(resultsModels.get(position).competitorheadModel.getCompetitorName() + "("+ resultsModels.get(position).competitorheadModel.getCountryAlias() +")");
-                indh2hHolder.id_athlete_name_1.setText(resultsModels.get(position).competitorheadModel.getOpp_competitorName()+ "("+ resultsModels.get(position).competitorheadModel.getOpp_countryAlias() +")");
+                indh2hHolder.id_athlete_name.setText(resultsModels.get(position).competitorheadModel.getCompetitorName() + "(" + resultsModels.get(position).competitorheadModel.getCountryAlias() + ")");
+                indh2hHolder.id_athlete_name_1.setText(resultsModels.get(position).competitorheadModel.getOpp_competitorName() + "(" + resultsModels.get(position).competitorheadModel.getOpp_countryAlias() + ")");
                 indh2hHolder.id_outcome.setText(resultsModels.get(position).competitorheadModel.getOutcome());
                 indh2hHolder.id_outcome_1.setText(resultsModels.get(position).competitorheadModel.getOpp_outcome());
                 indh2hHolder.id_score.setText(resultsModels.get(position).competitorheadModel.getResult());
@@ -146,22 +139,18 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         .getIdentifier(resultsModels.get(position).competitorheadModel.getCountryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
                 try {
                     teamh2hviewHolder.id_country1_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid_1)));
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     teamh2hviewHolder.id_country1_image.setVisibility(View.GONE);
-                    System.out.println("Exeptipn == "+ex);
+                    System.out.println("Exeptipn == " + ex);
                 }
 
                 int rid_2 = OlympicsApplication.getAppContext().getResources()
                         .getIdentifier(resultsModels.get(position).competitorheadModel.getOpp_countryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
                 try {
                     teamh2hviewHolder.id_country2_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid_2)));
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     teamh2hviewHolder.id_country2_image.setVisibility(View.GONE);
-                    System.out.println("Exeptipn == "+ex);
+                    System.out.println("Exeptipn == " + ex);
                 }
 
                 teamh2hviewHolder.id_outcome.setText(resultsModels.get(position).competitorheadModel.getOutcome());
@@ -176,18 +165,35 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
                 ListUnitHeaderHolder unitHeaderHolder = (ListUnitHeaderHolder) holder;
                 unitHeaderHolder.unitName.setText(resultsModels.get(position).sportsTitle.getUnit_name());
-                if(resultsModels.get(position).sportsTitle.getUnit_medal_type() != EventUnitModel.UNIT_MEDAL_NONE)
-                {
+                if (resultsModels.get(position).sportsTitle.getUnit_medal_type() != EventUnitModel.UNIT_MEDAL_NONE) {
                     unitHeaderHolder.medalImage.setVisibility(View.VISIBLE);
-                    if(resultsModels.get(position).sportsTitle.getUnit_medal_type() ==  EventUnitModel.UNIT_MEDAL_GOLD) {
-                        unitHeaderHolder.medalImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.goldmedal, null));
-                    } else if(resultsModels.get(position).sportsTitle.getUnit_medal_type() ==  EventUnitModel.UNIT_MEDAL_BRONZE) {
+                    if (resultsModels.get(position).sportsTitle.getUnit_medal_type() == EventUnitModel.UNIT_MEDAL_GOLD) {
+                        unitHeaderHolder.medalImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.gold_medal, null));
+                    } else if (resultsModels.get(position).sportsTitle.getUnit_medal_type() == EventUnitModel.UNIT_MEDAL_BRONZE) {
                         unitHeaderHolder.medalImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.bronzemedal, null));
                     }
-                }
-                else{
+                } else {
                     unitHeaderHolder.medalImage.setVisibility(View.GONE);
                 }
+
+                if (resultsModels.get(position).sportsTitle.getUnit_status() == EventUnitModel.UNIT_STATUS_SCHEDULED) {
+                    unitHeaderHolder.scheduleImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.schedule_small, null));
+                    unitHeaderHolder.scheduleImage.setVisibility(View.VISIBLE);
+                    if (!TextUtils.isEmpty(resultsModels.get(position).sportsTitle.getStart_date())) {
+                        unitHeaderHolder.schduledTime.setVisibility(View.VISIBLE);
+                        unitHeaderHolder.schduledTime.setText(DateUtils.getUnitDateWithTime(resultsModels.get(position).sportsTitle.getStart_date()));
+                    } else{
+                        unitHeaderHolder.schduledTime.setVisibility(View.GONE);
+                    }
+                } else if (resultsModels.get(position).sportsTitle.getUnit_status() == EventUnitModel.UNIT_STATUS_INPROGRESS) {
+                    unitHeaderHolder.scheduleImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.live_icon, null));
+                    unitHeaderHolder.scheduleImage.setVisibility(View.VISIBLE);
+                    unitHeaderHolder.schduledTime.setVisibility(View.GONE);
+                } else {
+                    unitHeaderHolder.scheduleImage.setVisibility(View.GONE);
+                    unitHeaderHolder.schduledTime.setVisibility(View.GONE);
+                }
+
                 break;
         }
 
@@ -200,29 +206,29 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        if(resultsModels == null)
-        {
+        if (resultsModels == null) {
             return 0;
         }
         return resultsModels.size();
     }
 
-    private class ListUnitHeaderHolder extends RecyclerView.ViewHolder
-    {
+    private class ListUnitHeaderHolder extends RecyclerView.ViewHolder {
 
         private TextView unitName;
         private ImageView medalImage;
-
+        private ImageView scheduleImage;
+        private TextView schduledTime;
 
         public ListUnitHeaderHolder(View itemView) {
             super(itemView);
             unitName = (TextView) itemView.findViewById(R.id.id_unit_title);
             medalImage = (ImageView) itemView.findViewById(R.id.id_medal_image);
+            scheduleImage = (ImageView) itemView.findViewById(R.id.id_schedule_time);
+            schduledTime = (TextView) itemView.findViewById(R.id.id_unit_scheduled_time);
         }
     }
 
-    private class ListIndividualCardViewHolder extends RecyclerView.ViewHolder
-    {
+    private class ListIndividualCardViewHolder extends RecyclerView.ViewHolder {
         private TextView id_athlete_name;
         private TextView id_score;
         private TextView id_rank;
@@ -230,15 +236,14 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public ListIndividualCardViewHolder(View itemView) {
             super(itemView);
-            id_rank =(TextView) itemView.findViewById(R.id.id_rank);
-            id_athlete_name =(TextView) itemView.findViewById(R.id.id_athlete_name);
-            id_score =(TextView) itemView.findViewById(R.id.id_score);
+            id_rank = (TextView) itemView.findViewById(R.id.id_rank);
+            id_athlete_name = (TextView) itemView.findViewById(R.id.id_athlete_name);
+            id_score = (TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
         }
     }
 
-    private class ListTeamCardViewHolder extends RecyclerView.ViewHolder
-    {
+    private class ListTeamCardViewHolder extends RecyclerView.ViewHolder {
         private TextView id_country_alias;
         private ImageView id_country_image;
         private TextView id_score;
@@ -247,17 +252,16 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public ListTeamCardViewHolder(View itemView) {
             super(itemView);
-            id_rank =(TextView) itemView.findViewById(R.id.id_rank);
+            id_rank = (TextView) itemView.findViewById(R.id.id_rank);
             id_country_image = (ImageView) itemView.findViewById(R.id.id_country_image);
-            id_country_alias =(TextView) itemView.findViewById(R.id.id_country_alias);
-            id_score =(TextView) itemView.findViewById(R.id.id_score);
+            id_country_alias = (TextView) itemView.findViewById(R.id.id_country_alias);
+            id_score = (TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
         }
     }
 
 
-    private class ListTeamH2HCardViewHolder extends RecyclerView.ViewHolder
-    {
+    private class ListTeamH2HCardViewHolder extends RecyclerView.ViewHolder {
         private TextView id_country1_alias;
         private ImageView id_country1_image;
         private TextView id_score;
@@ -272,20 +276,19 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public ListTeamH2HCardViewHolder(View itemView) {
             super(itemView);
             id_country1_image = (ImageView) itemView.findViewById(R.id.id_country1_image);
-            id_country1_alias =(TextView) itemView.findViewById(R.id.id_country1_alias);
-            id_score =(TextView) itemView.findViewById(R.id.id_score);
+            id_country1_alias = (TextView) itemView.findViewById(R.id.id_country1_alias);
+            id_score = (TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
-            id_outcome =  (TextView) itemView.findViewById(R.id.id_outcome);
+            id_outcome = (TextView) itemView.findViewById(R.id.id_outcome);
 
             id_country2_image = (ImageView) itemView.findViewById(R.id.id_country2_image);
-            id_country2_alias =(TextView) itemView.findViewById(R.id.id_country2_alias);
-            id_score_1 =(TextView) itemView.findViewById(R.id.id_score_1);
-            id_outcome_1 =  (TextView) itemView.findViewById(R.id.id_outcome_1);
+            id_country2_alias = (TextView) itemView.findViewById(R.id.id_country2_alias);
+            id_score_1 = (TextView) itemView.findViewById(R.id.id_score_1);
+            id_outcome_1 = (TextView) itemView.findViewById(R.id.id_outcome_1);
         }
     }
 
-    private class ListIndH2HCardViewHolder extends RecyclerView.ViewHolder
-    {
+    private class ListIndH2HCardViewHolder extends RecyclerView.ViewHolder {
         private TextView id_athlete_name;
         private TextView id_score;
         private TextView id_outcome;
@@ -297,14 +300,14 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public ListIndH2HCardViewHolder(View itemView) {
             super(itemView);
-            id_outcome =(TextView) itemView.findViewById(R.id.id_outcome);
-            id_athlete_name =(TextView) itemView.findViewById(R.id.id_athlete_name);
-            id_score =(TextView) itemView.findViewById(R.id.id_score);
+            id_outcome = (TextView) itemView.findViewById(R.id.id_outcome);
+            id_athlete_name = (TextView) itemView.findViewById(R.id.id_athlete_name);
+            id_score = (TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
 
-            id_outcome_1 =(TextView) itemView.findViewById(R.id.id_outcome_1);
-            id_athlete_name_1 =(TextView) itemView.findViewById(R.id.id_athlete_name_1);
-            id_score_1 =(TextView) itemView.findViewById(R.id.id_score_1);
+            id_outcome_1 = (TextView) itemView.findViewById(R.id.id_outcome_1);
+            id_athlete_name_1 = (TextView) itemView.findViewById(R.id.id_athlete_name_1);
+            id_score_1 = (TextView) itemView.findViewById(R.id.id_score_1);
         }
     }
 

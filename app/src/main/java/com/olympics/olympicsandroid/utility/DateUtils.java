@@ -62,5 +62,25 @@ public class DateUtils {
 
     }
 
+    public static String getUnitDateWithTime(String timeInMiliSeconds) {
+
+        try {
+
+            SimpleDateFormat f = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT);
+            Date d = f.parse(timeInMiliSeconds);
+            long milliseconds = d.getTime();
+
+
+            DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT, Locale.getDefault());
+            Calendar localCalendar = Calendar.getInstance();
+            localCalendar.setTimeInMillis(milliseconds);
+            return formatter.format(localCalendar.getTime());
+        } catch (Exception ex) {
+            return "";
+        }
+
+    }
+
+
 }
 

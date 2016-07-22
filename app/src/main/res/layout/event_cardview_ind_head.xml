@@ -3,8 +3,6 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="9dp"
-    android:layout_marginBottom="9dp"
     android:foreground="?android:attr/selectableItemBackground"
     android:background="@android:color/white"
     card_view:cardCornerRadius="3dp"
@@ -24,16 +22,15 @@
             <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
                 android:id="@+id/id_athlete_name_header"
                 android:layout_span="1"
-                android:background="#dcdcdc"
                 android:gravity="center"
-                android:padding="20dp"
-                android:text="@string/header_title_athName"
+                android:padding="10dp"
+                android:textSize="11dp"
+                android:text="@string/id_competitor_header"
                 android:textColor="#000000" />
 
             <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
                 android:id="@+id/id_score_header"
                 android:layout_span="1"
-                android:background="#cac9c9"
                 android:gravity="center"
                 android:padding="20dp"
                 android:text="@string/score_txt"
@@ -42,7 +39,6 @@
             <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
                 android:id="@+id/id_outcome_header"
                 android:layout_span="1"
-                android:background="#cac9c9"
                 android:gravity="center"
                 android:padding="20dp"
                 android:text="@string/id_outcome"
@@ -58,24 +54,23 @@
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_athlete_name"
                 android:layout_weight="1"
-                android:background="#dcdcdc"
                 android:gravity="left"
+                android:textSize="14dp"
                 android:padding="5dp"
-                android:textColor="#000000" />
-
+                android:textColor="@color/athlete_color" />
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_score"
                 android:layout_weight="1"
-                android:background="#cac9c9"
                 android:gravity="center"
+                android:textSize="10sp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_outcome"
                 android:layout_weight="1"
-                android:background="#cac9c9"
                 android:gravity="center"
+                android:textSize="14dp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 
@@ -89,24 +84,23 @@
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_athlete_name_1"
                 android:layout_weight="1"
-                android:background="#dcdcdc"
                 android:gravity="left"
                 android:padding="5dp"
-                android:textColor="#000000" />
+                android:textColor="@color/athlete_color" />
 
-            <com.olympics.olympicsandroid.view.customView.GothamBookTextView
+            <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
                 android:id="@+id/id_score_1"
                 android:layout_weight="1"
-                android:background="#cac9c9"
                 android:gravity="center"
+                android:textSize="10sp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_outcome_1"
                 android:layout_weight="1"
-                android:background="#cac9c9"
                 android:gravity="center"
+                android:textSize="14dp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 

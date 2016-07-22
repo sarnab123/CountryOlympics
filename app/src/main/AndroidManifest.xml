@@ -61,7 +61,7 @@
         </activity>
         <activity android:name=".view.activity.eventActivities.EventActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ResultsTheme"/>
+            android:theme="@style/EventTheme"/>
     </application>
 
 </manifest>
