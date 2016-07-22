@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
-import com.olympics.olympicsandroid.utility.DateUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -103,22 +102,18 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private static class ListEventDetailsViewHolder extends RecyclerView.ViewHolder {
         public TextView eventDescription;
-        public TextView eventStartDate;
         public TextView eventVenue;
         public Item refferalItem;
 
         public ListEventDetailsViewHolder(View itemView) {
             super(itemView);
             eventDescription = (TextView) itemView.findViewById(R.id.event_description);
-            eventStartDate = (TextView) itemView.findViewById(R.id.event_start_time);
             eventVenue = (TextView) itemView.findViewById(R.id.event_venue);
         }
 
         public void bind(final Item item) {
             refferalItem = item;
             eventDescription.setText(item.eventUnitModel.getEventName());
-            eventStartDate.setText(DateUtils.setUpUnitDate(item.eventUnitModel.getEventStartTime
-                    ()));
             byte spbyte[] = new byte[0];
             try {
 

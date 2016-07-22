@@ -16,6 +16,7 @@ import java.util.TimeZone;
 public class DateUtils {
 
     public static final String DATE_TIME_WITH_TIMEZONE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+    public static final String DATE_TIME_WITHOUT_TIMEZONE_FORMAT = "yyyy-MMM-dd HH:mm:ss";
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
     // Aug-03-2016
@@ -71,7 +72,7 @@ public class DateUtils {
             long milliseconds = d.getTime();
 
 
-            DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT, Locale.getDefault());
+            DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_TIMEZONE_FORMAT, Locale.getDefault());
             Calendar localCalendar = Calendar.getInstance();
             localCalendar.setTimeInMillis(milliseconds);
             return formatter.format(localCalendar.getTime());

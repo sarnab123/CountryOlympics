@@ -19,7 +19,7 @@
             android:gravity="center_horizontal"
             android:layout_height="wrap_content">
 
-            <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
+            <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_athlete_name_header"
                 android:layout_span="1"
                 android:gravity="center"
@@ -28,20 +28,22 @@
                 android:text="@string/id_competitor_header"
                 android:textColor="#000000" />
 
-            <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
+            <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_score_header"
                 android:layout_span="1"
                 android:gravity="center"
-                android:padding="20dp"
+                android:padding="10dp"
+                android:textSize="11dp"
                 android:text="@string/score_txt"
                 android:textColor="#000000" />
 
-            <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
+            <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_outcome_header"
                 android:layout_span="1"
                 android:gravity="center"
-                android:padding="20dp"
-                android:text="@string/id_outcome"
+                android:padding="10dp"
+                android:textSize="11dp"
+                android:text="@string/score_txt"
                 android:textColor="#000000" />
 
         </TableRow>
@@ -58,7 +60,7 @@
                 android:textSize="14dp"
                 android:padding="5dp"
                 android:textColor="@color/athlete_color" />
-            <com.olympics.olympicsandroid.view.customView.GothamBookTextView
+            <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
                 android:id="@+id/id_score"
                 android:layout_weight="1"
                 android:gravity="center"

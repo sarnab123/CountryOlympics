@@ -25,7 +25,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textSize="11dp"
-                android:text="@string/id_country_header"
+                android:text="@string/id_competitor_header"
                 android:textColor="#000000" />
 
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
@@ -84,7 +84,8 @@
                 android:id="@+id/id_outcome"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="10dp"
+                android:textSize="14dp"
+                android:padding="5dp"
                 android:textColor="#000000" />
 
         </TableRow>
@@ -125,7 +126,8 @@
                 android:id="@+id/id_outcome_1"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="10dp"
+                android:textSize="14dp"
+                android:padding="5dp"
                 android:textColor="#000000" />
         </TableRow>
     </TableLayout>

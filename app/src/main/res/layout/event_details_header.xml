@@ -49,6 +49,7 @@
             android:src="@drawable/schedule_small"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/id_medal_image"
             android:layout_alignParentRight="true" />
 
