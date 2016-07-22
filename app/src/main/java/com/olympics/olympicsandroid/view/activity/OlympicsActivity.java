@@ -65,14 +65,13 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        setUpData();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        displaySelectedCountryInfo();
-        displayMedalInfoForCountry();
+        setUpData();
     }
 
     private void setUpData()
@@ -201,6 +200,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             else{
                 mSectionsPagerAdapter.updateModel((CountryEventUnitModel) responseModel);
                 mSectionsPagerAdapter.notifyDataSetChanged();
+                mViewPager.invalidate();
             }
         } else if (responseModel instanceof MedalTally)
         {
