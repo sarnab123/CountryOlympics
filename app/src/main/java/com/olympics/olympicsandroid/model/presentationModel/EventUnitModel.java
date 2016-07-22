@@ -25,6 +25,7 @@ public class EventUnitModel implements Serializable
     private String eventGender;
     private String eventName;
     private byte eventType;
+    private String sportAlias;
     private String unitVenue;
     private String unitStatus;
     private String eventStartTime;
@@ -32,6 +33,14 @@ public class EventUnitModel implements Serializable
     private String unitID;
 
     private String parentDisciple;
+
+    public String getSportAlias() {
+        return sportAlias;
+    }
+
+    public void setSportAlias(String sportAlias) {
+        this.sportAlias = sportAlias;
+    }
 
     public String getEventName() {
         return eventName;

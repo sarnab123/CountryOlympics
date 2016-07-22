@@ -48,7 +48,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             case TYPE_UNIT_HEADER:
                 view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.list_unit_header, parent, false);
+                        .inflate(R.layout.event_details_header, parent, false);
 
                 ListUnitHeaderHolder viewHolder = new ListUnitHeaderHolder(view);
 
