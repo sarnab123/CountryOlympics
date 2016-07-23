@@ -1,13 +1,8 @@
 package com.olympics.olympicsandroid.networkLayer;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
-
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -16,6 +11,12 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
+
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 
 /**
@@ -67,6 +68,8 @@ public class CustomXMLRequest<T> extends Request<T> {
     public CustomXMLRequest(OlympicRequestQueries requestQueries, Class<T> clazz, Map<String, String> headers,
                             Listener<T> listener, ErrorListener errorListener, RequestPolicy requestPolicy) {
         super(requestQueries.getHttpRequestType(), requestQueries.getURL(requestPolicy.getUrlReplacement()), errorListener);
+        setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         if(requestPolicy != null) {
             setShouldCache(requestPolicy.isForceCache());
         }

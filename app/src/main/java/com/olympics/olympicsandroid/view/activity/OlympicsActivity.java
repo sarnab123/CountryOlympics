@@ -198,6 +198,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 tabLayout.setupWithViewPager(mViewPager);
             }
             else{
+                if(mSectionsPagerAdapter != null)
                 mSectionsPagerAdapter.updateModel((CountryEventUnitModel) responseModel);
                 mSectionsPagerAdapter.notifyDataSetChanged();
                 mViewPager.invalidate();

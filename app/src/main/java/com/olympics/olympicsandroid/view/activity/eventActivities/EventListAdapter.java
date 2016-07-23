@@ -9,14 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
 import com.olympics.olympicsandroid.utility.DateUtils;
-import com.olympics.olympicsandroid.view.fragment.IItemClickListener;
+import com.olympics.olympicsandroid.view.fragment.IScheduleListener;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -31,9 +33,9 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public final static int TYPE_TEAM_HEAD2HEAD_COMPET = 5;
 
     List<EventListAdapter.Result> resultsModels;
-    IItemClickListener itemClickListener;
+    public final IScheduleListener itemClickListener;
 
-    public EventListAdapter(IItemClickListener itemClickListener) {
+    public EventListAdapter(IScheduleListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
@@ -93,7 +95,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         switch (resultsModels.get(position).type) {
             case TYPE_IND_COMPETITOR:
 
@@ -163,8 +165,17 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 break;
             case TYPE_UNIT_HEADER:
 
-                ListUnitHeaderHolder unitHeaderHolder = (ListUnitHeaderHolder) holder;
-                unitHeaderHolder.unitName.setText(resultsModels.get(position).sportsTitle.getUnit_name());
+                final ListUnitHeaderHolder unitHeaderHolder = (ListUnitHeaderHolder) holder;
+                byte spbyte[] = new byte[0];
+                try {
+
+                    spbyte = resultsModels.get(position).sportsTitle.getUnit_name().getBytes("ISO-8859-1");
+                    String str = new String(spbyte);
+                    unitHeaderHolder.unitName.setText(str);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
                 if (resultsModels.get(position).sportsTitle.getUnit_medal_type() != EventUnitModel.UNIT_MEDAL_NONE) {
                     unitHeaderHolder.medalImage.setVisibility(View.VISIBLE);
                     if (resultsModels.get(position).sportsTitle.getUnit_medal_type() == EventUnitModel.UNIT_MEDAL_GOLD) {
@@ -182,13 +193,28 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     if (!TextUtils.isEmpty(resultsModels.get(position).sportsTitle.getStart_date())) {
                         unitHeaderHolder.schduledTime.setVisibility(View.VISIBLE);
                         unitHeaderHolder.schduledTime.setText(DateUtils.getUnitDateWithTime(resultsModels.get(position).sportsTitle.getStart_date()));
+                        unitHeaderHolder.scheduleImage.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                itemClickListener.handleItemClick(resultsModels.get(position).sportsTitle);
+                            }
+                        });
                     } else{
                         unitHeaderHolder.schduledTime.setVisibility(View.GONE);
                     }
+
+
+
                 } else if (resultsModels.get(position).sportsTitle.getUnit_status() == EventUnitModel.UNIT_STATUS_INPROGRESS) {
                     unitHeaderHolder.scheduleImage.setImageDrawable(ResourcesCompat.getDrawable(OlympicsApplication.getAppContext().getResources(), R.drawable.live_icon, null));
                     unitHeaderHolder.scheduleImage.setVisibility(View.VISIBLE);
                     unitHeaderHolder.schduledTime.setVisibility(View.GONE);
+                    unitHeaderHolder.scheduleImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(OlympicsApplication.getAppContext(),"This is live event, Pull to Refresh!",Toast.LENGTH_LONG).show();
+                        }
+                    });
                 } else {
                     unitHeaderHolder.scheduleImage.setVisibility(View.GONE);
                     unitHeaderHolder.schduledTime.setVisibility(View.GONE);
@@ -335,5 +361,16 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             this.competitorModel = competitorModel;
         }
     }
+
+//    private void createCalendarInvite(long startTime,long endTime, String eventTitle)
+//    {
+//        Calendar cal = Calendar.getInstance();
+//        Intent intent = new Intent(Intent.ACTION_EDIT);
+//        intent.setType("vnd.android.cursor.item/event");
+//        intent.putExtra("beginTime", startTime);
+//        intent.putExtra("endTime", endTime);
+//        intent.putExtra("title", eventTitle);
+//        startActivity(intent);
+//    }
 
 }

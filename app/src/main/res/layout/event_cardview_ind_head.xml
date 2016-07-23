@@ -72,7 +72,7 @@
                 android:id="@+id/id_outcome"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14dp"
+                android:textSize="12dp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 
@@ -102,7 +102,7 @@
                 android:id="@+id/id_outcome_1"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14dp"
+                android:textSize="12dp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 

@@ -1,6 +1,8 @@
 package com.olympics.olympicsandroid.view.activity.eventActivities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,9 +21,9 @@ import com.olympics.olympicsandroid.model.presentationModel.UnitResultsViewModel
 import com.olympics.olympicsandroid.networkLayer.cache.database.DBUnitStatusHelper;
 import com.olympics.olympicsandroid.networkLayer.controller.EventResultsController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
+import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.SportsUtility;
-import com.olympics.olympicsandroid.view.fragment.ExpandableListAdapter;
-import com.olympics.olympicsandroid.view.fragment.IItemClickListener;
+import com.olympics.olympicsandroid.view.fragment.IScheduleListener;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -95,6 +97,26 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         handleUnit();
     }
 
+    private IScheduleListener createItemClickListener() {
+        return new IScheduleListener() {
+            @Override
+            public void handleItemClick(EventResultsViewModel itemClicked) {
+                Intent intent = new Intent(Intent.ACTION_INSERT);
+                intent.setType("vnd.android.cursor.item/event");
+                intent.putExtra(CalendarContract.Events.TITLE, itemClicked.getUnit_name());
+                intent.putExtra(CalendarContract.Events.DESCRIPTION, itemClicked.getUnit_name());
+                intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "");
+                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, DateUtils.getUnitDateWithTime(itemClicked.getStart_date()));
+                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, itemClicked.getStart_date() + 60*60*15);
+                intent.putExtra(CalendarContract.Events.ALL_DAY, false);
+                intent.putExtra(CalendarContract.Events.STATUS, 1);
+                intent.putExtra(CalendarContract.Events.VISIBLE, 0);
+                intent.putExtra(CalendarContract.Events.HAS_ALARM, 1);
+                startActivity(intent);
+            }
+        };
+    }
+
     private SwipeRefreshLayout.OnRefreshListener createRefreshListener() {
         return new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -111,14 +133,6 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         }
     };
 
-    private IItemClickListener createItemClickListener() {
-        return new IItemClickListener() {
-            @Override
-            public void handleItemClick(ExpandableListAdapter.Item itemClicked) {
-
-            }
-        };
-    }
 
     private void handleUnit() {
 
@@ -259,6 +273,7 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
                                 break;
 
                             case SportsUtility.TYPE_INDIVUDUAL_HEAD2HEAD:
+
                                 if (uniqueUnitName == null || !uniqueUnitName.equalsIgnoreCase(eventResultsViewModel.getUnit_name())) {
                                     EventListAdapter.Result eventResult = new EventListAdapter.Result(EventListAdapter.TYPE_UNIT_HEADER, eventResultsViewModel);
                                     results.add(eventResult);

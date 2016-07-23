@@ -17,13 +17,14 @@
 
     <com.olympics.olympicsandroid.view.customView.GothamBookTextView
         android:id="@+id/event_description"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
     <com.olympics.olympicsandroid.view.customView.GothamBookTextView
         android:id="@+id/event_venue"
         android:layout_width="wrap_content"
+        android:textSize="12sp"
         android:layout_height="wrap_content"
         android:layout_below="@id/event_description"/>
     <ImageView
