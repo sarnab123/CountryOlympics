@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingBottom="15dp"
-        android:layout_marginRight="100dp">
+        android:layout_marginRight="50dp">
 
         <ImageView
             android:id="@+id/id_country_image"
@@ -31,7 +31,8 @@
             android:id="@+id/id_country_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/id_country_image"
+            android:paddingLeft="5dp"
+            android:layout_alignLeft="@id/id_country_rank"
             android:layout_alignRight="@id/id_country_rank"
             android:layout_below="@id/id_country_rank"
             android:textSize="14sp"/>
@@ -42,9 +43,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="right"
-        android:paddingRight="10dp"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/country_detail_layout">
+        android:paddingLeft="20dp"
+        android:layout_alignLeft="@id/country_detail_layout"
+        android:layout_below="@id/country_detail_layout">
 
         <TextView
             android:id="@+id/id_gold_count"

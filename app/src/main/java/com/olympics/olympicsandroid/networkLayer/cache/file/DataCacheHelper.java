@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.olympics.olympicsandroid.model.IResponseModel;
+import com.olympics.olympicsandroid.model.MedalTally;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
@@ -24,6 +25,8 @@ import java.util.Set;
 public class DataCacheHelper {
 
     public static final byte CACHE_COUNTRY_MODEL = 0x00;
+    public static final byte CACHE_MEDALTALLY_MODEL = 0x01;
+    public static final String CACHE_MEDALTALLY_KEY = "medaltally";
 
     private static DataCacheHelper ourInstance = new DataCacheHelper();
 
@@ -39,6 +42,13 @@ public class DataCacheHelper {
                 if (dataModel instanceof CountryEventUnitModel) {
                     CountryEventUnitModel countryEventUnitModel = (CountryEventUnitModel) dataModel;
                     new FileSaveCacheAsync(countryEventUnitModel.getCountryAlias()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, countryEventUnitModel);
+                }
+            case CACHE_MEDALTALLY_MODEL:
+                if (dataModel instanceof MedalTally) {
+                    MedalTally medalTallyModel = (MedalTally) dataModel;
+                    new FileSaveCacheAsync(CACHE_MEDALTALLY_KEY).executeOnExecutor
+                            (AsyncTask
+                            .THREAD_POOL_EXECUTOR, medalTallyModel);
                 }
                 break;
         }

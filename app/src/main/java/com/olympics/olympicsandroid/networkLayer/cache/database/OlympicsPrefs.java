@@ -17,6 +17,7 @@ public class OlympicsPrefs
     private Gson gson;
 
     private final String USER_SET_COUNTRY = "USER_SET_COUNTRY";
+    private final String MEDALTALLY_UPDATE_TIMESTAMP = "MEDAL_TIMESTAMP";
 
     private static OlympicsPrefs instance;
 
@@ -60,6 +61,17 @@ public class OlympicsPrefs
             return mOrganisation;
         }
         return null;
+    }
+
+    public void setMedalTallyRefreshTime(String timestamp)
+    {
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putString(MEDALTALLY_UPDATE_TIMESTAMP, timestamp);
+        editor.apply();
+    }
+
+    public String getMedalTallyRefreshTime() {
+        return getDefaultSharePreference().getString(MEDALTALLY_UPDATE_TIMESTAMP, null);
     }
 
 }

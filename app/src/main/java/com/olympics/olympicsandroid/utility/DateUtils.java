@@ -81,6 +81,11 @@ public class DateUtils {
 
     }
 
-
+    public static String getCurrentTimeStamp() {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm a");
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        return strDate;
+    }
 }
 
