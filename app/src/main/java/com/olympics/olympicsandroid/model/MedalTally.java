@@ -4,6 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 
 @Root(name="olympics")
-public class MedalTally implements IResponseModel{
+public class MedalTally implements IResponseModel, Serializable{
 
     @Attribute
     private String generated;

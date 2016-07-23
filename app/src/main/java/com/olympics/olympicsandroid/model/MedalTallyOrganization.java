@@ -3,11 +3,13 @@ package com.olympics.olympicsandroid.model;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
+
 /**
  * Created by tkmagz4 on 7/11/16.
  */
 @Root(name = "organization", strict = false)
-public class MedalTallyOrganization {
+public class MedalTallyOrganization implements Serializable{
 
     @Attribute
     private String id;

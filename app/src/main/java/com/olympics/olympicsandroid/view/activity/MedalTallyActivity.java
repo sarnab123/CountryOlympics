@@ -89,6 +89,14 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             medalTallyListAdapter.setMedalTallyList(orgsByRanking);
 
             mRecyclerView.setAdapter(medalTallyListAdapter);
+
+            //Updated timestamp
+            TextView updatedTimestampView = (TextView)findViewById(R.id
+                    .medaltally_timestamp);
+            updatedTimestampView.setText(getString(R.string.medaltally_update_timestamp,
+                    OlympicsPrefs.getInstance(null)
+                    .getMedalTallyRefreshTime()));
+            updatedTimestampView.setVisibility(View.VISIBLE);
         }
     }
 
