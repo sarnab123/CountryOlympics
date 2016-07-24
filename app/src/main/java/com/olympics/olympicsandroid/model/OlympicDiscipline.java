@@ -12,11 +12,18 @@ import java.util.List;
 @Root(name = "discipline",strict = false)
 public class OlympicDiscipline
 {
-        @Attribute
+        @Attribute(required = false)
         private String description;
+
+        @Attribute(required = false)
+        private String alias;
 
         @ElementList(required = false)
         private List<OlympicEvent> events;
+
+        public String getAlias() {
+                return alias;
+        }
 
         public List<OlympicEvent> getEvents() {
                 return events;

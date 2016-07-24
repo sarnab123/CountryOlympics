@@ -4,13 +4,14 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by sarnab.poddar on 7/9/16.
  */
 @Root(strict = false)
-public class Organization {
+public class Organization implements Serializable{
     @Attribute
     private String id;
 

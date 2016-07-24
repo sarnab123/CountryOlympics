@@ -1,5 +1,6 @@
 package com.olympics.olympicsandroid.view.activity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -50,6 +51,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     private static int REQUEST_CODE_COUNTRY = 1;
 
     private MedalTally medalTallyObj;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +70,6 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         setUpData();
     }
 
@@ -241,7 +238,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     @Override
     public void onFailure(ErrorModel errorModel)
     {
-        if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.))
+        if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.ERROR_INTERNET))
         {
             AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
             dlgAlert.setMessage(getString(R.string.id_error_internet));
@@ -280,7 +277,20 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     }
 
     @Override
-    public void handleLoadingIndicator(boolean showLoadingInd) {
+    public void handleLoadingIndicator(boolean showLoadingInd)
+    {
+        if(showLoadingInd)
+        {
+            progress = new ProgressDialog(this);
+            progress.setTitle("Loading");
+            progress.setMessage("Wait while loading country details...");
+            progress.show();
 
+        }
+        else{
+            if(progress != null) {
+                progress.dismiss();
+            }
+        }
     }
 }

@@ -67,15 +67,14 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 final ListEventHeaderViewHolder viewHolder = (ListEventHeaderViewHolder) holder;
                 if (!TextUtils.isEmpty(item.eventUnitModel.getParentDisciple())) {
                     viewHolder.event_title.setText(item.eventUnitModel.getParentDisciple());
-                }
-
-                int rid = OlympicsApplication.getAppContext().getResources()
-                        .getIdentifier(item.eventUnitModel.getSportAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
-                try {
-                    ((ListEventHeaderViewHolder) holder).sportImage.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources()
-                            .openRawResource(rid)));
-                } catch (Exception ex) {
-                    System.out.println("Exeptipn == " + ex);
+                    int rid = OlympicsApplication.getAppContext().getResources()
+                            .getIdentifier(item.eventUnitModel.getDisciplineAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
+                    try {
+                        ((ListEventHeaderViewHolder) holder).sportImage.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources()
+                                .openRawResource(rid)));
+                    } catch (Exception ex) {
+                        System.out.println("Exeptipn == " + ex);
+                    }
                 }
 
                 break;

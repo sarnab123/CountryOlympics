@@ -45,6 +45,7 @@ public class CountryScheduleController
 
     public void getCountryDetails()
     {
+        listenerWeakReference.get().handleLoadingIndicator(true);
         DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,
                 OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(),createNewCacheListener());
 
@@ -59,6 +60,7 @@ public class CountryScheduleController
                     getDataFromServerAndCache();
                 }
                 else{
+                    listenerWeakReference.get().handleLoadingIndicator(false);
 
                     CountryEventUnitModel countryEventData = (CountryEventUnitModel)responseModel;
                     listenerWeakReference.get().onSuccess(countryEventData);
@@ -164,6 +166,8 @@ public class CountryScheduleController
             olympicScheduleModel)
             .createCountryEventUnitModel();
         DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,countryEventData);
+        listenerWeakReference.get().handleLoadingIndicator(false);
+
         listenerWeakReference.get().onSuccess(countryEventData);
     }
 
@@ -171,6 +175,8 @@ public class CountryScheduleController
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                listenerWeakReference.get().handleLoadingIndicator(false);
+
                 ErrorModel errorModel = new ErrorModel();
                 errorModel.setErrorCode(error.getLocalizedMessage());
                 errorModel.setErrorMessage(error.getMessage());
@@ -198,6 +204,7 @@ public class CountryScheduleController
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                listenerWeakReference.get().handleLoadingIndicator(false);
                 ErrorModel errorModel = new ErrorModel();
                 errorModel.setErrorCode(error.getLocalizedMessage());
                 errorModel.setErrorMessage(error.getMessage());
@@ -210,10 +217,13 @@ public class CountryScheduleController
         return new Response.Listener<OlympicSchedule>() {
             @Override
             public void onResponse(OlympicSchedule responseModel) {
+                listenerWeakReference.get().handleLoadingIndicator(false);
+
                 if(responseModel != null && responseModel instanceof OlympicSchedule) {
                     createCountryEventMapping((OlympicSchedule)responseModel);
                 }
                 else{
+
                     listenerWeakReference.get().onFailure(null);
                 }
             }

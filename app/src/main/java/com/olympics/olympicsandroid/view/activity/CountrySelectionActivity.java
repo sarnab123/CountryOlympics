@@ -3,10 +3,12 @@ package com.olympics.olympicsandroid.view.activity;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +31,7 @@ import com.olympics.olympicsandroid.model.Organization;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.controller.CountryListController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
+import com.olympics.olympicsandroid.utility.UtilityMethods;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 
 import java.lang.ref.WeakReference;
@@ -90,7 +93,43 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
     }
 
     @Override
-    public void onFailure(ErrorModel errorModel) {
+    public void onFailure(ErrorModel errorModel)
+    {
+        if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.ERROR_INTERNET))
+        {
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+            dlgAlert.setMessage(getString(R.string.id_error_internet));
+            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                    getCountryData();
+                }
+            });
+            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                }
+            });
+            dlgAlert.setCancelable(false);
+            dlgAlert.create().show();
+        }
+        else{
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+            dlgAlert.setMessage(getString(R.string.id_error_server));
+            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                    getCountryData();
+                }
+            });
+            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                }
+            });
+            dlgAlert.setCancelable(false);
+            dlgAlert.create().show();
+        }
 
     }
 

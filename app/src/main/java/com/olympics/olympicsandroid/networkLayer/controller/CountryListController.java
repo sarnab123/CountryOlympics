@@ -11,6 +11,8 @@ import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
 import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
+import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
+import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
 import com.olympics.olympicsandroid.networkLayer.parse.IParseListener;
 import com.olympics.olympicsandroid.networkLayer.parse.ParseTask;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
@@ -36,6 +38,28 @@ public class CountryListController
 
 
     public synchronized void  getCountryData()
+    {
+        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL,
+                DataCacheHelper.COUNTRY_SELECTION_KEY, createNewCacheListener());
+
+    }
+
+    private ICacheListener createNewCacheListener() {
+        return new ICacheListener() {
+            @Override
+            public void datafromCache(IResponseModel responseModel) {
+                if(responseModel != null)
+                {
+                    listenerWeakReference.get().onSuccess(responseModel);
+                }
+                else{
+                    getDataFromServer();
+                }
+            }
+        };
+    }
+
+    private void getDataFromServer()
     {
         if(UtilityMethods.isConnectedToInternet()) {
             // Set Request Policy
@@ -89,6 +113,7 @@ public class CountryListController
         return new Response.Listener<CountryModel>() {
             @Override
             public void onResponse(CountryModel response) {
+                DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL,response);
                 listenerWeakReference.get().onSuccess(response);
             }
         };

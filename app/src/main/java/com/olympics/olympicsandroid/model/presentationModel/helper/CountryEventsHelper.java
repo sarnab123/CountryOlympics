@@ -219,6 +219,8 @@ public class CountryEventsHelper {
         EventUnitModel eventUnitModel = new EventUnitModel();
         eventUnitModel.setEventID(olympicEvent.getId());
         eventUnitModel.setSportAlias(olympicEvent.getSport().getAlias());
+        eventUnitModel.setDisciplineAlias(olympicEvent.getDiscipline().getAlias());
+
         eventUnitModel.setUnitName(olympicUnit.getName());
         eventUnitModel.setEventStartTime(olympicUnit.getStart_date
                 ());

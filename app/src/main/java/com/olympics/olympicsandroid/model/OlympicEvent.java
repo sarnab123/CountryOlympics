@@ -5,13 +5,14 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by sarnab.poddar on 7/9/16.
  */
 @Root(name="event",strict = false)
-public class OlympicEvent
+public class OlympicEvent implements Serializable
 {
     @Attribute
     private String id;

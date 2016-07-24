@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
@@ -101,7 +103,11 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
-    public void onFailure(ErrorModel errorModel) {
+    public void onFailure(ErrorModel errorModel)
+    {
+        if(errorModel != null  && !TextUtils.isEmpty(errorModel.getErrorMessage())) {
+            Toast.makeText(this, errorModel.getErrorMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
