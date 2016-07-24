@@ -34,6 +34,9 @@ public class EventResultCompetitor
     private String rank;
 
     @Attribute(required = false)
+    private String description;
+
+    @Attribute(required = false)
     private String organization;
 
     @Attribute(required = false)
@@ -41,6 +44,10 @@ public class EventResultCompetitor
 
     public String getGender() {
         return gender;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getOrganization() {

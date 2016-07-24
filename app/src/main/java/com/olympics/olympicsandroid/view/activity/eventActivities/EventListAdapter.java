@@ -108,7 +108,15 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case TYPE_TEAM_COMPETITOR:
 
                 ListTeamCardViewHolder teamCardViewHolder = (ListTeamCardViewHolder) holder;
-                teamCardViewHolder.id_country_alias.setText(resultsModels.get(position).competitorModel.getCountryAlias());
+
+                if(TextUtils.isEmpty(resultsModels.get(position).competitorModel.getCompetitorName()))
+                {
+                    teamCardViewHolder.id_country_alias.setText(resultsModels.get(position).competitorModel.getCountryAlias());
+
+                }
+                else {
+                    teamCardViewHolder.id_country_alias.setText(resultsModels.get(position).competitorModel.getCompetitorName());
+                }
                 int rid = OlympicsApplication.getAppContext().getResources()
                         .getIdentifier(resultsModels.get(position).competitorModel.getCountryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
                 try {
@@ -135,8 +143,14 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case TYPE_TEAM_HEAD2HEAD_COMPET:
 
                 ListTeamH2HCardViewHolder teamh2hviewHolder = (ListTeamH2HCardViewHolder) holder;
-                teamh2hviewHolder.id_country1_alias.setText(resultsModels.get(position).competitorheadModel.getCountryAlias());
-                teamh2hviewHolder.id_country2_alias.setText(resultsModels.get(position).competitorheadModel.getOpp_countryAlias());
+                if(TextUtils.isEmpty(resultsModels.get(position).competitorheadModel.getCompetitorName())) {
+                    teamh2hviewHolder.id_country1_alias.setText(resultsModels.get(position).competitorheadModel.getCountryAlias());
+                    teamh2hviewHolder.id_country2_alias.setText(resultsModels.get(position).competitorheadModel.getOpp_countryAlias());
+                }
+                else{
+                    teamh2hviewHolder.id_country1_alias.setText(resultsModels.get(position).competitorheadModel.getCompetitorName());
+                    teamh2hviewHolder.id_country2_alias.setText(resultsModels.get(position).competitorheadModel.getOpp_competitorName());
+                }
                 int rid_1 = OlympicsApplication.getAppContext().getResources()
                         .getIdentifier(resultsModels.get(position).competitorheadModel.getCountryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
                 try {
@@ -196,7 +210,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         unitHeaderHolder.scheduleImage.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                itemClickListener.handleItemClick(resultsModels.get(position).sportsTitle);
+//                                itemClickListener.handleItemClick(resultsModels.get(position).sportsTitle);
+                                Toast.makeText(OlympicsApplication.getAppContext(),"This is a scheduled event",Toast.LENGTH_LONG).show();
                             }
                         });
                     } else{

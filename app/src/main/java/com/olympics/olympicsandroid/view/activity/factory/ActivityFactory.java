@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.view.activity.AthleteActivity;
 import com.olympics.olympicsandroid.view.activity.CountrySelectionActivity;
 import com.olympics.olympicsandroid.view.activity.MedalTallyActivity;
@@ -54,7 +55,7 @@ public class ActivityFactory
 
     public static void handleItemClickActivity(Activity ctx,ExpandableListAdapter.Item item)
     {
-            Intent intentExtra = new Intent(ctx, EventActivity.class);
+            Intent intentExtra = new Intent(OlympicsApplication.getAppContext(), EventActivity.class);
             intentExtra.putExtra("event_id",item.eventUnitModel.getEventID());
             intentExtra.putExtra("event_unit_name",item.eventUnitModel.getUnitName());
             intentExtra.putExtra("discipline_name",item.eventUnitModel.getParentDisciple());

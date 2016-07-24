@@ -57,7 +57,7 @@
                 android:id="@+id/id_athlete_name"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:textSize="14dp"
+                android:textSize="12sp"
                 android:padding="5dp"
                 android:textColor="@color/athlete_color" />
 
@@ -73,7 +73,7 @@
                 android:id="@+id/id_rank"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14dp"
+                android:textSize="10sp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 

@@ -2,6 +2,7 @@ package com.olympics.olympicsandroid.model.presentationModel.helper;
 
 import android.text.TextUtils;
 
+import com.olympics.olympicsandroid.model.CompetitorVOModel;
 import com.olympics.olympicsandroid.model.CountryProfileEvents;
 import com.olympics.olympicsandroid.model.OlympicAthlete;
 import com.olympics.olympicsandroid.model.OlympicDiscipline;
@@ -14,6 +15,8 @@ import com.olympics.olympicsandroid.model.presentationModel.Athlete;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
+import com.olympics.olympicsandroid.networkLayer.cache.database.DBCompetitorRelationHelper;
+import com.olympics.olympicsandroid.networkLayer.cache.database.iFace.DBTablesDef;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.SportsUtility;
 
@@ -120,14 +123,29 @@ public class CountryEventsHelper {
             // team participants
             List<OlympicTeams> teamList = participatingEvent.getTeams();
             if(teamList != null ) {
+                List<CompetitorVOModel> listOfCompetitors = new ArrayList<>();
                 for (OlympicTeams olympicTeams : teamList) {
-                    if(olympicTeams != null && olympicTeams.getAthlete() != null) {
+                    if(olympicTeams != null && olympicTeams.getAthlete() != null && olympicTeams.getAthlete().size() > 0) {
+
+                        CompetitorVOModel competitorVOModel = new CompetitorVOModel();
+                        competitorVOModel.setCompetitorID(olympicTeams.getId());
+                        competitorVOModel.setOrgAlias(countryEventUnitModel.getCountryAlias());
+
+                        int athleteCount = 0;
+                        StringBuilder competitorName = new StringBuilder();
                         for (OlympicAthlete participant : olympicTeams.getAthlete()) {
+                            athleteCount++;
                             Athlete athlete = new Athlete();
                             String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" :
                                     participant.getFirst_name();
                             String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" :
                                     participant.getLast_name();
+                            if(competitorName.length() == 0) {
+                                competitorName.append(lastName);
+                            }else{
+                                competitorName.append("/");
+                                competitorName.append(lastName);
+                            }
                             StringBuilder stringBuilder = new StringBuilder(firstName).append(" ").append
                                     (lastName);
 
@@ -135,11 +153,21 @@ public class CountryEventsHelper {
                             athlete.setAthleteGender(participant.getGender());
                             if (participatingEvent.getSport() != null) {
                                 athlete.setSportName(participatingEvent.getSport().getDescription());
-                                athlete.setSportsAlias(participatingEvent.getSport().getAlias());
+                                athlete.setSportsAlias(participatingEvent.getDiscipline().getAlias());
                             }
                             athleteList.add(athlete);
                         }
+                        if(athleteCount <=2 )
+                        {
+                            competitorVOModel.setCompetitorName(competitorName.toString());
+                            listOfCompetitors.add(competitorVOModel);
+                        }
                     }
+                }
+                if(listOfCompetitors.size() > 0)
+                {
+                    DBCompetitorRelationHelper dbCompetitorRelationHelper = new DBCompetitorRelationHelper();
+                    dbCompetitorRelationHelper.insertAll(DBTablesDef.T_COMPETITOR_RELATION,listOfCompetitors);
                 }
             }
 

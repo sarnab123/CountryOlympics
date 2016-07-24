@@ -19,6 +19,8 @@
     <string name="country_page_name">Country</string>
     <string name="schedule_page_name">Schedule</string>
     <string name="list_tasks_noitem_msg">No Competitors from the Selected Country</string>
+    <string name="list_tasks_olymperror_msg">Events have not been scheduled yet. Please visit once Olympics have started.</string>
+
     <string name="upgrade_str">Upgrade</string>
     <string name="medaltally_update_timestamp">Last Updated : %1$s</string>
     <string name="id_error_server">We had a problem retrieving information. Do you want to try again?</string>

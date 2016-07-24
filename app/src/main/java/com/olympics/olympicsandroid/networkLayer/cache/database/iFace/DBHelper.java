@@ -46,6 +46,7 @@ public final class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase database) {
         // Creating Tables
         database.execSQL(DBQueries.CREATE_TABLE_UNIT_STATUS.getQuery());
+        database.execSQL(DBQueries.CREATE_TABLE_COMPETITOR_LIST.getQuery());
     }
 
     @Override
@@ -57,6 +58,7 @@ public final class DBHelper extends SQLiteOpenHelper {
     }
 
     private void deleteTablesInUpgrade(SQLiteDatabase db) {
+        db.execSQL(DBQueries.DROP_TABLE_UNIT_STATUS.getQuery());
         db.execSQL(DBQueries.DROP_TABLE_UNIT_STATUS.getQuery());
     }
 

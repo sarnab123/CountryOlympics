@@ -52,6 +52,15 @@ public class DateUtils {
         }
     }
 
+    public static boolean isCurrentDateInOlympics()
+    {
+        if(System.currentTimeMillis() < OLYMPIC_EVENT_START_DATE)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public static String setUpUnitDate(String timeInMiliSeconds) {
 
         try {

@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.List;
-
 /**
  * Created by sarnab.poddar on 7/16/16.
  */
@@ -124,22 +122,22 @@ public class DBOperationsHelper {
         return returnVal;
     }
 
-    public long insertAll(String tableName,
-                          List<Object> list) {
-        SQLiteDatabase db = getWritableDb();
-        long returnVal = 0;
-        if (list != null) {
-            for (Object vo : list) {
-                returnVal = performInsert(tableName, vo, db);
-                if (returnVal <= -1) {
-                    break;
-                }
-            }
-        }
-
-        dispose(db);
-        return returnVal;
-    }
+//    public long insertAll(String tableName,
+//                          List<Object> list) {
+//        SQLiteDatabase db = getWritableDb();
+//        long returnVal = 0;
+//        if (list != null) {
+//            for (Object vo : list) {
+//                returnVal = performInsert(tableName, vo, db);
+//                if (returnVal <= -1) {
+//                    break;
+//                }
+//            }
+//        }
+//
+//        dispose(db);
+//        return returnVal;
+//    }
 
     public int update(String tableName,
                       final String whereColumnName,

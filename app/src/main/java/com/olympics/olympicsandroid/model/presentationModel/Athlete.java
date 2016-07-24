@@ -15,6 +15,16 @@ public class Athlete implements Serializable
 
     private String sportsAlias;
 
+    private String competitorID;
+
+    public String getCompetitorID() {
+        return competitorID;
+    }
+
+    public void setCompetitorID(String competitorID) {
+        this.competitorID = competitorID;
+    }
+
     public String getAthleteGender() {
         return athleteGender;
     }

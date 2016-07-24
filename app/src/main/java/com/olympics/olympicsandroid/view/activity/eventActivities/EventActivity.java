@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
 import com.olympics.olympicsandroid.R;
@@ -48,7 +49,7 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
     private EventListAdapter eventListAdapter;
     private CircleProgressBar mProgressView;
-    private View mNoItemsView;
+    private TextView mNoItemsView;
     private SwipeRefreshLayout event_refresh;
 
     @Override
@@ -80,7 +81,7 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
 
         mProgressView = (CircleProgressBar)findViewById(R.id.task_progress);
-        mNoItemsView = findViewById(R.id.tv_no_units);
+        mNoItemsView = (TextView)findViewById(R.id.tv_no_units);
 
 
         eventunitView = (RecyclerView) findViewById(R.id.eventlist_recycler_view);
@@ -165,6 +166,12 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         if(results == null || results.size() == 0)
         {
             mNoItemsView.setVisibility(View.VISIBLE);
+
+
+            if(!DateUtils.isCurrentDateInOlympics())
+            {
+                mNoItemsView.setText(getString(R.string.list_tasks_olymperror_msg));
+            }
         }
         else{
             mNoItemsView.setVisibility(View.GONE);

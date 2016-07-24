@@ -3,6 +3,7 @@ package com.olympics.olympicsandroid.networkLayer.cache.database.iFace;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import com.olympics.olympicsandroid.model.CompetitorVOModel;
 import com.olympics.olympicsandroid.model.UnitVOModel;
 
 /**
@@ -23,6 +24,8 @@ public class VOProcessor {
         Object vo = null;
         if (DBTablesDef.T_UNIT_RELATION.equalsIgnoreCase(tableName)) {
             vo = getUnitVO(cursor);
+        } else if (DBTablesDef.T_COMPETITOR_RELATION.equalsIgnoreCase(tableName)) {
+            vo = getCompetitorVO(cursor);
         }
 
         return vo;
@@ -36,13 +39,36 @@ public class VOProcessor {
         return unitVOModel;
     }
 
+    private CompetitorVOModel getCompetitorVO(Cursor cursor)
+    {
+        CompetitorVOModel competitorVOModel = new CompetitorVOModel();
+        competitorVOModel.setCompetitorID(cursor.getString(cursor.getColumnIndex(DBTablesDef.C_COMPETITOR_ID)));
+        competitorVOModel.setCompetitorName(cursor.getString(cursor.getColumnIndex(DBTablesDef.C_COMPETITOR_NAME)));
+        competitorVOModel.setOrgAlias(cursor.getString(cursor.getColumnIndex(DBTablesDef.C_ORG_ALIAS)));
+
+        return competitorVOModel;
+    }
 
     public ContentValues getContentValues(String tableName,
                                           Object vo) {
         ContentValues values = null;
         if (DBTablesDef.T_UNIT_RELATION.equalsIgnoreCase(tableName)) {
             values = getUnitValues(vo);
+        } else  if (DBTablesDef.T_COMPETITOR_RELATION.equalsIgnoreCase(tableName)) {
+            values = getCompetitorValues(vo);
         }
+        return values;
+    }
+
+    private ContentValues getCompetitorValues(Object ivo) {
+        ContentValues values = new ContentValues();
+        CompetitorVOModel vo = (CompetitorVOModel) ivo;
+        if (vo.getCompetitorID() != null) {
+            values.put(DBTablesDef.C_COMPETITOR_ID, vo.getCompetitorID());
+        }
+        values.put(DBTablesDef.C_COMPETITOR_NAME, vo.getCompetitorName());
+        values.put(DBTablesDef.C_ORG_ALIAS, vo.getOrgAlias());
+
         return values;
     }
 

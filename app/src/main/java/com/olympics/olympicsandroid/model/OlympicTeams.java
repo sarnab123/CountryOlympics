@@ -21,6 +21,14 @@ public class OlympicTeams
     @ElementList(inline=true, entry="resource",required = false)
     private List<OlympicAthlete> athlete;
 
+    public String getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public List<OlympicAthlete> getAthlete() {
         return athlete;
     }

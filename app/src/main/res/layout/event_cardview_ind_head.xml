@@ -57,7 +57,7 @@
                 android:id="@+id/id_athlete_name"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:textSize="14dp"
+                android:textSize="12sp"
                 android:padding="5dp"
                 android:textColor="@color/athlete_color" />
             <com.olympics.olympicsandroid.view.customView.GothamBoldTextView
@@ -72,7 +72,7 @@
                 android:id="@+id/id_outcome"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 
@@ -87,6 +87,7 @@
                 android:id="@+id/id_athlete_name_1"
                 android:layout_weight="1"
                 android:gravity="left"
+                android:textSize="12sp"
                 android:padding="5dp"
                 android:textColor="@color/athlete_color" />
 
@@ -98,11 +99,12 @@
                 android:padding="5dp"
                 android:textColor="#000000" />
 
+
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/id_outcome_1"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:padding="5dp"
                 android:textColor="#000000" />
 

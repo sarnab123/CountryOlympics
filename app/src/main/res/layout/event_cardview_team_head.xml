@@ -55,7 +55,7 @@
 
             <RelativeLayout
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="left"
                 android:padding="5dp">
 
                 <ImageView
@@ -97,7 +97,7 @@
 
             <RelativeLayout
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="left"
                 android:padding="5dp">
 
                 <ImageView

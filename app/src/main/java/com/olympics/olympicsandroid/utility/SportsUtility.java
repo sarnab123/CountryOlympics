@@ -181,7 +181,7 @@ public class SportsUtility   {
                 return competitor.getFirst_name() + " " + competitor.getLast_name();
             } else if (eventResultsViewModel.getUnit_type() == TYPE_TEAM_HEAD2HEAD ||
                     eventResultsViewModel.getUnit_type() == TYPE_INDIVUDUAL_HEAD2HEAD) {
-                return competitor.getOrganization();
+                return competitor.getDescription();
             }
         }
         return null;
