@@ -117,12 +117,10 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
                 ListTeamCardViewHolder teamCardViewHolder = (ListTeamCardViewHolder) holder;
 
-                if(TextUtils.isEmpty(resultsModels.get(position).competitorModel.getCompetitorName()))
-                {
+                if (TextUtils.isEmpty(resultsModels.get(position).competitorModel.getCompetitorName())) {
                     teamCardViewHolder.id_country_alias.setText(resultsModels.get(position).competitorModel.getCountryAlias());
 
-                }
-                else {
+                } else {
                     teamCardViewHolder.id_country_alias.setText(resultsModels.get(position).competitorModel.getCompetitorName());
                 }
                 int rid = OlympicsApplication.getAppContext().getResources()
@@ -136,7 +134,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 teamCardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
                 teamCardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
                 teamCardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
-                setAnimation(teamCardViewHolder.id_teamRound_cardview,position);
+                setAnimation(teamCardViewHolder.id_teamRound_cardview, position);
                 break;
             case TYPE_IND_HEAD2HEAD_COMPET:
 
@@ -148,38 +146,41 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 indh2hHolder.id_score.setText(resultsModels.get(position).competitorheadModel.getResult());
                 indh2hHolder.id_score_1.setText(resultsModels.get(position).competitorheadModel.getOpp_result());
                 indh2hHolder.id_score_header.setText(resultsModels.get(position).competitorheadModel.getUnit_scoring_type());
-                setAnimation(indh2hHolder.id_indh2h_cardview,position);
+                setAnimation(indh2hHolder.id_indh2h_cardview, position);
                 break;
             case TYPE_TEAM_HEAD2HEAD_COMPET:
 
                 ListTeamH2HCardViewHolder teamh2hviewHolder = (ListTeamH2HCardViewHolder) holder;
-                setAnimation(teamh2hviewHolder.id_teamh2h_cardview,position);
-                if(TextUtils.isEmpty(resultsModels.get(position).competitorheadModel.getCompetitorName())) {
+                setAnimation(teamh2hviewHolder.id_teamh2h_cardview, position);
+                if (TextUtils.isEmpty(resultsModels.get(position).competitorheadModel.getCompetitorName())) {
                     teamh2hviewHolder.id_country1_alias.setText(resultsModels.get(position).competitorheadModel.getCountryAlias());
                     teamh2hviewHolder.id_country2_alias.setText(resultsModels.get(position).competitorheadModel.getOpp_countryAlias());
-                }
-                else{
+                } else {
                     teamh2hviewHolder.id_country1_alias.setText(resultsModels.get(position).competitorheadModel.getCompetitorName());
                     teamh2hviewHolder.id_country2_alias.setText(resultsModels.get(position).competitorheadModel.getOpp_competitorName());
                 }
-                int rid_1 = OlympicsApplication.getAppContext().getResources()
-                        .getIdentifier(resultsModels.get(position).competitorheadModel.getCountryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
-                try {
-                    teamh2hviewHolder.id_country1_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid_1)));
-                } catch (Exception ex) {
-                    teamh2hviewHolder.id_country1_image.setVisibility(View.GONE);
-                    System.out.println("Exeptipn == " + ex);
+
+                if (!TextUtils.isEmpty(resultsModels.get(position).competitorheadModel.getCountryAlias())) {
+                    int rid_1 = OlympicsApplication.getAppContext().getResources()
+                            .getIdentifier(resultsModels.get(position).competitorheadModel.getCountryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
+                    try {
+                        teamh2hviewHolder.id_country1_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid_1)));
+                    } catch (Exception ex) {
+                        teamh2hviewHolder.id_country1_image.setVisibility(View.GONE);
+                        System.out.println("Exeptipn == " + ex);
+                    }
                 }
 
-                int rid_2 = OlympicsApplication.getAppContext().getResources()
-                        .getIdentifier(resultsModels.get(position).competitorheadModel.getOpp_countryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
-                try {
-                    teamh2hviewHolder.id_country2_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid_2)));
-                } catch (Exception ex) {
-                    teamh2hviewHolder.id_country2_image.setVisibility(View.GONE);
-                    System.out.println("Exeptipn == " + ex);
+                if (!TextUtils.isEmpty(resultsModels.get(position).competitorheadModel.getOpp_countryAlias())) {
+                    int rid_2 = OlympicsApplication.getAppContext().getResources()
+                            .getIdentifier(resultsModels.get(position).competitorheadModel.getOpp_countryAlias().toLowerCase(), "raw", OlympicsApplication.getAppContext().getPackageName());
+                    try {
+                        teamh2hviewHolder.id_country2_image.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources().openRawResource(rid_2)));
+                    } catch (Exception ex) {
+                        teamh2hviewHolder.id_country2_image.setVisibility(View.GONE);
+                        System.out.println("Exeptipn == " + ex);
+                    }
                 }
-
                 teamh2hviewHolder.id_outcome.setText(resultsModels.get(position).competitorheadModel.getOutcome());
                 teamh2hviewHolder.id_outcome_1.setText(resultsModels.get(position).competitorheadModel.getOpp_outcome());
 
@@ -222,13 +223,12 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                             @Override
                             public void onClick(View v) {
 //                                itemClickListener.handleItemClick(resultsModels.get(position).sportsTitle);
-                                Toast.makeText(OlympicsApplication.getAppContext(),"This is a scheduled event",Toast.LENGTH_LONG).show();
+                                Toast.makeText(OlympicsApplication.getAppContext(), "This is a scheduled event", Toast.LENGTH_LONG).show();
                             }
                         });
-                    } else{
+                    } else {
                         unitHeaderHolder.schduledTime.setVisibility(View.GONE);
                     }
-
 
 
                 } else if (resultsModels.get(position).sportsTitle.getUnit_status() == EventUnitModel.UNIT_STATUS_INPROGRESS) {
@@ -238,7 +238,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     unitHeaderHolder.scheduleImage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(OlympicsApplication.getAppContext(),"This is live event, Pull to Refresh!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(OlympicsApplication.getAppContext(), "This is live event, Pull to Refresh!", Toast.LENGTH_LONG).show();
                         }
                     });
                 } else {
@@ -254,11 +254,9 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     /**
      * Here is the key method to apply the animation
      */
-    private void setAnimation(View viewToAnimate, int position)
-    {
+    private void setAnimation(View viewToAnimate, int position) {
         // If the bound view wasn't previously displayed on screen, it's animated
-        if (position > lastPosition)
-        {
+        if (position > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(OlympicsApplication.getAppContext(), android.R.anim.slide_in_left);
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
