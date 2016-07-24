@@ -3,6 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/id_teamRound_cardview"
     android:foreground="?android:attr/selectableItemBackground"
     android:background="@android:color/white"
     card_view:cardCornerRadius="3dp"

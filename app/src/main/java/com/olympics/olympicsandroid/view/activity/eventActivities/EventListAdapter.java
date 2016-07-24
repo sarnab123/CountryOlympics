@@ -2,11 +2,14 @@ package com.olympics.olympicsandroid.view.activity.eventActivities;
 
 import android.graphics.BitmapFactory;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +34,9 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public final static int TYPE_IND_HEAD2HEAD_COMPET = 3;
     public final static int TYPE_TEAM_COMPETITOR = 4;
     public final static int TYPE_TEAM_HEAD2HEAD_COMPET = 5;
+
+    // Allows to remember the last item shown on screen
+    private int lastPosition = -1;
 
     List<EventListAdapter.Result> resultsModels;
     public final IScheduleListener itemClickListener;
@@ -96,6 +102,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+
         switch (resultsModels.get(position).type) {
             case TYPE_IND_COMPETITOR:
 
@@ -104,6 +111,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 cardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
                 cardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
                 cardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
+                setAnimation(cardViewHolder.id_indRound_cardview, position);
                 break;
             case TYPE_TEAM_COMPETITOR:
 
@@ -128,6 +136,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 teamCardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
                 teamCardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
                 teamCardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
+                setAnimation(teamCardViewHolder.id_teamRound_cardview,position);
                 break;
             case TYPE_IND_HEAD2HEAD_COMPET:
 
@@ -139,10 +148,12 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 indh2hHolder.id_score.setText(resultsModels.get(position).competitorheadModel.getResult());
                 indh2hHolder.id_score_1.setText(resultsModels.get(position).competitorheadModel.getOpp_result());
                 indh2hHolder.id_score_header.setText(resultsModels.get(position).competitorheadModel.getUnit_scoring_type());
+                setAnimation(indh2hHolder.id_indh2h_cardview,position);
                 break;
             case TYPE_TEAM_HEAD2HEAD_COMPET:
 
                 ListTeamH2HCardViewHolder teamh2hviewHolder = (ListTeamH2HCardViewHolder) holder;
+                setAnimation(teamh2hviewHolder.id_teamh2h_cardview,position);
                 if(TextUtils.isEmpty(resultsModels.get(position).competitorheadModel.getCompetitorName())) {
                     teamh2hviewHolder.id_country1_alias.setText(resultsModels.get(position).competitorheadModel.getCountryAlias());
                     teamh2hviewHolder.id_country2_alias.setText(resultsModels.get(position).competitorheadModel.getOpp_countryAlias());
@@ -240,6 +251,20 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     }
 
+    /**
+     * Here is the key method to apply the animation
+     */
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(OlympicsApplication.getAppContext(), android.R.anim.slide_in_left);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
+    }
+
     @Override
     public int getItemViewType(int position) {
         return resultsModels.get(position).type;
@@ -274,6 +299,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         private TextView id_score;
         private TextView id_rank;
         private TextView id_score_header;
+        private CardView id_indRound_cardview;
 
         public ListIndividualCardViewHolder(View itemView) {
             super(itemView);
@@ -281,6 +307,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             id_athlete_name = (TextView) itemView.findViewById(R.id.id_athlete_name);
             id_score = (TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
+            id_indRound_cardview = (CardView) itemView.findViewById(R.id.id_indRound_cardview);
         }
     }
 
@@ -290,6 +317,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         private TextView id_score;
         private TextView id_rank;
         private TextView id_score_header;
+        private CardView id_teamRound_cardview;
+
 
         public ListTeamCardViewHolder(View itemView) {
             super(itemView);
@@ -298,6 +327,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             id_country_alias = (TextView) itemView.findViewById(R.id.id_country_alias);
             id_score = (TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
+            id_teamRound_cardview = (CardView) itemView.findViewById(R.id.id_teamRound_cardview);
         }
     }
 
@@ -308,6 +338,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         private TextView id_score;
         private TextView id_score_header;
         private TextView id_outcome;
+
+        private CardView id_teamh2h_cardview;
 
         private TextView id_country2_alias;
         private ImageView id_country2_image;
@@ -326,6 +358,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             id_country2_alias = (TextView) itemView.findViewById(R.id.id_country2_alias);
             id_score_1 = (TextView) itemView.findViewById(R.id.id_score_1);
             id_outcome_1 = (TextView) itemView.findViewById(R.id.id_outcome_1);
+            id_teamh2h_cardview = (CardView) itemView.findViewById(R.id.id_teamh2h_cardview);
         }
     }
 
@@ -339,6 +372,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         private TextView id_score_1;
         private TextView id_outcome_1;
 
+        private CardView id_indh2h_cardview;
+
         public ListIndH2HCardViewHolder(View itemView) {
             super(itemView);
             id_outcome = (TextView) itemView.findViewById(R.id.id_outcome);
@@ -349,6 +384,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             id_outcome_1 = (TextView) itemView.findViewById(R.id.id_outcome_1);
             id_athlete_name_1 = (TextView) itemView.findViewById(R.id.id_athlete_name_1);
             id_score_1 = (TextView) itemView.findViewById(R.id.id_score_1);
+
+            id_indh2h_cardview = (CardView) itemView.findViewById(R.id.id_indh2h_cardview);
         }
     }
 

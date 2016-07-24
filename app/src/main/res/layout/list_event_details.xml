@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/event_time"
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="15dp"
                 android:layout_alignParentRight="true"
-                android:layout_alignTop="@+id/event_description"
+                android:layout_centerVertical="true"
                 android:layout_weight="0"
                 android:src="@drawable/circle_plus" />
         </RelativeLayout>
