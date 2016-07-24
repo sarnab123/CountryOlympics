@@ -20,6 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
@@ -255,6 +257,14 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             });
             dlgAlert.setCancelable(false);
             dlgAlert.create().show();
+
+            Bundle params = new Bundle();
+            params.putString("app_error", "event_result");
+            params.putString("app_screen", "country_schedule");
+
+            params.putString("error_reason", errorModel.getErrorMessage());
+            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
+
         }
         else{
             AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
@@ -272,6 +282,18 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             });
             dlgAlert.setCancelable(false);
             dlgAlert.create().show();
+
+            Bundle params = new Bundle();
+            params.putString("app_error", "event_result");
+            params.putString("app_screen", "country_schedule");
+
+            if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorMessage())) {
+                params.putString("error_reason", errorModel.getErrorMessage());
+            }
+            else{
+                params.putString("error_reason", "generic_error");
+            }
+            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
         }
 
     }

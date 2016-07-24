@@ -23,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.CountryModel;
 import com.olympics.olympicsandroid.model.ErrorModel;
@@ -112,8 +114,30 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
             });
             dlgAlert.setCancelable(false);
             dlgAlert.create().show();
+
+            Bundle params = new Bundle();
+            params.putString("app_error", "event_result");
+            params.putString("app_screen","country_selection");
+
+            params.putString("error_reason", errorModel.getErrorMessage());
+            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
+
         }
         else{
+
+            Bundle params = new Bundle();
+            params.putString("app_error", "event_result");
+            params.putString("app_screen","country_selection");
+
+            if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorMessage())) {
+                params.putString("error_reason", errorModel.getErrorMessage());
+            }
+            else{
+                params.putString("error_reason", "generic_error");
+            }
+            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
+
+
             AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
             dlgAlert.setMessage(getString(R.string.id_error_server));
             dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
@@ -146,9 +170,9 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
 
         List<Organization> filteredCountryList = new ArrayList<>();
         for (Organization country : countryList) {
-            if (country != null && (!TextUtils.isEmpty(country.getDescription()) && country
-                    .getDescription().toLowerCase().contains(newText)) || (!TextUtils.isEmpty
-                    (country.getAlias()) && country.getAlias().toLowerCase().contains(newText))) {
+            if (!TextUtils.isEmpty(newText) && country != null && (!TextUtils.isEmpty(country.getDescription()) && country
+                    .getDescription().toLowerCase().contains(newText.toLowerCase())) || (!TextUtils.isEmpty
+                    (country.getAlias()) && country.getAlias().toLowerCase().contains(newText.toLowerCase()))) {
                 filteredCountryList.add(country);
             }
         }
@@ -201,6 +225,12 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
                 int itemPosition = mRecyclerView.getChildLayoutPosition(view);
                 Organization selectedOrg = countryModelOrg.get(itemPosition);
                 OlympicsPrefs.getInstance(null).setSelectedCountry(selectedOrg);
+
+                Bundle params = new Bundle();
+                params.putString("app_country", selectedOrg.getDescription());
+                FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("country", params);
+
+
                 determineNextScreen();
             }
         };

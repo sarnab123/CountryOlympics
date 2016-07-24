@@ -14,7 +14,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
+import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
@@ -98,6 +100,12 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         eventunitView.setLayoutManager(mLayoutManager);
         eventunitView.setHasFixedSize(true);
 
+        Bundle params = new Bundle();
+        params.putString("user_refresh", "false");
+        params.putString("event_id", eventID);
+        params.putString("event_unit_name", unitName);
+        FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("refresh", params);
+
         handleUnit();
     }
 
@@ -125,6 +133,14 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         return new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
+                Bundle params = new Bundle();
+                params.putString("user_refresh", "true");
+                params.putString("event_id", eventID);
+                params.putString("event_unit_name", unitName);
+                FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("refresh", params);
+
+
                 handleUnit();
             }
         };
@@ -320,8 +336,20 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
     @Override
     public void onFailure(ErrorModel errorModel) {
         mNoItemsView.setVisibility(View.VISIBLE);
+
+
         if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.ERROR_INTERNET))
         {
+
+            Bundle params = new Bundle();
+            params.putString("app_error", "event_result");
+            params.putString("app_screen","event_result");
+            params.putString("event_id", eventID);
+            params.putString("event_unit_name", unitName);
+            params.putString("error_reason", errorModel.getErrorMessage());
+            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
+
+
             AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
             dlgAlert.setMessage(getString(R.string.id_error_internet));
             dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
@@ -339,6 +367,20 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
             dlgAlert.create().show();
         }
         else{
+
+            Bundle params = new Bundle();
+            params.putString("app_error", "event_result");
+            params.putString("event_id", eventID);
+            params.putString("event_unit_name", unitName);
+            if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorMessage())) {
+                params.putString("error_reason", errorModel.getErrorMessage());
+            }
+            else{
+                params.putString("error_reason", "generic_error");
+            }
+            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
+
+
             AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
             dlgAlert.setMessage(getString(R.string.id_error_server));
             dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {

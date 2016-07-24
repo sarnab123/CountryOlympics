@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.olympics.olympicsandroid.OlympicsApplication;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.view.activity.AthleteActivity;
 import com.olympics.olympicsandroid.view.activity.CountrySelectionActivity;
 import com.olympics.olympicsandroid.view.activity.MedalTallyActivity;
@@ -41,6 +43,12 @@ public class ActivityFactory
 
     public static void openAthleteActivity(Activity originAct,Bundle extras)
     {
+
+        Bundle params = new Bundle();
+        params.putString("screen_id", "athlete");
+        params.putString("app_country", OlympicsPrefs.getInstance(null).getUserSelectedCountry().getDescription());
+        FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("app_screen", params);
+
         Intent homeLaunch = new Intent(originAct,AthleteActivity.class);
         originAct.startActivity(homeLaunch);
 
@@ -48,6 +56,11 @@ public class ActivityFactory
 
     public static void openMedalActivity(Activity originAct,Bundle extras)
     {
+        Bundle params = new Bundle();
+        params.putString("screen_id", "medal");
+        params.putString("app_country", OlympicsPrefs.getInstance(null).getUserSelectedCountry().getDescription());
+        FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("app_screen", params);
+
         Intent homeLaunch = new Intent(originAct,MedalTallyActivity.class);
         originAct.startActivity(homeLaunch);
 
@@ -62,7 +75,14 @@ public class ActivityFactory
             intentExtra.putExtra("event_unit_id",item.eventUnitModel.getUnitID());
             intentExtra.putExtra("event_date",item.eventUnitModel.getEventStartTime());
 
-            ctx.startActivity(intentExtra);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, item.eventUnitModel.getEventID());
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, item.eventUnitModel.getUnitName());
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "UNIT");
+
+        FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
+
+        ctx.startActivity(intentExtra);
     }
 
 }
