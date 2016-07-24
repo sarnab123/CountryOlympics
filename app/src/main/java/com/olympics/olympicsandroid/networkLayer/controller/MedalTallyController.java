@@ -42,42 +42,47 @@ public class MedalTallyController
     {
         //Retrieving medal tally data from server and cache
         DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_MEDALTALLY_MODEL,
-                DataCacheHelper.CACHE_MEDALTALLY_KEY,createNewCacheListener());
+                DataCacheHelper.CACHE_MEDALTALLY_KEY, createNewCacheListener());
         getLatestMedalDataFromServer();
     }
 
     private void getLatestMedalDataFromServer()
     {
-        // Set Request Policy
-        RequestPolicy requestPolicy = new RequestPolicy();
-        requestPolicy.setForceCache(true);
-        requestPolicy.setMaxAge(60 * 10);
+        if(UtilityMethods.isConnectedToInternet()) {
+            // Set Request Policy
+            RequestPolicy requestPolicy = new RequestPolicy();
+            requestPolicy.setForceCache(true);
+            requestPolicy.setMaxAge(60 * 10);
 
-        if(UtilityMethods.isSimulated)
-        {
-            String configString =
-                    UtilityMethods.loadDataFromAsset(mCtx,
-                            "medal_tally.xml");
-            ParseTask parseTask = new ParseTask(MedalTally.class, configString, new IParseListener() {
-                @Override
-                public void onParseSuccess(Object responseModel) {
-                    listenerWeakReference.get().onSuccess((IResponseModel)responseModel);
-                }
+            if (UtilityMethods.isSimulated) {
+                String configString =
+                        UtilityMethods.loadDataFromAsset(mCtx,
+                                "medal_tally.xml");
+                ParseTask parseTask = new ParseTask(MedalTally.class, configString, new IParseListener() {
+                    @Override
+                    public void onParseSuccess(Object responseModel) {
+                        listenerWeakReference.get().onSuccess((IResponseModel) responseModel);
+                    }
 
-                @Override
-                public void onParseFailure(ErrorModel errorModel) {
-                    listenerWeakReference.get().onFailure(errorModel);
-                }
-            },ParseTask.XML_DATA);
-            parseTask.startParsing();
+                    @Override
+                    public void onParseFailure(ErrorModel errorModel) {
+                        listenerWeakReference.get().onFailure(errorModel);
+                    }
+                }, ParseTask.XML_DATA);
+                parseTask.startParsing();
+            } else {
+
+                CustomXMLRequest<MedalTally> medalTallyRequest = new CustomXMLRequest<MedalTally>
+                        (OlympicRequestQueries.MEDAL_TALLY, MedalTally.class,
+                                createSuccessListener(), createFailureListener(), requestPolicy);
+                VolleySingleton.getInstance(null).addToRequestQueue(medalTallyRequest);
+            }
         }
-
-        else {
-
-            CustomXMLRequest<MedalTally> medalTallyRequest = new CustomXMLRequest<MedalTally>
-                    (OlympicRequestQueries.MEDAL_TALLY, MedalTally.class,
-                            createSuccessListener(), createFailureListener() , requestPolicy);
-            VolleySingleton.getInstance(null).addToRequestQueue(medalTallyRequest);
+        else{
+            ErrorModel errorModel = new ErrorModel();
+            errorModel.setErrorCode(UtilityMethods.ERROR_INTERNET);
+            errorModel.setErrorMessage(UtilityMethods.ERROR_INTERNET);
+            listenerWeakReference.get().onFailure(errorModel);
         }
     }
 

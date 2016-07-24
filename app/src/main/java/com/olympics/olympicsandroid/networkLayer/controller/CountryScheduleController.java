@@ -69,41 +69,45 @@ public class CountryScheduleController
 
     private void getDataFromServerAndCache()
     {
-        // Set Request Policy
-        RequestPolicy requestPolicy = new RequestPolicy();
-        requestPolicy.setForceCache(true);
-        requestPolicy.setMaxAge(60 * 60 * 24);
-        requestPolicy.setUrlReplacement(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getId());
+        if(UtilityMethods.isConnectedToInternet()) {
+            // Set Request Policy
+            RequestPolicy requestPolicy = new RequestPolicy();
+            requestPolicy.setForceCache(true);
+            requestPolicy.setMaxAge(60 * 60 * 24);
+            requestPolicy.setUrlReplacement(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getId());
 
-        if(UtilityMethods.isSimulated)
-        {
-            String configString =
-                    UtilityMethods.loadDataFromAsset(mCtx,
-                            "country_profile.xml");
-            ParseTask<CountryProfileEvents> parseTask = new ParseTask<CountryProfileEvents>(CountryProfileEvents.class, configString, new IParseListener() {
-                @Override
-                public void onParseSuccess(Object responseModel) {
-                    //TODO: Create common code for simulated/server response
-                    if(responseModel != null && responseModel instanceof CountryProfileEvents) {
-                        countryProfileModel = (CountryProfileEvents)responseModel;
-                        getCompleteSchedule();
+            if (UtilityMethods.isSimulated) {
+                String configString =
+                        UtilityMethods.loadDataFromAsset(mCtx,
+                                "country_profile.xml");
+                ParseTask<CountryProfileEvents> parseTask = new ParseTask<CountryProfileEvents>(CountryProfileEvents.class, configString, new IParseListener() {
+                    @Override
+                    public void onParseSuccess(Object responseModel) {
+                        //TODO: Create common code for simulated/server response
+                        if (responseModel != null && responseModel instanceof CountryProfileEvents) {
+                            countryProfileModel = (CountryProfileEvents) responseModel;
+                            getCompleteSchedule();
+                        } else {
+                            listenerWeakReference.get().onFailure(null);
+                        }
+
                     }
-                    else{
-                        listenerWeakReference.get().onFailure(null);
+
+                    @Override
+                    public void onParseFailure(ErrorModel errorModel) {
+                        listenerWeakReference.get().onFailure(errorModel);
                     }
-
-                }
-
-                @Override
-                public void onParseFailure(ErrorModel errorModel) {
-                    listenerWeakReference.get().onFailure(errorModel);
-                }
-            },ParseTask.XML_DATA);
-            parseTask.startParsing();
-        }
-        else{
-            CustomXMLRequest<CountryProfileEvents> countryRequest = new CustomXMLRequest<CountryProfileEvents>(OlympicRequestQueries.COUNTRY_CONFIG,CountryProfileEvents.class,createCountryProfileSuccessListener(),createCountryProfileFailureListener(),requestPolicy);
-            VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+                }, ParseTask.XML_DATA);
+                parseTask.startParsing();
+            } else {
+                CustomXMLRequest<CountryProfileEvents> countryRequest = new CustomXMLRequest<CountryProfileEvents>(OlympicRequestQueries.COUNTRY_CONFIG, CountryProfileEvents.class, createCountryProfileSuccessListener(), createCountryProfileFailureListener(), requestPolicy);
+                VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+            }
+        }else{
+            ErrorModel errorModel = new ErrorModel();
+            errorModel.setErrorCode(UtilityMethods.ERROR_INTERNET);
+            errorModel.setErrorMessage(UtilityMethods.ERROR_INTERNET);
+            listenerWeakReference.get().onFailure(errorModel);
         }
     }
 

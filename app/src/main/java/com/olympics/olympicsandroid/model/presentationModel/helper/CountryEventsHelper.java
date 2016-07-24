@@ -15,6 +15,7 @@ import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitMode
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
 import com.olympics.olympicsandroid.utility.DateUtils;
+import com.olympics.olympicsandroid.utility.SportsUtility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -219,8 +220,8 @@ public class CountryEventsHelper {
         eventUnitModel.setEventID(olympicEvent.getId());
         eventUnitModel.setSportAlias(olympicEvent.getSport().getAlias());
         eventUnitModel.setUnitName(olympicUnit.getName());
-        eventUnitModel.setEventStartTime(DateUtils.getDateTimeInMillis(olympicUnit.getStart_date
-                ()));
+        eventUnitModel.setEventStartTime(olympicUnit.getStart_date
+                ());
         eventUnitModel.setEventGender(olympicEvent.getGender());
         eventUnitModel.setEventName(olympicEvent.getDescription());
         if(olympicEvent.getTeams() != null && olympicEvent.getTeams().size() > 0)
@@ -237,31 +238,13 @@ public class CountryEventsHelper {
 
         if(!TextUtils.isEmpty(olympicUnit.getStatus()))
         {
-            if(olympicUnit.getStatus().equalsIgnoreCase("scheduled"))
-            {
-                eventUnitModel.setUnitStatus(EventUnitModel.UNIT_STATUS_SCHEDULED);
-            }
-            else if(olympicUnit.getStatus().equalsIgnoreCase("inprogress"))
-            {
-                eventUnitModel.setUnitStatus(EventUnitModel.UNIT_STATUS_INPROGRESS);
-
-            }else if(olympicUnit.getStatus().equalsIgnoreCase("not_scheduled"))
-            {
-                eventUnitModel.setUnitStatus(EventUnitModel.UNIT_STATUS_NOT_SCHEDULED);
-
-            }
-            else if(olympicUnit.getStatus().equalsIgnoreCase("closed"))
-            {
-                eventUnitModel.setUnitStatus(EventUnitModel.UNIT_STATUS_CLOSED);
-
-            }
+            eventUnitModel.setUnitStatus(SportsUtility.getInstance().getUnitStatus(olympicUnit.getStatus()));
         }
+
         eventUnitModel.setUnitVenue(olympicUnit.getVenue().getName());
         eventUnitModel.setUnitID(olympicUnit.getId());
-//        eventUnitModel.setUnitMedalType(olympicUnit.getMe
+        eventUnitModel.setUnitMedalType(SportsUtility.getInstance().getMedalType(olympicUnit.getMedal()));
 
-        //eventUnitModel.setEventStartTime(DateUtils.prepareDate
-        //        (olympicUnit.getStart_date()));
         return eventUnitModel;
     }
 

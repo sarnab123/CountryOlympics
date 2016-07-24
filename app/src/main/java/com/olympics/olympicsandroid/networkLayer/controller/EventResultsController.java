@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.EventResultsModel;
 import com.olympics.olympicsandroid.model.presentationModel.UnitResultsViewModel;
 import com.olympics.olympicsandroid.model.presentationModel.helper.EventResultsHelper;
@@ -11,6 +12,7 @@ import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
 import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
+import com.olympics.olympicsandroid.utility.UtilityMethods;
 
 import java.lang.ref.WeakReference;
 
@@ -30,13 +32,20 @@ public class EventResultsController
 
     public void getEventResults(String eventID)
     {
-        // Set Request Policy
-        RequestPolicy requestPolicy = new RequestPolicy();
-        requestPolicy.setUrlReplacement(eventID);
-        listenerWeakReference.get().handleLoadingIndicator(true);
-        CustomXMLRequest<EventResultsModel> countryRequest =
-                new CustomXMLRequest<EventResultsModel>(OlympicRequestQueries.EVENT_RESULTS,EventResultsModel.class,createEventSuccessListener(),createEventFailureListener(),requestPolicy);
-        VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+        if(UtilityMethods.isConnectedToInternet()) {
+            // Set Request Policy
+            RequestPolicy requestPolicy = new RequestPolicy();
+            requestPolicy.setUrlReplacement(eventID);
+            listenerWeakReference.get().handleLoadingIndicator(true);
+            CustomXMLRequest<EventResultsModel> countryRequest =
+                    new CustomXMLRequest<EventResultsModel>(OlympicRequestQueries.EVENT_RESULTS, EventResultsModel.class, createEventSuccessListener(), createEventFailureListener(), requestPolicy);
+            VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+        }else{
+            ErrorModel errorModel = new ErrorModel();
+            errorModel.setErrorCode(UtilityMethods.ERROR_INTERNET);
+            errorModel.setErrorMessage(UtilityMethods.ERROR_INTERNET);
+            listenerWeakReference.get().onFailure(errorModel);
+        }
     }
 
     private Response.ErrorListener createEventFailureListener()

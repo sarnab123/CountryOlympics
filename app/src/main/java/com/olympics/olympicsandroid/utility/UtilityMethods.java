@@ -1,6 +1,8 @@
 package com.olympics.olympicsandroid.utility;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Environment;
 
 import com.olympics.olympicsandroid.OlympicsApplication;
@@ -19,6 +21,8 @@ public class UtilityMethods
     public static final int CACHE_DIR = 1001;
 
     public static final int EXTERNAL_CACHE_DIR = CACHE_DIR + 1;
+
+    public static final String ERROR_INTERNET = "800";
     /**
      * Helper Function to Load json From Assets Folder
      */
@@ -92,5 +96,13 @@ public class UtilityMethods
         }
 
         return null;
+    }
+
+    public static boolean isConnectedToInternet()
+    {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) OlympicsApplication.getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

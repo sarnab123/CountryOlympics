@@ -21,5 +21,6 @@
     <string name="list_tasks_noitem_msg">No Competitors from the Selected Country</string>
     <string name="upgrade_str">Upgrade</string>
     <string name="medaltally_update_timestamp">Last Updated : %1$s</string>
-
+    <string name="id_error_server">We had a problem retrieving information. Do you want to try again?</string>
+    <string name="id_error_internet">No network connection, please try again.</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.olympics.olympicsandroid.view.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -29,6 +31,7 @@ import com.olympics.olympicsandroid.networkLayer.controller.CountryScheduleContr
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 import com.olympics.olympicsandroid.networkLayer.controller.MedalTallyController;
 import com.olympics.olympicsandroid.utility.MedalTallyComparator;
+import com.olympics.olympicsandroid.utility.UtilityMethods;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 import com.olympics.olympicsandroid.view.fragment.DateEventAdapter;
 
@@ -236,7 +239,43 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     }
 
     @Override
-    public void onFailure(ErrorModel errorModel) {
+    public void onFailure(ErrorModel errorModel)
+    {
+        if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.))
+        {
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+            dlgAlert.setMessage(getString(R.string.id_error_internet));
+            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                    setUpData();
+                }
+            });
+            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                }
+            });
+            dlgAlert.setCancelable(false);
+            dlgAlert.create().show();
+        }
+        else{
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+            dlgAlert.setMessage(getString(R.string.id_error_server));
+            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                    setUpData();
+                }
+            });
+            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                }
+            });
+            dlgAlert.setCancelable(false);
+            dlgAlert.create().show();
+        }
 
     }
 

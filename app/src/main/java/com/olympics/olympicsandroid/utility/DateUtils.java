@@ -17,6 +17,8 @@ public class DateUtils {
 
     public static final String DATE_TIME_WITH_TIMEZONE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
     public static final String DATE_TIME_WITHOUT_TIMEZONE_FORMAT = "yyyy-MMM-dd HH:mm:ss";
+    public static final String DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT = "HH:mm";
+
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
     // Aug-03-2016
@@ -73,6 +75,26 @@ public class DateUtils {
 
 
             DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_TIMEZONE_FORMAT, Locale.getDefault());
+            Calendar localCalendar = Calendar.getInstance();
+            localCalendar.setTimeInMillis(milliseconds);
+            return formatter.format(localCalendar.getTime());
+        } catch (Exception ex) {
+            return "";
+        }
+
+    }
+
+
+    public static String getUnitTime(String timeInMiliSeconds) {
+
+        try {
+
+            SimpleDateFormat f = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT);
+            Date d = f.parse(timeInMiliSeconds);
+            long milliseconds = d.getTime();
+
+
+            DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT, Locale.getDefault());
             Calendar localCalendar = Calendar.getInstance();
             localCalendar.setTimeInMillis(milliseconds);
             return formatter.format(localCalendar.getTime());

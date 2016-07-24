@@ -37,34 +37,39 @@ public class CountryListController
 
     public synchronized void  getCountryData()
     {
-        // Set Request Policy
-        RequestPolicy requestPolicy = new RequestPolicy();
-        requestPolicy.setForceCache(true);
-        requestPolicy.setMaxAge(60 * 60 * 24);
+        if(UtilityMethods.isConnectedToInternet()) {
+            // Set Request Policy
+            RequestPolicy requestPolicy = new RequestPolicy();
+            requestPolicy.setForceCache(true);
+            requestPolicy.setMaxAge(60 * 60 * 24);
 
-        if(UtilityMethods.isSimulated)
-        {
+            if (UtilityMethods.isSimulated) {
                 String configString =
                         UtilityMethods.loadDataFromAsset(mCtx,
                                 "country_list.xml");
                 ParseTask parseTask = new ParseTask(CountryModel.class, configString, new IParseListener() {
                     @Override
                     public void onParseSuccess(Object responseModel) {
-                        listenerWeakReference.get().onSuccess((IResponseModel)responseModel);
+                        listenerWeakReference.get().onSuccess((IResponseModel) responseModel);
                     }
 
                     @Override
                     public void onParseFailure(ErrorModel errorModel) {
                         listenerWeakReference.get().onFailure(errorModel);
                     }
-                },ParseTask.XML_DATA);
+                }, ParseTask.XML_DATA);
                 parseTask.startParsing();
+            } else {
+                CustomXMLRequest<CountryModel> countryRequest = new CustomXMLRequest<CountryModel>(OlympicRequestQueries.COUNTRY_LIST, CountryModel.class,
+                        createSuccessListener(), createFailureListener(), requestPolicy);
+                VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+            }
         }
-
-        else {
-            CustomXMLRequest<CountryModel> countryRequest = new CustomXMLRequest<CountryModel>(OlympicRequestQueries.COUNTRY_LIST, CountryModel.class,
-                    createSuccessListener(), createFailureListener() , requestPolicy);
-            VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+        else{
+            ErrorModel errorModel = new ErrorModel();
+            errorModel.setErrorCode(UtilityMethods.ERROR_INTERNET);
+            errorModel.setErrorMessage(UtilityMethods.ERROR_INTERNET);
+            listenerWeakReference.get().onFailure(errorModel);
         }
     }
 

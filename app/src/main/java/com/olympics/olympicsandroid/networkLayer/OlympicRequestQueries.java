@@ -19,7 +19,7 @@ public enum OlympicRequestQueries
                 true, true),
     APP_VERSION_DATA(Request.Method.GET, "https://olympics.mybluemix.net/config/getAppVersion",
             null,
-            true, true);
+            true, false);
 
     private int httpRequestType;
     private String relativeURL;

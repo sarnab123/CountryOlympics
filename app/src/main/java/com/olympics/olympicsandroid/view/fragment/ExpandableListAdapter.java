@@ -2,6 +2,7 @@ package com.olympics.olympicsandroid.view.fragment;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
+import com.olympics.olympicsandroid.utility.DateUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -24,12 +26,12 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public static final int EVENT_DETAIL = 1;
     public static final int EVENT_RESULTS = 2;
     public static final int EVENT_HEADER = 3;
+
     protected static IItemClickListener itemClickListener;
 
     private List<Item> data;
 
-    public ExpandableListAdapter(List<Item> data , IItemClickListener itemClickListener)
-    {
+    public ExpandableListAdapter(List<Item> data, IItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
         this.data = data;
     }
@@ -72,17 +74,17 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 try {
                     ((ListEventHeaderViewHolder) holder).sportImage.setImageBitmap(BitmapFactory.decodeStream(OlympicsApplication.getAppContext().getResources()
                             .openRawResource(rid)));
-                } catch (Exception ex)
-                {
-                    System.out.println("Exeptipn == "+ex);
+                } catch (Exception ex) {
+                    System.out.println("Exeptipn == " + ex);
                 }
 
                 break;
             case EVENT_DETAIL:
                 final ListEventDetailsViewHolder eventDetailsViewHolder = (ListEventDetailsViewHolder) holder;
-                eventDetailsViewHolder.bind(item);
-                break;
+                byte medalType = item.eventUnitModel.getUnitMedalType();
 
+                eventDetailsViewHolder.bind(medalType,item);
+                break;
 
 
             case EVENT_RESULTS:
@@ -102,18 +104,23 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private static class ListEventDetailsViewHolder extends RecyclerView.ViewHolder {
         public TextView eventDescription;
+        public TextView eventTime;
+        public ImageView medal_image;
         public TextView eventVenue;
         public Item refferalItem;
 
         public ListEventDetailsViewHolder(View itemView) {
             super(itemView);
             eventDescription = (TextView) itemView.findViewById(R.id.event_description);
+            eventTime = (TextView) itemView.findViewById(R.id.event_time);
             eventVenue = (TextView) itemView.findViewById(R.id.event_venue);
+            medal_image = (ImageView) itemView.findViewById(R.id.id_medal_image);
         }
 
-        public void bind(final Item item) {
+        public void bind(final byte medalType,final Item item) {
             refferalItem = item;
             eventDescription.setText(item.eventUnitModel.getEventName());
+            eventTime.setText(DateUtils.getUnitTime(item.eventUnitModel.getEventStartTime()));
             byte spbyte[] = new byte[0];
             try {
 
@@ -129,6 +136,14 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     itemClickListener.handleItemClick(item);
                 }
             });
+
+            if(medalType == EventUnitModel.UNIT_MEDAL_GOLD)
+            {
+                medal_image.setImageDrawable(ContextCompat.getDrawable(OlympicsApplication.getAppContext(), R.drawable.gold_event));
+            } else if(medalType == EventUnitModel.UNIT_MEDAL_BRONZE)
+            {
+                medal_image.setImageDrawable(ContextCompat.getDrawable(OlympicsApplication.getAppContext(), R.drawable.bronze_event));
+            }
         }
     }
 
@@ -150,17 +165,11 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public String sportsTitle;
         public List<Item> invisibleChildren;
 
-        public Item() {
-        }
 
         public Item(int type, EventUnitModel eventUnitModel) {
             this.type = type;
             this.eventUnitModel = eventUnitModel;
         }
 
-        public Item(int type, String sportsTitle) {
-            this.type = type;
-            this.sportsTitle = sportsTitle;
-        }
     }
 }
