@@ -184,7 +184,7 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             MedalTallyOrganization medalTallyObj = medalTallyList.get(position);
             holder.countryAlias.setText(medalTallyObj.getCountryName());
             holder.countryRankView.setText(Html.fromHtml("<b>" + getResources().getString(R.string
-                    .rank_str, + medalTallyObj.getRank() + "</b>", getResources().getString(R.string
+                    .rank_str, +medalTallyObj.getRank() + "</b>", getResources().getString(R.string
                     .medal_total_str), medalTallyObj.getTotal())));
             holder.goldCountText.setText(medalTallyObj.getGold());
             holder.silverCountText.setText(medalTallyObj.getSilver());
