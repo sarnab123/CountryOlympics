@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.olympics.olympicsandroid.model.AppVersionData;
@@ -46,6 +47,7 @@ public class OlympicsLifeCyclecallbacks  implements Application.ActivityLifecycl
     public void onActivityStarted(Activity activity) {
         if(started ==  stopped)
         {
+            Log.d("OlympicLifeCyCallbacks","On Start of App "+activity);
             FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent(FirebaseAnalytics.Event.APP_OPEN,null);
             AppVersionController appVersionController = new AppVersionController();
             appVersionController.getAppConfiguration(createNewIconfligListener());

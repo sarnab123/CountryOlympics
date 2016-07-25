@@ -12,6 +12,7 @@
     <string name="number_rounds">Number of rounds</string>
     <string name="score_txt">Score</string>
     <string name="outcome_txt">Outcome</string>
+    <string name="cancel">Cancel</string>
 
     <string name="current_rank">Rank</string>
     <string name="id_country_header">Country Alias</string>

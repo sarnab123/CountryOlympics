@@ -3,7 +3,6 @@ package com.olympics.olympicsandroid.utility;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Environment;
 
 import com.olympics.olympicsandroid.OlympicsApplication;
 
@@ -104,9 +103,9 @@ public class UtilityMethods
     }
 
     public static boolean hasSDCard(Context ctx) {
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            return true;
-        }
+//        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+//            return true;
+//        }
         return false;
     }
 

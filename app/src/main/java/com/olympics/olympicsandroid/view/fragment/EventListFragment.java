@@ -64,7 +64,9 @@ public class EventListFragment extends Fragment
         return new IItemClickListener() {
             @Override
             public void handleItemClick(ExpandableListAdapter.Item itemClicked) {
-                ActivityFactory.handleItemClickActivity(getActivity(),itemClicked);
+                if(getActivity() != null && !getActivity().isDestroyed()) {
+                    ActivityFactory.handleItemClickActivity(getActivity(), itemClicked);
+                }
             }
         };
     }

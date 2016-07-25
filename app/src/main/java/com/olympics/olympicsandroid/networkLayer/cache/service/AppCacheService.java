@@ -33,6 +33,10 @@ public class AppCacheService extends IntentService
 
     private OlympicSchedule totalSchedule = null;
 
+    private int count = 0;
+    private HashMap<String, String> countryAliastoID;
+    private String[] countrytoCache;
+
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
      *
@@ -105,32 +109,36 @@ public class AppCacheService extends IntentService
                     String cacheCountry = OlympicsPrefs.getInstance(null).getCacheCountry();
                     if(!TextUtils.isEmpty(cacheCountry))
                     {
-                        String[] countrytoCache = cacheCountry.split(";");
-                        HashMap<String,String> countryAliastoID = new HashMap<>();
+                        countrytoCache = cacheCountry.split(";");
+                        countryAliastoID = new HashMap<>();
                         for(Organization organization:response.getOrganization())
                         {
                            countryAliastoID.put(organization.getAlias(),organization.getId());
                         }
 
-                        for(int i = 0 ; i < countrytoCache.length; i++)
-                        {
-                            if(!TextUtils.isEmpty(countryAliastoID.get(countrytoCache[i])))
-                            {
-                                RequestPolicy requestPolicy = new RequestPolicy();
-                                if (DateUtils.isCurrentDateInOlympics()) {
-                                    requestPolicy.setForceCache(true);
-                                    requestPolicy.setMaxAge(60 * 60 * 10);
-                                }
-                                requestPolicy.setUrlReplacement(countryAliastoID.get(countrytoCache[i]));
-                                CustomXMLRequest<CountryProfileEvents> countryRequest = new CustomXMLRequest<CountryProfileEvents>(OlympicRequestQueries.COUNTRY_CONFIG, CountryProfileEvents.class, createCountryProfileSuccessListener(), createCountryProfileFailureListener(), requestPolicy);
-                                VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
-                            }
-                        }
+                        count = countrytoCache.length;
 
                     }
                 }
             }
         };
+    }
+
+    private void makeCountryProfileCall()
+    {
+        if(count >= 0 && !TextUtils.isEmpty(countryAliastoID.get(countrytoCache[--count])))
+        {
+            RequestPolicy requestPolicy = new RequestPolicy();
+            if (DateUtils.isCurrentDateInOlympics()) {
+                requestPolicy.setForceCache(true);
+                requestPolicy.setMaxAge(60 * 60 * 10);
+            }
+
+            requestPolicy.setUrlReplacement(countryAliastoID.get(countrytoCache[count]));
+            CustomXMLRequest<CountryProfileEvents> countryRequest = new CustomXMLRequest<CountryProfileEvents>(OlympicRequestQueries.COUNTRY_CONFIG, CountryProfileEvents.class, createCountryProfileSuccessListener(), createCountryProfileFailureListener(), requestPolicy);
+            VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+        }
+
     }
 
     private Response.ErrorListener createCountryProfileFailureListener() {
@@ -145,6 +153,7 @@ public class AppCacheService extends IntentService
                         totalSchedule)
                         .createCountryEventUnitModel();
                 DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, countryEventData);
+                makeCountryProfileCall();
             }
         };
     }

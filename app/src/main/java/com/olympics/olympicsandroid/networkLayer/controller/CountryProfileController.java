@@ -44,8 +44,8 @@ public class CountryProfileController {
 
     public void getCountryDetails() {
         listenerWeakReference.get().handleLoadingIndicator(true);
-            DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,
-                    OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(), createNewCacheListener(),false );
+        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,
+                OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(), createNewCacheListener(), false);
 
     }
 
@@ -56,10 +56,12 @@ public class CountryProfileController {
                 if (responseModel == null || !(responseModel instanceof CountryEventUnitModel)) {
                     getDataFromServerAndCache();
                 } else {
-                    listenerWeakReference.get().handleLoadingIndicator(false);
+                    if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+                        listenerWeakReference.get().handleLoadingIndicator(false);
 
-                    CountryEventUnitModel countryEventData = (CountryEventUnitModel) responseModel;
-                    listenerWeakReference.get().onSuccess(countryEventData);
+                        CountryEventUnitModel countryEventData = (CountryEventUnitModel) responseModel;
+                        listenerWeakReference.get().onSuccess(countryEventData);
+                    }
                 }
             }
         };
@@ -134,8 +136,7 @@ public class CountryProfileController {
                 }
             }, ParseTask.XML_DATA);
             parseTask.startParsing();
-        } else
-        {
+        } else {
             ScheduleController.getInstance().getScheduleData(createScheduleSuccessListener());
         }
     }
@@ -208,6 +209,7 @@ public class CountryProfileController {
                     }
                 }
             }
+
             @Override
             public void scheduleError(ErrorModel errorModel) {
                 if (listenerWeakReference != null && listenerWeakReference.get() != null) {

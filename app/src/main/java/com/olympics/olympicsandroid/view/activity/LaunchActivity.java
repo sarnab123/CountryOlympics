@@ -67,7 +67,8 @@ public class LaunchActivity extends Activity {
                         else{
                             OlympicsPrefs.getInstance(null).setCacheCountry(DataCacheHelper.countryToCache);
                         }
-                        performVersionValidationTask(appVersionData);
+
+//                        performVersionValidationTask(appVersionData);
                         //Set APIKey and BaseURL from the configuration file
                         OlympicsPrefs.getInstance(null).setAPIKey(appVersionData.getApiKey());
                         OlympicsPrefs.getInstance(null).setBaseURL(appVersionData.getBaseURL());
@@ -80,6 +81,7 @@ public class LaunchActivity extends Activity {
                         }
                     }
                 }
+                decideLaunchActivity();
             }
 
             @Override
