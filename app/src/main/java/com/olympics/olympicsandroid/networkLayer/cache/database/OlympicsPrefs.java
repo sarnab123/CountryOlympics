@@ -23,6 +23,7 @@ public class OlympicsPrefs
     private final String PREFS_CACHE_CHECKSUM = "CACHE_CHECKSUM";
     private final String PREFS_CACHE_COUNTRY = "PREFS_CACHE_COUNTRY";
 
+    private final String PREF_APP_SHORTCUT = "SHORTCUT";
 
     private static OlympicsPrefs instance;
 
@@ -123,6 +124,17 @@ public class OlympicsPrefs
         SharedPreferences.Editor editor = getDefaultSharePreference().edit();
         editor.putString(PREFS_CACHE_COUNTRY,cacheCountry);
         editor.apply();
+    }
+
+    public void setAppShortcutStatus()
+    {
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putBoolean(PREF_APP_SHORTCUT, true);
+        editor.apply();
+    }
+
+    public boolean isAppShortcutCreated() {
+        return getDefaultSharePreference().getBoolean(PREF_APP_SHORTCUT, false);
     }
 
 }
