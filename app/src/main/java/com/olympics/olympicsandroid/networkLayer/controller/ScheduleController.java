@@ -54,7 +54,7 @@ public class ScheduleController {
             RequestPolicy requestPolicy = new RequestPolicy();
             if (DateUtils.isCurrentDateInOlympics()) {
                 requestPolicy.setForceCache(true);
-                requestPolicy.setMaxAge(60 * 60 * 24);
+                requestPolicy.setMaxAge(60 * 60 * 1);
             }
             CustomXMLRequest<OlympicSchedule> countryRequest = new CustomXMLRequest<OlympicSchedule>(OlympicRequestQueries.COMPLETE_SCHEDULE, OlympicSchedule.class, createScheduleSuccessListener(), createScheduleFailureListener(), requestPolicy);
             VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);

@@ -44,12 +44,8 @@ public class CountryProfileController {
 
     public void getCountryDetails() {
         listenerWeakReference.get().handleLoadingIndicator(true);
-        if (DateUtils.isCurrentDateInOlympics()) {
             DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,
-                    OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(), createNewCacheListener(), );
-        } else {
-            getDataFromServerAndCache();
-        }
+                    OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(), createNewCacheListener(),false );
 
     }
 
@@ -75,7 +71,7 @@ public class CountryProfileController {
             RequestPolicy requestPolicy = new RequestPolicy();
             if (DateUtils.isCurrentDateInOlympics()) {
                 requestPolicy.setForceCache(true);
-                requestPolicy.setMaxAge(60 * 60 * 24);
+                requestPolicy.setMaxAge(60 * 60 * 10);
             }
             requestPolicy.setUrlReplacement(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getId());
 

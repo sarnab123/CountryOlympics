@@ -47,10 +47,11 @@ public class OlympicsLifeCyclecallbacks  implements Application.ActivityLifecycl
         if(started ==  stopped)
         {
             FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent(FirebaseAnalytics.Event.APP_OPEN,null);
+            AppVersionController appVersionController = new AppVersionController();
+            appVersionController.getAppConfiguration(createNewIconfligListener());
         }
 
-        AppVersionController appVersionController = new AppVersionController();
-        appVersionController.getAppConfiguration(createNewIconfligListener());
+
         ++started;
     }
 
@@ -60,6 +61,14 @@ public class OlympicsLifeCyclecallbacks  implements Application.ActivityLifecycl
             public void onConfigSuccess(AppVersionData appVersionData) {
                 if(appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum()))
                 {
+                    if(!TextUtils.isEmpty(appVersionData.getOnDemandCountryAlias()))
+                    {
+                        OlympicsPrefs.getInstance(null).setCacheCountry(appVersionData.getOnDemandCountryAlias());
+                    }
+                    else{
+                        OlympicsPrefs.getInstance(null).setCacheCountry(DataCacheHelper.countryToCache);
+                    }
+
                     if(TextUtils.isEmpty(OlympicsPrefs.getInstance(null).getCacheChecksum()))
                     {
                         OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
@@ -67,6 +76,7 @@ public class OlympicsLifeCyclecallbacks  implements Application.ActivityLifecycl
                     else if (!OlympicsPrefs.getInstance(null).getCacheChecksum().equalsIgnoreCase(appVersionData.getCacheCountryChecksum()))
                     {
                         OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
+
                         DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, null, null, true);
                     }
                 }

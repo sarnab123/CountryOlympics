@@ -13,6 +13,11 @@ public class AppVersionData implements IResponseModel {
     private String cacheConfigDate;
 
     private String cacheCountryChecksum;
+    private String onDemandCountryAlias;
+
+    public String getOnDemandCountryAlias() {
+        return onDemandCountryAlias;
+    }
 
     public void setCacheCountryChecksum(String cacheCountryChecksum) {
         this.cacheCountryChecksum = cacheCountryChecksum;

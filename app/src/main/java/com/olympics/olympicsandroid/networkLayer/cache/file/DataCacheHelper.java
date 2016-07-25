@@ -1,5 +1,6 @@
 package com.olympics.olympicsandroid.networkLayer.cache.file;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -9,6 +10,7 @@ import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.MedalTally;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
+import com.olympics.olympicsandroid.networkLayer.cache.service.AppCacheService;
 import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
 
@@ -33,6 +35,9 @@ public class DataCacheHelper {
 
     public static final String CACHE_MEDALTALLY_KEY = "medaltally";
     public static final String COUNTRY_SELECTION_KEY = "countrySelection";
+
+    public static String countryToCache = "USA;IND;CHN;BRA;FRG;FRA;GBR;ITA";
+
 
     private static DataCacheHelper ourInstance = new DataCacheHelper();
 
@@ -72,6 +77,8 @@ public class DataCacheHelper {
         if(deleteCache)
         {
             new FileDeleteAsync().executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
+            Intent msgIntent = new Intent(OlympicsApplication.getAppContext(),AppCacheService.class);
+            OlympicsApplication.getAppContext().startService(msgIntent);
         }
         else {
             cacheListeners.add(listener);

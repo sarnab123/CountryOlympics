@@ -21,6 +21,7 @@ public class OlympicsPrefs
     private final String PREF_BASE_URL = "BASEURL";
     private final String PREF_API_KEY = "APIKEY";
     private final String PREFS_CACHE_CHECKSUM = "CACHE_CHECKSUM";
+    private final String PREFS_CACHE_COUNTRY = "PREFS_CACHE_COUNTRY";
 
 
     private static OlympicsPrefs instance;
@@ -109,6 +110,18 @@ public class OlympicsPrefs
     {
         SharedPreferences.Editor editor = getDefaultSharePreference().edit();
         editor.putString(PREFS_CACHE_CHECKSUM,checksum);
+        editor.apply();
+    }
+
+    public String getCacheCountry()
+    {
+        return getDefaultSharePreference().getString(PREFS_CACHE_COUNTRY,null);
+    }
+
+    public void setCacheCountry(String cacheCountry)
+    {
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putString(PREFS_CACHE_COUNTRY,cacheCountry);
         editor.apply();
     }
 

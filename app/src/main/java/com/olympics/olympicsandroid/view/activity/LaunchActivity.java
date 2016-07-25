@@ -16,6 +16,7 @@ import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.AppVersionData;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
 import com.olympics.olympicsandroid.networkLayer.controller.AppVersionController;
 import com.olympics.olympicsandroid.networkLayer.controller.IConfigListener;
 import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
@@ -27,7 +28,6 @@ import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
  */
 public class LaunchActivity extends Activity {
     private static final String DEFAULT_UPGRADE_MESSAGE = "Please upgrade your app.";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,13 @@ public class LaunchActivity extends Activity {
             public void onConfigSuccess(AppVersionData appVersionData) {
                 if (appVersionData != null ) {
                     if (appVersionData != null) {
+                        if(!TextUtils.isEmpty(appVersionData.getOnDemandCountryAlias()))
+                        {
+                            OlympicsPrefs.getInstance(null).setCacheCountry(appVersionData.getOnDemandCountryAlias());
+                        }
+                        else{
+                            OlympicsPrefs.getInstance(null).setCacheCountry(DataCacheHelper.countryToCache);
+                        }
                         performVersionValidationTask(appVersionData);
                         //Set APIKey and BaseURL from the configuration file
                         OlympicsPrefs.getInstance(null).setAPIKey(appVersionData.getApiKey());

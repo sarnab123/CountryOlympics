@@ -37,13 +37,8 @@ public class CountryListController {
 
 
     public synchronized void getCountryData() {
-        if (DateUtils.isCurrentDateInOlympics()) {
             DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL,
                     DataCacheHelper.COUNTRY_SELECTION_KEY, createNewCacheListener(), false);
-        } else {
-            getDataFromServer();
-        }
-
     }
 
     private ICacheListener createNewCacheListener() {
@@ -65,7 +60,7 @@ public class CountryListController {
             RequestPolicy requestPolicy = new RequestPolicy();
             if (DateUtils.isCurrentDateInOlympics()) {
                 requestPolicy.setForceCache(true);
-                requestPolicy.setMaxAge(60 * 60 * 24);
+                requestPolicy.setMaxAge(60 * 60 * 10);
             }
             if (UtilityMethods.isSimulated) {
                 String configString =
