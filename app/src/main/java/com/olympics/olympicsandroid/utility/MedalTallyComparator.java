@@ -24,20 +24,40 @@ public class MedalTallyComparator implements Comparator<MedalTallyOrganization> 
     public int compare(MedalTallyOrganization lhs, MedalTallyOrganization rhs) {
         try {
             if (userSelectedOrganization != null && userSelectedOrganization.getId() != null) {
-                if(userSelectedOrganization.getId().equalsIgnoreCase(lhs.getId()) &&
+                if (userSelectedOrganization.getId().equalsIgnoreCase(lhs.getId()) &&
                         userSelectedOrganization.getId().equalsIgnoreCase(rhs.getId())) {
-                    return Integer.parseInt(rhs.getTotal()) - Integer.parseInt(lhs.getTotal());
+                    return getMedalcountDifference(lhs, rhs);
                 } else if (userSelectedOrganization.getId().equalsIgnoreCase(lhs.getId())) {
                     return -1;
                 } else if (userSelectedOrganization.getId().equalsIgnoreCase(rhs.getId())) {
                     return 1;
                 } else {
-                    return Integer.parseInt(rhs.getTotal()) - Integer.parseInt(lhs.getTotal());
+                    return getMedalcountDifference(lhs, rhs);
                 }
             } else {
-                return Integer.parseInt(rhs.getTotal()) - Integer.parseInt(lhs.getTotal());
+                return getMedalcountDifference(lhs, rhs);
             }
 
+        } catch (Exception ex) {
+            return 0;
+        }
+    }
+
+    private int getMedalcountDifference(MedalTallyOrganization lhs, MedalTallyOrganization rhs) {
+
+        try {
+
+            int medalCountDifference = Integer.parseInt(rhs.getGold()) - Integer.parseInt(lhs
+                    .getGold());
+            if (medalCountDifference == 0) {
+                medalCountDifference = Integer.parseInt(rhs.getSilver()) - Integer.parseInt(lhs
+                        .getSilver());
+                if (medalCountDifference == 0) {
+                    medalCountDifference = Integer.parseInt(rhs.getBronze()) - Integer.parseInt
+                            (lhs.getBronze());
+                }
+            }
+            return medalCountDifference;
         } catch (Exception ex) {
             return 0;
         }
