@@ -169,6 +169,7 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
     public boolean onQueryTextChange(String newText) {
 
         List<Organization> filteredCountryList = new ArrayList<>();
+
         for (Organization country : countryList) {
             if (!TextUtils.isEmpty(newText) && country != null && (!TextUtils.isEmpty(country.getDescription()) && country
                     .getDescription().toLowerCase().contains(newText.toLowerCase())) || (!TextUtils.isEmpty

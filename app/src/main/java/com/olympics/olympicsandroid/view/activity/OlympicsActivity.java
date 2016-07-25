@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +31,7 @@ import com.olympics.olympicsandroid.model.MedalTallyOrganization;
 import com.olympics.olympicsandroid.model.Organization;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
-import com.olympics.olympicsandroid.networkLayer.controller.CountryScheduleController;
+import com.olympics.olympicsandroid.networkLayer.controller.CountryProfileController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 import com.olympics.olympicsandroid.networkLayer.controller.MedalTallyController;
 import com.olympics.olympicsandroid.utility.MedalTallyComparator;
@@ -54,6 +55,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
     private MedalTally medalTallyObj;
     private ProgressDialog progress;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string
                 .navigation_drawer_open, R.string.navigation_drawer_close);
@@ -80,15 +82,10 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         //Display country information in navigation drawer
         displaySelectedCountryInfo();
 
-        CountryScheduleController scheduleController = new CountryScheduleController(new
+        CountryProfileController scheduleController = new CountryProfileController(new
                 WeakReference<IUIListener>(this), getApplication());
         scheduleController.getCountryDetails();
 
-        //Call MedalTally API through controller
-        //Request for MedalTally Data through controller
-        MedalTallyController medalTallyController = new MedalTallyController(new
-                WeakReference<IUIListener>(this), getApplication());
-        medalTallyController.getMedalTallyData();
    }
 
     /**
@@ -144,6 +141,14 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             if(resultCode == RESULT_OK)
             {
                 String countryCode =data.getStringExtra("COUNTRY_CODE");
+
+                if(drawer == null) {
+                    drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                }
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+
                 setUpData();
             }
         }
@@ -151,7 +156,9 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if(drawer == null) {
+            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        }
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -172,7 +179,9 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             ActivityFactory.openAthleteActivity(this,null);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if(drawer == null) {
+            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        }
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -197,6 +206,13 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 mSectionsPagerAdapter.notifyDataSetChanged();
                 mViewPager.invalidate();
             }
+
+            //Call MedalTally API through controller
+            //Request for MedalTally Data through controller
+            MedalTallyController medalTallyController = new MedalTallyController(new
+                    WeakReference<IUIListener>(this), getApplication());
+            medalTallyController.getMedalTallyData();
+
         } else if (responseModel instanceof MedalTally)
         {
             //Display Medal info
@@ -267,22 +283,27 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
         }
         else{
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
-            dlgAlert.setMessage(getString(R.string.id_error_server));
-            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                    setUpData();
-                }
-            });
-            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                }
-            });
-            dlgAlert.setCancelable(false);
-            dlgAlert.create().show();
+            try {
+                AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+                dlgAlert.setMessage(getString(R.string.id_error_server));
+                dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        setUpData();
+                    }
+                });
+                dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                    }
+                });
+                dlgAlert.setCancelable(false);
+                dlgAlert.create().show();
+            }
+            catch (WindowManager.BadTokenException ex)
+            {
 
+            }
             Bundle params = new Bundle();
             params.putString("app_error", "event_result");
             params.putString("app_screen", "country_schedule");

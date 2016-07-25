@@ -33,6 +33,8 @@ public class VolleySingleton
     private VolleySingleton(Context mCtx)
     {
         this.mCtx = mCtx;
+
+
         mRequestQueue = generateRequestQueue();
 
         mImageLoader = new ImageLoader(mRequestQueue,

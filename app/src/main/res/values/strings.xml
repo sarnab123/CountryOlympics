@@ -11,6 +11,8 @@
     <string name="header_title_athName">Athlete</string>
     <string name="number_rounds">Number of rounds</string>
     <string name="score_txt">Score</string>
+    <string name="outcome_txt">Outcome</string>
+
     <string name="current_rank">Rank</string>
     <string name="id_country_header">Country Alias</string>
     <string name="id_competitor_header">Competitors</string>

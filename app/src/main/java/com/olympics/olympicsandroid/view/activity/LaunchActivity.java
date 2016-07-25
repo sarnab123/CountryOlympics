@@ -22,6 +22,7 @@ import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
 import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 
@@ -58,6 +59,8 @@ public class LaunchActivity extends Activity {
                 AppVersionData.class, null, createAppVersionDataSuccessListener(),
                 createAppVersionDataFailureListener(), requestPolicy);
         VolleySingleton.getInstance(null).addToRequestQueue(appVersionRequest);
+
+        ScheduleController.getInstance().getScheduleData(null);
     }
 
     protected Response.ErrorListener createAppVersionDataFailureListener() {

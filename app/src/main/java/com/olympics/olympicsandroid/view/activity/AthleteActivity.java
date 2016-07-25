@@ -20,7 +20,7 @@ import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.presentationModel.Athlete;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
-import com.olympics.olympicsandroid.networkLayer.controller.CountryScheduleController;
+import com.olympics.olympicsandroid.networkLayer.controller.CountryProfileController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 
 import java.lang.ref.WeakReference;
@@ -48,7 +48,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         mRecyclerView.setAdapter(athleteListAdapter);
 
         //Request for Athlete Data through Controller
-        CountryScheduleController scheduleController = new CountryScheduleController(new
+        CountryProfileController scheduleController = new CountryProfileController(new
                 WeakReference<IUIListener>(this), getApplication());
         scheduleController.getCountryDetails();
 
