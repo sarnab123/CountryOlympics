@@ -11,11 +11,11 @@ import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 public enum OlympicRequestQueries
 {
 
-    COUNTRY_LIST(Request.Method.GET,"/organization/list.xml", true , true),
-    COUNTRY_CONFIG(Request.Method.GET,"/organization/2016/{countryID}/profile.xml", true , true),
-    COMPLETE_SCHEDULE(Request.Method.GET,"/2016/schedule.xml", true , true),
-    MEDAL_TALLY(Request.Method.GET, "/2016/medals.xml",true, true),
-    EVENT_RESULTS(Request.Method.GET,"/event/{eventID}/results.xml", true , true),
+    COUNTRY_LIST(Request.Method.GET,null,"/organization/list.xml", true , true),
+    COUNTRY_CONFIG(Request.Method.GET,null,"/organization/2016/{countryID}/profile.xml", true , true),
+    COMPLETE_SCHEDULE(Request.Method.GET,null,"/2016/schedule.xml", true , true),
+    MEDAL_TALLY(Request.Method.GET, null,"/2016/medals.xml",true, true),
+    EVENT_RESULTS(Request.Method.GET,null,"/event/{eventID}/results.xml", true , true),
     SPORTS_TYPE(Request.Method.GET, "https://olympics.mybluemix.net/config/getSportsData", null,
                 true, true),
     APP_VERSION_DATA(Request.Method.GET, "https://olympics.mybluemix.net/config/getAppVersion",
@@ -27,30 +27,24 @@ public enum OlympicRequestQueries
     private boolean isCacheable;
     private boolean needAPIKey;
 
+    private String completeURL;
+
     private String apiKey = "5hkjft4mvnbzc26875u6c2zv";
     private String baseURL = "https://api.sportradar.us/oly-testing2";
 
-    OlympicRequestQueries(int httpRequestType, String relativeURL , boolean isCacheable, boolean needAPIKey)
+//    OlympicRequestQueries(int httpRequestType, String relativeURL , boolean isCacheable, boolean needAPIKey)
+//    {
+//        this.httpRequestType = httpRequestType;
+//        this.relativeURL = relativeURL;
+//        this.isCacheable = isCacheable;
+//        this.needAPIKey = needAPIKey;
+//
+//    }
+
+    OlympicRequestQueries(int httpRequestType, String completeURL, String relativeURL , boolean
+            isCacheable,boolean needAPIKey)
     {
-        this.httpRequestType = httpRequestType;
-        this.relativeURL = relativeURL;
-        this.isCacheable = isCacheable;
-        this.needAPIKey = needAPIKey;
-
-        //Setup baseURL
-        String urlStr = OlympicsPrefs.getInstance(null).getBaseURL();
-        this.baseURL = TextUtils.isEmpty(urlStr) ? baseURL : urlStr;
-
-        //Setup API Key
-        String apiKeyFromServer = OlympicsPrefs.getInstance(null).getAPIKey();
-        this.apiKey = TextUtils.isEmpty(apiKeyFromServer) ? apiKey : apiKeyFromServer;
-
-    }
-
-    OlympicRequestQueries(int httpRequestType, String baseURL, String relativeURL , boolean
-            isCacheable, boolean needAPIKey)
-    {
-        this.baseURL = baseURL;
+        this.completeURL = completeURL;
         this.httpRequestType = httpRequestType;
         this.relativeURL = relativeURL;
         this.isCacheable = isCacheable;
@@ -62,7 +56,12 @@ public enum OlympicRequestQueries
     }
 
     public String getURL(String urlReplacement) {
-        StringBuilder finalRequestString = new StringBuilder(baseURL);
+        if(!TextUtils.isEmpty(completeURL))
+        {
+            return completeURL;
+        }
+        String newBaseURL = TextUtils.isEmpty(OlympicsPrefs.getInstance(null).getBaseURL())?baseURL:OlympicsPrefs.getInstance(null).getBaseURL();
+        StringBuilder finalRequestString = new StringBuilder(newBaseURL);
         if(!TextUtils.isEmpty(relativeURL)) {
             String relativeTempURL = new String(relativeURL);
             relativeTempURL = editURLIfReqd(relativeTempURL,urlReplacement);
@@ -71,7 +70,8 @@ public enum OlympicRequestQueries
         if(needAPIKey)
         {
             finalRequestString.append("?");
-            finalRequestString.append("api_key=" + apiKey);
+            String newAPIkey = TextUtils.isEmpty(OlympicsPrefs.getInstance(null).getAPIKey())?apiKey:OlympicsPrefs.getInstance(null).getAPIKey();
+            finalRequestString.append("api_key=" + newAPIkey);
         }
 
         return finalRequestString.toString();
