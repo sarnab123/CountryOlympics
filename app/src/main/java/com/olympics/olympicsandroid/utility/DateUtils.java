@@ -2,6 +2,8 @@ package com.olympics.olympicsandroid.utility;
 
 import android.text.TextUtils;
 
+import com.olympics.olympicsandroid.OlympicsApplication;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -54,7 +56,7 @@ public class DateUtils {
 
     public static boolean isCurrentDateInOlympics()
     {
-        if(System.currentTimeMillis() < OLYMPIC_EVENT_START_DATE)
+        if(System.currentTimeMillis() < OlympicsApplication.getAppInstance().getCacheStartDate())
         {
             return false;
         }

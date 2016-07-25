@@ -9,6 +9,16 @@ public class AppVersionData implements IResponseModel {
     private String message;
     private float lastWorkingVersion;
 
+    private String cacheConfigDate;
+
+    public String getCacheConfigDate() {
+        return cacheConfigDate;
+    }
+
+    public void setCacheConfigDate(String cacheConfigDate) {
+        this.cacheConfigDate = cacheConfigDate;
+    }
+
     public float getAndroid() {
         return Android;
     }
