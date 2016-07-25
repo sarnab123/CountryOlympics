@@ -161,6 +161,9 @@ public class DataCacheHelper {
 
             FileOutputStream fileOutputStream = null;
             ObjectOutputStream objectOutputStream = null;
+
+            Log.d("DataCacheHelper","Caching alias = ="+countryAlias);
+
             try {
                 fileOutputStream = new FileOutputStream(UtilityMethods.createFile(countryAlias));
             } catch (Exception e) {

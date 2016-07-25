@@ -1,5 +1,7 @@
 package com.olympics.olympicsandroid.networkLayer;
 
+import android.util.Log;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Cache;
 import com.android.volley.DefaultRetryPolicy;
@@ -96,6 +98,8 @@ public class CustomXMLRequest<T> extends Request<T> {
     protected Response<T> parseNetworkResponse(NetworkResponse response)
     {
         try {
+
+            Log.d("CustomXMLRequest", "xml response parsing thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
 
             String data = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
             Cache.Entry entries = HttpHeaderParser.parseCacheHeaders(response);

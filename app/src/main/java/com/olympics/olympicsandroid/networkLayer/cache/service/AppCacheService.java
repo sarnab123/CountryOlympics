@@ -1,8 +1,16 @@
 package com.olympics.olympicsandroid.networkLayer.cache.service;
 
-import android.app.IntentService;
+import android.app.Service;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -28,8 +36,7 @@ import java.util.HashMap;
 /**
  * Created by sarnab.poddar on 7/25/16.
  */
-public class AppCacheService extends IntentService
-{
+public class AppCacheService extends Service {
 
     private OlympicSchedule totalSchedule = null;
 
@@ -37,37 +44,97 @@ public class AppCacheService extends IntentService
     private HashMap<String, String> countryAliastoID;
     private String[] countrytoCache;
 
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     * @param name Used to name the worker thread, important only for debugging.
-     */
-    public AppCacheService(String name) {
-        super(name);
-    }
+    private volatile ServiceHandler mServiceHandler;
+    private Looper mServiceLooper;
 
-    public AppCacheService()
-    {
-        super("AppCacheService");
-    }
+    private final int MESSAGE_SCHEDULE = 0;
+    private final int COUNTRY_LIST = 1;
+    private final int COUNTRY_IDS = 2;
+    private final int COUNTRY_PROFILE = 3;
+    private final int COUNTRY_UI_MODEL = 4;
 
     @Override
     public void onDestroy() {
         super.onDestroy();
     }
 
+    @Nullable
     @Override
-    protected void onHandleIntent(Intent intent)
-    {
-        ScheduleController.getInstance().getScheduleData(createScheduleListener());
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+
+
+        HandlerThread thread = new HandlerThread("AppCacheService");
+        thread.start();
+
+        mServiceLooper = thread.getLooper();
+        mServiceHandler = new ServiceHandler(mServiceLooper);
+
+        Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
+
+        // For each start request, send a message to start a job and deliver the
+        // start ID so we know which request we're stopping when we finish the job
+        Message msg = mServiceHandler.obtainMessage();
+        msg.arg1 = MESSAGE_SCHEDULE;
+        mServiceHandler.sendMessage(msg);
+
+        // If we get killed, after returning from here, restart
+        return START_STICKY;
+    }
+
+    private final class ServiceHandler extends Handler {
+        public ServiceHandler(Looper looper) {
+            super(looper);
+        }
+
+        @Override
+        public void handleMessage(Message msg)
+        {
+            switch(msg.arg1)
+            {
+                case MESSAGE_SCHEDULE:
+                    ScheduleController.getInstance().getScheduleData(createScheduleListener());
+                    break;
+                case COUNTRY_LIST:
+                    getCountryList();
+                break;
+
+                case COUNTRY_IDS:
+                    updateCountryIDs((CountryModel)msg.obj);
+                    break;
+
+                case COUNTRY_PROFILE:
+                    makeCountryProfileCall();
+                    break;
+
+                case COUNTRY_UI_MODEL:
+
+                    savePresentationModelCountry((CountryProfileEvents)msg.obj);
+                    break;
+            }
+        }
     }
 
     private IScheduleListener createScheduleListener() {
         return new IScheduleListener() {
             @Override
             public void scheduleSuccess(OlympicSchedule olympicSchedule) {
+                Log.d("AppCacheService", "Schedule success thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
+                boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
+                Log.d("AppCacheService", "is main thread == " + isOnUiThread);
                 totalSchedule = olympicSchedule;
-                getCountryList();
+
+                // For each start request, send a message to start a job and deliver the
+                // start ID so we know which request we're stopping when we finish the job
+                Message msg = mServiceHandler.obtainMessage();
+                msg.arg1 = COUNTRY_LIST;
+                mServiceHandler.sendMessage(msg);
+
             }
 
             @Override
@@ -84,6 +151,10 @@ public class AppCacheService extends IntentService
             requestPolicy.setForceCache(true);
             requestPolicy.setMaxAge(60 * 60 * 10);
         }
+        boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
+
+        Log.d("AppCacheService", "get country list thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
+        Log.d("AppCacheService", "get country list is main thread == " + isOnUiThread);
 
         CustomXMLRequest<CountryModel> countryRequest = new CustomXMLRequest<CountryModel>(OlympicRequestQueries.COUNTRY_LIST, CountryModel.class,
                 createCountryListSuccessListener(), createCountryListFailureListener(), requestPolicy);
@@ -94,7 +165,7 @@ public class AppCacheService extends IntentService
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                stopSelf();
             }
         };
     }
@@ -103,31 +174,56 @@ public class AppCacheService extends IntentService
         return new Response.Listener<CountryModel>() {
             @Override
             public void onResponse(CountryModel response) {
-                if(response != null && response.getOrganization() != null && response.getOrganization().size() > 0) {
-                    DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL, response);
 
-                    String cacheCountry = OlympicsPrefs.getInstance(null).getCacheCountry();
-                    if(!TextUtils.isEmpty(cacheCountry))
-                    {
-                        countrytoCache = cacheCountry.split(";");
-                        countryAliastoID = new HashMap<>();
-                        for(Organization organization:response.getOrganization())
-                        {
-                           countryAliastoID.put(organization.getAlias(),organization.getId());
-                        }
+                Log.d("AppCacheService", "country response thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
 
-                        count = countrytoCache.length;
+                boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
+                Log.d("AppCacheService", "country response is main thread == " + isOnUiThread);
+                // For each start request, send a message to start a job and deliver the
+                // start ID so we know which request we're stopping when we finish the job
+                Message msg = mServiceHandler.obtainMessage();
+                msg.arg1 = COUNTRY_IDS;
+                msg.obj = response;
+                mServiceHandler.sendMessage(msg);
 
-                    }
-                }
             }
         };
     }
 
-    private void makeCountryProfileCall()
+    private void updateCountryIDs(CountryModel response)
     {
-        if(count >= 0 && !TextUtils.isEmpty(countryAliastoID.get(countrytoCache[--count])))
-        {
+
+        boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
+        Log.d("AppCacheService", "updateCountryIDs is main thread == " + isOnUiThread);
+
+        if (response != null && response.getOrganization() != null && response.getOrganization().size() > 0) {
+            DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL, response);
+
+            String cacheCountry = OlympicsPrefs.getInstance(null).getCacheCountry();
+            if (!TextUtils.isEmpty(cacheCountry)) {
+                countrytoCache = cacheCountry.split(";");
+                countryAliastoID = new HashMap<>();
+                for (Organization organization : response.getOrganization()) {
+                    countryAliastoID.put(organization.getAlias(), organization.getId());
+                }
+
+                count = countrytoCache.length;
+
+            }
+        }
+        Message msg = mServiceHandler.obtainMessage();
+        msg.arg1 = COUNTRY_PROFILE;
+        mServiceHandler.sendMessage(msg);
+
+    }
+
+    private synchronized void makeCountryProfileCall() {
+        Log.d("AppCacheService", "Count ======= == " + count);
+
+        if (count > 0 && !TextUtils.isEmpty(countryAliastoID.get(countrytoCache[--count]))) {
+            boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
+            Log.d("AppCacheService", "makeCountryProfileCall is main thread == " + isOnUiThread);
+
             RequestPolicy requestPolicy = new RequestPolicy();
             if (DateUtils.isCurrentDateInOlympics()) {
                 requestPolicy.setForceCache(true);
@@ -138,24 +234,51 @@ public class AppCacheService extends IntentService
             CustomXMLRequest<CountryProfileEvents> countryRequest = new CustomXMLRequest<CountryProfileEvents>(OlympicRequestQueries.COUNTRY_CONFIG, CountryProfileEvents.class, createCountryProfileSuccessListener(), createCountryProfileFailureListener(), requestPolicy);
             VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
         }
+        else{
+            stopSelf();
+        }
 
     }
 
     private Response.ErrorListener createCountryProfileFailureListener() {
-        return null;
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                stopSelf();
+            }
+        };
     }
 
     private Response.Listener<CountryProfileEvents> createCountryProfileSuccessListener() {
         return new Response.Listener<CountryProfileEvents>() {
             @Override
             public void onResponse(CountryProfileEvents countryProfileEvents) {
-                CountryEventUnitModel countryEventData = new CountryEventsHelper(countryProfileEvents,
-                        totalSchedule)
-                        .createCountryEventUnitModel();
-                DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, countryEventData);
-                makeCountryProfileCall();
+                boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
+                Log.d("AppCacheService", "country response success is main thread == " + isOnUiThread);
+
+                Message msg = mServiceHandler.obtainMessage();
+                msg.arg1 = COUNTRY_UI_MODEL;
+                msg.obj = countryProfileEvents;
+                mServiceHandler.sendMessage(msg);
+
             }
         };
+    }
+
+    private void savePresentationModelCountry(CountryProfileEvents countryProfileEvents)
+    {
+
+        boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
+        Log.d("AppCacheService", "savePresentationModelCountry is main thread == " + isOnUiThread);
+
+        CountryEventUnitModel countryEventData = new CountryEventsHelper(countryProfileEvents,
+                totalSchedule)
+                .createCountryEventUnitModel();
+        DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, countryEventData);
+
+        Message msg = mServiceHandler.obtainMessage();
+        msg.arg1 = COUNTRY_PROFILE;
+        mServiceHandler.sendMessage(msg);
     }
 
 
