@@ -13,7 +13,7 @@
         <item
             android:id="@+id/nav_athletes"
             android:icon="@drawable/player"
-            android:title="Players" />
+            android:title="Athletes" />
         <item
             android:id="@+id/nav_info"
             android:icon="@drawable/about"
