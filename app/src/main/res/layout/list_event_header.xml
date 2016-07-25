@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="9dp"
+    android:layout_marginBottom="1dp"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardCornerRadius="3dp"
     card_view:cardElevation="2dp">

@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -51,7 +52,8 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
     private EventListAdapter eventListAdapter;
     private CircleProgressBar mProgressView;
-    private TextView mNoItemsView;
+    private RelativeLayout mNoItemsView;
+    private TextView id_text_nosports;
     private SwipeRefreshLayout event_refresh;
 
     @Override
@@ -83,8 +85,8 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
 
         mProgressView = (CircleProgressBar)findViewById(R.id.task_progress);
-        mNoItemsView = (TextView)findViewById(R.id.tv_no_units);
-
+        mNoItemsView = (RelativeLayout)findViewById(R.id.tv_no_units);
+        id_text_nosports = (TextView) findViewById(R.id.id_text_nosports);
 
         eventunitView = (RecyclerView) findViewById(R.id.eventlist_recycler_view);
 
@@ -186,7 +188,7 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
             if(!DateUtils.isCurrentDateInOlympics())
             {
-                mNoItemsView.setText(getString(R.string.list_tasks_olymperror_msg));
+                id_text_nosports.setText(getString(R.string.list_tasks_olymperror_msg));
             }
         }
         else{

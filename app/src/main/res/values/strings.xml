@@ -37,4 +37,7 @@
     <string name="share_app_string">Share Olympics 2016</string>
     <string name="sportradar_info">Data by Sportradar US\n\nv1.0(10)</string>
 
+    <string name="no_sports">No event is scheduled for this day</string>
+    <string name="olympics_not_start">The schedule for Olympics will be published\n\n soon..Please visit soon to\n view fresh content.</string>
+
 </resources>

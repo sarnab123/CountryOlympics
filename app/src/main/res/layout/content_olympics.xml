@@ -40,7 +40,7 @@
               android:textColor="@android:color/darker_gray"
               android:textSize="20sp"
               android:gravity="center_horizontal"
-              android:text="No event is scheduled for this day"/>
+              android:text="@string/no_sports"/>
 
 </RelativeLayout>
 </RelativeLayout>
