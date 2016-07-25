@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
@@ -192,6 +193,9 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
             }
         }
         else{
+            if(!DateUtils.isCurrentDateInOlympics()) {
+                Toast.makeText(this, getString(R.string.olympics_not_start), Toast.LENGTH_LONG).show();
+            }
             mNoItemsView.setVisibility(View.GONE);
         }
 

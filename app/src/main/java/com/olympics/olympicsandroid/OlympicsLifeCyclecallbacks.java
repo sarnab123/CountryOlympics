@@ -38,7 +38,6 @@ public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycle
     @Override
     public void onActivityPaused(Activity activity) {
         ++paused;
-        android.util.Log.w("test", "application is in foreground: " + (resumed > paused));
     }
 
     @Override
@@ -62,28 +61,34 @@ public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycle
         return new IConfigListener() {
             @Override
             public void onConfigSuccess(AppVersionData appVersionData) {
+                if (appVersionData != null) {
 
-                if (!TextUtils.isEmpty(appVersionData.getApiKey()) && !TextUtils.isEmpty(appVersionData.getBaseURL())) {
-                    //Set APIKey and BaseURL from the configuration file
-                    OlympicsPrefs.getInstance(null).setAPIKey(appVersionData.getApiKey());
-                    OlympicsPrefs.getInstance(null).setBaseURL(appVersionData.getBaseURL());
-                }
-
-                if (appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum())) {
-                    if (!TextUtils.isEmpty(appVersionData.getOnDemandCountryAlias())) {
-                        OlympicsPrefs.getInstance(null).setCacheCountry(appVersionData.getOnDemandCountryAlias());
-                    } else {
-                        OlympicsPrefs.getInstance(null).setCacheCountry(DataCacheHelper.countryToCache);
+                    if (!TextUtils.isEmpty(appVersionData.getApiKey()) && !TextUtils.isEmpty(appVersionData.getBaseURL())) {
+                        //Set APIKey and BaseURL from the configuration file
+                        OlympicsPrefs.getInstance(null).setAPIKey(appVersionData.getApiKey());
+                        OlympicsPrefs.getInstance(null).setBaseURL(appVersionData.getBaseURL());
                     }
 
-                    if (TextUtils.isEmpty(OlympicsPrefs.getInstance(null).getCacheChecksum())) {
-                        OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
-                        Intent msgIntent = new Intent(OlympicsApplication.getAppContext(), AppCacheService.class);
-                        OlympicsApplication.getAppContext().startService(msgIntent);
-                    } else if (!OlympicsPrefs.getInstance(null).getCacheChecksum().equalsIgnoreCase(appVersionData.getCacheCountryChecksum())) {
-                        OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
+                    if (!TextUtils.isEmpty(appVersionData.getCacheConfigDate())) {
+                        OlympicsApplication.getAppInstance().setCacheStartDate(Long.parseLong(appVersionData.getCacheConfigDate()));
+                    }
 
-                        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, null, null, true);
+                    if (appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum())) {
+                        if (!TextUtils.isEmpty(appVersionData.getOnDemandCountryAlias())) {
+                            OlympicsPrefs.getInstance(null).setCacheCountry(appVersionData.getOnDemandCountryAlias());
+                        } else {
+                            OlympicsPrefs.getInstance(null).setCacheCountry(DataCacheHelper.countryToCache);
+                        }
+
+                        if (TextUtils.isEmpty(OlympicsPrefs.getInstance(null).getCacheChecksum())) {
+                            OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
+                            Intent msgIntent = new Intent(OlympicsApplication.getAppContext(), AppCacheService.class);
+                            OlympicsApplication.getAppContext().startService(msgIntent);
+                        } else if (!OlympicsPrefs.getInstance(null).getCacheChecksum().equalsIgnoreCase(appVersionData.getCacheCountryChecksum())) {
+                            OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
+
+                            DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, null, null, true);
+                        }
                     }
                 }
             }
@@ -98,7 +103,6 @@ public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycle
     @Override
     public void onActivityStopped(Activity activity) {
         ++stopped;
-        android.util.Log.w("test", "application is visible: " + (started > stopped));
     }
 
     // If you want a static function you can use to check if your application is
