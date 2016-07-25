@@ -39,17 +39,6 @@ public class OlympicsSplashScreen extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_olympics_splash_screen);
-//        mHandler = new Handler();
-//        myRunnable = new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                Intent i = new Intent(OlympicsSplashScreen.this,
-//                        LaunchActivity.class);
-//                startActivity(i);
-//                finish();
-//            }
-//        };
         createApplicationShortcut();
         checkAppVersion();
     }
@@ -65,30 +54,6 @@ public class OlympicsSplashScreen extends Activity {
         finish();
     }
 
-//    @Override
-//    public void onBackPressed() {
-////        if (mHandler != null && myRunnable != null) {
-////            mHandler.removeCallbacks(myRunnable);
-////        }
-//        super.onBackPressed();
-//    }
-
-//    @Override
-//    protected void onPause() {
-//        if (mHandler != null && myRunnable != null) {
-//            mHandler.removeCallbacks(myRunnable);
-//        }
-//        super.onPause();
-//    }
-
-//    @Override
-//    protected void onResume() {
-//
-//        if (mHandler != null && myRunnable != null) {
-//            mHandler.postDelayed(myRunnable, SPLASH_TIME_OUT);
-//        }
-//        super.onResume();
-//    }
 
     /**
      * @see android.app.Activity#onDestroy()
