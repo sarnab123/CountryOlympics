@@ -63,6 +63,7 @@
             android:theme="@style/EventTheme" />
         <activity
             android:name=".view.activity.AppInfoActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_app_info" >
         </activity>
         <service android:name=".networkLayer.cache.service.AppCacheService"
