@@ -80,6 +80,9 @@ public class LaunchActivity extends Activity {
                     AppVersionData appVersionData = (AppVersionData) responseModel;
                     if (appVersionData != null) {
                         performVersionValidationTask(appVersionData);
+                        //Set APIKey and BaseURL from the configuration file
+                        OlympicsPrefs.getInstance(null).setAPIKey(appVersionData.getApiKey());
+                        OlympicsPrefs.getInstance(null).setBaseURL(appVersionData.getBaseURL());
                         if(!TextUtils.isEmpty(appVersionData.getCacheConfigDate())) {
                             OlympicsApplication.getAppInstance().setCacheStartDate(Long.parseLong(appVersionData.getCacheConfigDate()));
                         }
