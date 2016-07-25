@@ -39,7 +39,7 @@ public class CountryListController {
     public synchronized void getCountryData() {
         if (DateUtils.isCurrentDateInOlympics()) {
             DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL,
-                    DataCacheHelper.COUNTRY_SELECTION_KEY, createNewCacheListener());
+                    DataCacheHelper.COUNTRY_SELECTION_KEY, createNewCacheListener(), false);
         } else {
             getDataFromServer();
         }

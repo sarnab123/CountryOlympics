@@ -3,8 +3,15 @@ package com.olympics.olympicsandroid;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.olympics.olympicsandroid.model.AppVersionData;
+import com.olympics.olympicsandroid.model.ErrorModel;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
+import com.olympics.olympicsandroid.networkLayer.controller.AppVersionController;
+import com.olympics.olympicsandroid.networkLayer.controller.IConfigListener;
 
 /**
  * Created by sarnab.poddar on 7/24/16.
@@ -41,7 +48,35 @@ public class OlympicsLifeCyclecallbacks  implements Application.ActivityLifecycl
         {
             FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent(FirebaseAnalytics.Event.APP_OPEN,null);
         }
+
+        AppVersionController appVersionController = new AppVersionController();
+        appVersionController.getAppConfiguration(createNewIconfligListener());
         ++started;
+    }
+
+    private IConfigListener createNewIconfligListener() {
+        return new IConfigListener() {
+            @Override
+            public void onConfigSuccess(AppVersionData appVersionData) {
+                if(appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum()))
+                {
+                    if(TextUtils.isEmpty(OlympicsPrefs.getInstance(null).getCacheChecksum()))
+                    {
+                        OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
+                    }
+                    else if (!OlympicsPrefs.getInstance(null).getCacheChecksum().equalsIgnoreCase(appVersionData.getCacheCountryChecksum()))
+                    {
+                        OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
+                        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, null, null, true);
+                    }
+                }
+            }
+
+            @Override
+            public void onConfigFailure(ErrorModel errorModel) {
+
+            }
+        };
     }
 
     @Override

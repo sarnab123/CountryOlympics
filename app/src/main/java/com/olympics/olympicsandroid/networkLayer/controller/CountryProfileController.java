@@ -46,7 +46,7 @@ public class CountryProfileController {
         listenerWeakReference.get().handleLoadingIndicator(true);
         if (DateUtils.isCurrentDateInOlympics()) {
             DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,
-                    OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(), createNewCacheListener());
+                    OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(), createNewCacheListener(), );
         } else {
             getDataFromServerAndCache();
         }

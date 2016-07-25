@@ -12,6 +12,16 @@ public class AppVersionData implements IResponseModel {
     private String apiKey;
     private String cacheConfigDate;
 
+    private String cacheCountryChecksum;
+
+    public void setCacheCountryChecksum(String cacheCountryChecksum) {
+        this.cacheCountryChecksum = cacheCountryChecksum;
+    }
+
+    public String getCacheCountryChecksum() {
+        return cacheCountryChecksum;
+    }
+
     public float getAndroid() {
         return Android;
     }

@@ -11,17 +11,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.AppVersionData;
 import com.olympics.olympicsandroid.model.ErrorModel;
-import com.olympics.olympicsandroid.networkLayer.CustomJSONRequest;
-import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
-import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
-import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.networkLayer.controller.AppVersionController;
+import com.olympics.olympicsandroid.networkLayer.controller.IConfigListener;
 import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
@@ -52,35 +48,17 @@ public class LaunchActivity extends Activity {
 
     private void checkAppVersion() {
 
-        RequestPolicy requestPolicy = new RequestPolicy();
-
-        CustomJSONRequest<AppVersionData> appVersionRequest = new
-                CustomJSONRequest<AppVersionData>(OlympicRequestQueries.APP_VERSION_DATA,
-                AppVersionData.class, null, createAppVersionDataSuccessListener(),
-                createAppVersionDataFailureListener(), requestPolicy);
-        VolleySingleton.getInstance(null).addToRequestQueue(appVersionRequest);
+        AppVersionController appVersionController = new AppVersionController();
+        appVersionController.getAppConfiguration(createConfigListener());
 
         ScheduleController.getInstance().getScheduleData(null);
     }
 
-    protected Response.ErrorListener createAppVersionDataFailureListener() {
-        return new Response.ErrorListener() {
+    private IConfigListener createConfigListener() {
+        return new IConfigListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                ErrorModel errorModel = new ErrorModel();
-                errorModel.setErrorCode(error.getLocalizedMessage());
-                errorModel.setErrorMessage(error.getMessage());
-                decideLaunchActivity();
-            }
-        };
-    }
-
-    protected Response.Listener<AppVersionData> createAppVersionDataSuccessListener() {
-        return new Response.Listener<AppVersionData>() {
-            @Override
-            public void onResponse(AppVersionData responseModel) {
-                if (responseModel != null && responseModel instanceof AppVersionData) {
-                    AppVersionData appVersionData = (AppVersionData) responseModel;
+            public void onConfigSuccess(AppVersionData appVersionData) {
+                if (appVersionData != null ) {
                     if (appVersionData != null) {
                         performVersionValidationTask(appVersionData);
                         //Set APIKey and BaseURL from the configuration file
@@ -95,6 +73,11 @@ public class LaunchActivity extends Activity {
                         }
                     }
                 }
+            }
+
+            @Override
+            public void onConfigFailure(ErrorModel errorModel) {
+                decideLaunchActivity();
             }
         };
     }

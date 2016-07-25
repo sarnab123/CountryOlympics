@@ -20,6 +20,7 @@ public class OlympicsPrefs
     private final String MEDALTALLY_UPDATE_TIMESTAMP = "MEDAL_TIMESTAMP";
     private final String PREF_BASE_URL = "BASEURL";
     private final String PREF_API_KEY = "APIKEY";
+    private final String PREFS_CACHE_CHECKSUM = "CACHE_CHECKSUM";
 
 
     private static OlympicsPrefs instance;
@@ -97,6 +98,18 @@ public class OlympicsPrefs
 
     public String getAPIKey() {
         return getDefaultSharePreference().getString(PREF_API_KEY, null);
+    }
+
+    public String getCacheChecksum()
+    {
+        return getDefaultSharePreference().getString(PREFS_CACHE_CHECKSUM,null);
+    }
+
+    public void setCacheChecksum(String checksum)
+    {
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putString(PREFS_CACHE_CHECKSUM,checksum);
+        editor.apply();
     }
 
 }

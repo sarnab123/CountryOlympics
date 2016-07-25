@@ -34,6 +34,11 @@ public class ScheduleController {
         scheduleListeners = new ArrayBlockingQueue<IScheduleListener>(10);
     }
 
+    public synchronized void clearScheduleData()
+    {
+        this.olympicSchedule = null;
+    }
+
     public synchronized void getScheduleData(IScheduleListener scheduleListener) {
         if (olympicSchedule != null && scheduleListener != null) {
             scheduleListener.scheduleSuccess(olympicSchedule);

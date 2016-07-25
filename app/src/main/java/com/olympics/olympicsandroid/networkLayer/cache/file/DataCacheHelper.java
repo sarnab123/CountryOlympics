@@ -3,11 +3,13 @@ package com.olympics.olympicsandroid.networkLayer.cache.file;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.model.CountryModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.MedalTally;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
+import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
 
 import java.io.File;
@@ -66,9 +68,27 @@ public class DataCacheHelper {
         }
     }
 
-    public synchronized void getDataModel(byte dataType, String dataIdentifier, ICacheListener listener) {
-        cacheListeners.add(listener);
-        new FileRetrieveAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,dataIdentifier);
+    public synchronized void getDataModel(byte dataType, String dataIdentifier, ICacheListener listener, boolean deleteCache) {
+        if(deleteCache)
+        {
+            new FileDeleteAsync().executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
+        }
+        else {
+            cacheListeners.add(listener);
+            new FileRetrieveAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, dataIdentifier);
+        }
+    }
+
+
+    class FileDeleteAsync extends AsyncTask<Void,Void,Void>
+    {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            ScheduleController.getInstance().clearScheduleData();
+            UtilityMethods.deleteCache(OlympicsApplication.getAppContext());
+            return null;
+        }
     }
 
     class FileRetrieveAsync extends AsyncTask<String, Void, IResponseModel> {
