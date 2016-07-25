@@ -2,6 +2,7 @@ package com.olympics.olympicsandroid;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,13 +12,14 @@ import com.olympics.olympicsandroid.model.AppVersionData;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
+import com.olympics.olympicsandroid.networkLayer.cache.service.AppCacheService;
 import com.olympics.olympicsandroid.networkLayer.controller.AppVersionController;
 import com.olympics.olympicsandroid.networkLayer.controller.IConfigListener;
 
 /**
  * Created by sarnab.poddar on 7/24/16.
  */
-public class OlympicsLifeCyclecallbacks  implements Application.ActivityLifecycleCallbacks {
+public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycleCallbacks {
 
 
     @Override
@@ -45,10 +47,9 @@ public class OlympicsLifeCyclecallbacks  implements Application.ActivityLifecycl
 
     @Override
     public void onActivityStarted(Activity activity) {
-        if(started ==  stopped)
-        {
-            Log.d("OlympicLifeCyCallbacks","On Start of App "+activity);
-            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent(FirebaseAnalytics.Event.APP_OPEN,null);
+        if (started == stopped) {
+            Log.d("OlympicLifeCyCallbacks", "On Start of App " + activity);
+            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent(FirebaseAnalytics.Event.APP_OPEN, null);
             AppVersionController appVersionController = new AppVersionController();
             appVersionController.getAppConfiguration(createNewIconfligListener());
         }
@@ -61,22 +62,25 @@ public class OlympicsLifeCyclecallbacks  implements Application.ActivityLifecycl
         return new IConfigListener() {
             @Override
             public void onConfigSuccess(AppVersionData appVersionData) {
-                if(appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum()))
-                {
-                    if(!TextUtils.isEmpty(appVersionData.getOnDemandCountryAlias()))
-                    {
+
+                if (!TextUtils.isEmpty(appVersionData.getApiKey()) && !TextUtils.isEmpty(appVersionData.getBaseURL())) {
+                    //Set APIKey and BaseURL from the configuration file
+                    OlympicsPrefs.getInstance(null).setAPIKey(appVersionData.getApiKey());
+                    OlympicsPrefs.getInstance(null).setBaseURL(appVersionData.getBaseURL());
+                }
+
+                if (appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum())) {
+                    if (!TextUtils.isEmpty(appVersionData.getOnDemandCountryAlias())) {
                         OlympicsPrefs.getInstance(null).setCacheCountry(appVersionData.getOnDemandCountryAlias());
-                    }
-                    else{
+                    } else {
                         OlympicsPrefs.getInstance(null).setCacheCountry(DataCacheHelper.countryToCache);
                     }
 
-                    if(TextUtils.isEmpty(OlympicsPrefs.getInstance(null).getCacheChecksum()))
-                    {
+                    if (TextUtils.isEmpty(OlympicsPrefs.getInstance(null).getCacheChecksum())) {
                         OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
-                    }
-                    else if (!OlympicsPrefs.getInstance(null).getCacheChecksum().equalsIgnoreCase(appVersionData.getCacheCountryChecksum()))
-                    {
+                        Intent msgIntent = new Intent(OlympicsApplication.getAppContext(), AppCacheService.class);
+                        OlympicsApplication.getAppContext().startService(msgIntent);
+                    } else if (!OlympicsPrefs.getInstance(null).getCacheChecksum().equalsIgnoreCase(appVersionData.getCacheCountryChecksum())) {
                         OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
 
                         DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, null, null, true);

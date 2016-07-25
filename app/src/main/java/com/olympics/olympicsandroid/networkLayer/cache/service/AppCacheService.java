@@ -162,6 +162,7 @@ public class AppCacheService extends Service {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                OlympicsPrefs.getInstance(null).setCacheChecksum("");
                 stopSelf();
             }
         };
@@ -241,6 +242,7 @@ public class AppCacheService extends Service {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                OlympicsPrefs.getInstance(null).setCacheChecksum("");
                 stopSelf();
             }
         };

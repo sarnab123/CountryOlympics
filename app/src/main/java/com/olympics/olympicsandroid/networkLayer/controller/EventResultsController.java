@@ -19,20 +19,17 @@ import java.lang.ref.WeakReference;
 /**
  * Created by sarnab.poddar on 7/16/16.
  */
-public class EventResultsController
-{
+public class EventResultsController {
     protected WeakReference<IUIListener> listenerWeakReference;
     protected Context mCtx;
 
-    public EventResultsController(WeakReference<IUIListener> listenerWeakReference, Context mCtx)
-    {
+    public EventResultsController(WeakReference<IUIListener> listenerWeakReference, Context mCtx) {
         this.listenerWeakReference = listenerWeakReference;
         this.mCtx = mCtx;
     }
 
-    public void getEventResults(String eventID)
-    {
-        if(UtilityMethods.isConnectedToInternet()) {
+    public void getEventResults(String eventID) {
+        if (UtilityMethods.isConnectedToInternet()) {
             // Set Request Policy
             RequestPolicy requestPolicy = new RequestPolicy();
             requestPolicy.setUrlReplacement(eventID);
@@ -40,21 +37,29 @@ public class EventResultsController
             CustomXMLRequest<EventResultsModel> countryRequest =
                     new CustomXMLRequest<EventResultsModel>(OlympicRequestQueries.EVENT_RESULTS, EventResultsModel.class, createEventSuccessListener(), createEventFailureListener(), requestPolicy);
             VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
-        }else{
+        } else {
             ErrorModel errorModel = new ErrorModel();
             errorModel.setErrorCode(UtilityMethods.ERROR_INTERNET);
             errorModel.setErrorMessage(UtilityMethods.ERROR_INTERNET);
-            listenerWeakReference.get().onFailure(errorModel);
+            if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                listenerWeakReference.get().onFailure(errorModel);
+            }
         }
     }
 
-    private Response.ErrorListener createEventFailureListener()
-    {
+    private Response.ErrorListener createEventFailureListener() {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                listenerWeakReference.get().handleLoadingIndicator(false);
-                System.out.println("error == " + error);
+                if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+                    listenerWeakReference.get().handleLoadingIndicator(false);
+                    ErrorModel errorModel = new ErrorModel();
+                    errorModel.setErrorCode(error.getLocalizedMessage());
+                    errorModel.setErrorMessage(error.getMessage());
+                    listenerWeakReference.get().onFailure(errorModel);
+                    System.out.println("error == " + error);
+                }
             }
         };
     }
@@ -66,9 +71,11 @@ public class EventResultsController
                 EventResultsHelper eventResultsHelper = new EventResultsHelper(response);
 
                 UnitResultsViewModel unitResultsViewModel = eventResultsHelper.getListOfEventUnits();
+                if (listenerWeakReference != null && listenerWeakReference.get() != null) {
 
-                listenerWeakReference.get().handleLoadingIndicator(false);
-                listenerWeakReference.get().onSuccess(unitResultsViewModel);
+                    listenerWeakReference.get().handleLoadingIndicator(false);
+                    listenerWeakReference.get().onSuccess(unitResultsViewModel);
+                }
             }
         };
     }
