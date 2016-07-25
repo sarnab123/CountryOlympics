@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.olympics.olympicsandroid.R;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 
 public class OlympicsSplashScreen extends Activity {
 
@@ -68,16 +69,22 @@ public class OlympicsSplashScreen extends Activity {
 
     private void createApplicationShortcut() {
 
-        Intent HomeScreenShortCut = new Intent(getApplicationContext(), OlympicsSplashScreen.class);
-        HomeScreenShortCut.setAction(Intent.ACTION_MAIN);
-        HomeScreenShortCut.putExtra("duplicate", false);
-        //shortcutIntent is added with addIntent
-        Intent addIntent = new Intent();
-        addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, HomeScreenShortCut);
-        addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, getString(getApplicationInfo().labelRes));
-        addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(getApplicationContext(), R.drawable.app_icon));
-        addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-        getApplicationContext().sendBroadcast(addIntent);
+        if (!OlympicsPrefs.getInstance(null).isAppShortcutCreated()) {
+            Intent HomeScreenShortCut = new Intent(getApplicationContext(), OlympicsSplashScreen.class);
+
+            HomeScreenShortCut.setAction(Intent.ACTION_MAIN);
+            HomeScreenShortCut.putExtra("duplicate", false);
+            //shortcutIntent is added with addIntent
+            Intent addIntent = new Intent();
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, HomeScreenShortCut);
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, getString(getApplicationInfo()
+                    .labelRes));
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(getApplicationContext(), R.drawable.app_icon));
+            addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+            getApplicationContext().sendBroadcast(addIntent);
+
+            OlympicsPrefs.getInstance(null).setAppShortcutStatus();
+        }
     }
 }
 

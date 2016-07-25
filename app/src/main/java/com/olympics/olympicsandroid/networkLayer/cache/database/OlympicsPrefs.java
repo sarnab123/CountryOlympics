@@ -20,7 +20,7 @@ public class OlympicsPrefs
     private final String MEDALTALLY_UPDATE_TIMESTAMP = "MEDAL_TIMESTAMP";
     private final String PREF_BASE_URL = "BASEURL";
     private final String PREF_API_KEY = "APIKEY";
-
+    private final String PREF_APP_SHORTCUT = "SHORTCUT";
 
     private static OlympicsPrefs instance;
 
@@ -98,5 +98,18 @@ public class OlympicsPrefs
     public String getAPIKey() {
         return getDefaultSharePreference().getString(PREF_API_KEY, null);
     }
+
+
+    public void setAppShortcutStatus()
+    {
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putBoolean(PREF_APP_SHORTCUT, true);
+        editor.apply();
+    }
+
+    public boolean isAppShortcutCreated() {
+        return getDefaultSharePreference().getBoolean(PREF_APP_SHORTCUT, false);
+    }
+
 
 }
