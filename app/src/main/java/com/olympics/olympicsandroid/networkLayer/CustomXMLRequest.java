@@ -13,6 +13,7 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.olympics.olympicsandroid.utility.Logger;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -99,7 +100,7 @@ public class CustomXMLRequest<T> extends Request<T> {
     {
         try {
 
-            Log.d("CustomXMLRequest", "xml response parsing thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
+            Logger.logs("CustomXMLRequest", "xml response parsing thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
 
             String data = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
             Cache.Entry entries = HttpHeaderParser.parseCacheHeaders(response);

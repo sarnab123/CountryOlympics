@@ -109,7 +109,7 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
             });
             dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
+                   dialog.dismiss();
                 }
             });
             dlgAlert.setCancelable(false);

@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.olympics.olympicsandroid.model.AppVersionData;
@@ -15,6 +14,7 @@ import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
 import com.olympics.olympicsandroid.networkLayer.cache.service.AppCacheService;
 import com.olympics.olympicsandroid.networkLayer.controller.AppVersionController;
 import com.olympics.olympicsandroid.networkLayer.controller.IConfigListener;
+import com.olympics.olympicsandroid.utility.Logger;
 
 /**
  * Created by sarnab.poddar on 7/24/16.
@@ -47,7 +47,7 @@ public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycle
     @Override
     public void onActivityStarted(Activity activity) {
         if (started == stopped) {
-            Log.d("OlympicLifeCyCallbacks", "On Start of App " + activity);
+            Logger.logs("OlympicLifeCyCallbacks", "On Start of App " + activity);
             FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent(FirebaseAnalytics.Event.APP_OPEN, null);
             AppVersionController appVersionController = new AppVersionController();
             appVersionController.getAppConfiguration(createNewIconfligListener());

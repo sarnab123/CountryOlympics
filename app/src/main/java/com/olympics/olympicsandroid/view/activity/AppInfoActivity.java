@@ -11,7 +11,7 @@ import com.olympics.olympicsandroid.R;
 
 public class AppInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private static final String SHARE_APP_MESSAGE = "Hey check out olympics app at: ";
+    private static final String SHARE_APP_MESSAGE = "Olympics is around the corner! Check out this App for live updates.";
     private static final String PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=";
     private static final String CONTACT_US_MAIL = "mailto:jksolympics@gmail.com";
     private static final String SHARE_CONTACT_INTENT_TYPE = "text/plain";

@@ -9,7 +9,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -29,6 +28,7 @@ import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
 import com.olympics.olympicsandroid.networkLayer.controller.IScheduleListener;
 import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
 import com.olympics.olympicsandroid.utility.DateUtils;
+import com.olympics.olympicsandroid.utility.Logger;
 
 import java.util.HashMap;
 
@@ -121,9 +121,9 @@ public class AppCacheService extends Service {
         return new IScheduleListener() {
             @Override
             public void scheduleSuccess(OlympicSchedule olympicSchedule) {
-                Log.d("AppCacheService", "Schedule success thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
+                Logger.logs("AppCacheService", "Schedule success thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
                 boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
-                Log.d("AppCacheService", "is main thread == " + isOnUiThread);
+                Logger.logs("AppCacheService", "is main thread == " + isOnUiThread);
                 totalSchedule = olympicSchedule;
 
                 // For each start request, send a message to start a job and deliver the
@@ -150,8 +150,8 @@ public class AppCacheService extends Service {
         }
         boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
 
-        Log.d("AppCacheService", "get country list thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
-        Log.d("AppCacheService", "get country list is main thread == " + isOnUiThread);
+        Logger.logs("AppCacheService", "get country list thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
+        Logger.logs("AppCacheService", "get country list is main thread == " + isOnUiThread);
 
         CustomXMLRequest<CountryModel> countryRequest = new CustomXMLRequest<CountryModel>(OlympicRequestQueries.COUNTRY_LIST, CountryModel.class,
                 createCountryListSuccessListener(), createCountryListFailureListener(), requestPolicy);
@@ -173,10 +173,10 @@ public class AppCacheService extends Service {
             @Override
             public void onResponse(CountryModel response) {
 
-                Log.d("AppCacheService", "country response thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
+                Logger.logs("AppCacheService", "country response thread id == " + android.os.Process.getThreadPriority(android.os.Process.myTid()));
 
                 boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
-                Log.d("AppCacheService", "country response is main thread == " + isOnUiThread);
+                Logger.logs("AppCacheService", "country response is main thread == " + isOnUiThread);
                 // For each start request, send a message to start a job and deliver the
                 // start ID so we know which request we're stopping when we finish the job
                 Message msg = mServiceHandler.obtainMessage();
@@ -192,7 +192,7 @@ public class AppCacheService extends Service {
     {
 
         boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
-        Log.d("AppCacheService", "updateCountryIDs is main thread == " + isOnUiThread);
+        Logger.logs("AppCacheService", "updateCountryIDs is main thread == " + isOnUiThread);
 
         if (response != null && response.getOrganization() != null && response.getOrganization().size() > 0) {
             DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL, response);
@@ -216,11 +216,11 @@ public class AppCacheService extends Service {
     }
 
     private synchronized void makeCountryProfileCall() {
-        Log.d("AppCacheService", "Count ======= == " + count);
+        Logger.logs("AppCacheService", "Count ======= == " + count);
 
         if (count > 0 && !TextUtils.isEmpty(countryAliastoID.get(countrytoCache[--count]))) {
             boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
-            Log.d("AppCacheService", "makeCountryProfileCall is main thread == " + isOnUiThread);
+            Logger.logs("AppCacheService", "makeCountryProfileCall is main thread == " + isOnUiThread);
 
             RequestPolicy requestPolicy = new RequestPolicy();
             if (DateUtils.isCurrentDateInOlympics()) {
@@ -253,7 +253,7 @@ public class AppCacheService extends Service {
             @Override
             public void onResponse(CountryProfileEvents countryProfileEvents) {
                 boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
-                Log.d("AppCacheService", "country response success is main thread == " + isOnUiThread);
+                Logger.logs("AppCacheService", "country response success is main thread == " + isOnUiThread);
 
                 Message msg = mServiceHandler.obtainMessage();
                 msg.arg1 = COUNTRY_UI_MODEL;
@@ -268,7 +268,7 @@ public class AppCacheService extends Service {
     {
 
         boolean isOnUiThread = Thread.currentThread() == Looper.getMainLooper().getThread();
-        Log.d("AppCacheService", "savePresentationModelCountry is main thread == " + isOnUiThread);
+        Logger.logs("AppCacheService", "savePresentationModelCountry is main thread == " + isOnUiThread);
 
         CountryEventUnitModel countryEventData = new CountryEventsHelper(countryProfileEvents,
                 totalSchedule)

@@ -77,8 +77,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         setUpData();
     }
 
-    private void setUpData()
-    {
+    private void setUpData() {
         //Display country information in navigation drawer
         displaySelectedCountryInfo();
 
@@ -86,7 +85,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 WeakReference<IUIListener>(this), getApplication());
         scheduleController.getCountryDetails();
 
-   }
+    }
 
     /**
      * This method displays country information in navigation drawer
@@ -96,14 +95,14 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         //get selected country data from preference
         Organization countryInfo = OlympicsPrefs.getInstance(this).getUserSelectedCountry();
 
-        View headerLayout = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
+        View headerLayout = ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0);
 
         if (headerLayout != null) {
             headerLayout.findViewById(R.id.countryTextView).setOnClickListener(new View
                     .OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(OlympicsActivity.this,CountrySelectionActivity.class));
+                    startActivity(new Intent(OlympicsActivity.this, CountrySelectionActivity.class));
                 }
             });
 
@@ -123,8 +122,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent();
-                        intent.putExtra("first_launch",false);
-                        ActivityFactory.openCountrySelectionScreenForResult(OlympicsActivity.this, intent,REQUEST_CODE_COUNTRY);
+                        intent.putExtra("first_launch", false);
+                        ActivityFactory.openCountrySelectionScreenForResult(OlympicsActivity.this, intent, REQUEST_CODE_COUNTRY);
                     }
                 });
             } catch (Exception ex) {
@@ -136,13 +135,11 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_CODE_COUNTRY)
-        {
-            if(resultCode == RESULT_OK)
-            {
-                String countryCode =data.getStringExtra("COUNTRY_CODE");
+        if (requestCode == REQUEST_CODE_COUNTRY) {
+            if (resultCode == RESULT_OK) {
+                String countryCode = data.getStringExtra("COUNTRY_CODE");
 
-                if(drawer == null) {
+                if (drawer == null) {
                     drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 }
                 if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -156,7 +153,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public void onBackPressed() {
-        if(drawer == null) {
+        if (drawer == null) {
             drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         }
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -171,7 +168,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch(id) {
+        switch (id) {
             case R.id.nav_medal:
                 ActivityFactory.openMedalActivity(this, null);
                 break;
@@ -183,7 +180,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 break;
         }
 
-        if(drawer == null) {
+        if (drawer == null) {
             drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -193,7 +190,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     @Override
     public void onSuccess(IResponseModel responseModel) {
         if (responseModel instanceof CountryEventUnitModel) {
-            if(mSectionsPagerAdapter == null) {
+            if (mSectionsPagerAdapter == null) {
                 mSectionsPagerAdapter = new DateEventAdapter(getSupportFragmentManager(),
                         (CountryEventUnitModel) responseModel);
 
@@ -203,10 +200,9 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
                 TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
                 tabLayout.setupWithViewPager(mViewPager);
-            }
-            else{
-                if(mSectionsPagerAdapter != null)
-                mSectionsPagerAdapter.updateModel((CountryEventUnitModel) responseModel);
+            } else {
+                if (mSectionsPagerAdapter != null)
+                    mSectionsPagerAdapter.updateModel((CountryEventUnitModel) responseModel);
                 mSectionsPagerAdapter.notifyDataSetChanged();
                 mViewPager.invalidate();
             }
@@ -217,8 +213,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                     WeakReference<IUIListener>(this), getApplication());
             medalTallyController.getMedalTallyData();
 
-        } else if (responseModel instanceof MedalTally)
-        {
+        } else if (responseModel instanceof MedalTally) {
             //Display Medal info
             medalTallyObj = (MedalTally) responseModel;
             displayMedalInfoForCountry();
@@ -251,17 +246,15 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 if (!TextUtils.isEmpty(medaltallyOrgList.get(0).getBronze())) {
                     ((TextView) headerLayout.findViewById(R.id.bronze_medal_count)).setText(medaltallyOrgList
                             .get
-                            (0).getBronze());
+                                    (0).getBronze());
                 }
             }
         }
     }
 
     @Override
-    public void onFailure(ErrorModel errorModel)
-    {
-        if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.ERROR_INTERNET))
-        {
+    public void onFailure(ErrorModel errorModel) {
+        if (errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.ERROR_INTERNET)) {
             AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
             dlgAlert.setMessage(getString(R.string.id_error_internet));
             dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
@@ -285,8 +278,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             params.putString("error_reason", errorModel.getErrorMessage());
             FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
 
-        }
-        else{
+        } else {
             try {
                 AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
                 dlgAlert.setMessage(getString(R.string.id_error_server));
@@ -303,19 +295,16 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 });
                 dlgAlert.setCancelable(false);
                 dlgAlert.create().show();
-            }
-            catch (WindowManager.BadTokenException ex)
-            {
+            } catch (WindowManager.BadTokenException ex) {
 
             }
             Bundle params = new Bundle();
             params.putString("app_error", "event_result");
             params.putString("app_screen", "country_schedule");
 
-            if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorMessage())) {
+            if (errorModel != null && !TextUtils.isEmpty(errorModel.getErrorMessage())) {
                 params.putString("error_reason", errorModel.getErrorMessage());
-            }
-            else{
+            } else {
                 params.putString("error_reason", "generic_error");
             }
             FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
@@ -324,18 +313,15 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     }
 
     @Override
-    public void handleLoadingIndicator(boolean showLoadingInd)
-    {
-        if(showLoadingInd)
-        {
+    public void handleLoadingIndicator(boolean showLoadingInd) {
+        if (showLoadingInd) {
             progress = new ProgressDialog(this);
             progress.setTitle("Loading");
             progress.setMessage("Wait while loading country details...");
             progress.show();
 
-        }
-        else{
-            if(progress != null) {
+        } else {
+            if (progress != null) {
                 progress.dismiss();
             }
         }

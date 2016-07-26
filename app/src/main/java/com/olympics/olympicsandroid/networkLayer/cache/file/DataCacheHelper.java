@@ -2,7 +2,6 @@ package com.olympics.olympicsandroid.networkLayer.cache.file;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.model.CountryModel;
@@ -12,6 +11,7 @@ import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitMode
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
 import com.olympics.olympicsandroid.networkLayer.cache.service.AppCacheService;
 import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
+import com.olympics.olympicsandroid.utility.Logger;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
 
 import java.io.File;
@@ -121,7 +121,7 @@ public class DataCacheHelper {
 
                 } catch (Exception ex)
                 {
-                    Log.d("DataCacheHelper","Exceptin while reading ="+ex);
+                    Logger.logs("DataCacheHelper","Exceptin while reading ="+ex);
                 } finally {
                     try {
                         if (objectStream != null) {
@@ -162,7 +162,7 @@ public class DataCacheHelper {
             FileOutputStream fileOutputStream = null;
             ObjectOutputStream objectOutputStream = null;
 
-            Log.d("DataCacheHelper","Caching alias = ="+countryAlias);
+            Logger.logs("DataCacheHelper", "Caching alias = =" + countryAlias);
 
             try {
                 fileOutputStream = new FileOutputStream(UtilityMethods.createFile(countryAlias));
@@ -175,11 +175,11 @@ public class DataCacheHelper {
                 }
             } catch (StreamCorruptedException e)
             {
-                Log.d("DataCacheHelper","Exceptin while writing ="+e);
+                Logger.logs("DataCacheHelper","Exceptin while writing ="+e);
 
             } catch (IOException e)
             {
-                Log.d("DataCacheHelper","Exceptin while writing 111 ="+e);
+                Logger.logs("DataCacheHelper","Exceptin while writing 111 ="+e);
 
             }
             try {
@@ -188,7 +188,7 @@ public class DataCacheHelper {
                 }
             } catch (IOException e)
             {
-                Log.d("DataCacheHelper","Exceptin while writing 2222 ="+e);
+                Logger.logs("DataCacheHelper","Exceptin while writing 2222 ="+e);
 
             }
             try {
