@@ -102,7 +102,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                     .OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(OlympicsActivity.this, CountrySelectionActivity.class));
+                    startCountrySelectionScreen();
                 }
             });
 
@@ -121,15 +121,20 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 countryImageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent();
-                        intent.putExtra("first_launch", false);
-                        ActivityFactory.openCountrySelectionScreenForResult(OlympicsActivity.this, intent, REQUEST_CODE_COUNTRY);
+                        startCountrySelectionScreen();
                     }
                 });
             } catch (Exception ex) {
                 System.out.println("Exeptipn == " + ex);
             }
         }
+    }
+
+    private void startCountrySelectionScreen()
+    {
+        Intent intent = new Intent();
+        intent.putExtra("first_launch", false);
+        ActivityFactory.openCountrySelectionScreenForResult(OlympicsActivity.this, intent, REQUEST_CODE_COUNTRY);
     }
 
 

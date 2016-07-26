@@ -13,7 +13,7 @@ public class Logger
     {
         if(BuildConfig.DEBUG)
         {
-            Logger.logs(TAG,logText);
+            Log.d(TAG,logText);
         }
     }
 }
