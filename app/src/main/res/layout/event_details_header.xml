@@ -38,10 +38,10 @@
 
         <ImageView
             android:id="@+id/id_medal_image"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="20dp"
+            android:padding="3dp"
             android:layout_toRightOf="@id/id_unit_title"
-            android:layout_alignParentRight="true"
             android:visibility="gone" />
 
         <ImageView
