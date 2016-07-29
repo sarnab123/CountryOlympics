@@ -103,10 +103,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                     .CountryInfoLayout).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent();
-                    intent.putExtra("first_launch", false);
-                    ActivityFactory.openCountrySelectionScreenForResult(OlympicsActivity
-                            .this, intent, REQUEST_CODE_COUNTRY);
+                    startCountrySelectionScreen();
                 }
             });
 
