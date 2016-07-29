@@ -95,14 +95,18 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         //get selected country data from preference
         Organization countryInfo = OlympicsPrefs.getInstance(this).getUserSelectedCountry();
 
-        View headerLayout = ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0);
+        View headerLayout = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
 
         if (headerLayout != null) {
-            headerLayout.findViewById(R.id.countryTextView).setOnClickListener(new View
-                    .OnClickListener() {
+
+            headerLayout.findViewById(R.id
+                    .CountryInfoLayout).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startCountrySelectionScreen();
+                    Intent intent = new Intent();
+                    intent.putExtra("first_launch", false);
+                    ActivityFactory.openCountrySelectionScreenForResult(OlympicsActivity
+                            .this, intent, REQUEST_CODE_COUNTRY);
                 }
             });
 
@@ -118,12 +122,6 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             int rid = getResources().getIdentifier(countryInfo.getAlias().toLowerCase(), "raw", getPackageName());
             try {
                 countryImageView.setImageBitmap(BitmapFactory.decodeStream(getResources().openRawResource(rid)));
-                countryImageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startCountrySelectionScreen();
-                    }
-                });
             } catch (Exception ex) {
                 System.out.println("Exeptipn == " + ex);
             }
