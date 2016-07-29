@@ -34,6 +34,7 @@ import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.controller.CountryProfileController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 import com.olympics.olympicsandroid.networkLayer.controller.MedalTallyController;
+import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.MedalTallyComparator;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
@@ -200,6 +201,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
                 TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
                 tabLayout.setupWithViewPager(mViewPager);
+                mViewPager.setCurrentItem(getCurrentScheduleIndex(), true);
             } else {
                 if (mSectionsPagerAdapter != null)
                     mSectionsPagerAdapter.updateModel((CountryEventUnitModel) responseModel);
@@ -325,5 +327,23 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 progress.dismiss();
             }
         }
+    }
+
+    /**
+     * This method determines if current date falls within Olympics schedule.
+     * @return index of tab if current date is within Olympics schedule, 0 otherwise
+     */
+    public int getCurrentScheduleIndex() {
+
+        long eventDate = DateUtils.OLYMPIC_EVENT_START_DATE;
+        int index = 0;
+        while (eventDate < DateUtils.OLYMPIC_EVENT_END_DATE) {
+            if (DateUtils.getCurrentDate() == eventDate) {
+                return index;
+            }
+            index ++;
+            eventDate += DateUtils.NUM_OF_MILISECONDS_IN_DAY;
+        }
+        return 0;
     }
 }

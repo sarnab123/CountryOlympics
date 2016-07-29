@@ -121,5 +121,20 @@ public class DateUtils {
         String strDate = sdfDate.format(now);
         return strDate;
     }
+
+    public static long getCurrentDate() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DATE);
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(year, month, day, 0, 0, 0);
+        calendar.setTimeZone(TimeZone.getTimeZone("GMT"));
+        return calendar.getTime().getTime();
+    }
+
 }
+
+
+
 
