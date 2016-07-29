@@ -103,14 +103,16 @@ public class CountryEventsHelper {
                         continue;
                     }
                     Athlete athlete = new Athlete();
-                    String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" :
-                            participant.getFirst_name();
-                    String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" :
-                            participant.getLast_name();
-                    StringBuilder stringBuilder = new StringBuilder(firstName).append(" ").append
-                            (lastName);
 
-                    athlete.setAthleteName(stringBuilder.toString());
+                    if (!TextUtils.isEmpty(participant.getPrint_name())) {
+                        athlete.setAthleteName(participant.getPrint_name());
+                    } else {
+                        String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" : participant.getFirst_name();
+
+                        String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" : participant.getLast_name();
+                        StringBuilder stringBuilder = new StringBuilder(firstName).append(" ").append(lastName);
+                       athlete.setAthleteName(stringBuilder.toString());
+                    }
                     athlete.setAthleteGender(participant.getGender());
                     if (participatingEvent.getSport() != null) {
                         athlete.setSportName(participatingEvent.getSport().getDescription());
@@ -136,20 +138,23 @@ public class CountryEventsHelper {
                         for (OlympicAthlete participant : olympicTeams.getAthlete()) {
                             athleteCount++;
                             Athlete athlete = new Athlete();
-                            String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" :
-                                    participant.getFirst_name();
-                            String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" :
-                                    participant.getLast_name();
-                            if(competitorName.length() == 0) {
-                                competitorName.append(lastName);
-                            }else{
-                                competitorName.append("/");
-                                competitorName.append(lastName);
-                            }
-                            StringBuilder stringBuilder = new StringBuilder(firstName).append(" ").append
-                                    (lastName);
 
-                            athlete.setAthleteName(stringBuilder.toString());
+                            if (!TextUtils.isEmpty(participant.getPrint_name())) {
+                                athlete.setAthleteName(participant.getPrint_name());
+                            } else {
+
+                                String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" : participant.getFirst_name();
+                                String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" : participant.getLast_name();
+                                if (competitorName.length() == 0) {
+                                    competitorName.append(lastName);
+                                } else {
+                                    competitorName.append("/");
+                                    competitorName.append(lastName);
+                                }
+                                StringBuilder stringBuilder = new StringBuilder(firstName).append
+                                        (" ").append(lastName);
+                                athlete.setAthleteName(stringBuilder.toString());
+                            }
                             athlete.setAthleteGender(participant.getGender());
                             if (participatingEvent.getSport() != null) {
                                 athlete.setSportName(participatingEvent.getSport().getDescription());

@@ -178,7 +178,15 @@ public class SportsUtility   {
         if (eventResultsViewModel != null && competitor != null) {
             if (eventResultsViewModel.getUnit_type() == TYPE_INDIVUDUAL || eventResultsViewModel
                     .getUnit_type() == TYPE_INDIVUDUAL_HEAD2HEAD) {
-                return competitor.getFirst_name() + " " + competitor.getLast_name();
+                if (!TextUtils.isEmpty(competitor.getPrint_name())) {
+                    return competitor.getPrint_name();
+                } else {
+                    String firstName = TextUtils.isEmpty(competitor.getFirst_name()) ? "" : competitor.getFirst_name();
+                    String lastName = TextUtils.isEmpty(competitor.getLast_name()) ? "" : competitor.getLast_name();
+                    StringBuilder stringBuilder = new StringBuilder(firstName).append
+                            (" ").append(lastName);
+                    return stringBuilder.toString();
+                }
             } else if (eventResultsViewModel.getUnit_type() == TYPE_TEAM_HEAD2HEAD ||
                     eventResultsViewModel.getUnit_type() == TYPE_INDIVUDUAL_HEAD2HEAD) {
                 return competitor.getDescription();
