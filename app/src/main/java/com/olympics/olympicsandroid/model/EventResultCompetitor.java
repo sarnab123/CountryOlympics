@@ -42,6 +42,9 @@ public class EventResultCompetitor
     @Attribute(required = false)
     private String gender;
 
+    @Attribute(required = false)
+    private String print_name;
+
     public String getGender() {
         return gender;
     }
@@ -140,4 +143,11 @@ public class EventResultCompetitor
         this.type = type;
     }
 
+    public String getPrint_name() {
+        return print_name;
+    }
+
+    public void setPrint_name(String print_name) {
+        this.print_name = print_name;
+    }
 }
