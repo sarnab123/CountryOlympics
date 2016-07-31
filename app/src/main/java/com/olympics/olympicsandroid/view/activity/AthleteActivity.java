@@ -33,6 +33,8 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 .OnNavigationItemSelectedListener, IUIListener {
 
     public static final String MALE = "male";
+    public static final String NO_GENDER = "no gender";
+
     private static final String MEN_SPORTS_STR = " - Men";
     private static final String WOMEN_SPORTS_STR = " - Women";
     private AthleteListAdapter athleteListAdapter;
