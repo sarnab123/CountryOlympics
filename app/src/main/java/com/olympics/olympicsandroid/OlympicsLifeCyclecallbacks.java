@@ -16,6 +16,8 @@ import com.olympics.olympicsandroid.networkLayer.controller.AppVersionController
 import com.olympics.olympicsandroid.networkLayer.controller.IConfigListener;
 import com.olympics.olympicsandroid.utility.Logger;
 
+import java.util.TimeZone;
+
 /**
  * Created by sarnab.poddar on 7/24/16.
  */
@@ -73,7 +75,22 @@ public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycle
                         OlympicsApplication.getAppInstance().setCacheStartDate(Long.parseLong(appVersionData.getCacheConfigDate()));
                     }
 
-                    if (appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum())) {
+                    String oldTimezone = OlympicsPrefs.getInstance(null).getPrevTimeZone();
+                    String newTimezone = TimeZone.getDefault().getID();
+
+                    long now = System.currentTimeMillis();
+
+                    if (oldTimezone == null)
+                    {
+                        OlympicsPrefs.getInstance(null).setPrevTimeZone(newTimezone);
+                    }
+                    else if(TimeZone.getTimeZone(oldTimezone).getOffset(now) != TimeZone.getTimeZone(newTimezone).getOffset(now)) {
+                        OlympicsPrefs.getInstance(null).setPrevTimeZone(newTimezone);
+                        OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
+
+                        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, null, null, true);
+                    }
+                    else if (appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum())) {
                         if (!TextUtils.isEmpty(appVersionData.getOnDemandCountryAlias())) {
                             OlympicsPrefs.getInstance(null).setCacheCountry(appVersionData.getOnDemandCountryAlias());
                         } else {

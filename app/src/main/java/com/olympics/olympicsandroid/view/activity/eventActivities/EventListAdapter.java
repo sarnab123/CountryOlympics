@@ -287,7 +287,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             super(itemView);
             unitName = (TextView) itemView.findViewById(R.id.id_unit_title);
             medalImage = (ImageView) itemView.findViewById(R.id.id_medal_image);
-            scheduleImage = (ImageView) itemView.findViewById(R.id.id_schedule_time);
+            scheduleImage = (ImageView) itemView.findViewById(R.id.id_schedule_image);
             schduledTime = (TextView) itemView.findViewById(R.id.id_unit_scheduled_time);
         }
     }

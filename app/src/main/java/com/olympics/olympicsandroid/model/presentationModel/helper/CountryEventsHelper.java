@@ -15,15 +15,15 @@ import com.olympics.olympicsandroid.model.presentationModel.Athlete;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
-import com.olympics.olympicsandroid.networkLayer.cache.database.DBCompetitorRelationHelper;
-import com.olympics.olympicsandroid.networkLayer.cache.database.iFace.DBTablesDef;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.SportsUtility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * This helper maps CountryProfileEvents and OlympicSchedule models into CountryEventUnitModel
@@ -80,7 +80,7 @@ public class CountryEventsHelper {
 
         Map<String, OlympicEvent> allEventsMap = populateEventMapFromAllEventsSchedule();
 
-        List<Athlete> athleteList = new ArrayList<>();
+        HashSet<Athlete> athleteList = new HashSet<>();
 
         // Get each event that selected country is participating in
         for (OlympicEvent participatingEvent : countryProfileEvents.getOrganization().getEvents()) {
@@ -111,7 +111,7 @@ public class CountryEventsHelper {
 
                         String lastName = TextUtils.isEmpty(participant.getLast_name()) ? "" : participant.getLast_name();
                         StringBuilder stringBuilder = new StringBuilder(firstName).append(" ").append(lastName);
-                       athlete.setAthleteName(stringBuilder.toString());
+                        athlete.setAthleteName(stringBuilder.toString());
                     }
                     athlete.setAthleteGender(participant.getGender());
                     if (participatingEvent.getSport() != null) {
@@ -125,7 +125,7 @@ public class CountryEventsHelper {
             // team participants
             List<OlympicTeams> teamList = participatingEvent.getTeams();
             if(teamList != null ) {
-                List<CompetitorVOModel> listOfCompetitors = new ArrayList<>();
+                Set<CompetitorVOModel> listOfCompetitors = new HashSet<>();
                 for (OlympicTeams olympicTeams : teamList) {
                     if(olympicTeams != null && olympicTeams.getAthlete() != null && olympicTeams.getAthlete().size() > 0) {
 
@@ -171,10 +171,11 @@ public class CountryEventsHelper {
                 }
                 if(listOfCompetitors.size() > 0)
                 {
-                    DBCompetitorRelationHelper dbCompetitorRelationHelper = new DBCompetitorRelationHelper();
-                    dbCompetitorRelationHelper.insertAll(DBTablesDef.T_COMPETITOR_RELATION,listOfCompetitors);
+//                    DBCompetitorRelationHelper dbCompetitorRelationHelper = new DBCompetitorRelationHelper();
+//                    dbCompetitorRelationHelper.insertAll(DBTablesDef.T_COMPETITOR_RELATION,listOfCompetitors);
                 }
             }
+
 
             for (OlympicUnit olympicEventUnit : scheduledParticipatingEvent.getUnits()) {
                 if (olympicEventUnit == null || olympicEventUnit.getStart_date() == null) {
@@ -183,11 +184,14 @@ public class CountryEventsHelper {
 
                 String unitStartDate = DateUtils.getDateTimeInMillis(olympicEventUnit
                         .getStart_date());
+
                 DateSportsModel dateSportsModel = dateSportsMapping.get(unitStartDate);
 
                 if (dateSportsModel == null) {
                     continue;
                 }
+
+
 
                 dateSportsModel.setDateString(Long.parseLong(unitStartDate));
                 dateSportsMapping.put(unitStartDate, dateSportsModel);
@@ -207,16 +211,16 @@ public class CountryEventsHelper {
                 if (sportsEventsUnit == null) {
                     sportsEventsUnit = new DateSportsModel.SportsEventsUnits();
                 }
-                    sportsEventsUnit.setSportsTitle(participatingEvent.getSport().getDescription());
-                    sportsEventsUnits.put(participatingEvent.getSport().getDescription(),
-                            sportsEventsUnit);
+                sportsEventsUnit.setSportsTitle(participatingEvent.getSport().getDescription());
+                sportsEventsUnits.put(participatingEvent.getSport().getDescription(),
+                        sportsEventsUnit);
 
 
                 List<EventUnitModel> eventUnitModelList = sportsEventsUnit.getEventUnits();
                 if (eventUnitModelList == null) {
                     eventUnitModelList = new ArrayList<>();
                 }
-                    sportsEventsUnit.setEventUnits(eventUnitModelList);
+                sportsEventsUnit.setEventUnits(eventUnitModelList);
 
 
                 eventUnitModelList.add(populateEventUnitData(olympicEventUnit, participatingEvent));
@@ -224,7 +228,7 @@ public class CountryEventsHelper {
         }
         countryEventUnitModel.setDatesCountryMapping(dateSportsMapping);
         countryEventUnitModel.setAthleteList(athleteList);
-  }
+    }
 
     /**
      * Populates map of <EventID, Event> from schedule API.

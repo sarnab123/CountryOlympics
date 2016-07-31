@@ -24,6 +24,9 @@ import com.olympics.olympicsandroid.networkLayer.controller.CountryProfileContro
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class AthleteActivity extends AppCompatActivity implements NavigationView
@@ -76,10 +79,22 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         if (responseModel instanceof CountryEventUnitModel) {
 
             CountryEventUnitModel countryEventUnitModel = (CountryEventUnitModel) responseModel;
-            athleteListAdapter.setAthleteList(countryEventUnitModel.getAthleteList());
+
+            athleteListAdapter.setAthleteList(getListfromSet(countryEventUnitModel.getAthleteList()));
             athleteListAdapter.notifyDataSetChanged();
 
         }
+    }
+
+    private List<Athlete> getListfromSet(HashSet<Athlete> athleteSet) {
+        List<Athlete> athleteList = new ArrayList<>();
+
+        Iterator<Athlete> it = athleteSet.iterator();
+        while(it.hasNext()){
+            athleteList.add(it.next());
+        }
+
+        return athleteList;
     }
 
     @Override

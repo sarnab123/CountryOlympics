@@ -22,6 +22,7 @@ public class OlympicsPrefs
     private final String PREF_API_KEY = "APIKEY";
     private final String PREFS_CACHE_CHECKSUM = "CACHE_CHECKSUM";
     private final String PREFS_CACHE_COUNTRY = "PREFS_CACHE_COUNTRY";
+    private final String PREFS_TIME_ZONE = "PREFS_TIME_ZONE";
 
     private final String PREF_APP_SHORTCUT = "SHORTCUT";
 
@@ -137,4 +138,14 @@ public class OlympicsPrefs
         return getDefaultSharePreference().getBoolean(PREF_APP_SHORTCUT, false);
     }
 
+    public void setPrevTimeZone(String prevTimeZone)
+    {
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putString(PREFS_TIME_ZONE,prevTimeZone);
+        editor.apply();
+    }
+
+    public String getPrevTimeZone() {
+        return getDefaultSharePreference().getString(PREFS_TIME_ZONE,null);
+    }
 }

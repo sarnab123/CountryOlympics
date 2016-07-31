@@ -335,9 +335,9 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
      */
     public int getCurrentScheduleIndex() {
 
-        long eventDate = DateUtils.OLYMPIC_EVENT_START_DATE;
+        long eventDate = DateUtils.getOlympicEventStartDate();
         int index = 0;
-        while (eventDate < DateUtils.OLYMPIC_EVENT_END_DATE) {
+        while (eventDate < DateUtils.getOlympicEventEndDate()) {
             if (DateUtils.getCurrentDate() == eventDate) {
                 return index;
             }

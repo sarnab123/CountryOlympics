@@ -170,16 +170,19 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
 
         List<Organization> filteredCountryList = new ArrayList<>();
 
-        for (Organization country : countryList) {
-            if (!TextUtils.isEmpty(newText) && country != null && (!TextUtils.isEmpty(country.getDescription()) && country
-                    .getDescription().toLowerCase().contains(newText.toLowerCase())) || (!TextUtils.isEmpty
-                    (country.getAlias()) && country.getAlias().toLowerCase().contains(newText.toLowerCase()))) {
-                filteredCountryList.add(country);
+        if(countryList != null && countryList.size() > 0) {
+            for (Organization country : countryList) {
+                if (!TextUtils.isEmpty(newText) && country != null && (!TextUtils.isEmpty(country.getDescription()) && country
+                        .getDescription().toLowerCase().contains(newText.toLowerCase())) || (!TextUtils.isEmpty
+                        (country.getAlias()) && country.getAlias().toLowerCase().contains(newText.toLowerCase()))) {
+                    filteredCountryList.add(country);
+                }
             }
+            countryListAdapter.setCountryModelList(filteredCountryList);
+            countryListAdapter.notifyDataSetChanged();
+            return true;
         }
-        countryListAdapter.setCountryModelList(filteredCountryList);
-        countryListAdapter.notifyDataSetChanged();
-        return true;
+        return false;
     }
 
     class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.ViewHolder>

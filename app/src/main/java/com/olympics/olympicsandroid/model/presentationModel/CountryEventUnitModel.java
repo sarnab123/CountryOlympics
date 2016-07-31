@@ -5,7 +5,7 @@ import com.olympics.olympicsandroid.utility.DateUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -19,11 +19,11 @@ public class CountryEventUnitModel implements IResponseModel, Serializable {
 
     private String countryID;
 
-    private List<Athlete> athleteList;
+    private HashSet<Athlete> athleteList;
 
     private Map<String, DateSportsModel> datesCountryMapping;
 
-    public List<Athlete> getAthleteList() {
+    public HashSet<Athlete> getAthleteList() {
         return athleteList;
     }
 
@@ -39,7 +39,7 @@ public class CountryEventUnitModel implements IResponseModel, Serializable {
         return countryName;
     }
 
-    public void setAthleteList(List<Athlete> athleteList) {
+    public void setAthleteList(HashSet<Athlete> athleteList) {
         this.athleteList = athleteList;
     }
 
@@ -66,9 +66,9 @@ public class CountryEventUnitModel implements IResponseModel, Serializable {
     public void initializeEmptyDateSportsMapping() {
 
         Map<String, DateSportsModel> dateSportsModelMap = new HashMap<>();
-        long eventDate = DateUtils.OLYMPIC_EVENT_START_DATE;
+        long eventDate = DateUtils.getOlympicEventStartDate();
 
-        while (eventDate < DateUtils.OLYMPIC_EVENT_END_DATE) {
+        while (eventDate < DateUtils.getOlympicEventEndDate()) {
             DateSportsModel dateSportsModel = new DateSportsModel();
             dateSportsModelMap.put(String.valueOf(eventDate), dateSportsModel);
             eventDate += DateUtils.NUM_OF_MILISECONDS_IN_DAY;

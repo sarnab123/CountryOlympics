@@ -18,7 +18,7 @@ public class OlympicTeams
     @Attribute
     private String id;
 
-    @ElementList(inline=true, entry="resource",required = false)
+    @ElementList(inline=true, entry="athlete",required = false)
     private List<OlympicAthlete> athlete;
 
     public String getId() {

@@ -29,8 +29,8 @@ public enum OlympicRequestQueries
 
     private String completeURL;
 
-    private String apiKey = "5hkjft4mvnbzc26875u6c2zv";
-    private String baseURL = "https://api.sportradar.us/oly-testing2";
+    private String apiKey = "fkapg97hrh2qtx7hb2uvwpka";
+    private String baseURL = "https://api.sportradar.us/oly-p2";
 
 //    OlympicRequestQueries(int httpRequestType, String relativeURL , boolean isCacheable, boolean needAPIKey)
 //    {

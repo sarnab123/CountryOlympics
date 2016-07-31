@@ -39,7 +39,7 @@ public class DateEventAdapter extends FragmentStatePagerAdapter
     }
 
     private DateSportsModel getSportsOfTheDay (int position) {
-         String dateKey = String.valueOf(DateUtils.OLYMPIC_EVENT_START_DATE +  (
+         String dateKey = String.valueOf(DateUtils.getOlympicEventStartDate() +  (
                  (position) * DateUtils.NUM_OF_MILISECONDS_IN_DAY));
          return mCountryEventUnitModel.getDatesCountryMapping().get(dateKey);
     }

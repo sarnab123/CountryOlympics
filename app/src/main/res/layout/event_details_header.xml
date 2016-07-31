@@ -45,9 +45,9 @@
             android:visibility="gone" />
 
         <ImageView
-            android:id="@+id/id_schedule_time"
+            android:id="@+id/id_schedule_image"
             android:src="@drawable/schedule_small"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/id_medal_image"

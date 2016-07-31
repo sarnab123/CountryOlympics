@@ -24,13 +24,51 @@ public class DateUtils {
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
     // Aug-03-2016
-    public static final long OLYMPIC_EVENT_START_DATE = 1470182400000L;
+    public static final String OLYMPIC_EVENT_START_DATE = "2016-08-03T13:00:00-03:00";
 
     // Aug-21-2016
 
-    public static final long OLYMPIC_EVENT_END_DATE = 1471737600000L;
+    public static final String OLYMPIC_EVENT_END_DATE = "2016-08-21T23:59:59+00:00";
 
     public static final long NUM_OF_MILISECONDS_IN_DAY = 86400000;
+
+    public static long getOlympicEventStartDate()
+    {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT).parse(OLYMPIC_EVENT_START_DATE);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.set(Calendar.HOUR, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.setTimeZone(TimeZone.getTimeZone("GMT"));
+            return calendar.getTime().getTime();
+
+        } catch (ParseException e) {
+            return 0L;
+        }
+    }
+
+
+    public static long getOlympicEventEndDate()
+    {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT).parse(OLYMPIC_EVENT_END_DATE);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.set(Calendar.HOUR, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.setTimeZone(TimeZone.getTimeZone("GMT"));
+            return calendar.getTime().getTime();
+
+        } catch (ParseException e) {
+            return 0L;
+        }
+    }
+
 
     public static String getDateTimeInMillis(String dateStr) {
 

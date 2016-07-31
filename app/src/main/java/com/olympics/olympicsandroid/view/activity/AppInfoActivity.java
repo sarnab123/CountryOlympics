@@ -56,6 +56,8 @@ public class AppInfoActivity extends AppCompatActivity implements View.OnClickLi
                     intent.setData(Uri.parse(CONTACT_US_MAIL));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
+
+
                     break;
                 case R.id.share_app_view:
                     Intent sendIntent = new Intent();

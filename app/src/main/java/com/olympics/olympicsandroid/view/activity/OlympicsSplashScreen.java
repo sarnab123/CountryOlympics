@@ -40,7 +40,6 @@ public class OlympicsSplashScreen extends Activity {
 
         setContentView(R.layout.activity_olympics_splash_screen);
         createApplicationShortcut();
-        checkAppVersion();
     }
 
     private void decideLaunchActivity() {
@@ -52,8 +51,14 @@ public class OlympicsSplashScreen extends Activity {
             ActivityFactory.openMainActivity(this, null);
         }
         finish();
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkAppVersion();
+    }
 
     /**
      * @see android.app.Activity#onDestroy()
@@ -113,7 +118,7 @@ public class OlympicsSplashScreen extends Activity {
                             OlympicsApplication.getAppInstance().setCacheStartDate(Long.parseLong(appVersionData.getCacheConfigDate()));
                         }
                         else{
-                            OlympicsApplication.getAppInstance().setCacheStartDate(DateUtils.OLYMPIC_EVENT_START_DATE);
+                            OlympicsApplication.getAppInstance().setCacheStartDate(DateUtils.getOlympicEventStartDate());
 
                         }
                     }
