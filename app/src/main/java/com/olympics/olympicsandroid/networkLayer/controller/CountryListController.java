@@ -37,8 +37,8 @@ public class CountryListController {
 
 
     public synchronized void getCountryData() {
-            DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL,
-                    DataCacheHelper.COUNTRY_SELECTION_KEY, createNewCacheListener(), false);
+        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL,
+                DataCacheHelper.COUNTRY_SELECTION_KEY, createNewCacheListener(), false);
     }
 
     private ICacheListener createNewCacheListener() {
@@ -46,7 +46,10 @@ public class CountryListController {
             @Override
             public void datafromCache(IResponseModel responseModel) {
                 if (responseModel != null) {
-                    listenerWeakReference.get().onSuccess(responseModel);
+                    if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                        listenerWeakReference.get().onSuccess(responseModel);
+                    }
                 } else {
                     getDataFromServer();
                 }
@@ -69,12 +72,18 @@ public class CountryListController {
                 ParseTask parseTask = new ParseTask(CountryModel.class, configString, new IParseListener() {
                     @Override
                     public void onParseSuccess(Object responseModel) {
-                        listenerWeakReference.get().onSuccess((IResponseModel) responseModel);
+                        if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                            listenerWeakReference.get().onSuccess((IResponseModel) responseModel);
+                        }
                     }
 
                     @Override
                     public void onParseFailure(ErrorModel errorModel) {
-                        listenerWeakReference.get().onFailure(errorModel);
+                        if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                            listenerWeakReference.get().onFailure(errorModel);
+                        }
                     }
                 }, ParseTask.XML_DATA);
                 parseTask.startParsing();
@@ -87,7 +96,10 @@ public class CountryListController {
             ErrorModel errorModel = new ErrorModel();
             errorModel.setErrorCode(UtilityMethods.ERROR_INTERNET);
             errorModel.setErrorMessage(UtilityMethods.ERROR_INTERNET);
-            listenerWeakReference.get().onFailure(errorModel);
+            if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                listenerWeakReference.get().onFailure(errorModel);
+            }
         }
     }
 
@@ -98,7 +110,9 @@ public class CountryListController {
                 ErrorModel errorModel = new ErrorModel();
                 errorModel.setErrorCode(error.getLocalizedMessage());
                 errorModel.setErrorMessage(error.getMessage());
-                listenerWeakReference.get().onFailure(errorModel);
+                if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+                    listenerWeakReference.get().onFailure(errorModel);
+                }
             }
         };
     }
@@ -108,7 +122,10 @@ public class CountryListController {
             @Override
             public void onResponse(CountryModel response) {
                 DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL, response);
-                listenerWeakReference.get().onSuccess(response);
+                if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                    listenerWeakReference.get().onSuccess(response);
+                }
             }
         };
     }

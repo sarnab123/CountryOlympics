@@ -156,9 +156,11 @@ public class CountryProfileController {
                     olympicScheduleModel)
                     .createCountryEventUnitModel();
             DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, countryEventData);
+
             listenerWeakReference.get().handleLoadingIndicator(false);
 
             listenerWeakReference.get().onSuccess(countryEventData);
+
         }
     }
 

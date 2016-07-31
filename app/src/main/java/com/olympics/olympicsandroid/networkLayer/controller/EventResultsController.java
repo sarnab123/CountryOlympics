@@ -33,7 +33,10 @@ public class EventResultsController {
             // Set Request Policy
             RequestPolicy requestPolicy = new RequestPolicy();
             requestPolicy.setUrlReplacement(eventID);
-            listenerWeakReference.get().handleLoadingIndicator(true);
+            if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                listenerWeakReference.get().handleLoadingIndicator(true);
+            }
             CustomXMLRequest<EventResultsModel> countryRequest =
                     new CustomXMLRequest<EventResultsModel>(OlympicRequestQueries.EVENT_RESULTS, EventResultsModel.class, createEventSuccessListener(), createEventFailureListener(), requestPolicy);
             VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);

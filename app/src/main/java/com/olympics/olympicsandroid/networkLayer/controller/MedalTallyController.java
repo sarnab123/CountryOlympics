@@ -63,12 +63,18 @@ public class MedalTallyController
                 ParseTask parseTask = new ParseTask(MedalTally.class, configString, new IParseListener() {
                     @Override
                     public void onParseSuccess(Object responseModel) {
-                        listenerWeakReference.get().onSuccess((IResponseModel) responseModel);
+                        if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                            listenerWeakReference.get().onSuccess((IResponseModel) responseModel);
+                        }
                     }
 
                     @Override
                     public void onParseFailure(ErrorModel errorModel) {
-                        listenerWeakReference.get().onFailure(errorModel);
+                        if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                            listenerWeakReference.get().onFailure(errorModel);
+                        }
                     }
                 }, ParseTask.XML_DATA);
                 parseTask.startParsing();
@@ -84,7 +90,10 @@ public class MedalTallyController
             ErrorModel errorModel = new ErrorModel();
             errorModel.setErrorCode(UtilityMethods.ERROR_INTERNET);
             errorModel.setErrorMessage(UtilityMethods.ERROR_INTERNET);
-            listenerWeakReference.get().onFailure(errorModel);
+            if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                listenerWeakReference.get().onFailure(errorModel);
+            }
         }
     }
 
@@ -95,7 +104,10 @@ public class MedalTallyController
                 if(responseModel != null && (responseModel instanceof MedalTally))
                 {
                     MedalTally medalTallyData = (MedalTally)responseModel;
-                    listenerWeakReference.get().onSuccess(medalTallyData);
+                    if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                        listenerWeakReference.get().onSuccess(medalTallyData);
+                    }
                 }
             }
         };
@@ -108,7 +120,10 @@ public class MedalTallyController
                 ErrorModel errorModel = new ErrorModel();
                 errorModel.setErrorCode(error.getLocalizedMessage());
                 errorModel.setErrorMessage(error.getMessage());
-                listenerWeakReference.get().onFailure(errorModel);
+                if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                    listenerWeakReference.get().onFailure(errorModel);
+                }
             }
         };
     }
@@ -117,9 +132,12 @@ public class MedalTallyController
         return new Response.Listener<MedalTally>() {
             @Override
             public void onResponse(MedalTally response) {
-                DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_MEDALTALLY_MODEL,response);
+                DataCacheHelper.getInstance().saveDataModel(DataCacheHelper.CACHE_MEDALTALLY_MODEL, response);
                 OlympicsPrefs.getInstance(null).setMedalTallyRefreshTime(DateUtils.getCurrentTimeStamp());
-                listenerWeakReference.get().onSuccess(response);
+                if (listenerWeakReference != null && listenerWeakReference.get() != null) {
+
+                    listenerWeakReference.get().onSuccess(response);
+                }
             }
         };
     }
