@@ -25,6 +25,7 @@ import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -120,6 +121,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 
         protected void setAthleteList(List<Athlete> athleteList)
         {
+            Collections.sort(athleteList);
             this.athleteList = athleteList;
         }
 
