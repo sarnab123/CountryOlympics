@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by sarnab.poddar on 7/10/16.
  */
-public class Athlete implements Serializable
+public class Athlete implements Serializable, Comparable
 {
     private String athleteName;
 
@@ -55,5 +55,19 @@ public class Athlete implements Serializable
 
     public void setSportsAlias(String sportsAlias) {
         this.sportsAlias = sportsAlias;
+    }
+
+    @Override
+    public int compareTo(Object another) {
+        if (another instanceof Athlete) {
+            if (this != null && another != null) {
+                if (this.getSportName().compareTo(((Athlete) another).getSportName()) == 0) {
+                    return this.getAthleteName().compareTo(((Athlete) another).getAthleteName());
+                } else {
+                    return this.getSportName().compareTo(((Athlete) another).getSportName());
+                }
+            }
+        }
+        return 0;
     }
 }
