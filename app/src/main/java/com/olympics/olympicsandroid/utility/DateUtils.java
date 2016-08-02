@@ -80,9 +80,11 @@ public class DateUtils {
                 date = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT).parse(dateStr);
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(date);
-                calendar.set(Calendar.HOUR, 0);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.SECOND, 0);
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DATE);
+                calendar.set(Calendar.MILLISECOND, 0);
+                calendar.set(year, month, day, 0, 0, 0);
                 calendar.setTimeZone(TimeZone.getTimeZone("GMT"));
                 return String.valueOf(calendar.getTime().getTime());
 
