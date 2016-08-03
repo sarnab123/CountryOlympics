@@ -55,6 +55,10 @@ public class DBCompetitorRelationHelper extends DBOperationsHelper
         long returnVal = 0;
         if (list != null) {
             for (CompetitorVOModel vo : list) {
+                if(vo.getCompetitorID().equalsIgnoreCase("92be1b6a-a3d6-5118-85a2-68e14d17e800"))
+                {
+                    System.out.println("Competitorid printed");
+                }
                 returnVal = performInsert(tableName, vo, db);
                 if (returnVal <= -1) {
                     break;
@@ -64,5 +68,20 @@ public class DBCompetitorRelationHelper extends DBOperationsHelper
 
         dispose(db);
         return returnVal;
+    }
+
+    public CompetitorVOModel getCompetitorByID(String competitorID)
+    {
+        CompetitorVOModel competitorVOModel = null;
+        try {
+            competitorVOModel = (CompetitorVOModel)get(DBTablesDef.T_COMPETITOR_RELATION,DBTablesDef.C_COMPETITOR_ID,competitorID,CompetitorVOModel.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(competitorVOModel == null)
+        {
+            return new CompetitorVOModel();
+        }
+        return competitorVOModel;
     }
 }

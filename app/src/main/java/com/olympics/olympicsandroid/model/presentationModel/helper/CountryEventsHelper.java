@@ -15,6 +15,8 @@ import com.olympics.olympicsandroid.model.presentationModel.Athlete;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
+import com.olympics.olympicsandroid.networkLayer.cache.database.DBCompetitorRelationHelper;
+import com.olympics.olympicsandroid.networkLayer.cache.database.iFace.DBTablesDef;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.SportsUtility;
 import com.olympics.olympicsandroid.view.activity.AthleteActivity;
@@ -24,7 +26,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * This helper maps CountryProfileEvents and OlympicSchedule models into CountryEventUnitModel
@@ -79,6 +80,8 @@ public class CountryEventsHelper {
         Map<String, OlympicEvent> allEventsMap = populateEventMapFromAllEventsSchedule();
 
         HashSet<Athlete> athleteList = new HashSet<>();
+        List<CompetitorVOModel> listOfCompetitors = new ArrayList<>();
+
 
         // Get each event that selected country is participating in
         for (OlympicEvent participatingEvent : countryProfileEvents.getOrganization().getEvents()) {
@@ -95,12 +98,17 @@ public class CountryEventsHelper {
 
             // indivudual participants
             List<OlympicAthlete> participantList = participatingEvent.getParticipants();
+
             if (participantList != null) {
                 for (OlympicAthlete participant : participantList) {
                     if (participant == null) {
                         continue;
                     }
                     Athlete athlete = new Athlete();
+
+                    CompetitorVOModel competitorVOModel = new CompetitorVOModel();
+                    competitorVOModel.setCompetitorID(participant.getId());
+                    competitorVOModel.setOrgAlias(countryEventUnitModel.getCountryAlias());
 
                     if (!TextUtils.isEmpty(participant.getPrint_name())) {
                         athlete.setAthleteName(participant.getPrint_name());
@@ -121,13 +129,15 @@ public class CountryEventsHelper {
                         athlete.setSportsAlias(participatingEvent.getSport().getAlias());
                     }
                     athleteList.add(athlete);
+                    competitorVOModel.setCompetitorName(athlete.getAthleteName());
+
+                    listOfCompetitors.add(competitorVOModel);
                 }
             }
 
             // team participants
             List<OlympicTeams> teamList = participatingEvent.getTeams();
             if (teamList != null) {
-                Set<CompetitorVOModel> listOfCompetitors = new HashSet<>();
                 for (OlympicTeams olympicTeams : teamList) {
                     if (olympicTeams != null && olympicTeams.getAthlete() != null && olympicTeams.getAthlete().size() > 0) {
 
@@ -143,6 +153,12 @@ public class CountryEventsHelper {
 
                             if (!TextUtils.isEmpty(participant.getPrint_name())) {
                                 athlete.setAthleteName(participant.getPrint_name());
+                                if (competitorName.length() == 0) {
+                                    competitorName.append(participant.getPrint_name());
+                                } else {
+                                    competitorName.append("/");
+                                    competitorName.append(participant.getPrint_name());
+                                }
                             } else {
 
                                 String firstName = TextUtils.isEmpty(participant.getFirst_name()) ? "" : participant.getFirst_name();
@@ -175,11 +191,10 @@ public class CountryEventsHelper {
                         }
                     }
                 }
-                if (listOfCompetitors.size() > 0) {
-//                    DBCompetitorRelationHelper dbCompetitorRelationHelper = new DBCompetitorRelationHelper();
-//                    dbCompetitorRelationHelper.insertAll(DBTablesDef.T_COMPETITOR_RELATION,listOfCompetitors);
-                }
+
             }
+
+
 
 
             for (OlympicUnit olympicEventUnit : scheduledParticipatingEvent.getUnits()) {
@@ -229,6 +244,11 @@ public class CountryEventsHelper {
 
                 eventUnitModelList.add(populateEventUnitData(olympicEventUnit, participatingEvent));
             }
+        }
+
+        if (listOfCompetitors.size() > 0) {
+            DBCompetitorRelationHelper dbCompetitorRelationHelper = new DBCompetitorRelationHelper();
+            dbCompetitorRelationHelper.insertAll(DBTablesDef.T_COMPETITOR_RELATION,listOfCompetitors);
         }
         countryEventUnitModel.setDatesCountryMapping(dateSportsMapping);
         countryEventUnitModel.setAthleteList(athleteList);

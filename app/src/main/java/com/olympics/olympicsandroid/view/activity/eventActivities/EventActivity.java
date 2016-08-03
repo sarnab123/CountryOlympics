@@ -257,11 +257,11 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
                     String unitName = null;
 
                     for (EventResultsViewModel eventResultsViewModel : resultsViewModel.getEventResultsViewModels()) {
-                        if (unitName == null || !unitName.equalsIgnoreCase(eventResultsViewModel.getUnit_name())) {
+                        if (unitName == null || !unitName.equalsIgnoreCase(eventResultsViewModel.getUnit_id())) {
                             EventListAdapter.Result eventResult = new EventListAdapter.Result(EventListAdapter.TYPE_UNIT_HEADER, eventResultsViewModel);
                             results.add(eventResult);
                         }
-                        unitName = eventResultsViewModel.getUnit_name();
+                        unitName = eventResultsViewModel.getUnit_id();
                         EventListAdapter.Result competh2hResult = new EventListAdapter.Result(EventListAdapter.TYPE_IND_HEAD2HEAD_COMPET, eventResultsViewModel.getCompetitorH2HViewModel());
                         results.add(competh2hResult);
                     }
@@ -271,11 +271,11 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
                     String teamUnitName = null;
 
                     for (EventResultsViewModel eventResultsViewModel : resultsViewModel.getEventResultsViewModels()) {
-                        if (teamUnitName == null || !teamUnitName.equalsIgnoreCase(eventResultsViewModel.getUnit_name())) {
+                        if (teamUnitName == null || !teamUnitName.equalsIgnoreCase(eventResultsViewModel.getUnit_id())) {
                             EventListAdapter.Result eventResult = new EventListAdapter.Result(EventListAdapter.TYPE_UNIT_HEADER, eventResultsViewModel);
                             results.add(eventResult);
                         }
-                        teamUnitName = eventResultsViewModel.getUnit_name();
+                        teamUnitName = eventResultsViewModel.getUnit_id();
                         EventListAdapter.Result competh2hResult = new EventListAdapter.Result(EventListAdapter.TYPE_TEAM_HEAD2HEAD_COMPET, eventResultsViewModel.getCompetitorH2HViewModel());
                         results.add(competh2hResult);
                     }
@@ -318,11 +318,11 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
                             case SportsUtility.TYPE_INDIVUDUAL_HEAD2HEAD:
 
-                                if (uniqueUnitName == null || !uniqueUnitName.equalsIgnoreCase(eventResultsViewModel.getUnit_name())) {
+                                if (uniqueUnitName == null || !uniqueUnitName.equalsIgnoreCase(eventResultsViewModel.getUnit_id())) {
                                     EventListAdapter.Result eventResult = new EventListAdapter.Result(EventListAdapter.TYPE_UNIT_HEADER, eventResultsViewModel);
                                     results.add(eventResult);
                                 }
-                                uniqueUnitName = eventResultsViewModel.getUnit_name();
+                                uniqueUnitName = eventResultsViewModel.getUnit_id();
                                 EventListAdapter.Result competh2hResult = new EventListAdapter.Result(EventListAdapter.TYPE_IND_HEAD2HEAD_COMPET, eventResultsViewModel.getCompetitorH2HViewModel());
                                 results.add(competh2hResult);
                                 break;
@@ -330,11 +330,11 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
                             case SportsUtility.TYPE_TEAM_HEAD2HEAD:
 
 
-                                if (uniqueUnitName == null || !uniqueUnitName.equalsIgnoreCase(eventResultsViewModel.getUnit_name())) {
+                                if (uniqueUnitName == null || !uniqueUnitName.equalsIgnoreCase(eventResultsViewModel.getUnit_id())) {
                                     EventListAdapter.Result eventResult = new EventListAdapter.Result(EventListAdapter.TYPE_UNIT_HEADER, eventResultsViewModel);
                                     results.add(eventResult);
                                 }
-                                uniqueUnitName = eventResultsViewModel.getUnit_name();
+                                uniqueUnitName = eventResultsViewModel.getUnit_id();
                                 EventListAdapter.Result competteamh2hResult = new EventListAdapter.Result(EventListAdapter.TYPE_TEAM_HEAD2HEAD_COMPET, eventResultsViewModel.getCompetitorH2HViewModel());
                                 results.add(competteamh2hResult);
                                 break;

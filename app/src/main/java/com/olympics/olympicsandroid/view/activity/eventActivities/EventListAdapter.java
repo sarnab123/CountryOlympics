@@ -18,6 +18,7 @@ import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
+import com.olympics.olympicsandroid.networkLayer.cache.database.DBCompetitorRelationHelper;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.view.fragment.IScheduleListener;
 
@@ -107,7 +108,15 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case TYPE_IND_COMPETITOR:
 
                 ListIndividualCardViewHolder cardViewHolder = (ListIndividualCardViewHolder) holder;
-                cardViewHolder.id_athlete_name.setText(resultsModels.get(position).competitorModel.getCompetitorName() + "(" + resultsModels.get(position).competitorModel.getCountryAlias() + ")");
+                String competitorName = resultsModels.get(position).competitorModel.getCompetitorName();
+                if(TextUtils.isEmpty(competitorName))
+                {
+                    DBCompetitorRelationHelper dbCompetitorRelationHelper = new DBCompetitorRelationHelper();
+                    if(dbCompetitorRelationHelper.getCompetitorByID(resultsModels.get(position).competitorModel.getCompetitorID()) != null) {
+                        competitorName = dbCompetitorRelationHelper.getCompetitorByID(resultsModels.get(position).competitorModel.getCompetitorID()).getCompetitorName();
+                    }
+                }
+                cardViewHolder.id_athlete_name.setText(competitorName + "(" + resultsModels.get(position).competitorModel.getCountryAlias() + ")");
                 cardViewHolder.id_score.setText(resultsModels.get(position).competitorModel.getResult());
                 cardViewHolder.id_rank.setText(resultsModels.get(position).competitorModel.getRank());
                 cardViewHolder.id_score_header.setText(resultsModels.get(position).competitorModel.getUnit_scoring_type());
@@ -139,7 +148,13 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case TYPE_IND_HEAD2HEAD_COMPET:
 
                 ListIndH2HCardViewHolder indh2hHolder = (ListIndH2HCardViewHolder) holder;
-                indh2hHolder.id_athlete_name.setText(resultsModels.get(position).competitorheadModel.getCompetitorName() + "(" + resultsModels.get(position).competitorheadModel.getCountryAlias() + ")");
+                competitorName = resultsModels.get(position).competitorheadModel.getCompetitorName();
+                if(competitorName == null || competitorName != null && competitorName.trim().length() == 0)
+                {
+                    DBCompetitorRelationHelper dbCompetitorRelationHelper = new DBCompetitorRelationHelper();
+                    competitorName = dbCompetitorRelationHelper.getCompetitorByID(resultsModels.get(position).competitorheadModel.getCompetitorID()).getCompetitorName();
+                }
+                indh2hHolder.id_athlete_name.setText(competitorName + "(" + resultsModels.get(position).competitorheadModel.getCountryAlias() + ")");
                 indh2hHolder.id_athlete_name_1.setText(resultsModels.get(position).competitorheadModel.getOpp_competitorName() + "(" + resultsModels.get(position).competitorheadModel.getOpp_countryAlias() + ")");
                 indh2hHolder.id_outcome.setText(resultsModels.get(position).competitorheadModel.getOutcome());
                 indh2hHolder.id_outcome_1.setText(resultsModels.get(position).competitorheadModel.getOpp_outcome());
