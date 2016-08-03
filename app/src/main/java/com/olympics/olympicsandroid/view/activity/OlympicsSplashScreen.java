@@ -1,12 +1,13 @@
 package com.olympics.olympicsandroid.view.activity;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,8 @@ import com.olympics.olympicsandroid.networkLayer.controller.IConfigListener;
 import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
+
+import java.util.List;
 
 public class OlympicsSplashScreen extends Activity {
 
@@ -142,26 +145,27 @@ public class OlympicsSplashScreen extends Activity {
         try {
             pInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), 0);
             if (pInfo != null) {
-                if (appVersionData.getAndroid() > pInfo.versionCode) {
-                    // Display Alert Dialog
+                if (!isFinishing() && isRunning(OlympicsApplication.getAppContext())) {
+                    if (appVersionData.getAndroid() > pInfo.versionCode) {
+                        // Display Alert Dialog
 
-                    new AlertDialog.Builder(this).setTitle("Upgrade App").setMessage(TextUtils.isEmpty(appVersionData.getMessage()) ? DEFAULT_UPGRADE_MESSAGE :
-                            appVersionData.getMessage()).setPositiveButton(R.string.upgrade_str,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    openApplicationInGooglePlayStore();
-                                }
-                            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            decideLaunchActivity();
-                        }
-                    }).setCancelable(true).show();
-                } else {
-                    decideLaunchActivity();
+                        new AlertDialog.Builder(this).setTitle("Upgrade App").setMessage(TextUtils.isEmpty(appVersionData.getMessage()) ? DEFAULT_UPGRADE_MESSAGE : appVersionData.getMessage()).setPositiveButton(R.string.upgrade_str, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+                                openApplicationInGooglePlayStore();
+                            }
+                        }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                decideLaunchActivity();
+                            }
+                        }).setCancelable(true).show();
+                    } else {
+                        decideLaunchActivity();
+                    }
                 }
             }
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -178,6 +182,20 @@ public class OlympicsSplashScreen extends Activity {
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isRunning(Context ctx) {
+        if (ctx != null) {
+            ActivityManager activityManager = (ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
+            if (activityManager != null) {
+                List<ActivityManager.RunningTaskInfo> tasks = activityManager.getRunningTasks(Integer.MAX_VALUE);
+                for (ActivityManager.RunningTaskInfo task : tasks) {
+                    if (ctx.getPackageName().equalsIgnoreCase(task.baseActivity.getPackageName()))
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 
