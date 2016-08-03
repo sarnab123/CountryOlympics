@@ -57,9 +57,14 @@ public class DBOperationsHelper {
     protected long performInsert(final String tableName,
                                  final Object vo,
                                  final SQLiteDatabase db) {
-        ContentValues values = VOProcessor.getInstance().getContentValues(tableName, vo);
+        try {
+            ContentValues values = VOProcessor.getInstance().getContentValues(tableName, vo);
 
-        return db.insertWithOnConflict(tableName, null, values,SQLiteDatabase.CONFLICT_REPLACE);
+            return db.insertWithOnConflict(tableName, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        }catch(Exception ex)
+        {
+            return -1;
+        }
     }
 
     protected Cursor performQuery(DBQueries query,

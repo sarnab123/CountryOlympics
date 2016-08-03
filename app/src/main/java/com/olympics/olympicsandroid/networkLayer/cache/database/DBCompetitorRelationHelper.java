@@ -55,10 +55,6 @@ public class DBCompetitorRelationHelper extends DBOperationsHelper
         long returnVal = 0;
         if (list != null) {
             for (CompetitorVOModel vo : list) {
-                if(vo.getCompetitorID().equalsIgnoreCase("92be1b6a-a3d6-5118-85a2-68e14d17e800"))
-                {
-                    System.out.println("Competitorid printed");
-                }
                 returnVal = performInsert(tableName, vo, db);
                 if (returnVal <= -1) {
                     break;

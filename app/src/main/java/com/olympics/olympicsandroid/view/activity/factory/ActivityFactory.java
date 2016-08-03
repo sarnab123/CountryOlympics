@@ -87,7 +87,7 @@ public class ActivityFactory
             ctx.startActivity(intentExtra);
         }catch(Exception ex)
         {
-            
+
         }
     }
 
