@@ -33,7 +33,7 @@ public class ActivityFactory
     {
         countrySelectionLaunch.setClass(originCTX,CountrySelectionActivity.class);
 
-        originCTX.startActivityForResult(countrySelectionLaunch,resultCode);
+        originCTX.startActivityForResult(countrySelectionLaunch, resultCode);
     }
 
     public static void openMainActivity(Context originCTX, Bundle extras)
@@ -83,7 +83,12 @@ public class ActivityFactory
 
         FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
 
-        ctx.startActivity(intentExtra);
+        try {
+            ctx.startActivity(intentExtra);
+        }catch(Exception ex)
+        {
+            
+        }
     }
 
     public static void openAppInfoActivity(Activity originCTX)
