@@ -23,6 +23,8 @@ public class OlympicsPrefs
     private final String PREFS_CACHE_CHECKSUM = "CACHE_CHECKSUM";
     private final String PREFS_CACHE_COUNTRY = "PREFS_CACHE_COUNTRY";
     private final String PREFS_TIME_ZONE = "PREFS_TIME_ZONE";
+    //This is to override a server bug, which is sending +00 for brazil time, once server bug is fixed, this config will set to false
+    private final String PREFS_RESET_TIME = "PREFS_RESET_TIME";
 
     private final String PREF_APP_SHORTCUT = "SHORTCUT";
 
@@ -101,6 +103,17 @@ public class OlympicsPrefs
 
     public String getAPIKey() {
         return getDefaultSharePreference().getString(PREF_API_KEY, null);
+    }
+
+    public void setTimeReset(String timeReset)
+    {
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putString(PREFS_RESET_TIME, timeReset);
+        editor.apply();
+    }
+
+    public boolean getTimeReset() {
+        return Boolean.parseBoolean(getDefaultSharePreference().getString(PREFS_RESET_TIME, "false"));
     }
 
     public String getCacheChecksum()

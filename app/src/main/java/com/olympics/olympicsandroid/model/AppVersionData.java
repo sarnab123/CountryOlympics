@@ -12,8 +12,18 @@ public class AppVersionData implements IResponseModel {
     private String apiKey;
     private String cacheConfigDate;
 
+    private String hardCheckDate;
+
     private String cacheCountryChecksum;
     private String onDemandCountryAlias;
+
+    public String getHardCheckDate() {
+        return hardCheckDate;
+    }
+
+    public void setHardCheckDate(String hardCheckDate) {
+        this.hardCheckDate = hardCheckDate;
+    }
 
     public String getOnDemandCountryAlias() {
         return onDemandCountryAlias;

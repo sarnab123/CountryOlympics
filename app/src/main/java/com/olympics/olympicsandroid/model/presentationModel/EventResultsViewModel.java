@@ -1,6 +1,9 @@
 package com.olympics.olympicsandroid.model.presentationModel;
 
+import android.text.TextUtils;
+
 import com.olympics.olympicsandroid.model.IResponseModel;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 
 import java.util.List;
 
@@ -52,6 +55,13 @@ public class EventResultsViewModel implements IResponseModel
     }
 
     public void setStart_date(String start_date) {
+        if(OlympicsPrefs.getInstance(null).getTimeReset() && !TextUtils.isEmpty(start_date))
+        {
+            if(start_date.contains("+00:00"))
+            {
+                start_date = start_date.replace("+00:00","-03:00");
+            }
+        }
         this.start_date = start_date;
     }
 

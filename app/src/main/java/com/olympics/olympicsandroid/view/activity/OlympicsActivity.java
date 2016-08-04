@@ -120,6 +120,10 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 countryNameTxt.setText(countryInfo.getDescription());
             }
 
+            if(countryInfo != null && !TextUtils.isEmpty(countryInfo.getAlias())) {
+                FirebaseMessaging.getInstance().subscribeToTopic(countryInfo.getAlias());
+            }
+
             //Setup Selected Country Image
             ImageView countryImageView = (ImageView) headerLayout.findViewById(R.id.countryImageView);
 
