@@ -131,9 +131,10 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
 
         protected void setMedalTallyList(List<MedalTallyOrganization> medalTallyList)
         {
-            this.medalTallyList = medalTallyList;
+
             Collections.sort(medalTallyList, new MedalTallyComparator(OlympicsPrefs.getInstance(null)
                     .getUserSelectedCountry()));
+            this.medalTallyList = medalTallyList;
         }
 
         class ViewHolder extends RecyclerView.ViewHolder

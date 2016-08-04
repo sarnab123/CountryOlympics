@@ -1,35 +1,36 @@
 package com.olympics.olympicsandroid.view.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.model.MedalTallyBreakdown;
+import com.olympics.olympicsandroid.model.MedalTallyCompetitor;
 import com.olympics.olympicsandroid.model.MedalTallyEvent;
+import com.olympics.olympicsandroid.model.presentationModel.MedalTallyByOrgModel;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 import com.olympics.olympicsandroid.networkLayer.controller.MedalTallyBreakdownController;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
+import com.olympics.olympicsandroid.view.fragment.MedalBreakdownAdapter;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MedalTallyBreakDownActivity extends AppCompatActivity implements NavigationView
         .OnNavigationItemSelectedListener, IUIListener {
 
-    private MedalTallyListAdapter medalTallyListAdapter;
+    private MedalBreakdownAdapter medalTallyListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +38,15 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
         setContentView(R.layout.medal_tally_breakdown);
 
         //Request for MedalTally Data through controller
-        MedalTallyBreakdownController medalTallyBreakdownController = new MedalTallyBreakdownController(new
-                WeakReference<IUIListener>(this), getApplication());
+        MedalTallyBreakdownController medalTallyBreakdownController = new
+                MedalTallyBreakdownController(new WeakReference<IUIListener>(this),
+                getApplication());
         medalTallyBreakdownController.getMedalTallyData(getIntent().getStringExtra(UtilityMethods
-                        .EXTRA_SELECTED_COUNTRY));
+                .EXTRA_SELECTED_COUNTRY));
 
-                //Setup Actionbar
-                setActionBar();
+
+        //Setup Actionbar
+        setActionBar();
     }
 
     private void setActionBar() {
@@ -52,7 +55,7 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
@@ -62,26 +65,106 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
 
     @Override
     public void onSuccess(IResponseModel responseModel) {
-        if(responseModel instanceof MedalTallyBreakdown)
-        {
-            MedalTallyBreakdown medalTallyObj = (MedalTallyBreakdown) responseModel;
-            RecyclerView mRecyclerView = (RecyclerView)findViewById(R.id.medaltally_recyclerView);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,
-                    false);
+        if (responseModel instanceof MedalTallyBreakdown) {
+            RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.medaltally_recyclerView);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
+                    LinearLayoutManager.VERTICAL, false);
             mRecyclerView.setLayoutManager(layoutManager);
             mRecyclerView.setHasFixedSize(true);
 
-            medalTallyListAdapter = new MedalTallyListAdapter();
-            medalTallyListAdapter.setMedalTallyList(medalTallyObj.getOrganization().getMedalTallyEvents());
+            medalTallyListAdapter = new MedalBreakdownAdapter();
+            medalTallyListAdapter.setMedalBreakdown(getMedalbreakdownList((MedalTallyBreakdown)
+                    responseModel));
             mRecyclerView.setAdapter(medalTallyListAdapter);
-
         }
     }
 
+    /**
+     * This method retrieves medaltallybreakdown map.
+     * setup medaltally breakdown list with - playername as header and medaldata as details.
+     *
+     * @param medalTallyBreakdown
+     * @return
+     */
+    private List<MedalBreakdownAdapter.MedalBreakdownData> getMedalbreakdownList
+    (MedalTallyBreakdown medalTallyBreakdown) {
+
+
+        Map<String, List<MedalTallyByOrgModel>> medalTallyByOrgModelMap =
+                populateMedalTallyByOrgList(medalTallyBreakdown.getOrganization()
+                        .getMedalTallyEvents());
+
+        List<MedalBreakdownAdapter.MedalBreakdownData> medalBreakdownDataList = new ArrayList<>();
+        for (Map.Entry<String, List<MedalTallyByOrgModel>> entry : medalTallyByOrgModelMap
+                .entrySet()) {
+            medalBreakdownDataList.add(new MedalBreakdownAdapter.MedalBreakdownData
+                    (MedalBreakdownAdapter.TYPE_PLAYER_NAME, entry.getKey()));
+            if (entry.getValue() != null) {
+                for (MedalTallyByOrgModel medalTallyByOrgModel : (List<MedalTallyByOrgModel>)
+                        entry.getValue()) {
+                    medalBreakdownDataList.add(new MedalBreakdownAdapter.MedalBreakdownData
+                            (MedalBreakdownAdapter.TYPE_MEDAL_DATA, medalTallyByOrgModel));
+                }
+            }
+        }
+        return medalBreakdownDataList;
+    }
+
+    /**
+     * This method populates medaltally breakdown map
+     * with playername as key and medaldata list as value.
+     * @param medalTallyEvents
+     * @return
+     */
+    private Map<String, List<MedalTallyByOrgModel>> populateMedalTallyByOrgList
+            (List<MedalTallyEvent> medalTallyEvents) {
+
+        Map<String, List<MedalTallyByOrgModel>> medalTallyByOrgModelMap = new HashMap<>();
+
+        if (medalTallyEvents != null && !medalTallyEvents.isEmpty()) {
+            for (MedalTallyEvent medalTallyEvent : medalTallyEvents) {
+                if (medalTallyEvent.getCompetitor() != null && !medalTallyEvent.getCompetitor()
+                        .isEmpty()) {
+                    List<MedalTallyCompetitor> medalTallyCompetitors = medalTallyEvent
+                            .getCompetitor();
+
+                    for (MedalTallyCompetitor competitor : medalTallyCompetitors) {
+                        MedalTallyByOrgModel medalTallyByOrg = new MedalTallyByOrgModel();
+                        medalTallyByOrg.setAthleteName(getMedalBreakdownMapKey(competitor));
+                        medalTallyByOrg.setSportsName(medalTallyEvent.getDescription() + " - " +
+                                medalTallyEvent.getSport().getDescription());
+                        medalTallyByOrg.setGoldCount(medalTallyEvent.getGold());
+                        medalTallyByOrg.setSilverCount(medalTallyEvent.getSilver());
+                        medalTallyByOrg.setBronzeCount(medalTallyEvent.getBronze());
+
+                        if (medalTallyByOrgModelMap.containsKey(getMedalBreakdownMapKey
+                                (competitor))) {
+
+                            List<MedalTallyByOrgModel> medalTallyByOrgModelList =
+                                    medalTallyByOrgModelMap.get(getMedalBreakdownMapKey
+                                            (competitor));
+                            medalTallyByOrgModelList.add(medalTallyByOrg);
+                        } else {
+                            List<MedalTallyByOrgModel> medalTallyByOrgModelList = new ArrayList<>();
+                            medalTallyByOrgModelList.add(medalTallyByOrg);
+                            medalTallyByOrgModelMap.put(getMedalBreakdownMapKey(competitor),
+                                    medalTallyByOrgModelList);
+                        }
+                    }
+                }
+            }
+        }
+        return medalTallyByOrgModelMap;
+    }
+
+    private String getMedalBreakdownMapKey(MedalTallyCompetitor competitor) {
+        return competitor.getFirst_name() + " " +
+                competitor.getLast_name();
+    }
+
     @Override
-    public void onFailure(ErrorModel errorModel)
-    {
-        if(errorModel != null  && !TextUtils.isEmpty(errorModel.getErrorMessage())) {
+    public void onFailure(ErrorModel errorModel) {
+        if (errorModel != null && !TextUtils.isEmpty(errorModel.getErrorMessage())) {
             Toast.makeText(this, errorModel.getErrorMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -96,69 +179,4 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
         return false;
     }
 
-
-    class MedalTallyListAdapter extends RecyclerView.Adapter<MedalTallyListAdapter.ViewHolder>
-    {
-        List<MedalTallyEvent> medalTallyEvents;
-
-        protected void setMedalTallyList(List<MedalTallyEvent> medalTallyEvents)
-        {
-            this.medalTallyEvents = medalTallyEvents;
-        }
-
-        class ViewHolder extends RecyclerView.ViewHolder
-        {
-            private TextView medalName;
-            private TextView athleteName;
-            private TextView sportsName;
-
-            public ViewHolder(View itemView) {
-                super(itemView);
-
-                medalName = (TextView)itemView.findViewById(R.id.id_medal_name);
-                athleteName = (TextView)itemView.findViewById(R.id.id_athlete_name);
-                sportsName = (TextView)itemView.findViewById(R.id.id_sports_name);
-            }
-        }
-
-        @Override
-        public MedalTallyListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-        {
-            LayoutInflater inflater =
-                    (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            View convertView = inflater.inflate(R.layout.medal_breakdown_row, parent, false);
-            return new ViewHolder(convertView);
-        }
-
-        @Override
-        public void onBindViewHolder(MedalTallyListAdapter.ViewHolder holder, int position) {
-
-            MedalTallyEvent medalTallyObj = medalTallyEvents.get(position);
-
-            if(medalTallyObj.getGold() > 0) {
-                holder.medalName.setBackgroundResource(R.drawable.goldmedal);
-                holder.medalName.setText("G");
-            } else if (medalTallyObj.getSilver() > 0) {
-                holder.medalName.setBackgroundResource(R.drawable.silvermedal);
-                holder.medalName.setText("S");
-            } else if (medalTallyObj.getBronze() > 0) {
-                holder.medalName.setBackgroundResource(R.drawable.bronzemedal);
-                holder.medalName.setText("B");
-            }
-
-            if (medalTallyObj.getCompetitor() != null) {
-                holder.athleteName.setText(medalTallyObj.getCompetitor().get(0).getFirst_name() +
-                        " " +
-                        medalTallyObj.getCompetitor().get(0).getLast_name());
-            }
-            holder.sportsName.setText(medalTallyObj.getDescription() + " - " +medalTallyObj
-                    .getSport()
-                    .getDescription());
-        }
-
-        @Override
-        public int getItemCount() {
-            return medalTallyEvents != null ?medalTallyEvents.size() :0;
-        }
-    }
 }
