@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
@@ -61,6 +64,9 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.d("OlympicsActivity", "Refreshed token: " + token);
+
         setContentView(R.layout.activity_olympics);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -139,6 +145,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         if (requestCode == REQUEST_CODE_COUNTRY) {
             if (resultCode == RESULT_OK) {
                 String countryCode = data.getStringExtra("COUNTRY_CODE");
+
+                FirebaseMessaging.getInstance().subscribeToTopic(countryCode);
 
                 if (drawer == null) {
                     drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
