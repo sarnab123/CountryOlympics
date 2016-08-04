@@ -1,6 +1,8 @@
 package com.olympics.olympicsandroid.view.activity;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,10 +11,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.olympics.olympicsandroid.R;
@@ -31,7 +36,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class AthleteActivity extends AppCompatActivity implements NavigationView
-.OnNavigationItemSelectedListener, IUIListener {
+.OnNavigationItemSelectedListener, IUIListener, SearchView.OnQueryTextListener {
 
     public static final String MALE = "male";
     public static final String NO_GENDER = "no gender";
@@ -39,6 +44,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
     private static final String MEN_SPORTS_STR = " - Men";
     private static final String WOMEN_SPORTS_STR = " - Women";
     private AthleteListAdapter athleteListAdapter;
+    private List<Athlete> athleteList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +68,22 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         setActionBar();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.athlete_selection, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+
     private void setActionBar() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -82,8 +104,8 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         if (responseModel instanceof CountryEventUnitModel) {
 
             CountryEventUnitModel countryEventUnitModel = (CountryEventUnitModel) responseModel;
-
-            athleteListAdapter.setAthleteList(getListfromSet(countryEventUnitModel.getAthleteList()));
+            athleteList = getListfromSet(countryEventUnitModel.getAthleteList());
+            athleteListAdapter.setAthleteList(athleteList);
             athleteListAdapter.notifyDataSetChanged();
 
         }
@@ -112,6 +134,30 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        List<Athlete> filteredAthleteList = new ArrayList<>();
+
+        if(athleteList != null && athleteList.size() > 0) {
+            for (Athlete athlete : athleteList) {
+                if (!TextUtils.isEmpty(newText) && athlete != null && (!TextUtils.isEmpty(athlete
+                        .getAthleteName()) && athlete
+                        .getAthleteName().toLowerCase().contains(newText.toLowerCase()))) {
+                    filteredAthleteList.add(athlete);
+                }
+            }
+            athleteListAdapter.setAthleteList(filteredAthleteList);
+            athleteListAdapter.notifyDataSetChanged();
+            return true;
+        }
         return false;
     }
 
@@ -184,4 +230,6 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         }
 
     }
+
+
 }
