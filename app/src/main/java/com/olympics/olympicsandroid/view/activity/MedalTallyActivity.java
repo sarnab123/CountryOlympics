@@ -1,6 +1,7 @@
 package com.olympics.olympicsandroid.view.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -18,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
@@ -27,6 +29,7 @@ import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 import com.olympics.olympicsandroid.networkLayer.controller.MedalTallyController;
 import com.olympics.olympicsandroid.utility.MedalTallyComparator;
+import com.olympics.olympicsandroid.utility.UtilityMethods;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -37,6 +40,7 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
         .OnNavigationItemSelectedListener, IUIListener {
 
     private MedalTallyListAdapter medalTallyListAdapter;
+    private static final String NO_MEDAL_WON_MSG = "Your conutry has not won any medals yet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,9 +131,10 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
 
         protected void setMedalTallyList(List<MedalTallyOrganization> medalTallyList)
         {
-            this.medalTallyList = medalTallyList;
+
             Collections.sort(medalTallyList, new MedalTallyComparator(OlympicsPrefs.getInstance(null)
                     .getUserSelectedCountry()));
+            this.medalTallyList = medalTallyList;
         }
 
         class ViewHolder extends RecyclerView.ViewHolder
@@ -181,7 +186,7 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
                 holder.dividerView.setVisibility(View.VISIBLE);
             }
 
-            MedalTallyOrganization medalTallyObj = medalTallyList.get(position);
+            final MedalTallyOrganization medalTallyObj = medalTallyList.get(position);
             holder.countryAlias.setText(medalTallyObj.getCountryName());
             holder.countryRankView.setText(Html.fromHtml("<b>" + getResources().getString(R.string
                     .rank_str, +medalTallyObj.getRank() + "</b>", getResources().getString(R.string
@@ -198,6 +203,32 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             } catch (Exception ex)
             {
                 System.out.println("Exeptipn == "+ex);
+            }
+
+            if (holder.medalRowLayout != null) {
+                holder.medalRowLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        // Open Medaltally breakdown page for selected country if country has won at
+                        // least one medal
+                        if (medalTallyObj != null && medalTallyObj.getId().equalsIgnoreCase
+                                (OlympicsPrefs.getInstance(null).getUserSelectedCountry().getId()
+                                )) {
+                            if (!TextUtils.isEmpty(medalTallyObj.getTotal()) && !medalTallyObj
+                                    .getTotal().equalsIgnoreCase("0")) {
+                                Intent intent = new Intent(new Intent(MedalTallyActivity.this,
+                                        MedalTallyBreakDownActivity.class));
+                                intent.putExtra(UtilityMethods.EXTRA_SELECTED_COUNTRY,
+                                        medalTallyObj.getId());
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(OlympicsApplication.getAppContext(),
+                                        NO_MEDAL_WON_MSG, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+                });
             }
         }
 

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
@@ -53,6 +54,8 @@ public class EventListFragment extends Fragment
         if (mDateSportsModel == null || mDateSportsModel.getAllSportsForDate() ==null ||
                 mDateSportsModel.getAllSportsForDate().isEmpty()) {
             rootView.findViewById(R.id.empty_schedule).setVisibility(View.VISIBLE);
+            ((TextView)rootView.findViewById(R.id.no_events_text)).setText(getString(R.string
+                    .no_events_for_country));
         }else {
             recyclerview.setAdapter(new ExpandableListAdapter(getData(), createItemClickListener()));
         }

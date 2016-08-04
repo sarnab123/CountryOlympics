@@ -4,6 +4,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_medal_tally">Medal Tally</string>
+    <string name="title_activity_medal_tally_by_org">Medal Breakdown For Country</string>
     <string name="title_activity_athlete">Players</string>
     <string name="event_refresh">Refresh Event</string>
     <string name="rank_str"><b>Rank</b> %1$s %2$s %3$s</string>
@@ -37,7 +38,8 @@
     <string name="share_app_string">Share Olympics 2016</string>
     <string name="sportradar_info">Data by Sportradar US\n\nv1.0(10)</string>
 
-    <string name="no_sports">No event is scheduled for this day</string>
+    <string name="no_events_for_country">Your country has not participated in any event for this day.</string>
+    <string name="no_sports">Event has not started yet. Please revisit again once it starts.</string>
     <string name="olympics_not_start">Although Olympics are yet to start..\nThis is test data to provide you with the features you can look forward to! </string>
 
 </resources>
