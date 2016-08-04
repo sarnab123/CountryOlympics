@@ -91,10 +91,11 @@ public class ActivityFactory
         }
     }
 
-    public static void openEventActivity(Activity ctx,String eventID)
+    public static void openEventActivity(Activity ctx,String eventID,String sportName)
     {
         Intent intentExtra = new Intent(OlympicsApplication.getAppContext(), EventActivity.class);
         intentExtra.putExtra("event_id",eventID);
+        intentExtra.putExtra("discipline_name",sportName);
         try {
             ctx.startActivity(intentExtra);
         }catch(Exception ex)

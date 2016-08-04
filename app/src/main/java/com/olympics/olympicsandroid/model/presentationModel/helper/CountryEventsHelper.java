@@ -130,6 +130,12 @@ public class CountryEventsHelper {
                         athlete.setSportName(participatingEvent.getSport().getDescription());
                         athlete.setSportsAlias(participatingEvent.getSport().getAlias());
                     }
+
+                    if(!TextUtils.isEmpty(participatingEvent.getDescription()))
+                    {
+                        athlete.setDisciplineName(participatingEvent.getDescription());
+                    }
+
                     athleteList.add(athlete);
                     competitorVOModel.setCompetitorName(athlete.getAthleteName());
 
@@ -188,6 +194,12 @@ public class CountryEventsHelper {
                                 athlete.setSportName(participatingEvent.getSport().getDescription());
                                 athlete.setSportsAlias(participatingEvent.getDiscipline().getAlias());
                             }
+
+                            if(!TextUtils.isEmpty(participatingEvent.getDescription()))
+                            {
+                                athlete.setDisciplineName(participatingEvent.getDescription());
+                            }
+
                             athleteList.add(athlete);
                         }
                         if (athleteCount <= 2) {
@@ -203,7 +215,7 @@ public class CountryEventsHelper {
 
 
             for (OlympicUnit olympicEventUnit : scheduledParticipatingEvent.getUnits()) {
-                if (olympicEventUnit == null || olympicEventUnit.getStart_date() == null) {
+                if (olympicEventUnit == null || olympicEventUnit.getStart_date() == null || !TextUtils.isEmpty(olympicEventUnit.getPhase()) && olympicEventUnit.getPhase().equalsIgnoreCase("training")) {
                     continue;
                 }
 

@@ -146,7 +146,9 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             if (resultCode == RESULT_OK) {
                 String countryCode = data.getStringExtra("COUNTRY_CODE");
 
-                FirebaseMessaging.getInstance().subscribeToTopic(countryCode);
+                if(!TextUtils.isEmpty(countryCode)) {
+                    FirebaseMessaging.getInstance().subscribeToTopic(countryCode);
+                }
 
                 if (drawer == null) {
                     drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

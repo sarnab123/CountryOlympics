@@ -79,6 +79,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setQueryHint(getString(R.string.athlete_search_hint));
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(this);
         return true;
@@ -147,11 +148,20 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
     public boolean onQueryTextChange(String newText) {
         List<Athlete> filteredAthleteList = new ArrayList<>();
 
+        if (TextUtils.isEmpty(newText) && athleteListAdapter != null)
+        {
+            athleteListAdapter.setAthleteList(athleteList);
+            athleteListAdapter.notifyDataSetChanged();
+            return true;
+        }
+
         if(athleteList != null && athleteList.size() > 0) {
             for (Athlete athlete : athleteList) {
                 if (!TextUtils.isEmpty(newText) && athlete != null && (!TextUtils.isEmpty(athlete
                         .getAthleteName()) && athlete
-                        .getAthleteName().toLowerCase().contains(newText.toLowerCase()))) {
+                        .getAthleteName().toLowerCase().contains(newText.toLowerCase())) || !TextUtils.isEmpty(newText) && athlete != null && (!TextUtils.isEmpty(athlete
+                        .getSportName()) && athlete
+                        .getSportName().toLowerCase().contains(newText.toLowerCase()))) {
                     filteredAthleteList.add(athlete);
                 }
             }
@@ -164,7 +174,12 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 
     private void onAthleteClickReceiver(Athlete athlete)
     {
-        ActivityFactory.openEventActivity(this,(String)athlete.getParticipatingEventID().toArray()[0]);
+        try {
+            ActivityFactory.openEventActivity(this, (String) athlete.getParticipatingEventID().toArray()[0],athlete.getSportName());
+        }catch (Exception ex)
+        {
+
+        }
     }
 
     class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.ViewHolder>
@@ -218,6 +233,18 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
                             (MALE) ? stringBuilder.append(MEN_SPORTS_STR).toString() : stringBuilder
                             .append(WOMEN_SPORTS_STR).toString();
                 }
+
+                if (!TextUtils.isEmpty(athleteObj.getDisciplineName())) {
+
+                    if(TextUtils.isEmpty(athleteDetail))
+                    {
+                        athleteDetail = athleteObj.getDisciplineName();
+                    }
+                    else{
+                        athleteDetail = athleteDetail +"- "+athleteObj.getDisciplineName();
+                    }
+                }
+
                 holder.eventView.setText(athleteDetail);
 
                 int rid = getResources()

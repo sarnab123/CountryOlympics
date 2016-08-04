@@ -15,6 +15,8 @@ public class Athlete implements Serializable, Comparable
 
     private String sportName;
 
+    private String disciplineName;
+
     private String sportsAlias;
 
     private String competitorID;
@@ -36,6 +38,14 @@ public class Athlete implements Serializable, Comparable
 
     public String getCompetitorID() {
         return competitorID;
+    }
+
+    public String getDisciplineName() {
+        return disciplineName;
+    }
+
+    public void setDisciplineName(String disciplineName) {
+        this.disciplineName = disciplineName;
     }
 
     public void setCompetitorID(String competitorID) {

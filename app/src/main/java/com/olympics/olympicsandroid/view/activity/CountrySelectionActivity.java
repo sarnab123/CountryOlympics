@@ -170,6 +170,13 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
 
         List<Organization> filteredCountryList = new ArrayList<>();
 
+        if (TextUtils.isEmpty(newText) && countryListAdapter != null)
+        {
+            countryListAdapter.setCountryModelList(countryList);
+            countryListAdapter.notifyDataSetChanged();
+            return true;
+        }
+
         if(countryList != null && countryList.size() > 0) {
             for (Organization country : countryList) {
                 if (!TextUtils.isEmpty(newText) && country != null && (!TextUtils.isEmpty(country.getDescription()) && country

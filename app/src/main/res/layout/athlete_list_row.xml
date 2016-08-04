@@ -34,6 +34,14 @@
         android:layout_toRightOf="@id/id_sports_icon"
         android:textSize="14sp"
         />
+    <ImageView
+        android:id="@+id/btn_expand_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_weight="0"
+        android:src="@drawable/circle_plus" />
 
     <View
         android:layout_width="match_parent"
