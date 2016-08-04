@@ -20,7 +20,10 @@ public enum OlympicRequestQueries
                 true, true),
     APP_VERSION_DATA(Request.Method.GET, "https://olympics.mybluemix.net/config/getAppVersion",
             null,
-            true, false);
+            true, false),
+    MEDAL_TALLY_BY_ORGANIZATION(Request.Method.GET, null,"/organization/2016/{countryID}/medals" +
+            ".xml",true,
+            true);
 
     private int httpRequestType;
     private String relativeURL;

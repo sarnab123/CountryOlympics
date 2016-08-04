@@ -22,6 +22,8 @@ public class UtilityMethods
     public static final int EXTERNAL_CACHE_DIR = CACHE_DIR + 1;
 
     public static final String ERROR_INTERNET = "800";
+
+    public static final String EXTRA_SELECTED_COUNTRY = "SELECTED_COUNTRY";
     /**
      * Helper Function to Load json From Assets Folder
      */

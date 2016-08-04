@@ -42,6 +42,12 @@
             android:theme="@style/MedalTallyTheme" >
         </activity>
         <activity
+            android:name=".view.activity.MedalTallyBreakDownActivity"
+            android:label="@string/title_activity_medal_tally_by_org"
+            android:screenOrientation="portrait"
+            android:theme="@style/MedalTallyTheme" >
+        </activity>
+        <activity
             android:name=".view.activity.AthleteActivity"
             android:label="@string/title_activity_athlete"
             android:screenOrientation="portrait"
