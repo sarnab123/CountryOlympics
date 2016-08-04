@@ -41,6 +41,8 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
 
     private MedalTallyListAdapter medalTallyListAdapter;
     private static final String NO_MEDAL_WON_MSG = "Your conutry has not won any medals yet";
+    private static final String COUNTRY_WITH_MEDAL_MSG = "Congratulations on wins! Click on your " +
+            "country to get details!";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +137,21 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             Collections.sort(medalTallyList, new MedalTallyComparator(OlympicsPrefs.getInstance(null)
                     .getUserSelectedCountry()));
             this.medalTallyList = medalTallyList;
+
+        }
+
+        private boolean isCountryWithMedals() {
+            try {
+                if (medalTallyList != null && !medalTallyList.isEmpty() &&
+                        Integer.parseInt(medalTallyList.get(0).getTotal()) > 0) {
+                    Toast.makeText(OlympicsApplication.getAppContext(), COUNTRY_WITH_MEDAL_MSG, Toast.LENGTH_LONG).show();
+
+                    return true;
+                }
+            } catch (Exception ex) {
+                return false;
+            }
+            return false;
         }
 
         class ViewHolder extends RecyclerView.ViewHolder
@@ -179,7 +196,12 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             //Change row for selected country
             if (medalTallyList.get(position).getCountryName().equalsIgnoreCase(OlympicsPrefs
                     .getInstance(null).getUserSelectedCountry().getDescription())) {
-                holder.medalRowLayout.setBackgroundResource(R.drawable.medal_first_row_border);
+                if (isCountryWithMedals()) {
+                    holder.medalRowLayout.setBackgroundResource(R.drawable
+                            .medal_first_row_border_enable);
+                } else {
+                    holder.medalRowLayout.setBackgroundResource(R.drawable.medal_first_row_border_disable);
+                }
                 holder.dividerView.setVisibility(View.GONE);
             } else {
                 holder.medalRowLayout.setBackgroundResource(0);

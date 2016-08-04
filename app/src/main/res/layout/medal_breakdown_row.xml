@@ -9,7 +9,7 @@
             android:layout_width="wrap_content"
             android:gravity="center"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="5dp"
-            android:layout_alignTop="@id/id_medal_name"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/id_medal_name"
             android:layout_marginBottom="15dp"
             android:textSize="16sp"/>
