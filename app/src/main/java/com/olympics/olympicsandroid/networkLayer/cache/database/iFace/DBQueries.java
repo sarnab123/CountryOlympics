@@ -29,7 +29,9 @@ public enum DBQueries {
             + DBTablesDef.C_COMPETITOR_ID
             + "))"),
     COUNT("SELECT COUNT(1) COUNT FROM ?"),
-    DROP_TABLE_UNIT_STATUS("DROP TABLE IF EXISTS " + DBTablesDef.T_UNIT_RELATION);
+    DROP_TABLE_UNIT_STATUS("DROP TABLE IF EXISTS " + DBTablesDef.T_UNIT_RELATION),
+    DROP_TABLE_COMPETITOR_LIST("DROP TABLE IF EXISTS " + DBTablesDef.T_COMPETITOR_RELATION);
+
 
     private String query;
 

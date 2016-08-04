@@ -22,7 +22,7 @@ public final class DBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "OlympicsAndroid.db";
 
     // Version of database
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static DBHelper mInstance;
 
@@ -59,7 +59,7 @@ public final class DBHelper extends SQLiteOpenHelper {
 
     private void deleteTablesInUpgrade(SQLiteDatabase db) {
         db.execSQL(DBQueries.DROP_TABLE_UNIT_STATUS.getQuery());
-        db.execSQL(DBQueries.DROP_TABLE_UNIT_STATUS.getQuery());
+        db.execSQL(DBQueries.DROP_TABLE_COMPETITOR_LIST.getQuery());
     }
 
 }

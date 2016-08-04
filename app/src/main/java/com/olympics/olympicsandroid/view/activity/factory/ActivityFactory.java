@@ -91,6 +91,18 @@ public class ActivityFactory
         }
     }
 
+    public static void openEventActivity(Activity ctx,String eventID)
+    {
+        Intent intentExtra = new Intent(OlympicsApplication.getAppContext(), EventActivity.class);
+        intentExtra.putExtra("event_id",eventID);
+        try {
+            ctx.startActivity(intentExtra);
+        }catch(Exception ex)
+        {
+
+        }
+    }
+
     public static void openAppInfoActivity(Activity originCTX)
     {
         originCTX.startActivity(new Intent(originCTX, AppInfoActivity.class));

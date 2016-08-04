@@ -27,6 +27,7 @@ import com.olympics.olympicsandroid.model.presentationModel.Athlete;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.networkLayer.controller.CountryProfileController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
+import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class AthleteActivity extends AppCompatActivity implements NavigationView
-.OnNavigationItemSelectedListener, IUIListener, SearchView.OnQueryTextListener {
+.OnNavigationItemSelectedListener, IUIListener, SearchView.OnQueryTextListener{
 
     public static final String MALE = "male";
     public static final String NO_GENDER = "no gender";
@@ -161,9 +162,15 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         return false;
     }
 
+    private void onAthleteClickReceiver(Athlete athlete)
+    {
+        ActivityFactory.openEventActivity(this,(String)athlete.getParticipatingEventID().toArray()[0]);
+    }
+
     class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.ViewHolder>
     {
         List<Athlete> athleteList;
+
 
         protected void setAthleteList(List<Athlete> athleteList)
         {
@@ -173,13 +180,14 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
 
         class ViewHolder extends RecyclerView.ViewHolder
         {
+            private View athlete_layout;
             private ImageView sportsIconView;
             private TextView athleteNameView;
             private TextView eventView;
 
             public ViewHolder(View itemView) {
                 super(itemView);
-
+                athlete_layout = itemView.findViewById(R.id.id_athlete_layout);
                 sportsIconView = (ImageView)itemView.findViewById(R.id.id_sports_icon);
                 athleteNameView = (TextView)itemView.findViewById(R.id.id_athlete_name);
                 eventView = (TextView)itemView.findViewById(R.id.id_participating_event);
@@ -198,7 +206,7 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
         @Override
         public void onBindViewHolder(AthleteListAdapter.ViewHolder holder, int position)
         {
-            Athlete athleteObj = athleteList.get(position);
+            final Athlete athleteObj = athleteList.get(position);
             if (athleteObj != null) {
                 holder.athleteNameView.setText(athleteObj.getAthleteName());
 
@@ -221,6 +229,13 @@ public class AthleteActivity extends AppCompatActivity implements NavigationView
                 {
                     System.out.println("Exeptipn == "+ex);
                 }
+
+                holder.athlete_layout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onAthleteClickReceiver(athleteObj);
+                    }
+                });
             }
         }
 

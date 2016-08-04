@@ -1,6 +1,8 @@
 package com.olympics.olympicsandroid.model.presentationModel;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by sarnab.poddar on 7/10/16.
@@ -16,6 +18,21 @@ public class Athlete implements Serializable, Comparable
     private String sportsAlias;
 
     private String competitorID;
+
+    private Set<String> participatingEventID;
+
+    public Set<String> getParticipatingEventID() {
+        return participatingEventID;
+    }
+
+    public void insertIntoEventSet(String eventID)
+    {
+        if(participatingEventID == null)
+        {
+            participatingEventID = new HashSet<>();
+        }
+        participatingEventID.add(eventID);
+    }
 
     public String getCompetitorID() {
         return competitorID;

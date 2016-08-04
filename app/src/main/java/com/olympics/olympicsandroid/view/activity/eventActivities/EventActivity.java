@@ -116,18 +116,6 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         return new IScheduleListener() {
             @Override
             public void handleItemClick(EventResultsViewModel itemClicked) {
-//                Intent intent = new Intent(Intent.ACTION_INSERT);
-//                intent.setType("vnd.android.cursor.item/event");
-//                intent.putExtra(CalendarContract.Events.TITLE, itemClicked.getUnit_name());
-//                intent.putExtra(CalendarContract.Events.DESCRIPTION, itemClicked.getUnit_name());
-//                intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "");
-//                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, DateUtils.getUnitDateWithTime(itemClicked.getStart_date()));
-//                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, itemClicked.getStart_date() + 60*60*15);
-//                intent.putExtra(CalendarContract.Events.ALL_DAY, false);
-//                intent.putExtra(CalendarContract.Events.STATUS, 1);
-//                intent.putExtra(CalendarContract.Events.VISIBLE, 0);
-//                intent.putExtra(CalendarContract.Events.HAS_ALARM, 1);
-//                startActivity(intent);
 
 
 

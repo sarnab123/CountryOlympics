@@ -106,6 +106,8 @@ public class CountryEventsHelper {
                     }
                     Athlete athlete = new Athlete();
 
+                    athlete.setCompetitorID(participant.getId());
+                    athlete.insertIntoEventSet(scheduledParticipatingEvent.getId());
                     CompetitorVOModel competitorVOModel = new CompetitorVOModel();
                     competitorVOModel.setCompetitorID(participant.getId());
                     competitorVOModel.setOrgAlias(countryEventUnitModel.getCountryAlias());
@@ -150,6 +152,9 @@ public class CountryEventsHelper {
                         for (OlympicAthlete participant : olympicTeams.getAthlete()) {
                             athleteCount++;
                             Athlete athlete = new Athlete();
+
+                            athlete.setCompetitorID(olympicTeams.getId());
+                            athlete.insertIntoEventSet(scheduledParticipatingEvent.getId());
 
                             if (!TextUtils.isEmpty(participant.getPrint_name())) {
                                 athlete.setAthleteName(participant.getPrint_name());
