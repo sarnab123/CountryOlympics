@@ -1,5 +1,6 @@
 package com.olympics.olympicsandroid.view.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +26,7 @@ public class EventListFragment extends Fragment
 {
     private static final String DISPLAY_DATA = "display_data";
     private DateSportsModel mDateSportsModel;
+    private static Activity activity = null;
 
     public EventListFragment() {
     }
@@ -33,8 +35,9 @@ public class EventListFragment extends Fragment
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static EventListFragment newInstance(DateSportsModel dateSportsModel) {
+    public static EventListFragment newInstance(Activity activities,DateSportsModel dateSportsModel) {
         EventListFragment fragment = new EventListFragment();
+        activity = activities;
         Bundle args = new Bundle();
         args.putSerializable(DISPLAY_DATA, dateSportsModel);
         fragment.setArguments(args);
@@ -67,8 +70,8 @@ public class EventListFragment extends Fragment
         return new IItemClickListener() {
             @Override
             public void handleItemClick(ExpandableListAdapter.Item itemClicked) {
-                if(getActivity() != null && !getActivity().isFinishing()) {
-                    ActivityFactory.handleItemClickActivity(getActivity(), itemClicked);
+                if(activity != null) {
+                    ActivityFactory.handleItemClickActivity(activity, itemClicked);
                 }
             }
         };

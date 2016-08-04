@@ -206,7 +206,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     public void onSuccess(IResponseModel responseModel) {
         if (responseModel instanceof CountryEventUnitModel) {
             if (mSectionsPagerAdapter == null) {
-                mSectionsPagerAdapter = new DateEventAdapter(getSupportFragmentManager(),
+                mSectionsPagerAdapter = new DateEventAdapter(this,getSupportFragmentManager(),
                         (CountryEventUnitModel) responseModel);
 
                 // Set up the ViewPager with the sections adapter.
