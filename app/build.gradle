@@ -8,7 +8,7 @@ android {
         applicationId "com.olympics.olympicsandroid"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 6
+        versionCode 7
         versionName "1.0"
         generatedDensities = []
     }
@@ -42,6 +42,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.google.firebase:firebase-core:9.2.1'
     compile 'com.google.firebase:firebase-crash:9.2.1'
+    compile 'com.google.firebase:firebase-messaging:9.2.1'
 
 }
 
