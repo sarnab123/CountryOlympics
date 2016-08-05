@@ -40,9 +40,6 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
         .OnNavigationItemSelectedListener, IUIListener {
 
     private MedalTallyListAdapter medalTallyListAdapter;
-    private static final String NO_MEDAL_WON_MSG = "Your conutry has not won any medals yet";
-    private static final String COUNTRY_WITH_MEDAL_MSG = "Congratulations on wins! Click on your " +
-            "country to get details!";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +141,8 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             try {
                 if (medalTallyList != null && !medalTallyList.isEmpty() &&
                         Integer.parseInt(medalTallyList.get(0).getTotal()) > 0) {
-                    Toast.makeText(OlympicsApplication.getAppContext(), COUNTRY_WITH_MEDAL_MSG, Toast.LENGTH_LONG).show();
+                    Toast.makeText(OlympicsApplication.getAppContext(), getString(R.string.country_with_medal_msg),
+                            Toast.LENGTH_LONG).show();
 
                     return true;
                 }
@@ -246,7 +244,8 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(OlympicsApplication.getAppContext(),
-                                        NO_MEDAL_WON_MSG, Toast.LENGTH_LONG).show();
+                                        getString(R.string.no_medal_won_msg), Toast.LENGTH_LONG)
+                                        .show();
                             }
                         }
                     }
