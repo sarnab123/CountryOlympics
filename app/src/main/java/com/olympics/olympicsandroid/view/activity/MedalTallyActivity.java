@@ -40,7 +40,7 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
         .OnNavigationItemSelectedListener, IUIListener {
 
     private MedalTallyListAdapter medalTallyListAdapter;
-    private static final String NO_MEDAL_WON_MSG = "Your conutry has not won any medals yet";
+    private static final String NO_MEDAL_WON_MSG = "Your country has not won any medals yet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
