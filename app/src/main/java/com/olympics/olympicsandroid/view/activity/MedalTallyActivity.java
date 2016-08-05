@@ -40,7 +40,6 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
         .OnNavigationItemSelectedListener, IUIListener {
 
     private MedalTallyListAdapter medalTallyListAdapter;
-    private static final String NO_MEDAL_WON_MSG = "Your country has not won any medals yet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +134,22 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             Collections.sort(medalTallyList, new MedalTallyComparator(OlympicsPrefs.getInstance(null)
                     .getUserSelectedCountry()));
             this.medalTallyList = medalTallyList;
+
+        }
+
+        private boolean isCountryWithMedals() {
+            try {
+                if (medalTallyList != null && !medalTallyList.isEmpty() &&
+                        Integer.parseInt(medalTallyList.get(0).getTotal()) > 0) {
+                    Toast.makeText(OlympicsApplication.getAppContext(), getString(R.string.country_with_medal_msg),
+                            Toast.LENGTH_LONG).show();
+
+                    return true;
+                }
+            } catch (Exception ex) {
+                return false;
+            }
+            return false;
         }
 
         class ViewHolder extends RecyclerView.ViewHolder
@@ -179,7 +194,12 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             //Change row for selected country
             if (medalTallyList.get(position).getCountryName().equalsIgnoreCase(OlympicsPrefs
                     .getInstance(null).getUserSelectedCountry().getDescription())) {
-                holder.medalRowLayout.setBackgroundResource(R.drawable.medal_first_row_border);
+                if (isCountryWithMedals()) {
+                    holder.medalRowLayout.setBackgroundResource(R.drawable
+                            .medal_first_row_border_enable);
+                } else {
+                    holder.medalRowLayout.setBackgroundResource(R.drawable.medal_first_row_border_disable);
+                }
                 holder.dividerView.setVisibility(View.GONE);
             } else {
                 holder.medalRowLayout.setBackgroundResource(0);
@@ -224,7 +244,8 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(OlympicsApplication.getAppContext(),
-                                        NO_MEDAL_WON_MSG, Toast.LENGTH_LONG).show();
+                                        getString(R.string.no_medal_won_msg), Toast.LENGTH_LONG)
+                                        .show();
                             }
                         }
                     }

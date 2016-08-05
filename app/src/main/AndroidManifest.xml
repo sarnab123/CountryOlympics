@@ -34,6 +34,7 @@
         <activity
             android:name=".view.activity.OlympicsActivity"
             android:label="@string/schedule_page_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
