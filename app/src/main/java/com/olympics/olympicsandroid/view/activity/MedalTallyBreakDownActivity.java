@@ -163,26 +163,6 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
         return medalTallyByOrgModelMap;
     }
 
-    private int getMedalType(String medalType) {
-
-        int medalTypeCount = 0;
-        switch(medalType) {
-          case "gold":
-                medalTypeCount = 1;
-                break;
-            case "silver":
-                medalTypeCount = 1;
-                break;
-            case "bronze":
-                medalTypeCount = 1;
-                break;
-            default:
-                medalTypeCount = 0;
-                break;
-        }
-        return medalTypeCount;
-    }
-
     private String getMedalBreakdownMapKey(MedalTallyCompetitor competitor) {
         return competitor.getFirst_name() + " " +
                 competitor.getLast_name();
