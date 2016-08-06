@@ -44,7 +44,5 @@
     <string name="olympics_not_start">Although Olympics are yet to start..\nThis is test data to provide you with the features you can look forward to! </string>
 
     <string name="no_medal_won_msg">"Your country has not won any medals yet."</string>
-    <string name="country_with_medal_msg">"Congratulations on wins! Click on your country to get
-        details!"</string>
-
+    <string name="country_with_medal_msg">"Congratulations on wins! Click on your country to get details!"</string>
 </resources>

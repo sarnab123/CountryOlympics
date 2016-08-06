@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -355,22 +356,25 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
             params.putString("error_reason", errorModel.getErrorMessage());
             FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
 
+            try {
+                AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+                dlgAlert.setMessage(getString(R.string.id_error_internet));
+                dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        handleUnit();
+                    }
+                });
+                dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                    }
+                });
+                dlgAlert.setCancelable(false);
+                dlgAlert.create().show();
+            } catch (WindowManager.BadTokenException ex) {
 
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
-            dlgAlert.setMessage(getString(R.string.id_error_internet));
-            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                    handleUnit();
-                }
-            });
-            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                }
-            });
-            dlgAlert.setCancelable(false);
-            dlgAlert.create().show();
+            }
         }
         else{
 
@@ -386,22 +390,25 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
             }
             FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("error", params);
 
+            try {
+                AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+                dlgAlert.setMessage(getString(R.string.id_error_server));
+                dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        handleUnit();
+                    }
+                });
+                dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                    }
+                });
+                dlgAlert.setCancelable(false);
+                dlgAlert.create().show();
+            } catch (WindowManager.BadTokenException ex) {
 
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
-            dlgAlert.setMessage(getString(R.string.id_error_server));
-            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                    handleUnit();
-                }
-            });
-            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                }
-            });
-            dlgAlert.setCancelable(false);
-            dlgAlert.create().show();
+            }
         }
     }
 

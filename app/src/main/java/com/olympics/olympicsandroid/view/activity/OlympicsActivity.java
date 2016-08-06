@@ -271,21 +271,26 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     @Override
     public void onFailure(ErrorModel errorModel) {
         if (errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.ERROR_INTERNET)) {
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
-            dlgAlert.setMessage(getString(R.string.id_error_internet));
-            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                    setUpData();
-                }
-            });
-            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                }
-            });
-            dlgAlert.setCancelable(false);
-            dlgAlert.create().show();
+
+            try {
+                AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+                dlgAlert.setMessage(getString(R.string.id_error_internet));
+                dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        setUpData();
+                    }
+                });
+                dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                    }
+                });
+                dlgAlert.setCancelable(false);
+                dlgAlert.create().show();
+            } catch (WindowManager.BadTokenException ex) {
+
+            }
 
             Bundle params = new Bundle();
             params.putString("app_error", "event_result");

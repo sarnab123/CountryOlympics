@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -99,21 +100,25 @@ public class CountrySelectionActivity extends AppCompatActivity implements IUILi
     {
         if(errorModel != null && !TextUtils.isEmpty(errorModel.getErrorCode()) && errorModel.getErrorCode().equalsIgnoreCase(UtilityMethods.ERROR_INTERNET))
         {
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
-            dlgAlert.setMessage(getString(R.string.id_error_internet));
-            dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                    getCountryData();
-                }
-            });
-            dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                   dialog.dismiss();
-                }
-            });
-            dlgAlert.setCancelable(false);
-            dlgAlert.create().show();
+            try {
+                AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+                dlgAlert.setMessage(getString(R.string.id_error_internet));
+                dlgAlert.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        getCountryData();
+                    }
+                });
+                dlgAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                    }
+                });
+                dlgAlert.setCancelable(false);
+                dlgAlert.create().show();
+            } catch (WindowManager.BadTokenException ex) {
+
+            }
 
             Bundle params = new Bundle();
             params.putString("app_error", "event_result");
