@@ -34,6 +34,7 @@ import com.olympics.olympicsandroid.utility.UtilityMethods;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MedalTallyActivity extends AppCompatActivity implements NavigationView
@@ -84,11 +85,9 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
             List<MedalTallyOrganization> orgsByRanking = new ArrayList<>(medalTallyObj
                     .getOrganization());
             if (orgsByRanking != null) {
-                Collections.sort(orgsByRanking, new MedalTallyComparator());
-                for (int index = 0; index < orgsByRanking.size(); index++) {
-                    MedalTallyOrganization orgByStanding = orgsByRanking.get(index);
-                    orgByStanding.setRank(index + 1);
-                }
+                MedalTallyComparator comparator = new MedalTallyComparator();
+                Collections.sort(orgsByRanking, comparator);
+                populateRank(orgsByRanking, comparator);
             }
             medalTallyListAdapter = new MedalTallyListAdapter();
             medalTallyListAdapter.setMedalTallyList(orgsByRanking);
@@ -102,6 +101,25 @@ public class MedalTallyActivity extends AppCompatActivity implements NavigationV
                     OlympicsPrefs.getInstance(null)
                     .getMedalTallyRefreshTime()));
             updatedTimestampView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void populateRank(List<MedalTallyOrganization> orgsByRanking, Comparator comparator) {
+        int index = 0;
+        while (index < orgsByRanking.size()) {
+            int rank = index + 1;
+            orgsByRanking.get(index).setRank(rank);
+            while (index + 1 < orgsByRanking.size()) {
+                int compare = comparator.compare(orgsByRanking.get(index), orgsByRanking.get
+                        (index+1));
+                if (compare == 0) {
+                    orgsByRanking.get(index+1).setRank(rank);
+                    index++;
+                } else {
+                    break;
+                }
+            }
+            index++;
         }
     }
 
