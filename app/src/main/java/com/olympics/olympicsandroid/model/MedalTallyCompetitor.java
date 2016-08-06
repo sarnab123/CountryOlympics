@@ -48,4 +48,8 @@ public class MedalTallyCompetitor {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
+
+    public String getMedal() {
+        return medal;
+    }
 }

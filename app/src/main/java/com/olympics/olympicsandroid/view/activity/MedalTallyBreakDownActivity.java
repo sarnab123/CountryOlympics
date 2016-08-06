@@ -31,6 +31,9 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
         .OnNavigationItemSelectedListener, IUIListener {
 
     private MedalBreakdownAdapter medalTallyListAdapter;
+    private static final String GOLD_MEDAL = "gold";
+    private static final String SILVER_MEDAL = "silver";
+    private static final String BRONZE_MEDAL = "bronze";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,9 +136,12 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
                         medalTallyByOrg.setAthleteName(getMedalBreakdownMapKey(competitor));
                         medalTallyByOrg.setSportsName(medalTallyEvent.getDescription() + " - " +
                                 medalTallyEvent.getSport().getDescription());
-                        medalTallyByOrg.setGoldCount(medalTallyEvent.getGold());
-                        medalTallyByOrg.setSilverCount(medalTallyEvent.getSilver());
-                        medalTallyByOrg.setBronzeCount(medalTallyEvent.getBronze());
+                        medalTallyByOrg.setGoldCount((!TextUtils.isEmpty(competitor.getMedal
+                                ()) && competitor.getMedal().equalsIgnoreCase(GOLD_MEDAL)) ? 1 : 0);
+                        medalTallyByOrg.setSilverCount(((!TextUtils.isEmpty(competitor.getMedal
+                                ()) && competitor.getMedal().equalsIgnoreCase(SILVER_MEDAL)) ? 1 : 0));
+                        medalTallyByOrg.setBronzeCount(((!TextUtils.isEmpty(competitor.getMedal
+                                ()) && competitor.getMedal().equalsIgnoreCase(BRONZE_MEDAL)) ? 1 : 0));
 
                         if (medalTallyByOrgModelMap.containsKey(getMedalBreakdownMapKey
                                 (competitor))) {
@@ -155,6 +161,26 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
             }
         }
         return medalTallyByOrgModelMap;
+    }
+
+    private int getMedalType(String medalType) {
+
+        int medalTypeCount = 0;
+        switch(medalType) {
+          case "gold":
+                medalTypeCount = 1;
+                break;
+            case "silver":
+                medalTypeCount = 1;
+                break;
+            case "bronze":
+                medalTypeCount = 1;
+                break;
+            default:
+                medalTypeCount = 0;
+                break;
+        }
+        return medalTypeCount;
     }
 
     private String getMedalBreakdownMapKey(MedalTallyCompetitor competitor) {
