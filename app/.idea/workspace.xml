@@ -87,29 +87,39 @@
         <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.0">
-              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.43548387">
+              <caret line="42" column="114" selection-start-line="42" selection-start-column="94" selection-end-line="42" selection-end-column="114" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MedalTallyActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MedalTallyActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/MedalTallyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48872182">
-              <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
               <folding>
-                <element signature="e#4153#4301#0" expanded="true" />
+                <element signature="e#2219#2220#0" expanded="true" />
+                <element signature="e#2288#2289#0" expanded="true" />
+                <element signature="e#4059#4207#0" expanded="true" />
+                <element signature="e#4711#4712#0" expanded="true" />
+                <element signature="e#4739#4740#0" expanded="true" />
+                <element signature="e#5503#5545#0" expanded="true" />
+                <element signature="e#8541#8739#0" expanded="true" />
+                <element signature="e#8641#8712#0" expanded="true" />
+                <element signature="e#9480#10869#0" expanded="true" />
+                <element signature="e#10668#10704#0" expanded="true" />
+                <element signature="e#10868#10869#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1931,7 +1941,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/CountrySelectionActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/menu/athlete_selection.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/athlete_list_row.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/factory/ActivityFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/Athlete.java" />
@@ -1948,6 +1957,7 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/MedalTallyActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
       </list>
     </option>
   </component>
@@ -2257,7 +2267,7 @@
     <property name="settings.editor.selected.configurable" value="gradle.experimental" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="34c662f7" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.57.101:5555" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_6_API_22" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
@@ -3238,26 +3248,36 @@
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0">
-          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/MedalTallyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48872182">
-          <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
           <folding>
-            <element signature="e#4153#4301#0" expanded="true" />
+            <element signature="e#2219#2220#0" expanded="true" />
+            <element signature="e#2288#2289#0" expanded="true" />
+            <element signature="e#4059#4207#0" expanded="true" />
+            <element signature="e#4711#4712#0" expanded="true" />
+            <element signature="e#4739#4740#0" expanded="true" />
+            <element signature="e#5503#5545#0" expanded="true" />
+            <element signature="e#8541#8739#0" expanded="true" />
+            <element signature="e#8641#8712#0" expanded="true" />
+            <element signature="e#9480#10869#0" expanded="true" />
+            <element signature="e#10668#10704#0" expanded="true" />
+            <element signature="e#10868#10869#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43548387">
+          <caret line="42" column="114" selection-start-line="42" selection-start-column="94" selection-end-line="42" selection-end-column="114" />
+          <folding />
         </state>
       </provider>
     </entry>
