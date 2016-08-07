@@ -34,6 +34,9 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
     private static final String GOLD_MEDAL = "gold";
     private static final String SILVER_MEDAL = "silver";
     private static final String BRONZE_MEDAL = "bronze";
+    private static final String TEAM_EVENT = "team";
+    private static final String INDIVIDUAL_EVENT = "individual";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,8 +167,16 @@ public class MedalTallyBreakDownActivity extends AppCompatActivity implements Na
     }
 
     private String getMedalBreakdownMapKey(MedalTallyCompetitor competitor) {
-        return competitor.getFirst_name() + " " +
-                competitor.getLast_name();
+
+        if(!TextUtils.isEmpty(competitor.getType())) {
+            if (competitor.getType().equalsIgnoreCase(TEAM_EVENT)) {
+                return competitor.getDescription();
+            } else if (competitor.getType().equalsIgnoreCase(INDIVIDUAL_EVENT)){
+                return competitor.getFirst_name() + " " +
+                        competitor.getLast_name();
+            }
+        }
+        return "";
     }
 
     @Override
