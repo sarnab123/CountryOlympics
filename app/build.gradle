@@ -8,8 +8,8 @@ android {
         applicationId "com.olympics.olympicsandroid"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 8
-        versionName "1.0"
+        versionCode 10
+        versionName "1.1"
         generatedDensities = []
     }
     // Flag to tell aapt to keep the attribute ids around
