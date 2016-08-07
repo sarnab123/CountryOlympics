@@ -12,10 +12,19 @@ public class AppVersionData implements IResponseModel {
     private String apiKey;
     private String cacheConfigDate;
 
+    private String isAdsEnabled;
     private String hardCheckDate;
 
     private String cacheCountryChecksum;
     private String onDemandCountryAlias;
+
+    public String getIsAdsEnabled() {
+        return isAdsEnabled;
+    }
+
+    public void setIsAdsEnabled(String isAdsEnabled) {
+        this.isAdsEnabled = isAdsEnabled;
+    }
 
     public String getHardCheckDate() {
         return hardCheckDate;

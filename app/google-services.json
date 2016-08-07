@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "747735023787-opa65nulkqgcl4rlshc4j1v7vmlpimoa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.olympics.olympicsandroid",
+            "certificate_hash": "57FC63FDD940DD994C2712BD0FE72651320F164A"
+          }
+        },
+        {
           "client_id": "747735023787-jh6ln2kd7ufgvdt2kvcnqa8k0ln34db6.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -27,6 +27,10 @@ public class OlympicsPrefs
     private final String PREFS_RESET_TIME = "PREFS_RESET_TIME";
 
     private final String PREF_APP_SHORTCUT = "SHORTCUT";
+    private final String PREF_APP_ADS = "PREF_APP_ADS";
+
+    private final String PREF_UNIT_24HR = "PREF_UNIT_24HR";
+
 
     private static OlympicsPrefs instance;
 
@@ -118,7 +122,7 @@ public class OlympicsPrefs
 
     public String getCacheChecksum()
     {
-        return getDefaultSharePreference().getString(PREFS_CACHE_CHECKSUM,null);
+        return getDefaultSharePreference().getString(PREFS_CACHE_CHECKSUM, null);
     }
 
     public void setCacheChecksum(String checksum)
@@ -154,11 +158,34 @@ public class OlympicsPrefs
     public void setPrevTimeZone(String prevTimeZone)
     {
         SharedPreferences.Editor editor = getDefaultSharePreference().edit();
-        editor.putString(PREFS_TIME_ZONE,prevTimeZone);
+        editor.putString(PREFS_TIME_ZONE, prevTimeZone);
         editor.apply();
     }
 
     public String getPrevTimeZone() {
-        return getDefaultSharePreference().getString(PREFS_TIME_ZONE,null);
+        return getDefaultSharePreference().getString(PREFS_TIME_ZONE, null);
+    }
+
+    public void setAdsEnabled(String isAdsEnabled) {
+
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putString(PREF_APP_ADS, isAdsEnabled);
+        editor.apply();
+    }
+
+    public boolean getIsAdEnabled() {
+        return Boolean.parseBoolean(getDefaultSharePreference().getString(PREF_APP_ADS, "false"));
+    }
+
+
+    public void setIsUnit24Hour(boolean isUnit24Hour) {
+
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putBoolean(PREF_UNIT_24HR, isUnit24Hour);
+        editor.apply();
+    }
+
+    public boolean getIsUnit24Hour() {
+        return getDefaultSharePreference().getBoolean(PREF_UNIT_24HR, false);
     }
 }

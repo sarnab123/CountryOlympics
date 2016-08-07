@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
-import com.olympics.olympicsandroid.utility.DateUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -118,8 +117,17 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public void bind(final byte medalType,final Item item) {
             refferalItem = item;
-            eventDescription.setText(item.eventUnitModel.getEventName());
-            eventTime.setText(DateUtils.getUnitTime(item.eventUnitModel.getEventStartTime()));
+            byte spbyteName[] = new byte[0];
+            try {
+
+                spbyteName = item.eventUnitModel.getEventName().getBytes("ISO-8859-1");
+                String str = new String(spbyteName);
+                eventDescription.setText(str);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            eventTime.setText("For event start time,enter event details");
             byte spbyte[] = new byte[0];
             try {
 

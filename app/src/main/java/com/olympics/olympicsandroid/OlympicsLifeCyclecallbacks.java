@@ -72,8 +72,11 @@ public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycle
                     }
 
                     if (!TextUtils.isEmpty(appVersionData.getHardCheckDate())) {
-                        //Set APIKey and BaseURL from the configuration file
                         OlympicsPrefs.getInstance(null).setTimeReset(appVersionData.getHardCheckDate());
+                    }
+
+                    if (!TextUtils.isEmpty(appVersionData.getIsAdsEnabled())) {
+                        OlympicsPrefs.getInstance(null).setAdsEnabled(appVersionData.getIsAdsEnabled());
                     }
 
                     if (!TextUtils.isEmpty(appVersionData.getCacheConfigDate())) {

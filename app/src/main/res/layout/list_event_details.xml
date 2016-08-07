@@ -40,7 +40,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/event_description"
                 android:gravity="center_vertical"
-                android:textSize="14sp" />
+                android:textSize="8sp" />
 
             <com.olympics.olympicsandroid.view.customView.GothamBookTextView
                 android:id="@+id/event_venue"

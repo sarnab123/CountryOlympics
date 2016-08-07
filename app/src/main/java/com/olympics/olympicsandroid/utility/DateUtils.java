@@ -3,6 +3,7 @@ package com.olympics.olympicsandroid.utility;
 import android.text.TextUtils;
 
 import com.olympics.olympicsandroid.OlympicsApplication;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -18,8 +19,11 @@ import java.util.TimeZone;
 public class DateUtils {
 
     public static final String DATE_TIME_WITH_TIMEZONE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
-    public static final String DATE_TIME_WITHOUT_TIMEZONE_FORMAT = "MMM-dd'    Time - 'HH:mm";
-    public static final String DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT = "HH:mm";
+    public static final String DATE_TIME_WITHOUT_TIMEZONE_FORMAT_24HOUR = "MMM-dd'    Time - 'HH:mm";
+    public static final String DATE_TIME_WITHOUT_TIMEZONE_FORMAT_12HOUR = "MMM-dd'    Time - 'hh:mm aa";
+
+    public static final String DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT_24HOUR = "HH:mm";
+    public static final String DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT_12HOUR = "hh:mm aa";
 
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
@@ -129,7 +133,15 @@ public class DateUtils {
             long milliseconds = d.getTime();
 
 
-            DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_TIMEZONE_FORMAT, Locale.getDefault());
+            DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_TIMEZONE_FORMAT_24HOUR, Locale.getDefault());
+
+            if(OlympicsPrefs.getInstance(null).getIsUnit24Hour())
+            {
+                formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_TIMEZONE_FORMAT_24HOUR, Locale.getDefault());
+            }
+            else{
+                formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_TIMEZONE_FORMAT_12HOUR, Locale.getDefault());
+            }
             Calendar localCalendar = Calendar.getInstance();
             localCalendar.setTimeInMillis(milliseconds);
             return formatter.format(localCalendar.getTime());
@@ -149,7 +161,15 @@ public class DateUtils {
             long milliseconds = d.getTime();
 
 
-            DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT, Locale.getDefault());
+            DateFormat formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT_24HOUR, Locale.getDefault());
+            if(OlympicsPrefs.getInstance(null).getIsUnit24Hour())
+            {
+                formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT_24HOUR, Locale.getDefault());
+            }
+            else{
+                formatter = new SimpleDateFormat(DATE_TIME_WITHOUT_DATE_TIMEZONE_FORMAT_12HOUR, Locale.getDefault());
+            }
+
             Calendar localCalendar = Calendar.getInstance();
             localCalendar.setTimeInMillis(milliseconds);
             return formatter.format(localCalendar.getTime());
