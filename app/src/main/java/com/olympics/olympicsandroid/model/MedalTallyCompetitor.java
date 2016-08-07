@@ -52,4 +52,8 @@ public class MedalTallyCompetitor {
     public String getMedal() {
         return medal;
     }
+
+    public String getType() {
+        return type;
+    }
 }
