@@ -14,6 +14,7 @@ import android.widget.ToggleButton;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.olympics.olympicsandroid.BuildConfig;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 
@@ -80,10 +81,16 @@ public class AppInfoActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void setupAds() {
-        if (true)//OlympicsPrefs.getInstance(null).getIsAdEnabled())
+        if (OlympicsPrefs.getInstance(null).getIsAdEnabled())
         {
             AdView mAdView = (AdView) findViewById(R.id.ad_view);
-            AdRequest adRequest = new AdRequest.Builder().addTestDevice("D800AADBD8B5AC6C27736D495B83EB21").build();
+            AdRequest adRequest = null;
+            if(BuildConfig.DEBUG) {
+                adRequest = new AdRequest.Builder().addTestDevice("D800AADBD8B5AC6C27736D495B83EB21").build();
+            }
+            else{
+                adRequest = new AdRequest.Builder().build();
+            }
             mAdView.loadAd(adRequest);
         }
     }

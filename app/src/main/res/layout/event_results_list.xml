@@ -25,9 +25,19 @@
         app:mlpb_progress_color="#566da9"
         app:mlpb_show_arrow="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/id_local_Time"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray"
+        android:text="@string/id_local_timeZone"/>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/activity_main_swipe_refresh_layout"
         android:layout_width="match_parent"
+        android:layout_below="@id/id_local_Time"
         android:layout_height="wrap_content">
 
         <!-- A RecyclerView with some commonly used attributes -->
