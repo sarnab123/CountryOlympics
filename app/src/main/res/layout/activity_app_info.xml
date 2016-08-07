@@ -11,8 +11,8 @@
         android:id="@+id/app_logo"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/dimen_applogo_padding"
+        android:layout_marginTop="@dimen/dimen_applogo_padding"
         android:src="@drawable/infologo" />
 
     <RelativeLayout
@@ -32,7 +32,6 @@
             android:text="@string/time_settings"/>
         <ToggleButton
             android:layout_width="wrap_content"
-            android:text="Need 24 hour time?"
             android:layout_alignParentRight="true"
             android:textColor="@android:color/black"
             android:layout_height="wrap_content"
