@@ -33,6 +33,9 @@ public class MedalTallyCompetitor {
     @Attribute(required = false)
     private String medal;
 
+    @Attribute(required = false)
+    private String description;
+
     public String getFirst_name() {
         return first_name;
     }
@@ -55,5 +58,9 @@ public class MedalTallyCompetitor {
 
     public String getType() {
         return type;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
