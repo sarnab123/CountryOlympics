@@ -50,6 +50,7 @@ public class EventResultsHelper {
 
                 eventResultsViewModel.setUnit_id(olympicUnit.getId());
                 eventResultsViewModel.setUnit_name(olympicUnit.getName());
+                eventResultsViewModel.setEventID(eventResultsModel.getEvent().getId());
 
                 eventResultsViewModel.setUnit_type(SportsUtility.getInstance().getTypeofSport(disciplineName, olympicUnit.getName()));
                 if (unitResultsViewModel.getEventType() != SportsUtility.TYPE_NOT_SET && unitResultsViewModel.getEventType() != eventResultsViewModel.getUnit_type()) {

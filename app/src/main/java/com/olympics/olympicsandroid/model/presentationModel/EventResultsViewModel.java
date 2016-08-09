@@ -40,7 +40,19 @@ public class EventResultsViewModel implements IResponseModel
     // Maintain the fact whether the unit is for the country user has selected
     private boolean isSelectedCountry;
 
+
+    // miantian the event id for notfications
+    private String eventID;
+
     private String start_date;
+
+    public String getEventID() {
+        return eventID;
+    }
+
+    public void setEventID(String eventID) {
+        this.eventID = eventID;
+    }
 
     public boolean isSelectedCountry() {
         return isSelectedCountry;

@@ -319,9 +319,7 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                                         (OlympicsApplication.getAppContext(), new EventReminder
                                                 (eventResultsViewModel.getUnit_id(),
                                                         eventResultsViewModel.getUnit_name(),
-                                                        eventResultsViewModel.getStart_date(), activity.getIntent()
-                                                        .getStringExtra(UtilityMethods
-                                                                .EXTRA_EVENT_ID), activity
+                                                        eventResultsViewModel.getStart_date(), eventResultsViewModel.getEventID(), activity
                                                         .getIntent().getStringExtra
                                                                 (UtilityMethods
                                                                         .EXTRA_DESCIPLINE_NAME)));
