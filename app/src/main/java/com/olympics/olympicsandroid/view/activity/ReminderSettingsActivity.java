@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventReminder;
 import com.olympics.olympicsandroid.networkLayer.cache.database.DBReminderHelper;
+import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.LocalNotifications;
 
 import java.util.List;
@@ -91,7 +92,8 @@ public class ReminderSettingsActivity extends AppCompatActivity {
             if (eventReminder != null) {
                 holder.reminderNameView.setText(eventReminder.getDisciplineName() + "\n" +
                         eventReminder
-                        .getUnitName());
+                        .getUnitName() + "\n" + DateUtils.getUnitDateWithTime(eventReminder
+                        .getUnitStartDate()));
                 holder.reminderSwitch.setChecked(true);
                 holder.reminderSwitch.setOnCheckedChangeListener(new CompoundButton
                         .OnCheckedChangeListener() {
