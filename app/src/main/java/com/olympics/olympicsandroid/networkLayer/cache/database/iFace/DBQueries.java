@@ -41,7 +41,7 @@ public enum DBQueries {
             + DBTablesDef.C_UNIT_ID
             + " text, "
             + " PRIMARY KEY ("
-            + DBTablesDef.C_EVENT_ID
+            + DBTablesDef.C_UNIT_ID
             + "))"),
     COUNT("SELECT COUNT(1) COUNT FROM ?"),
     DROP_TABLE_UNIT_STATUS("DROP TABLE IF EXISTS " + DBTablesDef.T_UNIT_RELATION),
