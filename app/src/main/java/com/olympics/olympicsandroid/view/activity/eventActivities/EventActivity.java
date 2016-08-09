@@ -30,6 +30,7 @@ import com.olympics.olympicsandroid.networkLayer.cache.database.DBUnitStatusHelp
 import com.olympics.olympicsandroid.networkLayer.controller.EventResultsController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 import com.olympics.olympicsandroid.utility.DateUtils;
+import com.olympics.olympicsandroid.utility.LocalNotifications;
 import com.olympics.olympicsandroid.utility.SportsUtility;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
 import com.olympics.olympicsandroid.view.fragment.IScheduleListener;
@@ -65,7 +66,6 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
         eventListAdapter = new EventListAdapter(this, createItemClickListener());
 
-
         if (!TextUtils.isEmpty(getIntent().getStringExtra("event_id"))) {
             eventID = getIntent().getStringExtra("event_id");
         }
@@ -77,6 +77,9 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         }
         if (!TextUtils.isEmpty(getIntent().getStringExtra("event_unit_id"))) {
             unitID = getIntent().getStringExtra("event_unit_id");
+            //Cancel notification
+            new LocalNotifications().cancelLocalNotification(this, unitID);
+
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
