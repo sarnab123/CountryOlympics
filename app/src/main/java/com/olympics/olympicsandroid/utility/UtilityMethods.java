@@ -24,6 +24,14 @@ public class UtilityMethods
     public static final String ERROR_INTERNET = "800";
 
     public static final String EXTRA_SELECTED_COUNTRY = "SELECTED_COUNTRY";
+    public static final String EXTRA_REMINDER_DATA   = "reminder_data";
+    public static final String EXTRA_EVENT_ID   = "event_id";
+    public static final String EXTRA_UNIT_ID  = "event_unit_id";
+    public static final String EXTRA_UNIT_NAME   = "event_unit_name";
+    public static final String EXTRA_DESCIPLINE_NAME   = "discipline_name";
+    public static final String EXTRA_UNIT_START_DATE  = "event_unit_date";
+
+
     /**
      * Helper Function to Load json From Assets Folder
      */

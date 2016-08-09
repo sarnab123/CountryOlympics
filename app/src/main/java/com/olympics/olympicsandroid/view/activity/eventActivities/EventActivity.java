@@ -63,7 +63,7 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_results);
 
-        eventListAdapter = new EventListAdapter(createItemClickListener());
+        eventListAdapter = new EventListAdapter(this, createItemClickListener());
 
 
         if (!TextUtils.isEmpty(getIntent().getStringExtra("event_id"))) {
@@ -117,8 +117,6 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         return new IScheduleListener() {
             @Override
             public void handleItemClick(EventResultsViewModel itemClicked) {
-
-
 
                 Intent intent = new Intent(Intent.ACTION_INSERT)
                         .setData(CalendarContract.Events.CONTENT_URI)

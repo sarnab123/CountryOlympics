@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.android.gms.ads.AdRequest;
@@ -16,7 +17,13 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.olympics.olympicsandroid.BuildConfig;
 import com.olympics.olympicsandroid.R;
+import com.olympics.olympicsandroid.model.presentationModel.EventReminder;
+import com.olympics.olympicsandroid.networkLayer.cache.database.DBReminderHelper;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
+import com.olympics.olympicsandroid.utility.UtilityMethods;
+
+import java.io.Serializable;
+import java.util.List;
 
 public class AppInfoActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +31,7 @@ public class AppInfoActivity extends AppCompatActivity implements View.OnClickLi
     private static final String PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=";
     private static final String CONTACT_US_MAIL = "mailto:jksolympics@gmail.com";
     private static final String SHARE_CONTACT_INTENT_TYPE = "text/plain";
+    private static final String NO_REMINDER_MSG = "You do not have any reminders setup!";
 
 
     @Override
@@ -32,6 +40,7 @@ public class AppInfoActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_app_info);
 
         //Setup onclick listener
+        findViewById(R.id.reminder_settings_view).setOnClickListener(this);
         findViewById(R.id.contact_us_view).setOnClickListener(this);
         findViewById(R.id.rate_app_view).setOnClickListener(this);
         findViewById(R.id.share_app_view).setOnClickListener(this);
@@ -114,14 +123,23 @@ public class AppInfoActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         if (view != null) {
             switch (view.getId()) {
+                case R.id.reminder_settings_view:
+                    List<EventReminder> eventReminderList = new DBReminderHelper()
+                            .getReminders();
+                    if (eventReminderList != null && !eventReminderList.isEmpty()) {
+                        Intent intent = new Intent(this, ReminderSettingsActivity.class);
+                        intent.putExtra(UtilityMethods.EXTRA_REMINDER_DATA, (Serializable)eventReminderList);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(this, NO_REMINDER_MSG, Toast.LENGTH_LONG).show();
+                    }
+                    break;
                 case R.id.contact_us_view:
                     Intent intent = new Intent(Intent.ACTION_SENDTO);
                     intent.setType(SHARE_CONTACT_INTENT_TYPE);
                     intent.setData(Uri.parse(CONTACT_US_MAIL));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-
-
                     break;
                 case R.id.share_app_view:
                     Intent sendIntent = new Intent();

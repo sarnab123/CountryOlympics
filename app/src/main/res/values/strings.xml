@@ -50,4 +50,5 @@
     <string name="banner_ad_unit_id">ca-app-pub-9351787052838045/4767585817</string>
     <string name="time_settings">Do you want 24 hour time format?</string>
     <string name="id_local_timeZone">All times are in local country timezone.</string>
+    <string name="title_activity_reminder_settings">Reminder Settings</string>
 </resources>

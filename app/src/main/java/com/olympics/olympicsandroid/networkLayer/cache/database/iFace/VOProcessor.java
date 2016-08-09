@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import com.olympics.olympicsandroid.model.CompetitorVOModel;
 import com.olympics.olympicsandroid.model.UnitVOModel;
+import com.olympics.olympicsandroid.model.presentationModel.EventReminder;
 
 /**
  * Created by sarnab.poddar on 7/16/16.
@@ -56,6 +57,8 @@ public class VOProcessor {
             values = getUnitValues(vo);
         } else  if (DBTablesDef.T_COMPETITOR_RELATION.equalsIgnoreCase(tableName)) {
             values = getCompetitorValues(vo);
+        } else  if (DBTablesDef.T_REMINDER_RELATION.equalsIgnoreCase(tableName)) {
+            values = getReminderValues(vo);
         }
         return values;
     }
@@ -80,6 +83,27 @@ public class VOProcessor {
             }
             values.put(DBTablesDef.C_UNIT_STATUS, vo.getUnitStatus());
 
+        return values;
+    }
+
+    private ContentValues getReminderValues(Object ivo) {
+        ContentValues values = new ContentValues();
+        EventReminder vo = (EventReminder) ivo;
+        if (vo.getEventId() != null) {
+            values.put(DBTablesDef.C_EVENT_ID, vo.getEventId());
+        }
+        if (vo.getUnitName() != null) {
+            values.put(DBTablesDef.C_UNIT_NAME, vo.getUnitName());
+        }
+        if (vo.getUnitStartDate() != null) {
+            values.put(DBTablesDef.C_UNIT_START_DATE, vo.getUnitStartDate());
+        }
+        if (vo.getUnitId() != null) {
+            values.put(DBTablesDef.C_UNIT_ID, vo.getUnitId());
+        }
+        if (vo.getDisciplineName() != null) {
+            values.put(DBTablesDef.C_DISCIPLINE_NAME, vo.getDisciplineName());
+        }
         return values;
     }
 }

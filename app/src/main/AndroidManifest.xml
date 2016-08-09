@@ -92,6 +92,16 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
+        <service
+            android:name=".utility.ReminderService"
+            android:exported="false" />
+
+        <activity
+            android:name=".view.activity.ReminderSettingsActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_reminder_settings" >
+        </activity>
+
 
     </application>
 
