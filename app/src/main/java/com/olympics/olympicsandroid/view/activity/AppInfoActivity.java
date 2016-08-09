@@ -14,7 +14,6 @@ import android.widget.ToggleButton;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.olympics.olympicsandroid.BuildConfig;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventReminder;
@@ -44,8 +43,6 @@ public class AppInfoActivity extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.contact_us_view).setOnClickListener(this);
         findViewById(R.id.rate_app_view).setOnClickListener(this);
         findViewById(R.id.share_app_view).setOnClickListener(this);
-
-        MobileAds.initialize(getApplicationContext(), getString(R.string.banner_ad_unit_id));
 
         //Setup Action bar
         setActionBar();

@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -67,6 +68,11 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         String token = FirebaseInstanceId.getInstance().getToken();
         Log.d("OlympicsActivity", "Refreshed token: " + token);
 
+
+        MobileAds.initialize(getApplicationContext(), getString(R.string.banner_ad_unit_id));
+
+
+
         setContentView(R.layout.activity_olympics);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -93,6 +99,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         scheduleController.getCountryDetails();
 
     }
+
+
 
     /**
      * This method displays country information in navigation drawer
@@ -228,6 +236,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             MedalTallyController medalTallyController = new MedalTallyController(new
                     WeakReference<IUIListener>(this), getApplication());
             medalTallyController.getMedalTallyData();
+
 
         } else if (responseModel instanceof MedalTally) {
             //Display Medal info

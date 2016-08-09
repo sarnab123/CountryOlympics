@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,8 +16,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:id="@+id/empty_schedule"
@@ -27,21 +27,31 @@
 
         <ImageView
             android:id="@+id/no_events_icon"
-            android:background="@drawable/no_events_icon"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/no_events_icon" />
+
         <TextView
             android:id="@+id/no_events_text"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:layout_below="@id/no_events_icon"
-              android:textColor="@android:color/darker_gray"
-              android:textSize="20sp"
-              android:gravity="center_horizontal"
-              android:text="@string/no_events_for_country"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/no_events_icon"
+            android:gravity="center_horizontal"
+            android:text="@string/no_events_for_country"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="20sp" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/main_ad_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
 </RelativeLayout>

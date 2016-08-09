@@ -10,9 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.olympics.olympicsandroid.BuildConfig;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 
 import java.util.ArrayList;
@@ -27,6 +31,8 @@ public class EventListFragment extends Fragment
     private static final String DISPLAY_DATA = "display_data";
     private DateSportsModel mDateSportsModel;
     private static Activity activity = null;
+
+    private AdView mAdView;
 
     public EventListFragment() {
     }
@@ -63,7 +69,28 @@ public class EventListFragment extends Fragment
             recyclerview.setAdapter(new ExpandableListAdapter(getData(), createItemClickListener()));
         }
 
+        mAdView = (AdView) rootView.findViewById(R.id.main_ad_view);
+
+        setupAds();
+
       return rootView;
+    }
+
+
+    private void setupAds() {
+        if (OlympicsPrefs.getInstance(null).getIsAdEnabled())
+        {
+            AdRequest adRequest = null;
+            if(BuildConfig.DEBUG) {
+                adRequest = new AdRequest.Builder().addTestDevice("D800AADBD8B5AC6C27736D495B83EB21").build();
+            }
+            else{
+                adRequest = new AdRequest.Builder().build();
+            }
+            if(mAdView != null) {
+                mAdView.loadAd(adRequest);
+            }
+        }
     }
 
     private IItemClickListener createItemClickListener() {
