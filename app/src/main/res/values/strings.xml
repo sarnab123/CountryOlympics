@@ -51,4 +51,6 @@
     <string name="time_settings">Do you want 24 hour time format?</string>
     <string name="id_local_timeZone">All times are in local country timezone.</string>
     <string name="title_activity_reminder_settings">Reminder Settings</string>
+    <string name="id_reminder_time_msg">Reminder will be triggered 5 minutes before the event
+        .</string>
 </resources>

@@ -20,6 +20,7 @@ public class LocalNotifications {
     private static final String ERROR_MSG = "\"Sorry! We are not able to set reminder for this " +
             "event at this time. Please try again later";
     private static final String REMINDER_SET_MSG = "Reminder for selected event has been set!";
+    private static final long MILISECONDS_IN_FIVE_MINUTES = 300000;
 
     public void createLocalNotification(Context context, EventReminder eventReminder) {
         try {
@@ -60,7 +61,7 @@ public class LocalNotifications {
     private long getReminderInterval(long eventStartDate) {
         return (System.currentTimeMillis() + (eventStartDate - Calendar.getInstance()
                 .getTime()
-                .getTime()));
+                .getTime() - MILISECONDS_IN_FIVE_MINUTES));
     }
 
     public void cancelLocalNotification(Context context, String unitId) {
@@ -70,6 +71,10 @@ public class LocalNotifications {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
         pendingIntent.cancel();
+
+        //Delete database entry
+        new DBReminderHelper().deleteReminder(unitId);
+
     }
 }
 

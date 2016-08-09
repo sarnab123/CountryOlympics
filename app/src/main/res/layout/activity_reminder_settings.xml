@@ -1,7 +1,23 @@
-<android.support.v7.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/athlete_recyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:scrollbars="horizontal" />
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+    <TextView
+        android:id="@+id/id_reminder_time_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/id_reminder_time_msg"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/athlete_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/id_reminder_time_msg"
+        android:background="#FFFFFF"
+        android:scrollbars="horizontal"/>
+</RelativeLayout>

@@ -89,7 +89,7 @@ public class ReminderSettingsActivity extends AppCompatActivity {
         {
             final EventReminder eventReminder = eventReminderList.get(position);
             if (eventReminder != null) {
-                holder.reminderNameView.setText(eventReminder.getDisciplineName() + " " +
+                holder.reminderNameView.setText(eventReminder.getDisciplineName() + "\n" +
                         eventReminder
                         .getUnitName());
                 holder.reminderSwitch.setChecked(true);
@@ -98,14 +98,10 @@ public class ReminderSettingsActivity extends AppCompatActivity {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                         if (!isChecked) {
-                            //Delete database entry
-                            new DBReminderHelper().deleteReminder(eventReminder.getUnitId());
                             //Cancel reminder
                             new LocalNotifications().cancelLocalNotification(ReminderSettingsActivity
                                     .this, eventReminder.getUnitId());
                         } else {
-                            //Add database entry
-                            new DBReminderHelper().insertReminder(eventReminder);
                             //create reminder
                             new LocalNotifications().createLocalNotification(ReminderSettingsActivity
                                     .this, eventReminder);
