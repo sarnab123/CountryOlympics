@@ -197,6 +197,27 @@ public class DateUtils {
         return calendar.getTime().getTime();
     }
 
+    public static Long getEventStartDate(String dateStr) {
+
+        try {
+            if (TextUtils.isEmpty(dateStr)) {
+                return 0L;
+            } else {
+                Date date = null;
+                try {
+                    date = new SimpleDateFormat(DATE_TIME_WITH_TIMEZONE_FORMAT).parse(dateStr);
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(date);
+                    return calendar.getTime().getTime();
+                } catch (ParseException e) {
+                    return 0L;
+                }
+            }
+        } catch (Exception ex) {
+            return 0L;
+        }
+    }
+
 }
 
 

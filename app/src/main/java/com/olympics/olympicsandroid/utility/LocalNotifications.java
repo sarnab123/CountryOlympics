@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.olympics.olympicsandroid.model.presentationModel.EventReminder;
 import com.olympics.olympicsandroid.networkLayer.cache.database.DBReminderHelper;
 
+import java.util.Calendar;
+
 /**
  * Created by Jui Joshi on 8/8/16.
  */
@@ -17,6 +19,7 @@ public class LocalNotifications {
 
     private static final String ERROR_MSG = "\"Sorry! We are not able to set reminder for this " +
             "event at this time. Please try again later";
+    private static final String REMINDER_SET_MSG = "Reminder for selected event has been set!";
 
     public void createLocalNotification(Context context, EventReminder eventReminder) {
         try {
@@ -37,13 +40,14 @@ public class LocalNotifications {
                     PendingIntent alarmIntent = PendingIntent.getService(context, eventReminder
                             .getUnitId()
                         .hashCode(), intent, 0);
-                alarmMgr.set(AlarmManager.RTC_WAKEUP, Long.parseLong(DateUtils
-                                .getDateTimeInMillis(eventReminder.getUnitStartDate())),
+                alarmMgr.set(AlarmManager.RTC_WAKEUP,getReminderInterval(DateUtils
+                                .getEventStartDate(eventReminder.getUnitStartDate())),
                         alarmIntent);
                 new DBReminderHelper().insertReminder(new EventReminder(eventReminder
                         .getEventId(), eventReminder.getUnitName(), eventReminder
                         .getUnitStartDate(), eventReminder.getUnitId(), eventReminder
                         .getDisciplineName()));
+                    Toast.makeText(context, REMINDER_SET_MSG, Toast.LENGTH_LONG).show();
             } else {
                     Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                 }
@@ -51,6 +55,12 @@ public class LocalNotifications {
         } catch (Exception ex) {
             Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
         }
+    }
+
+    private long getReminderInterval(long eventStartDate) {
+        return (System.currentTimeMillis() + (eventStartDate - Calendar.getInstance()
+                .getTime()
+                .getTime()));
     }
 
     public void cancelLocalNotification(Context context, String unitId) {
