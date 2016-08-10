@@ -30,6 +30,7 @@ public class OlympicsPrefs
     private final String PREF_APP_ADS = "PREF_APP_ADS";
 
     private final String PREF_UNIT_24HR = "PREF_UNIT_24HR";
+    private final String PREF_TIP_SHOWN = "PREF_TIP_SHOWN";
 
 
     private static OlympicsPrefs instance;
@@ -187,5 +188,16 @@ public class OlympicsPrefs
 
     public boolean getIsUnit24Hour() {
         return getDefaultSharePreference().getBoolean(PREF_UNIT_24HR, false);
+    }
+
+    public boolean isTipShown() {
+        return getDefaultSharePreference().getBoolean(PREF_TIP_SHOWN, false);
+    }
+
+    public void setIsTipShown(boolean isTipShown) {
+
+        SharedPreferences.Editor editor = getDefaultSharePreference().edit();
+        editor.putBoolean(PREF_TIP_SHOWN, isTipShown);
+        editor.apply();
     }
 }

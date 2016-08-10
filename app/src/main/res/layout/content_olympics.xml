@@ -13,8 +13,26 @@
     tools:context=".view.activity.OlympicsActivity"
     tools:showIn="@layout/app_bar_olympics">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_ad"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/main_ad_view"
+            android:layout_width="320dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"
+            android:layout_marginBottom="3dp"/>
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
+        android:layout_above="@id/ll_ad"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -46,12 +64,5 @@
 
     </RelativeLayout>
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/main_ad_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id" />
+
 </RelativeLayout>

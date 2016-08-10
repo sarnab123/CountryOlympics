@@ -33,6 +33,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4b72197-6cb6-4e74-aab1-ba18ddb2c849" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/res/drawable/alarm_settings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/custom_dialog.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/res/values-it/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/res/values-pl/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
@@ -41,12 +45,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventListAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/EventResultsHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/EventResultsHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/EventResultsViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/EventResultsViewModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/LocalNotifications.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/LocalNotifications.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/OlympicsPrefs.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/OlympicsPrefs.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/SportsUtilityModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/SportsUtilityModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/VolleySingleton.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/VolleySingleton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/res/layout/content_olympics.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/content_olympics.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/res/layout/event_cardview_team_head.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/event_cardview_team_head.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/findbugs-idea.xml" afterPath="$PROJECT_DIR$/.idea/findbugs-idea.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/src/main/res/values/styles.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="app.iws" />
@@ -75,71 +83,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EventResultsHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/EventResultsHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="170" column="64" selection-start-line="170" selection-start-column="64" selection-end-line="170" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventResultsViewModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/EventResultsViewModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SportsUtility.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="366" column="83" selection-start-line="366" selection-start-column="83" selection-end-line="366" selection-end-column="83" />
-              <folding>
-                <element signature="e#3392#3809#0" expanded="true" />
-                <element signature="e#3808#3809#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SportsUtilityModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/SportsUtilityModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding>
-                <element signature="e#864#865#0" expanded="true" />
-                <element signature="e#1221#1222#0" expanded="true" />
-                <element signature="e#1270#1271#0" expanded="true" />
-                <element signature="method#getType#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
-                <element signature="class#SubDiscipline#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
-                <element signature="class#PointType#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventListAdapter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74875623">
-              <caret line="260" column="49" selection-start-line="260" selection-start-column="49" selection-end-line="260" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EventActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="268" column="167" selection-start-line="268" selection-start-column="167" selection-end-line="268" selection-end-column="167" />
+              <caret line="148" column="111" selection-start-line="144" selection-start-column="16" selection-end-line="148" selection-end-column="111" />
+              <folding>
+                <element signature="e#8620#8652#0" expanded="true" />
+                <element signature="e#8926#9196#0" expanded="true" />
+                <element signature="e#9195#9196#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventListAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventListAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="329" column="72" selection-start-line="329" selection-start-column="72" selection-end-line="329" selection-end-column="72" />
+              <folding>
+                <element signature="e#17089#18061#0" expanded="true" />
+                <element signature="e#18060#18061#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocalNotifications.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/LocalNotifications.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom_dialog.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/custom_dialog.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.310345">
+              <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.259012">
+              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -151,12 +149,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="layoutResourceFile_vertical" />
         <option value="layoutResourceFile" />
         <option value="Singleton" />
         <option value="Interface" />
         <option value="resourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
         <option value="valueResourceFile" />
       </list>
     </option>
@@ -2116,15 +2114,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/controller/MedalTallyController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/OlympicsSplashScreen.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/event_details_header.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/OlympicRequestQueries.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/DBCompetitorRelationHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/iFace/DBOperationsHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/push/OlympicsInstanceIDService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/iFace/DBQueries.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/CountrySelectionActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/menu/athlete_selection.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/athlete_list_row.xml" />
@@ -2141,7 +2134,6 @@
         <option value="$PROJECT_DIR$/../build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/AppVersionData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/OlympicsLifeCyclecallbacks.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/OlympicsPrefs.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/DateUtils.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/list_event_details.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/fragment/ExpandableListAdapter.java" />
@@ -2150,14 +2142,12 @@
         <option value="$PROJECT_DIR$/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values-xxxhdpi/dimens.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values-hdpi/dimens.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_olympics.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/OlympicsActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_app_info.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/app_bar_olympics.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/content_olympics.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/AppInfoActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/fragment/EventListFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/iFace/DBHelper.java" />
@@ -2165,8 +2155,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/EventResultsViewModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventListAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/EventResultsHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/event_cardview_team_head.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/content_olympics.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/VolleySingleton.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java" />
+        <option value="$PROJECT_DIR$/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/OlympicsPrefs.java" />
+        <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/custom_dialog.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/LocalNotifications.java" />
       </list>
     </option>
   </component>
@@ -2181,10 +2179,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1528" />
-    <option name="y" value="33" />
     <option name="width" value="1440" />
-    <option name="height" value="828" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -2335,7 +2331,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values-xxxhdpi" />
+              <option name="myItemId" value="values-pl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2365,37 +2361,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values-w820dp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CountryOlympics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values-hdpi" />
+              <option name="myItemId" value="values-it" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2429,6 +2395,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CountryOlympics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -2453,10 +2449,10 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_6_API_22" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="DEBUGGABLE_DEVICE" value="samsung-samsung_sm_g730a-34c662f7" />
+    <property name="DEBUGGABLE_DEVICE" value="genymotion-google_nexus_5___5_0_0___api_21___1080x1920-192.168.57.101:5555" />
     <property name="DEBUGGABLE_PROCESS" value="com.olympics.olympicsandroid" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="ExportApk.ApkPath" value="$PROJECT_DIR$" />
@@ -2672,20 +2668,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1528" y="33" width="1440" height="828" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3943662" sideWeight="0.8333333" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3943662" sideWeight="0.16666667" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3946252" sideWeight="0.8204578" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33097595" sideWeight="0.28898427" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32386363" sideWeight="0.5114449" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816902" sideWeight="0.49427754" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31545064" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3112676" sideWeight="0.7010014" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2653791" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31117398" sideWeight="0.7010014" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2694,11 +2690,11 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32112676" sideWeight="0.4828326" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33239436" sideWeight="0.7195994" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33097595" sideWeight="0.71101576" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31549296" sideWeight="0.46852645" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3145275" sideWeight="0.46566522" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2711,17 +2707,17 @@
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3943662" sideWeight="0.7260372" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.395218" sideWeight="0.2739628" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3946252" sideWeight="0.8204578" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33097595" sideWeight="0.28898427" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32386363" sideWeight="0.5114449" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816902" sideWeight="0.49427754" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31545064" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31545064" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3112676" sideWeight="0.65522176" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31117398" sideWeight="0.7010014" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2730,13 +2726,13 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32719547" sideWeight="0.4914163" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32112676" sideWeight="0.48569384" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32112676" sideWeight="0.4828326" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23066103" sideWeight="0.49427754" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33097595" sideWeight="0.71101576" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31549296" sideWeight="0.46852645" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3145275" sideWeight="0.46566522" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2889,184 +2885,122 @@
           <properties />
           <option name="timeStamp" value="261" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/CountryEventsHelper.java</url>
           <line>190</line>
           <properties />
           <option name="timeStamp" value="276" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventListAdapter.java</url>
           <line>114</line>
           <properties />
           <option name="timeStamp" value="278" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/DBCompetitorRelationHelper.java</url>
           <line>70</line>
           <properties />
           <option name="timeStamp" value="295" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/CountryEventsHelper.java</url>
           <line>77</line>
           <properties />
           <option name="timeStamp" value="297" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/DateUtils.java</url>
           <line>130</line>
           <properties />
           <option name="timeStamp" value="299" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/DateUtils.java</url>
           <line>189</line>
           <properties />
           <option name="timeStamp" value="300" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/AthleteActivity.java</url>
           <line>157</line>
           <properties />
           <option name="timeStamp" value="305" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/CountrySelectionActivity.java</url>
           <line>170</line>
           <properties />
           <option name="timeStamp" value="307" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/AthleteActivity.java</url>
           <line>164</line>
           <properties />
           <option name="timeStamp" value="311" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/AthleteActivity.java</url>
           <line>236</line>
           <properties />
           <option name="timeStamp" value="312" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/EventResultsViewModel.java</url>
           <line>76</line>
           <properties />
           <option name="timeStamp" value="317" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventListAdapter.java</url>
           <line>259</line>
           <properties />
           <option name="timeStamp" value="331" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java</url>
           <line>341</line>
           <properties />
           <option name="timeStamp" value="332" />
         </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java</url>
+          <line>148</line>
+          <properties />
+          <option name="timeStamp" value="334" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/EventResultsHelper.java</url>
+          <line>152</line>
+          <properties />
+          <option name="timeStamp" value="337" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java</url>
+          <line>310</line>
+          <properties />
+          <option name="timeStamp" value="338" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java</url>
+          <line>333</line>
+          <properties />
+          <option name="timeStamp" value="339" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$USER_HOME$/Downloads/adt-bundle-mac-x86_64-20140702/sdk/sources/android-23/android/view/View.java</url>
+          <line>21339</line>
+          <option name="timeStamp" value="341" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="333" />
+      <option name="time" value="342" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26119402">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/OlympicsSplashScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2562189">
-          <caret line="145" column="86" selection-start-line="145" selection-start-column="25" selection-end-line="145" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/google-services.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/OlympicsPrefs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
-          <folding>
-            <element signature="e#1468#1469#0" expanded="false" />
-            <element signature="e#1509#1510#0" expanded="false" />
-            <element signature="e#3381#3382#0" expanded="false" />
-            <element signature="e#3461#3462#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/DateUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="90" selection-start-line="169" selection-start-column="90" selection-end-line="169" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/CountryEventsHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="217" column="199" selection-start-line="217" selection-start-column="89" selection-end-line="217" selection-end-column="199" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/list_event_details.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6541555">
-          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/fragment/ExpandableListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="149" column="68" selection-start-line="149" selection-start-column="68" selection-end-line="149" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/adt-bundle-mac-x86_64-20140702/sdk/sources/android-23/java/util/HashSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25870648">
-          <caret line="91" column="7" selection-start-line="91" selection-start-column="7" selection-end-line="91" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/9.2.1/jars/classes.jar!/com/google/android/gms/ads/internal/client/zzad.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39733332">
-          <caret line="196" column="25" selection-start-line="196" selection-start-column="25" selection-end-line="196" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/9.2.1/jars/classes.jar!/com/google/android/gms/ads/AdRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16">
-          <caret line="114" column="25" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/generated/source/buildConfig/debug/com/olympics/olympicsandroid/BuildConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32">
@@ -3121,14 +3055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7085562">
-          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3169,14 +3095,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/LocalNotifications.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/fragment/DateEventAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3199,31 +3117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_olympics.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44235924">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/app_bar_olympics.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.769437">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#851#891#0" expanded="true" />
-            <element signature="e#1769#1809#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_app_info.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -3240,25 +3133,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_olympics.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8847185">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-          <folding>
-            <element signature="e#384#417#0" expanded="true" />
-            <element signature="e#442#477#0" expanded="true" />
-            <element signature="e#503#538#0" expanded="true" />
-            <element signature="e#562#595#0" expanded="true" />
-            <element signature="e#620#660#0" expanded="true" />
-            <element signature="e#1818#1849#0" expanded="true" />
-            <element signature="e#2283#2310#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/AppInfoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3266,14 +3140,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/fragment/EventListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3347,78 +3213,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/SportsUtilityModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#1221#1222#0" expanded="true" />
-            <element signature="e#1270#1271#0" expanded="true" />
-            <element signature="method#getType#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
-            <element signature="class#SubDiscipline#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
-            <element signature="class#PointType#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/EventResultsViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/EventResultsHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="170" column="64" selection-start-line="170" selection-start-column="64" selection-end-line="170" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/adt-bundle-mac-x86_64-20140702/sdk/sources/android-23/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39910313">
           <caret line="1385" column="36" selection-start-line="1385" selection-start-column="36" selection-end-line="1385" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="366" column="83" selection-start-line="366" selection-start-column="83" selection-end-line="366" selection-end-column="83" />
-          <folding>
-            <element signature="e#3392#3809#0" expanded="true" />
-            <element signature="e#3808#3809#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/event_cardview_team_head.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2413793">
-          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-          <folding>
-            <element signature="e#1828#1858#0" expanded="true" />
-            <element signature="e#2255#2274#0" expanded="true" />
-            <element signature="e#2673#2694#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/event_results_list.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6541555">
-          <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -3434,18 +3232,249 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/event_cardview_team_head.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.275862">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/app_bar_olympics.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.206897">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/fragment/EventListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="60" selection-start-line="55" selection-start-column="60" selection-end-line="55" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/event_results_list.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.896552">
+          <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_olympics.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.4827585">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_olympics.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49326146">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+          <folding>
+            <element signature="e#384#417#0" expanded="true" />
+            <element signature="e#442#477#0" expanded="true" />
+            <element signature="e#503#538#0" expanded="true" />
+            <element signature="e#562#595#0" expanded="true" />
+            <element signature="e#620#660#0" expanded="true" />
+            <element signature="e#1316#1343#0" expanded="true" />
+            <element signature="e#2513#2544#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/VolleySingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19587629">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <element signature="e#1734#1735#0" expanded="false" />
+            <element signature="e#1770#1771#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/SportsUtilityModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60235643">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="method#getType#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
+            <element signature="class#SubDiscipline#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
+            <element signature="class#PointType#0;class#SportRelation#0;class#SportsUtilityModel#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/EventResultsViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2179676">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="e#1562#1563#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/model/presentationModel/helper/EventResultsHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2179676">
+          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24005891">
+          <caret line="311" column="0" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values-v21/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6779141">
+          <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/alarm_settings.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/OlympicsPrefs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8232695">
+          <caret line="191" column="4" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="4" />
+          <folding>
+            <element signature="e#1528#1529#0" expanded="true" />
+            <element signature="e#1569#1570#0" expanded="true" />
+            <element signature="e#3441#3442#0" expanded="true" />
+            <element signature="e#3521#3522#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/OlympicsPrefs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="186" column="5" selection-start-line="186" selection-start-column="5" selection-end-line="186" selection-end-column="5" />
+          <folding>
+            <element signature="e#1528#1529#0" expanded="true" />
+            <element signature="e#1569#1570#0" expanded="true" />
+            <element signature="e#3441#3442#0" expanded="true" />
+            <element signature="e#3521#3522#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/adt-bundle-mac-x86_64-20140702/sdk/sources/android-23/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52">
+          <caret line="21339" column="0" selection-start-line="21339" selection-start-column="0" selection-end-line="21339" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="268" column="167" selection-start-line="268" selection-start-column="167" selection-end-line="268" selection-end-column="167" />
+          <caret line="148" column="111" selection-start-line="144" selection-start-column="16" selection-end-line="148" selection-end-column="111" />
+          <folding>
+            <element signature="e#8620#8652#0" expanded="true" />
+            <element signature="e#8926#9196#0" expanded="true" />
+            <element signature="e#9195#9196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/LocalNotifications.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/view/activity/eventActivities/EventListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74875623">
-          <caret line="260" column="49" selection-start-line="260" selection-start-column="49" selection-end-line="260" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="329" column="72" selection-start-line="329" selection-start-column="72" selection-end-line="329" selection-end-column="72" />
+          <folding>
+            <element signature="e#17089#18061#0" expanded="true" />
+            <element signature="e#18060#18061#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/custom_dialog.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.310345">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values-it/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values-pl/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="android-dummy:///Users/global/Desktop/Files From c.localized/ToolsDocs/AndroidProjects/CountryOlympics/app/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.259012">
+          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
           <folding />
         </state>
       </provider>

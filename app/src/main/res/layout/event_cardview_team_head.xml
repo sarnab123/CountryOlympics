@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:visibility="gone"
             android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
             android:textColor="@android:color/holo_red_light"
             android:background="@android:color/white" />
 

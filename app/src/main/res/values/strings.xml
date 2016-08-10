@@ -53,4 +53,6 @@
     <string name="title_activity_reminder_settings">Reminder Settings</string>
     <string name="id_reminder_time_msg">Reminder will be triggered 5 minutes before the event
         .</string>
+    <string name="id_reminder_tip">You can click on schedule icon on the unit title, to set reminder for the event.</string>
+    <string name="id_tip_title">Reminder Tip</string>
 </resources>

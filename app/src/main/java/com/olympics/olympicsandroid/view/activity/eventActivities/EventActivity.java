@@ -1,5 +1,6 @@
 package com.olympics.olympicsandroid.view.activity.eventActivities;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewMode
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
 import com.olympics.olympicsandroid.model.presentationModel.UnitResultsViewModel;
 import com.olympics.olympicsandroid.networkLayer.cache.database.DBUnitStatusHelper;
+import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.controller.EventResultsController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 import com.olympics.olympicsandroid.utility.DateUtils;
@@ -199,6 +202,25 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
                 Toast.makeText(this, getString(R.string.olympics_not_start), Toast.LENGTH_LONG).show();
             }
             mNoItemsView.setVisibility(View.GONE);
+
+            if(!OlympicsPrefs.getInstance(null).isTipShown())
+            {
+                final Dialog tipDialog= new Dialog(this,R.style.PauseDialog);
+                tipDialog.setTitle(getString(R.string.id_tip_title));
+                tipDialog.setContentView(R.layout.custom_dialog);
+                Button dialogButton = (Button) tipDialog.findViewById(R.id.dialogButtonOK);
+                // if button is clicked, close the custom dialog
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        OlympicsPrefs.getInstance(null).setIsTipShown(true);
+                        tipDialog.dismiss();
+                    }
+                });
+
+                tipDialog.show();
+
+            }
         }
 
         eventListAdapter.updateData(results);

@@ -4,9 +4,12 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.model.presentationModel.EventReminder;
 import com.olympics.olympicsandroid.networkLayer.cache.database.DBReminderHelper;
 
@@ -24,6 +27,12 @@ public class LocalNotifications {
 
     public void createLocalNotification(Context context, EventReminder eventReminder) {
         try {
+
+            Bundle params = new Bundle();
+            params.putString("user_reminder", "true");
+            FirebaseAnalytics.getInstance(OlympicsApplication.getAppContext()).logEvent("reminder", params);
+
+
             if (eventReminder != null) {
                 AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 

@@ -59,9 +59,9 @@ public class SportsUtility {
     private SportsUtility() {
 
         // Set Request Policy
+
+        VolleySingleton.getInstance(null).getmRequestQueue().getCache().clear();
         RequestPolicy requestPolicy = new RequestPolicy();
-//        requestPolicy.setForceCache(true);
-//        requestPolicy.setMaxAge(60 * 60 * 24);
 
         CustomJSONRequest<SportsUtilityModel> sportsTypeRequest = new
                 CustomJSONRequest<SportsUtilityModel>(OlympicRequestQueries.SPORTS_TYPE,
@@ -358,10 +358,10 @@ public class SportsUtility {
                     {
                         for(int i = 0; i< firstScores.length ; i++)
                         {
-                            tempNotes.append(firstScores[i]);
+                            tempNotes.append(" "+firstScores[i]);
                             tempNotes.append(NOTES_COMPETITOR__DIVIDER);
                             tempNotes.append(secondScores[i]);
-                            tempNotes.append(",");
+                            tempNotes.append(" ,");
                         }
 
                         tempNotes = tempNotes.deleteCharAt(tempNotes.length() - 1);

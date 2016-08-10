@@ -62,6 +62,10 @@ public class VolleySingleton
         return mRequestQueue;
     }
 
+    public RequestQueue getmRequestQueue() {
+        return mRequestQueue;
+    }
+
     public synchronized  <T> void addToRequestQueue(Request<T> req) {
         generateRequestQueue().add(req);
     }
