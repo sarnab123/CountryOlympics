@@ -38,7 +38,7 @@ public class LocalNotifications {
 
                 Intent intent = new Intent(context, ReminderService.class);
                 if (!TextUtils.isEmpty(eventReminder.getEventId()) &&
-                        !TextUtils.isEmpty(eventReminder.getEventId())) {
+                        !TextUtils.isEmpty(eventReminder.getUnitId())) {
                     intent.putExtra(UtilityMethods.EXTRA_EVENT_ID, eventReminder.getEventId());
                     intent.putExtra(UtilityMethods.EXTRA_UNIT_NAME, eventReminder.getUnitName());
                     intent.putExtra(UtilityMethods.EXTRA_DESCIPLINE_NAME, eventReminder
@@ -48,8 +48,8 @@ public class LocalNotifications {
                             .getUnitStartDate());
 
                     PendingIntent alarmIntent = PendingIntent.getService(context, eventReminder
-                            .getUnitId()
-                        .hashCode(), intent, 0);
+                            .getUnitId().hashCode(), intent, 0);
+
                 alarmMgr.set(AlarmManager.RTC_WAKEUP,getReminderInterval(DateUtils
                                 .getEventStartDate(eventReminder.getUnitStartDate())),
                         alarmIntent);
