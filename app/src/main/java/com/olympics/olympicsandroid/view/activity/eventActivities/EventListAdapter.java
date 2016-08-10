@@ -317,9 +317,10 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                             public void onClick(View v) {
                                 new LocalNotifications().createLocalNotification
                                         (OlympicsApplication.getAppContext(), new EventReminder
-                                                (eventResultsViewModel.getUnit_id(),
+                                                (eventResultsViewModel.getEventID(),
                                                         eventResultsViewModel.getUnit_name(),
-                                                        eventResultsViewModel.getStart_date(), eventResultsViewModel.getEventID(), activity
+                                                        eventResultsViewModel.getStart_date(),
+                                                        eventResultsViewModel.getUnit_id(), activity
                                                         .getIntent().getStringExtra
                                                                 (UtilityMethods
                                                                         .EXTRA_DESCIPLINE_NAME)));

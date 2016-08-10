@@ -38,7 +38,8 @@ public class ReminderService extends IntentService {
         notificationIntent.putExtra(UtilityMethods.EXTRA_UNIT_ID,intentExtras.getString
                 (UtilityMethods.EXTRA_UNIT_ID));
         notificationIntent.putExtra(UtilityMethods.EXTRA_UNIT_START_DATE,intentExtras.getString(UtilityMethods.EXTRA_UNIT_START_DATE));
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, intentExtras.getString
+                (UtilityMethods.EXTRA_UNIT_ID).hashCode(), notificationIntent, 0);
 
         if (intentExtras != null) {
             StringBuffer notificationTxt = new StringBuffer(intentExtras.getString(UtilityMethods
