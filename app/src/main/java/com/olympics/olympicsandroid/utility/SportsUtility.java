@@ -60,14 +60,20 @@ public class SportsUtility {
 
         // Set Request Policy
 
-        VolleySingleton.getInstance(null).getmRequestQueue().getCache().clear();
-        RequestPolicy requestPolicy = new RequestPolicy();
+        try {
+            VolleySingleton.getInstance(null).getmRequestQueue().getCache().clear();
+        }
+        catch (Exception ex)
+        {
 
-        CustomJSONRequest<SportsUtilityModel> sportsTypeRequest = new
-                CustomJSONRequest<SportsUtilityModel>(OlympicRequestQueries.SPORTS_TYPE,
-                SportsUtilityModel.class, null, createSportsTypeSuccessListener(),
-                createSportsTypeFailureListener(), requestPolicy);
-        VolleySingleton.getInstance(null).addToRequestQueue(sportsTypeRequest);
+        }
+            RequestPolicy requestPolicy = new RequestPolicy();
+
+            CustomJSONRequest<SportsUtilityModel> sportsTypeRequest = new
+                    CustomJSONRequest<SportsUtilityModel>(OlympicRequestQueries.SPORTS_TYPE,
+                    SportsUtilityModel.class, null, createSportsTypeSuccessListener(),
+                    createSportsTypeFailureListener(), requestPolicy);
+            VolleySingleton.getInstance(null).addToRequestQueue(sportsTypeRequest);
 
     }
 

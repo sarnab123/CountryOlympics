@@ -54,14 +54,19 @@ public final class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db,
                           int oldVersion,
                           int newVersion) {
-        deleteTablesInUpgrade(db);
+        deleteTablesInUpgrade(oldVersion,db);
         onCreate(db);
     }
 
-    private void deleteTablesInUpgrade(SQLiteDatabase db) {
-        db.execSQL(DBQueries.DROP_TABLE_UNIT_STATUS.getQuery());
-        db.execSQL(DBQueries.DROP_TABLE_COMPETITOR_LIST.getQuery());
-        db.execSQL(DBQueries.DROP_TABLE_REMINDER_LIST.getQuery());
+    private void deleteTablesInUpgrade(int oldVersion,SQLiteDatabase db) {
+        if(oldVersion <= 3) {
+            if(oldVersion < 3) {
+                db.execSQL(DBQueries.DROP_TABLE_UNIT_STATUS.getQuery());
+                db.execSQL(DBQueries.DROP_TABLE_COMPETITOR_LIST.getQuery());
+            }
+            db.execSQL(DBQueries.DROP_TABLE_REMINDER_LIST.getQuery());
+        }
+
     }
 
 }

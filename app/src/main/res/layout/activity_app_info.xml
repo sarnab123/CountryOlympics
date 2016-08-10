@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:clickable="true"
-            android:drawableLeft="@drawable/schedule_small"
+            android:drawableLeft="@drawable/alarm_settings"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
