@@ -44,7 +44,18 @@ public class EventResultsViewModel implements IResponseModel
     // miantian the event id for notfications
     private String eventID;
 
+    // this is to check whether we need to show extended result
+    private boolean isDetailsSport;
+
     private String start_date;
+
+    public boolean isDetailsSport() {
+        return isDetailsSport;
+    }
+
+    public void setIsDetailsSport(boolean isDetailsSport) {
+        this.isDetailsSport = isDetailsSport;
+    }
 
     public String getEventID() {
         return eventID;
@@ -259,12 +270,22 @@ public class EventResultsViewModel implements IResponseModel
 
         private String opp_rank;
 
+        private String notes;
+
         // win/loss/draw
         private String opp_outcome;
 
         // if status = closed , then the result from competitor.
         // else if status = in progress, then the result from score object.
         private String opp_result;
+
+        public String getNotes() {
+            return notes;
+        }
+
+        public void setNotes(String notes) {
+            this.notes = notes;
+        }
 
         public String getUnitID() {
             return unitID;

@@ -8,6 +8,7 @@ import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.EventResultCompetitor;
 import com.olympics.olympicsandroid.model.ExtendedResult;
+import com.olympics.olympicsandroid.model.ScoreModel;
 import com.olympics.olympicsandroid.model.SportsUtilityModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
@@ -21,7 +22,7 @@ import com.olympics.olympicsandroid.networkLayer.parse.ParseTask;
 /**
  * Created by sarnab.poddar on 7/14/16.
  */
-public class SportsUtility   {
+public class SportsUtility {
 
     public static final int TYPE_NOT_SET = 0;
     public static final int TYPE_INDIVUDUAL = 1;
@@ -42,6 +43,9 @@ public class SportsUtility   {
 
     private static SportsUtility instance;
 
+    private static String NOTES_COMPETITOR__DIVIDER = ":";
+    private static String NOTES_DIVIDER = ";";
+
     private SportsUtilityModel sportsUtilityModel;
 
     public static SportsUtility getInstance() {
@@ -56,8 +60,8 @@ public class SportsUtility   {
 
         // Set Request Policy
         RequestPolicy requestPolicy = new RequestPolicy();
-        requestPolicy.setForceCache(true);
-        requestPolicy.setMaxAge(60 * 60 * 24);
+//        requestPolicy.setForceCache(true);
+//        requestPolicy.setMaxAge(60 * 60 * 24);
 
         CustomJSONRequest<SportsUtilityModel> sportsTypeRequest = new
                 CustomJSONRequest<SportsUtilityModel>(OlympicRequestQueries.SPORTS_TYPE,
@@ -83,10 +87,9 @@ public class SportsUtility   {
         return new Response.Listener<SportsUtilityModel>() {
             @Override
             public void onResponse(SportsUtilityModel responseModel) {
-                if(responseModel != null && responseModel instanceof SportsUtilityModel) {
+                if (responseModel != null && responseModel instanceof SportsUtilityModel) {
                     sportsUtilityModel = (SportsUtilityModel) responseModel;
-                }
-                else{
+                } else {
                     getStaticSportsData();
                 }
             }
@@ -103,6 +106,7 @@ public class SportsUtility   {
                     public void onParseSuccess(Object responseModel) {
                         sportsUtilityModel = (SportsUtilityModel) responseModel;
                     }
+
                     @Override
                     public void onParseFailure(ErrorModel errorModel) {
                     }
@@ -139,6 +143,26 @@ public class SportsUtility   {
         }
 
         return TYPE_INDIVUDUAL;
+    }
+
+    public boolean getIsDetailedSport(String discipline, String unitName) {
+        if (!TextUtils.isEmpty(unitName)) {
+            unitName = unitName.toLowerCase();
+        }
+        if (!TextUtils.isEmpty(discipline)) {
+            discipline = discipline.toLowerCase();
+        } else {
+            return false;
+        }
+
+        for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
+            if (discipline.contains(sportRelation.getDiscipline().toLowerCase())) {
+                return sportRelation.getDetail_score();
+            }
+        }
+
+        return false;
+
     }
 
     public String getUnitStatus(String status) {
@@ -280,5 +304,72 @@ public class SportsUtility   {
         }
 
         return "points";
+    }
+
+    public StringBuilder getNotes(EventResultCompetitor competitor, EventResultsViewModel eventResultsViewModel, StringBuilder notes) {
+
+        StringBuilder tempNotes = new StringBuilder();
+
+        if(!TextUtils.isEmpty(notes))
+        {
+            tempNotes.append(notes);
+        }
+
+        if (eventResultsViewModel != null && !TextUtils.isEmpty(eventResultsViewModel.getUnit_status()) &&
+                (eventResultsViewModel.getUnit_status().equalsIgnoreCase(EventUnitModel.UNIT_STATUS_INPROGRESS) ||
+                        eventResultsViewModel.getUnit_status().equalsIgnoreCase(EventUnitModel.UNIT_STATUS_CLOSED))) {
+            if (!TextUtils.isEmpty(tempNotes.toString())) {
+                tempNotes.append(NOTES_COMPETITOR__DIVIDER);
+            }
+
+            if(competitor != null && competitor.getScoring() != null && competitor.getScoring().size() > 0) {
+                for (ScoreModel score:competitor.getScoring())
+                {
+                    tempNotes.append(score.getScore());
+                    tempNotes.append(NOTES_DIVIDER);
+                }
+            }
+
+        }
+        return tempNotes;
+    }
+
+    /*
+     * Utility method to convert notes
+     */
+    public static String getDetailedNotes(String notes)
+    {
+        StringBuilder tempNotes = new StringBuilder("Scores are ");
+        if(!TextUtils.isEmpty(notes))
+        {
+            String[] compScores = notes.split(NOTES_COMPETITOR__DIVIDER,2);
+
+            if(compScores != null && compScores.length >= 2)
+            {
+                String firstComp = compScores[0];
+                String secondComp = compScores[1];
+
+                if(!TextUtils.isEmpty(firstComp) && !TextUtils.isEmpty(secondComp))
+                {
+                    String[] firstScores = firstComp.split(NOTES_DIVIDER);
+                    String[] secondScores = secondComp.split(NOTES_DIVIDER);
+
+                    if(firstScores != null && secondScores != null && firstScores.length > 0 && secondScores.length == firstScores.length)
+                    {
+                        for(int i = 0; i< firstScores.length ; i++)
+                        {
+                            tempNotes.append(firstScores[i]);
+                            tempNotes.append(NOTES_COMPETITOR__DIVIDER);
+                            tempNotes.append(secondScores[i]);
+                            tempNotes.append(",");
+                        }
+
+                        tempNotes = tempNotes.deleteCharAt(tempNotes.length() - 1);
+                    }
+                }
+            }
+
+        }
+        return tempNotes.toString();
     }
 }

@@ -257,6 +257,18 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 teamh2hviewHolder.id_outcome_1.setText(resultsModels.get(position)
                         .competitorheadModel.getOpp_outcome());
 
+                if(!TextUtils.isEmpty(resultsModels.get(position)
+                        .competitorheadModel.getNotes()))
+                {
+                    teamh2hviewHolder.id_match_notes.setVisibility(View.VISIBLE);
+                    teamh2hviewHolder.id_match_notes.setText(resultsModels.get(position)
+                            .competitorheadModel.getNotes());
+
+                }
+                else{
+                    teamh2hviewHolder.id_match_notes.setVisibility(View.GONE);
+                }
+
                 teamh2hviewHolder.id_score.setText(resultsModels.get(position)
                         .competitorheadModel.getResult());
                 teamh2hviewHolder.id_score_1.setText(resultsModels.get(position)
@@ -441,6 +453,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         private CardView id_teamh2h_cardview;
 
+        private TextView id_match_notes;
+
         private TextView id_country2_alias;
         private ImageView id_country2_image;
         private TextView id_score_1;
@@ -453,6 +467,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             id_score = (TextView) itemView.findViewById(R.id.id_score);
             id_score_header = (TextView) itemView.findViewById(R.id.id_score_header);
             id_outcome = (TextView) itemView.findViewById(R.id.id_outcome);
+
+            id_match_notes = (TextView) itemView.findViewById(R.id.id_match_notes);
 
             id_country2_image = (ImageView) itemView.findViewById(R.id.id_country2_image);
             id_country2_alias = (TextView) itemView.findViewById(R.id.id_country2_alias);

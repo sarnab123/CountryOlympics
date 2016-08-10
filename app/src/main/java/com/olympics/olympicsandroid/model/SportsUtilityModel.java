@@ -24,7 +24,12 @@ public class SportsUtilityModel implements IResponseModel
             private List<SubDiscipline> subDiscipline;
             private List<PointType> scoring_type;
             private String type;
+            private String detail_score;
             private String score_type;
+
+            public boolean getDetail_score() {
+                return Boolean.parseBoolean(detail_score);
+            }
 
             public String getScore_type() {
                 return score_type;
