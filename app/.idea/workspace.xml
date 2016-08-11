@@ -33,23 +33,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4b72197-6cb6-4e74-aab1-ba18ddb2c849" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Production APKs/Country_Olympics.apk" afterPath="$PROJECT_DIR$/Production APKs/Country_Olympics.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/../.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/../.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/iFace/DBHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/iFace/DBHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java" afterPath="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/res/layout/activity_app_info.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_app_info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/../build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/res/layout/event_details_header.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/event_details_header.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="app.iws" />
@@ -114,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBHelper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DBHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/iFace/DBHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.625">
-              <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -151,7 +142,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
+              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -167,12 +158,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SportsUtility.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SportsUtility.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="10.95">
+              <caret line="312" column="9" selection-start-line="312" selection-start-column="9" selection-end-line="312" selection-end-column="9" />
+              <folding>
+                <element signature="e#2962#3330#0" expanded="true" />
+                <element signature="e#3329#3330#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2205,10 +2199,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/LocalNotifications.java" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_app_info.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/event_details_header.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/iFace/DBHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java" />
       </list>
     </option>
   </component>
@@ -2223,7 +2217,6 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="6" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="825" />
@@ -2714,12 +2707,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="6" y="23" width="1440" height="825" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3946252" sideWeight="0.8161659" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3946252" sideWeight="0.18383405" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3946252" sideWeight="0.8118741" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3946252" sideWeight="0.1881259" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32386363" sideWeight="0.5114449" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.49713877" order="9" side_tool="false" content_ui="tabs" />
@@ -2740,7 +2733,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31400284" sideWeight="0.60658085" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31400284" sideWeight="0.6030043" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2807,7 +2800,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java</url>
-          <line>272</line>
+          <line>273</line>
           <properties />
           <option name="timeStamp" value="162" />
         </line-breakpoint>
@@ -3023,13 +3016,13 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java</url>
-          <line>316</line>
+          <line>319</line>
           <properties />
           <option name="timeStamp" value="338" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java</url>
-          <line>339</line>
+          <line>340</line>
           <properties />
           <option name="timeStamp" value="339" />
         </line-breakpoint>
@@ -3426,14 +3419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3459,14 +3444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.333333">
           <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3517,9 +3494,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/networkLayer/cache/database/iFace/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.625">
-          <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/olympics/olympicsandroid/utility/SportsUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="10.95">
+          <caret line="312" column="9" selection-start-line="312" selection-start-column="9" selection-end-line="312" selection-end-column="9" />
+          <folding>
+            <element signature="e#2962#3330#0" expanded="true" />
+            <element signature="e#3329#3330#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

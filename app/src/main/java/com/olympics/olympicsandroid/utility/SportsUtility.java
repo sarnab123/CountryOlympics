@@ -62,18 +62,16 @@ public class SportsUtility {
 
         try {
             VolleySingleton.getInstance(null).getmRequestQueue().getCache().clear();
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
 
         }
-            RequestPolicy requestPolicy = new RequestPolicy();
+        RequestPolicy requestPolicy = new RequestPolicy();
 
-            CustomJSONRequest<SportsUtilityModel> sportsTypeRequest = new
-                    CustomJSONRequest<SportsUtilityModel>(OlympicRequestQueries.SPORTS_TYPE,
-                    SportsUtilityModel.class, null, createSportsTypeSuccessListener(),
-                    createSportsTypeFailureListener(), requestPolicy);
-            VolleySingleton.getInstance(null).addToRequestQueue(sportsTypeRequest);
+        CustomJSONRequest<SportsUtilityModel> sportsTypeRequest = new
+                CustomJSONRequest<SportsUtilityModel>(OlympicRequestQueries.SPORTS_TYPE,
+                SportsUtilityModel.class, null, createSportsTypeSuccessListener(),
+                createSportsTypeFailureListener(), requestPolicy);
+        VolleySingleton.getInstance(null).addToRequestQueue(sportsTypeRequest);
 
     }
 
@@ -131,20 +129,22 @@ public class SportsUtility {
         } else {
             return TYPE_INDIVUDUAL;
         }
-        for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
-            if (discipline.contains(sportRelation.getDiscipline().toLowerCase())) {
-                if (sportRelation.getSubDiscipline() != null && sportRelation.getSubDiscipline()
-                        .size() > 0 && !TextUtils.isEmpty(unitName)) {
-                    for (SportsUtilityModel.SportRelation.SubDiscipline subDiscipline :
-                            sportRelation.getSubDiscipline()) {
-                        if (!TextUtils.isEmpty(subDiscipline.getKeyword()) && unitName.contains
-                                (subDiscipline.getKeyword().toLowerCase())) {
-                            return subDiscipline.getType();
+        if (sportsUtilityModel != null) {
+            for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
+                if (discipline.contains(sportRelation.getDiscipline().toLowerCase())) {
+                    if (sportRelation.getSubDiscipline() != null && sportRelation.getSubDiscipline()
+                            .size() > 0 && !TextUtils.isEmpty(unitName)) {
+                        for (SportsUtilityModel.SportRelation.SubDiscipline subDiscipline :
+                                sportRelation.getSubDiscipline()) {
+                            if (!TextUtils.isEmpty(subDiscipline.getKeyword()) && unitName.contains
+                                    (subDiscipline.getKeyword().toLowerCase())) {
+                                return subDiscipline.getType();
+                            }
                         }
-                    }
 
+                    }
+                    return sportRelation.getType();
                 }
-                return sportRelation.getType();
             }
         }
 
@@ -161,12 +161,13 @@ public class SportsUtility {
             return false;
         }
 
-        for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
-            if (discipline.contains(sportRelation.getDiscipline().toLowerCase())) {
-                return sportRelation.getDetail_score();
+        if (sportsUtilityModel != null) {
+            for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
+                if (discipline.contains(sportRelation.getDiscipline().toLowerCase())) {
+                    return sportRelation.getDetail_score();
+                }
             }
         }
-
         return false;
 
     }
@@ -288,25 +289,27 @@ public class SportsUtility {
         } else {
             return "points";
         }
-        for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
-            if (disciplineName.contains(sportRelation.getDiscipline().toLowerCase())) {
-                {
-                    if (sportRelation.getPointTypes() != null) {
-                        for (SportsUtilityModel.SportRelation.PointType pointType : sportRelation
-                                .getPointTypes()) {
-                            if (!TextUtils.isEmpty(eventResultsViewModel.getUnit_name()) &&
-                                    eventResultsViewModel.getUnit_name().toLowerCase().contains
-                                            (pointType.getType().toLowerCase())) {
-                                return pointType.getValue();
+        if (sportsUtilityModel != null) {
+            for (SportsUtilityModel.SportRelation sportRelation : sportsUtilityModel.getCorelation()) {
+                if (disciplineName.contains(sportRelation.getDiscipline().toLowerCase())) {
+                    {
+                        if (sportRelation.getPointTypes() != null) {
+                            for (SportsUtilityModel.SportRelation.PointType pointType : sportRelation
+                                    .getPointTypes()) {
+                                if (!TextUtils.isEmpty(eventResultsViewModel.getUnit_name()) &&
+                                        eventResultsViewModel.getUnit_name().toLowerCase().contains
+                                                (pointType.getType().toLowerCase())) {
+                                    return pointType.getValue();
+                                }
                             }
                         }
+
+                        return sportRelation.getScore_type();
                     }
 
-                    return sportRelation.getScore_type();
                 }
 
             }
-
         }
 
         return "points";
@@ -316,8 +319,7 @@ public class SportsUtility {
 
         StringBuilder tempNotes = new StringBuilder();
 
-        if(!TextUtils.isEmpty(notes))
-        {
+        if (!TextUtils.isEmpty(notes)) {
             tempNotes.append(notes);
         }
 
@@ -328,9 +330,8 @@ public class SportsUtility {
                 tempNotes.append(NOTES_COMPETITOR__DIVIDER);
             }
 
-            if(competitor != null && competitor.getScoring() != null && competitor.getScoring().size() > 0) {
-                for (ScoreModel score:competitor.getScoring())
-                {
+            if (competitor != null && competitor.getScoring() != null && competitor.getScoring().size() > 0) {
+                for (ScoreModel score : competitor.getScoring()) {
                     tempNotes.append(score.getScore());
                     tempNotes.append(NOTES_DIVIDER);
                 }
@@ -343,28 +344,22 @@ public class SportsUtility {
     /*
      * Utility method to convert notes
      */
-    public static String getDetailedNotes(String notes)
-    {
+    public static String getDetailedNotes(String notes) {
         StringBuilder tempNotes = new StringBuilder("Scores are ");
-        if(!TextUtils.isEmpty(notes))
-        {
-            String[] compScores = notes.split(NOTES_COMPETITOR__DIVIDER,2);
+        if (!TextUtils.isEmpty(notes)) {
+            String[] compScores = notes.split(NOTES_COMPETITOR__DIVIDER, 2);
 
-            if(compScores != null && compScores.length >= 2)
-            {
+            if (compScores != null && compScores.length >= 2) {
                 String firstComp = compScores[0];
                 String secondComp = compScores[1];
 
-                if(!TextUtils.isEmpty(firstComp) && !TextUtils.isEmpty(secondComp))
-                {
+                if (!TextUtils.isEmpty(firstComp) && !TextUtils.isEmpty(secondComp)) {
                     String[] firstScores = firstComp.split(NOTES_DIVIDER);
                     String[] secondScores = secondComp.split(NOTES_DIVIDER);
 
-                    if(firstScores != null && secondScores != null && firstScores.length > 0 && secondScores.length == firstScores.length)
-                    {
-                        for(int i = 0; i< firstScores.length ; i++)
-                        {
-                            tempNotes.append(" "+firstScores[i]);
+                    if (firstScores != null && secondScores != null && firstScores.length > 0 && secondScores.length == firstScores.length) {
+                        for (int i = 0; i < firstScores.length; i++) {
+                            tempNotes.append(" " + firstScores[i]);
                             tempNotes.append(NOTES_COMPETITOR__DIVIDER);
                             tempNotes.append(secondScores[i]);
                             tempNotes.append(" ,");
