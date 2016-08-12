@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/id_reminder_name"
-        android:layout_width="275dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:paddingTop="15dp"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/id_reminder_name"
-        android:paddingRight="10dp"
+        android:paddingRight="5dp"
         android:paddingTop="25dp"
         android:paddingBottom="15dp"/>
 
