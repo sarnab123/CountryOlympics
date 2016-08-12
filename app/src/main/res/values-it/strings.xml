@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Olympics "My Country"</string>
     <string name="id_reminder_tip">È possibile fare clic sull\'immagine programma sul sul titolo unità , per impostare promemoria per l\'evento </string>
+    <string name="id_set_alarm"> Fare clic per impostare promemoria a</string>
 </resources>

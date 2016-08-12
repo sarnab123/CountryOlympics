@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Olympics "My Country"</string>
     <string name="id_reminder_tip">Można kliknąć na zdjęcie na tytuł programu na urządzeniu, aby ustawić przypomnienie dla zdarzenia .</string>
+    <string name="id_set_alarm">Kliknij, aby ustawić przypomnienia o</string>
 </resources>
