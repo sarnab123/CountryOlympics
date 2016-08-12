@@ -25,6 +25,7 @@ import com.olympics.olympicsandroid.OlympicsApplication;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.ErrorModel;
 import com.olympics.olympicsandroid.model.IResponseModel;
+import com.olympics.olympicsandroid.model.presentationModel.EventReminder;
 import com.olympics.olympicsandroid.model.presentationModel.EventResultsViewModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
 import com.olympics.olympicsandroid.model.presentationModel.UnitResultsViewModel;
@@ -61,6 +62,9 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
     private RelativeLayout mNoItemsView;
     private TextView id_text_nosports;
     private SwipeRefreshLayout event_refresh;
+    private Button id_schedule_button;
+
+    private String unitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +89,10 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
 
         }
 
+        if (!TextUtils.isEmpty(getIntent().getStringExtra("event_date"))) {
+            unitTime = getIntent().getStringExtra("event_date");
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -95,6 +103,7 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         mProgressView = (CircleProgressBar)findViewById(R.id.task_progress);
         mNoItemsView = (RelativeLayout)findViewById(R.id.tv_no_units);
         id_text_nosports = (TextView) findViewById(R.id.id_text_nosports);
+        id_schedule_button = (Button) findViewById(R.id.id_schedule_button);
 
         eventunitView = (RecyclerView) findViewById(R.id.eventlist_recycler_view);
 
@@ -190,6 +199,26 @@ public class EventActivity extends AppCompatActivity implements IUIListener {
         if(results == null || results.size() == 0)
         {
             mNoItemsView.setVisibility(View.VISIBLE);
+
+            if(!TextUtils.isEmpty(unitTime))
+            {
+                id_schedule_button.setVisibility(View.VISIBLE);
+                id_schedule_button.setText(getString(R.string.id_set_alarm) + " " + DateUtils.getUnitTime(unitTime));
+                id_schedule_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new LocalNotifications().createLocalNotification
+                                (OlympicsApplication.getAppContext(), new EventReminder
+                                        (eventID,
+                                                unitName,
+                                                unitTime,
+                                                unitID, disciplineName));
+                    }
+                });
+            }
+            else{
+                id_schedule_button.setVisibility(View.GONE);
+            }
 
 
             if(!DateUtils.isCurrentDateInOlympics())

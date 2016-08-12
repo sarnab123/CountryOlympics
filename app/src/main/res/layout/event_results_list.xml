@@ -26,19 +26,19 @@
         app:mlpb_show_arrow="true" />
 
     <TextView
-        android:layout_width="wrap_content"
         android:id="@+id/id_local_Time"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="12sp"
+        android:text="@string/id_local_timeZone"
         android:textColor="@android:color/darker_gray"
-        android:text="@string/id_local_timeZone"/>
+        android:textSize="12sp" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/activity_main_swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_below="@id/id_local_Time"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_local_Time">
 
         <!-- A RecyclerView with some commonly used attributes -->
         <android.support.v7.widget.RecyclerView
@@ -58,21 +58,35 @@
 
         <ImageView
             android:id="@+id/no_events_icon"
-            android:background="@drawable/no_events_icon"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/no_events_icon" />
+
         <TextView
-            android:layout_width="match_parent"
             android:id="@+id/id_text_nosports"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/no_events_icon"
+            android:gravity="center"
+            android:text="@string/no_sports"
             android:textColor="@android:color/darker_gray"
-            android:textSize="20sp"
-            android:gravity="center_horizontal"
-            android:text="@string/no_sports"/>
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/id_schedule_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_text_nosports"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            android:background="@drawable/gradient"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/textsize_reminder" />
 
     </RelativeLayout>
 </RelativeLayout>

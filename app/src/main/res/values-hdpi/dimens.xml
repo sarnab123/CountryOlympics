@@ -2,4 +2,5 @@
 
 <resources>
     <dimen name="dimen_applogo_padding">2dp</dimen>
+    <dimen name="textsize_reminder">14sp</dimen>
 </resources>

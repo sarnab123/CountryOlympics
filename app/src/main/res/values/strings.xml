@@ -55,4 +55,5 @@
         .</string>
     <string name="id_reminder_tip">You can click on schedule icon on the unit title, to set reminder for the event.</string>
     <string name="id_tip_title" translatable="false">Reminder Tip</string>
+    <string name="id_set_alarm">Click to set reminder for</string>
 </resources>
