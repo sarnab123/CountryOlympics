@@ -13,6 +13,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,22 +36,32 @@ import com.olympics.olympicsandroid.model.MedalTally;
 import com.olympics.olympicsandroid.model.MedalTallyOrganization;
 import com.olympics.olympicsandroid.model.Organization;
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
+import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
+import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.controller.CountryProfileController;
 import com.olympics.olympicsandroid.networkLayer.controller.IUIListener;
 import com.olympics.olympicsandroid.networkLayer.controller.MedalTallyController;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.MedalTallyComparator;
+import com.olympics.olympicsandroid.utility.SportsFilterListener;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
 import com.olympics.olympicsandroid.view.activity.factory.ActivityFactory;
 import com.olympics.olympicsandroid.view.fragment.DateEventAdapter;
+import com.olympics.olympicsandroid.view.fragment.SportsFilterAdapter;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class OlympicsActivity extends AppCompatActivity implements NavigationView
-        .OnNavigationItemSelectedListener, IUIListener {
+        .OnNavigationItemSelectedListener, IUIListener, SportsFilterListener, View.OnClickListener {
 
 
     private DateEventAdapter mSectionsPagerAdapter;
@@ -61,6 +73,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     private MedalTally medalTallyObj;
     private ProgressDialog progress;
     private DrawerLayout drawer;
+    private CountryEventUnitModel countryEventUnitModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +99,11 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        findViewById(R.id
+                .sports_floating_btn).setClickable(true);
+        findViewById(R.id
+                .sports_floating_btn).setOnClickListener(this);
 
         setUpData();
     }
@@ -216,6 +234,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             if (mSectionsPagerAdapter == null) {
                 mSectionsPagerAdapter = new DateEventAdapter(this,getSupportFragmentManager(),
                         (CountryEventUnitModel) responseModel);
+
+                countryEventUnitModel = (CountryEventUnitModel) responseModel;
 
                 // Set up the ViewPager with the sections adapter.
                 mViewPager = (ViewPager) findViewById(R.id.container);
@@ -373,5 +393,112 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             eventDate += DateUtils.NUM_OF_MILISECONDS_IN_DAY;
         }
         return 0;
+    }
+
+    private List<String> getFilteredSportsList() {
+
+        Set<String> sportsFilterList = new HashSet<>();
+        int position = mSectionsPagerAdapter.getPosition();
+
+        String dateKey = String.valueOf(DateUtils.getOlympicEventStartDate() +  (
+                (position) * DateUtils.NUM_OF_MILISECONDS_IN_DAY));
+        DateSportsModel dateSportsModel = countryEventUnitModel.
+                getDatesCountryMapping().get(dateKey);
+
+        countryEventUnitModel.getDatesCountryMapping();
+            if (dateSportsModel != null && dateSportsModel.getAllSportsForDate() != null) {
+                for (Map.Entry<String, DateSportsModel.SportsEventsUnits> entry : dateSportsModel.getAllSportsForDate().entrySet()) {
+                    if (entry.getValue() != null) {
+                        DateSportsModel.SportsEventsUnits sportsEventsUnit = entry.getValue();
+                        if (sportsEventsUnit != null &&  sportsEventsUnit.getEventUnits() != null) {
+
+                            for (EventUnitModel eventUnitModel : sportsEventsUnit.getEventUnits()) {
+                                if(!TextUtils.isEmpty(eventUnitModel.getParentDisciple()))
+                                {
+                                    sportsFilterList.add(eventUnitModel.getDisciplineAlias());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        return new ArrayList(sportsFilterList);
+    }
+
+    private void filterSports(String sportsAlias) {
+
+        CountryEventUnitModel filteredCountryEventModel = countryEventUnitModel;
+        int position = mSectionsPagerAdapter.getPosition();
+
+        if (!TextUtils.isEmpty(sportsAlias)) {
+            filteredCountryEventModel = new CountryEventUnitModel();
+            filteredCountryEventModel.setDatesCountryMapping(new HashMap<String, DateSportsModel>());
+
+            String dateKey = String.valueOf(DateUtils.getOlympicEventStartDate() + ((position) * DateUtils.NUM_OF_MILISECONDS_IN_DAY));
+            DateSportsModel dateSportsModel =
+                    countryEventUnitModel
+                            .getDatesCountryMapping().get(dateKey);
+
+            if (dateSportsModel != null && dateSportsModel.getAllSportsForDate() != null) {
+                DateSportsModel newDateSportsModel = new DateSportsModel();
+                newDateSportsModel.setAllSportsForDate(new HashMap<String, DateSportsModel.SportsEventsUnits>());
+
+                for (Map.Entry<String, DateSportsModel.SportsEventsUnits> entry : dateSportsModel.getAllSportsForDate().entrySet()) {
+                    if (entry.getValue() != null) {
+
+                        DateSportsModel.SportsEventsUnits sportsEventsUnit = entry.getValue();
+                        if (sportsEventsUnit != null && sportsEventsUnit.getEventUnits() != null) {
+                            DateSportsModel.SportsEventsUnits newSportsEventsUnit = new
+                                    DateSportsModel.SportsEventsUnits();
+                            newSportsEventsUnit.setEventUnits(new ArrayList<EventUnitModel>());
+                            Iterator iterator = sportsEventsUnit.getEventUnits().iterator();
+                            while (iterator.hasNext()) {
+                                EventUnitModel eventUnitModel = (EventUnitModel) iterator.next();
+                                if (sportsAlias.equalsIgnoreCase(eventUnitModel
+                                        .getDisciplineAlias())) {
+                                    newSportsEventsUnit.getEventUnits().add(eventUnitModel);
+                                }
+                            }
+                            newDateSportsModel.getAllSportsForDate().put(entry.getKey(),
+                                    newSportsEventsUnit);
+                        }
+                    }
+                }
+                filteredCountryEventModel.getDatesCountryMapping().put(dateKey, newDateSportsModel);
+            }
+        }
+        mSectionsPagerAdapter.updateModel(filteredCountryEventModel);
+        mSectionsPagerAdapter.notifyDataSetChanged();
+        mViewPager.setCurrentItem(position, true);
+        mViewPager.invalidate();
+    }
+
+    @Override
+    public void onSportsSelected(String filteredSport) {
+        filterSports(filteredSport);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+
+            case R.id.sports_floating_btn:
+
+                if (findViewById(R.id.sports_filter).getVisibility() == View.GONE) {
+                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.sports_filter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(OlympicsActivity.this, LinearLayoutManager.HORIZONTAL, false);
+
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setVisibility(View.VISIBLE);
+
+                    SportsFilterAdapter sportsFilterAdapter = new SportsFilterAdapter(OlympicsActivity.this, getFilteredSportsList());
+                    recyclerView.setAdapter(sportsFilterAdapter);
+                } else {
+                    findViewById(R.id.sports_filter).setVisibility(View.GONE);
+                    filterSports(null);
+                }
+                break;
+        }
     }
 }
