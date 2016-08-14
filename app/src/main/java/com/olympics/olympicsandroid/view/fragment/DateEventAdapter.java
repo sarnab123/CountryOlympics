@@ -17,6 +17,7 @@ public class DateEventAdapter extends FragmentStatePagerAdapter
 {
     private CountryEventUnitModel mCountryEventUnitModel;
     private Activity act;
+    private int selectedposition;
 
     public DateEventAdapter(Activity act,FragmentManager fm, CountryEventUnitModel countryEventUnitModel) {
         super(fm);
@@ -31,7 +32,7 @@ public class DateEventAdapter extends FragmentStatePagerAdapter
 
     @Override
     public Fragment getItem(int position) {
-
+        selectedposition = position;
         EventListFragment eventListFragment = EventListFragment.newInstance(act,getSportsOfTheDay(position));
         return eventListFragment;
     }
@@ -99,5 +100,9 @@ public class DateEventAdapter extends FragmentStatePagerAdapter
     }
     public int getItemPosition(Object object) {
         return POSITION_NONE;
+    }
+
+    public int getPosition() {
+        return selectedposition -1;
     }
 }
