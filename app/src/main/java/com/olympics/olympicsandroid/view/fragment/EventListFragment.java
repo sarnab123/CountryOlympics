@@ -71,7 +71,7 @@ public class EventListFragment extends Fragment
 
         mAdView = (AdView) rootView.findViewById(R.id.main_ad_view);
 
-        setupAds();
+//        setupAds();
 
       return rootView;
     }

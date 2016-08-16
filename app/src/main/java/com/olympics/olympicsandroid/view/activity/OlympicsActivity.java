@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -75,6 +77,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     private DrawerLayout drawer;
     private CountryEventUnitModel countryEventUnitModel;
 
+    private FloatingActionButton filterButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +87,6 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
 
         MobileAds.initialize(getApplicationContext(), getString(R.string.banner_ad_unit_id));
-
 
 
         setContentView(R.layout.activity_olympics);
@@ -100,10 +103,11 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        findViewById(R.id
-                .sports_floating_btn).setClickable(true);
-        findViewById(R.id
-                .sports_floating_btn).setOnClickListener(this);
+
+        filterButton = (FloatingActionButton) findViewById(R.id.sports_floating_btn);
+
+        filterButton.setClickable(true);
+        filterButton.setOnClickListener(this);
 
         setUpData();
     }
@@ -119,7 +123,6 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     }
 
 
-
     /**
      * This method displays country information in navigation drawer
      */
@@ -128,7 +131,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         //get selected country data from preference
         Organization countryInfo = OlympicsPrefs.getInstance(this).getUserSelectedCountry();
 
-        View headerLayout = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
+        View headerLayout = ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0);
 
         if (headerLayout != null) {
 
@@ -146,7 +149,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 countryNameTxt.setText(countryInfo.getDescription());
             }
 
-            if(countryInfo != null && !TextUtils.isEmpty(countryInfo.getAlias())) {
+            if (countryInfo != null && !TextUtils.isEmpty(countryInfo.getAlias())) {
                 FirebaseMessaging.getInstance().subscribeToTopic(countryInfo.getAlias());
             }
 
@@ -162,8 +165,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         }
     }
 
-    private void startCountrySelectionScreen()
-    {
+    private void startCountrySelectionScreen() {
         Intent intent = new Intent();
         intent.putExtra("first_launch", false);
         ActivityFactory.openCountrySelectionScreenForResult(OlympicsActivity.this, intent, REQUEST_CODE_COUNTRY);
@@ -176,7 +178,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             if (resultCode == RESULT_OK) {
                 String countryCode = data.getStringExtra("COUNTRY_CODE");
 
-                if(!TextUtils.isEmpty(countryCode)) {
+                if (!TextUtils.isEmpty(countryCode)) {
                     FirebaseMessaging.getInstance().subscribeToTopic(countryCode);
                 }
 
@@ -232,10 +234,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     public void onSuccess(IResponseModel responseModel) {
         if (responseModel instanceof CountryEventUnitModel) {
             if (mSectionsPagerAdapter == null) {
-                mSectionsPagerAdapter = new DateEventAdapter(this,getSupportFragmentManager(),
+                mSectionsPagerAdapter = new DateEventAdapter(this, getSupportFragmentManager(),
                         (CountryEventUnitModel) responseModel);
-
-                countryEventUnitModel = (CountryEventUnitModel) responseModel;
 
                 // Set up the ViewPager with the sections adapter.
                 mViewPager = (ViewPager) findViewById(R.id.container);
@@ -250,6 +250,8 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 mSectionsPagerAdapter.notifyDataSetChanged();
                 mViewPager.invalidate();
             }
+
+            countryEventUnitModel = (CountryEventUnitModel) responseModel;
 
             //Call MedalTally API through controller
             //Request for MedalTally Data through controller
@@ -379,6 +381,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
 
     /**
      * This method determines if current date falls within Olympics schedule.
+     *
      * @return index of tab if current date is within Olympics schedule, 0 otherwise
      */
     public int getCurrentScheduleIndex() {
@@ -389,7 +392,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
             if (DateUtils.getCurrentDate() == eventDate) {
                 return index;
             }
-            index ++;
+            index++;
             eventDate += DateUtils.NUM_OF_MILISECONDS_IN_DAY;
         }
         return 0;
@@ -400,28 +403,26 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         Set<String> sportsFilterList = new HashSet<>();
         int position = mSectionsPagerAdapter.getPosition();
 
-        String dateKey = String.valueOf(DateUtils.getOlympicEventStartDate() +  (
+        String dateKey = String.valueOf(DateUtils.getOlympicEventStartDate() + (
                 (position) * DateUtils.NUM_OF_MILISECONDS_IN_DAY));
         DateSportsModel dateSportsModel = countryEventUnitModel.
                 getDatesCountryMapping().get(dateKey);
 
-        countryEventUnitModel.getDatesCountryMapping();
-            if (dateSportsModel != null && dateSportsModel.getAllSportsForDate() != null) {
-                for (Map.Entry<String, DateSportsModel.SportsEventsUnits> entry : dateSportsModel.getAllSportsForDate().entrySet()) {
-                    if (entry.getValue() != null) {
-                        DateSportsModel.SportsEventsUnits sportsEventsUnit = entry.getValue();
-                        if (sportsEventsUnit != null &&  sportsEventsUnit.getEventUnits() != null) {
+        if (dateSportsModel != null && dateSportsModel.getAllSportsForDate() != null) {
+            for (Map.Entry<String, DateSportsModel.SportsEventsUnits> entry : dateSportsModel.getAllSportsForDate().entrySet()) {
+                if (entry.getValue() != null) {
+                    DateSportsModel.SportsEventsUnits sportsEventsUnit = entry.getValue();
+                    if (sportsEventsUnit != null && sportsEventsUnit.getEventUnits() != null) {
 
-                            for (EventUnitModel eventUnitModel : sportsEventsUnit.getEventUnits()) {
-                                if(!TextUtils.isEmpty(eventUnitModel.getParentDisciple()))
-                                {
-                                    sportsFilterList.add(eventUnitModel.getDisciplineAlias());
-                                }
+                        for (EventUnitModel eventUnitModel : sportsEventsUnit.getEventUnits()) {
+                            if (!TextUtils.isEmpty(eventUnitModel.getParentDisciple())) {
+                                sportsFilterList.add(eventUnitModel.getDisciplineAlias());
                             }
                         }
                     }
                 }
             }
+        }
         return new ArrayList(sportsFilterList);
     }
 
@@ -478,6 +479,10 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
     @Override
     public void onSportsSelected(String filteredSport) {
         filterSports(filteredSport);
+        if(filterButton != null)
+        {
+            filterButton.setImageDrawable(ContextCompat.getDrawable(OlympicsApplication.getAppContext(), R.drawable.filter_remove));
+        }
     }
 
     @Override
@@ -499,6 +504,10 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                 } else {
                     findViewById(R.id.sports_filter).setVisibility(View.GONE);
                     filterSports(null);
+                    if(filterButton != null)
+                    {
+                        filterButton.setImageDrawable(ContextCompat.getDrawable(OlympicsApplication.getAppContext(), R.drawable.filter));
+                    }
                 }
                 break;
         }

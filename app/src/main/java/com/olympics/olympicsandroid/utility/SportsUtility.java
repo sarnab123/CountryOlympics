@@ -60,12 +60,9 @@ public class SportsUtility {
 
         // Set Request Policy
 
-        try {
-            VolleySingleton.getInstance(null).getmRequestQueue().getCache().clear();
-        } catch (Exception ex) {
-
-        }
         RequestPolicy requestPolicy = new RequestPolicy();
+        requestPolicy.setForceCache(true);
+        requestPolicy.setMaxAge(60 * 60 * 60 * 30);
 
         CustomJSONRequest<SportsUtilityModel> sportsTypeRequest = new
                 CustomJSONRequest<SportsUtilityModel>(OlympicRequestQueries.SPORTS_TYPE,

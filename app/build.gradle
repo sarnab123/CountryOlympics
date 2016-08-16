@@ -8,7 +8,7 @@ android {
         applicationId "com.olympics.olympicsandroid"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 12
+        versionCode 13
         versionName "1.1"
         generatedDensities = []
     }
