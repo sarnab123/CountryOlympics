@@ -469,8 +469,10 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         }
         mSectionsPagerAdapter.updateModel(filteredCountryEventModel);
         mSectionsPagerAdapter.notifyDataSetChanged();
-        mViewPager.setCurrentItem(position, true);
-        mViewPager.invalidate();
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+        mViewPager.setCurrentItem(getCurrentScheduleIndex(), true);
     }
 
     @Override
