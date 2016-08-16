@@ -466,6 +466,18 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
                     }
                 }
                 filteredCountryEventModel.getDatesCountryMapping().put(dateKey, newDateSportsModel);
+
+                // Populating sports data for rest of the dates
+                for (Map.Entry<String, DateSportsModel> entry :  countryEventUnitModel
+                        .getDatesCountryMapping().entrySet()) {
+
+                    if (entry != null && !TextUtils.isEmpty(entry.getKey()) && !entry.getKey()
+                            .equalsIgnoreCase
+                            (dateKey)) {
+                        filteredCountryEventModel.getDatesCountryMapping().put(entry.getKey(),
+                                entry.getValue());
+                    }
+                }
             }
         }
         mSectionsPagerAdapter.updateModel(filteredCountryEventModel);
@@ -473,7 +485,7 @@ public class OlympicsActivity extends AppCompatActivity implements NavigationVie
         mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        mViewPager.setCurrentItem(getCurrentScheduleIndex(), true);
+        mViewPager.setCurrentItem(position, true);
     }
 
     @Override
