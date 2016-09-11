@@ -29,6 +29,7 @@ import com.olympics.olympicsandroid.networkLayer.controller.IScheduleListener;
 import com.olympics.olympicsandroid.networkLayer.controller.ScheduleController;
 import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.Logger;
+import com.olympics.olympicsandroid.utility.UtilityMethods;
 
 import java.util.HashMap;
 
@@ -228,7 +229,8 @@ public class AppCacheService extends Service {
                 requestPolicy.setMaxAge(60 * 60 * 10);
             }
 
-            requestPolicy.setUrlReplacement(countryAliastoID.get(countrytoCache[count]));
+            requestPolicy.setUrlReplacement(countryAliastoID.get(countrytoCache[count] +
+                    UtilityMethods.COUNTRY_CONFIG));
             CustomXMLRequest<CountryProfileEvents> countryRequest = new CustomXMLRequest<CountryProfileEvents>(OlympicRequestQueries.COUNTRY_CONFIG, CountryProfileEvents.class, createCountryProfileSuccessListener(), createCountryProfileFailureListener(), requestPolicy);
             VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
         }

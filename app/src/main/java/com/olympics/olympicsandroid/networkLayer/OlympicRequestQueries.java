@@ -11,19 +11,20 @@ import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 public enum OlympicRequestQueries
 {
 
-    COUNTRY_LIST(Request.Method.GET,null,"/organization/list.xml", true , true),
-    COUNTRY_CONFIG(Request.Method.GET,null,"/organization/2016/{countryID}/profile.xml", true , true),
-    COMPLETE_SCHEDULE(Request.Method.GET,null,"/2016/schedule.xml", true , true),
-    MEDAL_TALLY(Request.Method.GET, null,"/2016/medals.xml",true, true),
-    EVENT_RESULTS(Request.Method.GET,null,"/event/{eventID}/results.xml", true , true),
+    COUNTRY_LIST(Request.Method.GET,null,"country_list", true , false),
+    COUNTRY_CONFIG(Request.Method.GET,null,"country_org/{countryID}", true ,
+            false),
+    COMPLETE_SCHEDULE(Request.Method.GET,null,"schedule", true , false),
+    MEDAL_TALLY(Request.Method.GET, null,"medals",true, false),
+    EVENT_RESULTS(Request.Method.GET,null,"/events/{eventID}", true , false),
     SPORTS_TYPE(Request.Method.GET, "https://olympics.mybluemix.net/config/getSportsData", null,
-                true, true),
+                true, false),
     APP_VERSION_DATA(Request.Method.GET, "https://olympics.mybluemix.net/config/getAppVersion",
             null,
             true, false),
-    MEDAL_TALLY_BY_ORGANIZATION(Request.Method.GET, null,"/organization/2016/{countryID}/medals" +
+    MEDAL_TALLY_BY_ORGANIZATION(Request.Method.GET, null,"medals/{countryID}" +
             ".xml",true,
-            true);
+            false);
 
     private int httpRequestType;
     private String relativeURL;
@@ -33,7 +34,8 @@ public enum OlympicRequestQueries
     private String completeURL;
 
     private String apiKey = "fkapg97hrh2qtx7hb2uvwpka";
-    private String baseURL = "https://api.sportradar.us/oly-p2";
+    private String baseURL = "https://firebasestorage.googleapis.com/v0/b/my-olympics.appspot" +
+            ".com/o/";
 
 //    OlympicRequestQueries(int httpRequestType, String relativeURL , boolean isCacheable, boolean needAPIKey)
 //    {

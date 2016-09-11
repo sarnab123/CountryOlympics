@@ -30,6 +30,10 @@ public class UtilityMethods
     public static final String EXTRA_UNIT_NAME   = "event_unit_name";
     public static final String EXTRA_DESCIPLINE_NAME   = "discipline_name";
     public static final String EXTRA_UNIT_START_DATE  = "event_unit_date";
+    public static final String EVENT_RESULTS  = "_EVENT_RESULTS";
+    public static final String MEDAL_TALLY_BY_ORGANIZATION  = "_MEDAL_TALLY_BY_ORGANIZATION";
+    public static final String COUNTRY_CONFIG  = "_COUNTRY_CONFIG";
+
 
 
     /**
