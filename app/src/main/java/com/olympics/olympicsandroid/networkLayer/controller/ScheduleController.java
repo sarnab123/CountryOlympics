@@ -7,7 +7,6 @@ import com.olympics.olympicsandroid.model.OlympicSchedule;
 import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
-import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.utility.DateUtils;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -56,8 +55,12 @@ public class ScheduleController {
                 requestPolicy.setForceCache(true);
                 requestPolicy.setMaxAge(60 * 60 * 10);
             }
-            CustomXMLRequest<OlympicSchedule> countryRequest = new CustomXMLRequest<OlympicSchedule>(OlympicRequestQueries.COMPLETE_SCHEDULE, OlympicSchedule.class, createScheduleSuccessListener(), createScheduleFailureListener(), requestPolicy);
-            VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+            CustomXMLRequest<OlympicSchedule> scheduleRequest = new CustomXMLRequest<OlympicSchedule>
+                    (OlympicRequestQueries.COMPLETE_SCHEDULE, OlympicSchedule.class, createScheduleSuccessListener(), createScheduleFailureListener(), requestPolicy);
+            // Get schedule data from firebase storage
+            if (scheduleRequest != null) {
+                scheduleRequest.getDataFromFireBase();
+            }
         }
     }
 

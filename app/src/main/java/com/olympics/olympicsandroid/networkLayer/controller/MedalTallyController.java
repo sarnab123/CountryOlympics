@@ -10,7 +10,6 @@ import com.olympics.olympicsandroid.model.MedalTally;
 import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
-import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
@@ -83,7 +82,10 @@ public class MedalTallyController
                 CustomXMLRequest<MedalTally> medalTallyRequest = new CustomXMLRequest<MedalTally>
                         (OlympicRequestQueries.MEDAL_TALLY, MedalTally.class,
                                 createSuccessListener(), createFailureListener(), requestPolicy);
-                VolleySingleton.getInstance(null).addToRequestQueue(medalTallyRequest);
+                // Get Medaltally data from firebase storage
+                if (medalTallyRequest != null) {
+                    medalTallyRequest.getDataFromFireBase();
+                }
             }
         }
         else{

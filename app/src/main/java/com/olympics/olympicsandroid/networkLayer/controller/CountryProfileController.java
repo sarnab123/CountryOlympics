@@ -13,7 +13,6 @@ import com.olympics.olympicsandroid.model.presentationModel.helper.CountryEvents
 import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
-import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
 import com.olympics.olympicsandroid.networkLayer.cache.database.OlympicsPrefs;
 import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
@@ -75,7 +74,8 @@ public class CountryProfileController {
                 requestPolicy.setForceCache(true);
                 requestPolicy.setMaxAge(60 * 60 * 10);
             }
-            requestPolicy.setUrlReplacement(OlympicsPrefs.getInstance(null).getUserSelectedCountry().getId());
+            requestPolicy.setUrlReplacement(OlympicsPrefs.getInstance(null)
+                    .getUserSelectedCountry().getId() + UtilityMethods.COUNTRY_CONFIG);
 
             if (UtilityMethods.isSimulated) {
                 String configString =
@@ -102,7 +102,10 @@ public class CountryProfileController {
                 parseTask.startParsing();
             } else {
                 CustomXMLRequest<CountryProfileEvents> countryRequest = new CustomXMLRequest<CountryProfileEvents>(OlympicRequestQueries.COUNTRY_CONFIG, CountryProfileEvents.class, createCountryProfileSuccessListener(), createCountryProfileFailureListener(), requestPolicy);
-                VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+                //Get Contry Profile data from firebase storage
+                if (countryRequest != null) {
+                    countryRequest.getDataFromFireBase();
+                }
             }
         } else {
             ErrorModel errorModel = new ErrorModel();

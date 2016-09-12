@@ -10,7 +10,6 @@ import com.olympics.olympicsandroid.model.IResponseModel;
 import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
-import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
 import com.olympics.olympicsandroid.networkLayer.cache.file.DataCacheHelper;
 import com.olympics.olympicsandroid.networkLayer.parse.IParseListener;
@@ -88,9 +87,12 @@ public class CountryListController {
                 }, ParseTask.XML_DATA);
                 parseTask.startParsing();
             } else {
-                CustomXMLRequest<CountryModel> countryRequest = new CustomXMLRequest<CountryModel>(OlympicRequestQueries.COUNTRY_LIST, CountryModel.class,
+               CustomXMLRequest<CountryModel> countryRequest = new CustomXMLRequest<CountryModel>(OlympicRequestQueries.COUNTRY_LIST, CountryModel.class,
                         createSuccessListener(), createFailureListener(), requestPolicy);
-                VolleySingleton.getInstance(null).addToRequestQueue(countryRequest);
+                //Get Country list from firebase storage
+                if (countryRequest != null) {
+                    countryRequest.getDataFromFireBase();
+                }
             }
         } else {
             ErrorModel errorModel = new ErrorModel();

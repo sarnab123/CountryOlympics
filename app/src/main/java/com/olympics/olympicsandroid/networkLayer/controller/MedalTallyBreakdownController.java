@@ -11,7 +11,6 @@ import com.olympics.olympicsandroid.model.MedalTallyBreakdown;
 import com.olympics.olympicsandroid.networkLayer.CustomXMLRequest;
 import com.olympics.olympicsandroid.networkLayer.OlympicRequestQueries;
 import com.olympics.olympicsandroid.networkLayer.RequestPolicy;
-import com.olympics.olympicsandroid.networkLayer.VolleySingleton;
 import com.olympics.olympicsandroid.networkLayer.cache.ICacheListener;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
 
@@ -46,13 +45,16 @@ public class MedalTallyBreakdownController {
             RequestPolicy requestPolicy = new RequestPolicy();
             requestPolicy.setForceCache(true);
             requestPolicy.setMaxAge(60 * 1);
-            requestPolicy.setUrlReplacement(selectedCountryId);
+            requestPolicy.setUrlReplacement(selectedCountryId + UtilityMethods.MEDAL_TALLY_BY_ORGANIZATION);
 
             CustomXMLRequest<MedalTallyBreakdown> medalTallyRequest = new CustomXMLRequest<MedalTallyBreakdown>
                     (OlympicRequestQueries.MEDAL_TALLY_BY_ORGANIZATION, MedalTallyBreakdown.class,
                             createSuccessListener()
                             , createFailureListener(), requestPolicy);
-            VolleySingleton.getInstance(null).addToRequestQueue(medalTallyRequest);
+            // Get Medaltally breakdown data from firebase storage
+            if (medalTallyRequest != null) {
+                medalTallyRequest.getDataFromFireBase();
+            }
         } else {
             ErrorModel errorModel = new ErrorModel();
             errorModel.setErrorCode(UtilityMethods.ERROR_INTERNET);

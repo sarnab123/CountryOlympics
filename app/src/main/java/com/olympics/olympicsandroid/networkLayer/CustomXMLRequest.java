@@ -1,5 +1,7 @@
 package com.olympics.olympicsandroid.networkLayer;
 
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -13,11 +15,19 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.olympics.olympicsandroid.model.CountryModel;
 import com.olympics.olympicsandroid.utility.Logger;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
@@ -32,7 +42,9 @@ public class CustomXMLRequest<T> extends Request<T> {
     private final Class<T> clazz;
     private final Map<String, String> headers;
     private final Listener<T> listener;
+    private final ErrorListener errorListener;
     private RequestPolicy requestPolicy;
+    private String requestURL;
 
 
     /**
@@ -79,7 +91,11 @@ public class CustomXMLRequest<T> extends Request<T> {
         this.clazz = clazz;
         this.headers = headers;
         this.listener = listener;
+        this.errorListener = errorListener;
         this.requestPolicy = requestPolicy;
+        if (requestPolicy != null) {
+            this.requestURL = requestQueries.getURL(requestPolicy.getUrlReplacement());
+        }
     }
 
 
@@ -110,8 +126,7 @@ public class CustomXMLRequest<T> extends Request<T> {
                 entries.softTtl = expireTime;
                 entries.ttl = expireTime;
             }
-            return Response.success(serializer.read(clazz, data),entries
-                    );
+            return Response.success(serializer.read(clazz, data),entries);
         }
         catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
@@ -120,5 +135,65 @@ public class CustomXMLRequest<T> extends Request<T> {
             return Response.error(new VolleyError(e.getMessage()));
         }
     }
+
+    /**
+     * This method authenticates user to access firebase storage.
+     * Downloads file from firebase storage and converts xml into custom object.
+     * Returns custom object in listener callback on successful deserialization process
+     * Returns error object in error listerner callback on failure
+     */
+    public void getDataFromFireBase() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.signInAnonymously()
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        Log.d("AUTH", "signInAnonymously:SUCCESS");
+                        if (!TextUtils.isEmpty(requestURL)) {
+                            // Create a storage reference
+                            FirebaseStorage storage = FirebaseStorage.getInstance();
+                            StorageReference httpsReference = storage.getReferenceFromUrl
+                                    (requestURL);
+                            final long BYTE_DATA = 16384 * 1024;
+                            //Download file into byte array
+                            httpsReference.getBytes(BYTE_DATA).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                @Override
+                                public void onSuccess(byte[] bytes) {
+                                    try {
+                                        if (listener != null) {
+                                            // Serialize xml string to custom object
+                                            listener.onResponse((T) new Persister().read(clazz,
+                                                    new String(bytes)));
+                                        }
+                                    } catch (Exception exception) {
+                                        if (errorListener != null) {
+                                            errorListener.onErrorResponse(new VolleyError(exception
+                                                    .getMessage()));
+                                            Log.e("Firebase", "failure " + exception);
+                                        }
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle any errors
+                                    if (errorListener != null) {
+                                        errorListener.onErrorResponse(new VolleyError(exception
+                                                .getMessage()));
+                                        Log.e("Firebase", "failure " + exception);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e("AUTH", "signInAnonymously:FAILURE", exception);
+            }
+        });
+
+    }
+
 
 }
