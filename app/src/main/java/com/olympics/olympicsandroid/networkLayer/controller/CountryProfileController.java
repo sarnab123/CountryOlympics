@@ -43,7 +43,7 @@ public class CountryProfileController {
 
     public void getCountryDetails() {
         listenerWeakReference.get().handleLoadingIndicator(true);
-        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL,
+        DataCacheHelper.getInstance().getDataModel(
                 OlympicsPrefs.getInstance(null).getUserSelectedCountry().getAlias(), createNewCacheListener(), false);
 
     }
@@ -52,7 +52,7 @@ public class CountryProfileController {
         return new ICacheListener() {
             @Override
             public void datafromCache(IResponseModel responseModel) {
-                if (responseModel == null || !(responseModel instanceof CountryEventUnitModel)) {
+                if (!(responseModel instanceof CountryEventUnitModel)) {
                     getDataFromServerAndCache();
                 } else {
                     if (listenerWeakReference != null && listenerWeakReference.get() != null) {

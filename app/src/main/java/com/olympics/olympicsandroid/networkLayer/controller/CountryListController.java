@@ -36,7 +36,7 @@ public class CountryListController {
 
 
     public synchronized void getCountryData() {
-        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRYSELECTION_MODEL,
+        DataCacheHelper.getInstance().getDataModel(
                 DataCacheHelper.COUNTRY_SELECTION_KEY, createNewCacheListener(), false);
     }
 

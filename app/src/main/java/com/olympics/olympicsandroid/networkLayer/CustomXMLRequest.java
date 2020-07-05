@@ -1,6 +1,6 @@
 package com.olympics.olympicsandroid.networkLayer;
 
-import android.support.annotation.NonNull;
+
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -31,10 +31,12 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+
 
 /**
  * Simple Volley Class for doing XML HTTP Requests which are parsed 
- * into Java objects by Simple @see {{@link http://simple.sourceforge.net/}
+ * into Java objects by Simple
  */
 public class CustomXMLRequest<T> extends Request<T> {
 
@@ -72,7 +74,6 @@ public class CustomXMLRequest<T> extends Request<T> {
     /**
      * Make HTTP request and return a parsed object from XML Response
      *
-     * @param url URL of the request to make
      * @param clazz Relevant class object
      * @param headers Map of request headers
      * @param listener

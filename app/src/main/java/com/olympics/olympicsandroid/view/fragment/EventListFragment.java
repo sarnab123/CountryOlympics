@@ -2,17 +2,12 @@ package com.olympics.olympicsandroid.view.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.olympics.olympicsandroid.BuildConfig;
+//import com.google.android.gms.ads.AdView;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
 import com.olympics.olympicsandroid.model.presentationModel.EventUnitModel;
@@ -23,6 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 /**
  * Created by sarnab.poddar on 7/7/16.
  */
@@ -32,7 +31,7 @@ public class EventListFragment extends Fragment
     private DateSportsModel mDateSportsModel;
     private static Activity activity = null;
 
-    private AdView mAdView;
+//    private AdView mAdView;
 
     public EventListFragment() {
     }
@@ -69,7 +68,7 @@ public class EventListFragment extends Fragment
             recyclerview.setAdapter(new ExpandableListAdapter(getData(), createItemClickListener()));
         }
 
-        mAdView = (AdView) rootView.findViewById(R.id.main_ad_view);
+//        mAdView = (AdView) rootView.findViewById(R.id.main_ad_view);
 
 //        setupAds();
 
@@ -80,16 +79,16 @@ public class EventListFragment extends Fragment
     private void setupAds() {
         if (OlympicsPrefs.getInstance(null).getIsAdEnabled())
         {
-            AdRequest adRequest = null;
-            if(BuildConfig.DEBUG) {
-                adRequest = new AdRequest.Builder().addTestDevice("D800AADBD8B5AC6C27736D495B83EB21").build();
-            }
-            else{
-                adRequest = new AdRequest.Builder().build();
-            }
-            if(mAdView != null) {
-                mAdView.loadAd(adRequest);
-            }
+//            AdRequest adRequest = null;
+//            if(BuildConfig.DEBUG) {
+//                adRequest = new AdRequest.Builder().addTestDevice("D800AADBD8B5AC6C27736D495B83EB21").build();
+//            }
+//            else{
+//                adRequest = new AdRequest.Builder().build();
+//            }
+//            if(mAdView != null) {
+//                mAdView.loadAd(adRequest);
+//            }
         }
     }
 

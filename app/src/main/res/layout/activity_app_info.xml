@@ -139,12 +139,12 @@
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/ad_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id" />
+<!--    <com.google.android.gms.ads.AdView-->
+<!--        android:id="@+id/ad_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        ads:adSize="BANNER"-->
+<!--        ads:adUnitId="@string/banner_ad_unit_id" />-->
 </RelativeLayout>

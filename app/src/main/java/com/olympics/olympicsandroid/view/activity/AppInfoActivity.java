@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -12,9 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.olympics.olympicsandroid.BuildConfig;
 import com.olympics.olympicsandroid.R;
 import com.olympics.olympicsandroid.model.presentationModel.EventReminder;
 import com.olympics.olympicsandroid.networkLayer.cache.database.DBReminderHelper;
@@ -23,6 +19,8 @@ import com.olympics.olympicsandroid.utility.UtilityMethods;
 
 import java.io.Serializable;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AppInfoActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -89,15 +87,15 @@ public class AppInfoActivity extends AppCompatActivity implements View.OnClickLi
     private void setupAds() {
         if (OlympicsPrefs.getInstance(null).getIsAdEnabled())
         {
-            AdView mAdView = (AdView) findViewById(R.id.ad_view);
-            AdRequest adRequest = null;
-            if(BuildConfig.DEBUG) {
-                adRequest = new AdRequest.Builder().addTestDevice("D800AADBD8B5AC6C27736D495B83EB21").build();
-            }
-            else{
-                adRequest = new AdRequest.Builder().build();
-            }
-            mAdView.loadAd(adRequest);
+//            AdView mAdView = (AdView) findViewById(R.id.ad_view);
+//            AdRequest adRequest = null;
+//            if(BuildConfig.DEBUG) {
+//                adRequest = new AdRequest.Builder().addTestDevice("D800AADBD8B5AC6C27736D495B83EB21").build();
+//            }
+//            else{
+//                adRequest = new AdRequest.Builder().build();
+//            }
+//            mAdView.loadAd(adRequest);
         }
     }
 

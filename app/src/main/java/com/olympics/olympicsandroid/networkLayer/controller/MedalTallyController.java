@@ -103,7 +103,7 @@ public class MedalTallyController
         return new ICacheListener() {
             @Override
             public void datafromCache(IResponseModel responseModel) {
-                if(responseModel != null && (responseModel instanceof MedalTally))
+                if((responseModel instanceof MedalTally))
                 {
                     MedalTally medalTallyData = (MedalTally)responseModel;
                     if (listenerWeakReference != null && listenerWeakReference.get() != null) {

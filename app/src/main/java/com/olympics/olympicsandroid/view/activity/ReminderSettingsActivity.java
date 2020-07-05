@@ -2,9 +2,6 @@ package com.olympics.olympicsandroid.view.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +17,10 @@ import com.olympics.olympicsandroid.utility.DateUtils;
 import com.olympics.olympicsandroid.utility.LocalNotifications;
 
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ReminderSettingsActivity extends AppCompatActivity {
 

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
+import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +34,7 @@ public class DataCacheHelper {
     public static final byte CACHE_MEDALTALLY_MODEL = 0x01;
     public static final byte CACHE_COUNTRYSELECTION_MODEL = 0x02;
 
-    public static final String CACHE_MEDALTALLY_KEY = "medaltally";
+    private static final String CACHE_MEDALTALLY_KEY = "medaltally";
     public static final String COUNTRY_SELECTION_KEY = "countrySelection";
 
     public static String countryToCache = "USA;IND;CHN;BRA;FRG;FRA;GBR;ITA";
@@ -41,39 +42,41 @@ public class DataCacheHelper {
 
     private static DataCacheHelper ourInstance = new DataCacheHelper();
 
-    Set<ICacheListener> cacheListeners = new HashSet<>();
+    private static Set<ICacheListener> cacheListeners = new HashSet<>();
 
     public static DataCacheHelper getInstance() {
         return ourInstance;
     }
 
-    public void saveDataModel(byte dataType, IResponseModel dataModel) {
-        switch (dataType) {
-            case CACHE_COUNTRY_MODEL:
-                if (dataModel instanceof CountryEventUnitModel) {
-                    CountryEventUnitModel countryEventUnitModel = (CountryEventUnitModel) dataModel;
-                    new FileSaveCacheAsync(countryEventUnitModel.getCountryAlias()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, countryEventUnitModel);
-                }
-            case CACHE_MEDALTALLY_MODEL:
-                if (dataModel instanceof MedalTally) {
-                    MedalTally medalTallyModel = (MedalTally) dataModel;
-                    new FileSaveCacheAsync(CACHE_MEDALTALLY_KEY).executeOnExecutor
-                            (AsyncTask
-                            .THREAD_POOL_EXECUTOR, medalTallyModel);
-                }
-                break;
-            case CACHE_COUNTRYSELECTION_MODEL:
-                if (dataModel instanceof CountryModel) {
-                    CountryModel medalTallyModel = (CountryModel) dataModel;
-                    new FileSaveCacheAsync(COUNTRY_SELECTION_KEY).executeOnExecutor
-                            (AsyncTask
-                                    .THREAD_POOL_EXECUTOR, medalTallyModel);
-                }
-                break;
+    public synchronized void saveDataModel(byte dataType, IResponseModel dataModel) {
+        synchronized (dataModel) {
+            switch (dataType) {
+                case CACHE_COUNTRY_MODEL:
+                    if (dataModel instanceof CountryEventUnitModel) {
+                        CountryEventUnitModel countryEventUnitModel = (CountryEventUnitModel) dataModel;
+                        new FileSaveCacheAsync(countryEventUnitModel.getCountryAlias()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, countryEventUnitModel);
+                    }
+                case CACHE_MEDALTALLY_MODEL:
+                    if (dataModel instanceof MedalTally) {
+                        MedalTally medalTallyModel = (MedalTally) dataModel;
+                        new FileSaveCacheAsync(CACHE_MEDALTALLY_KEY).executeOnExecutor
+                                (AsyncTask
+                                        .THREAD_POOL_EXECUTOR, medalTallyModel);
+                    }
+                    break;
+                case CACHE_COUNTRYSELECTION_MODEL:
+                    if (dataModel instanceof CountryModel) {
+                        CountryModel medalTallyModel = (CountryModel) dataModel;
+                        new FileSaveCacheAsync(COUNTRY_SELECTION_KEY).executeOnExecutor
+                                (AsyncTask
+                                        .THREAD_POOL_EXECUTOR, medalTallyModel);
+                    }
+                    break;
+            }
         }
     }
 
-    public synchronized void getDataModel(byte dataType, String dataIdentifier, ICacheListener listener, boolean deleteCache) {
+    public synchronized void getDataModel(String dataIdentifier, ICacheListener listener, boolean deleteCache) {
         if(deleteCache)
         {
             new FileDeleteAsync().executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
@@ -81,13 +84,15 @@ public class DataCacheHelper {
             OlympicsApplication.getAppContext().startService(msgIntent);
         }
         else {
-            cacheListeners.add(listener);
-            new FileRetrieveAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, dataIdentifier);
+            synchronized (cacheListeners) {
+                cacheListeners.add(listener);
+                new FileRetrieveAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, dataIdentifier);
+            }
         }
     }
 
 
-    class FileDeleteAsync extends AsyncTask<Void,Void,Void>
+    static class FileDeleteAsync extends AsyncTask<Void,Void,Void>
     {
 
         @Override
@@ -98,24 +103,23 @@ public class DataCacheHelper {
         }
     }
 
-    class FileRetrieveAsync extends AsyncTask<String, Void, IResponseModel> {
+    static class FileRetrieveAsync extends AsyncTask<String, Void, IResponseModel> {
 
         @Override
         protected IResponseModel doInBackground(String... params) {
 
             IResponseModel responseModel = null;
             ObjectInputStream objectStream = null;
+            Logger.logs("DataCacheHelper", "Getting alias = =" + params[0]);
             if (UtilityMethods.doesExist(params[0])) {
-                File file = null;
+                File file;
                 try {
                     file = UtilityMethods.createFile(params[0]);
                     if (file != null && file.exists()) {
                         FileInputStream fileInputStream = new FileInputStream(file);
-                        if (fileInputStream != null && fileInputStream.available() > 0) {
+                        if (fileInputStream.available() > 0) {
                             objectStream = new ObjectInputStream(fileInputStream);
-                            if (objectStream != null) {
-                                responseModel = (IResponseModel) objectStream.readObject();
-                            }
+                            responseModel = (IResponseModel) objectStream.readObject();
                         }
                     }
 
@@ -127,7 +131,7 @@ public class DataCacheHelper {
                         if (objectStream != null) {
                             objectStream.close();
                         }
-                    } catch (IOException e) {
+                    } catch (IOException ignored) {
                     }
                 }
                 return responseModel;
@@ -140,19 +144,22 @@ public class DataCacheHelper {
         protected void onPostExecute(IResponseModel responseModel) {
 
             super.onPostExecute(responseModel);
-            for (ICacheListener cacheListener : cacheListeners) {
-                cacheListener.datafromCache(responseModel);
-            }
-            cacheListeners.clear();
+
+            Logger.logs("DataCacheHelper", "Returning data alias = =");
+                for (ICacheListener cacheListener : cacheListeners) {
+                    cacheListener.datafromCache(responseModel);
+                }
+                cacheListeners.clear();
+
         }
     }
 
 
-    class FileSaveCacheAsync extends AsyncTask<IResponseModel, Void, Void> {
+    static class FileSaveCacheAsync extends AsyncTask<IResponseModel, Void, Void> {
 
         String countryAlias;
 
-        public FileSaveCacheAsync(String countryAlias) {
+        FileSaveCacheAsync(String countryAlias) {
             this.countryAlias = countryAlias;
         }
 
@@ -191,13 +198,16 @@ public class DataCacheHelper {
                 Logger.logs("DataCacheHelper","Exceptin while writing 2222 ="+e);
 
             }
+            catch(ConcurrentModificationException ex){
+                Logger.logs("DataCacheHelper","Exceptin while writing 333 ="+ex);
+            }
             try {
                 if (objectOutputStream != null) {
                     objectOutputStream.flush();
                     objectOutputStream.close();
                     fileOutputStream.close();
                 }
-            } catch (IOException e) {
+            } catch (IOException ignored) {
             }
             return null;
         }

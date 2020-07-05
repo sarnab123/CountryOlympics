@@ -1,14 +1,15 @@
 package com.olympics.olympicsandroid.view.fragment;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
 import com.olympics.olympicsandroid.model.presentationModel.CountryEventUnitModel;
 import com.olympics.olympicsandroid.model.presentationModel.DateSportsModel;
 import com.olympics.olympicsandroid.utility.DateUtils;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 /**
  * Created by sarnab.poddar on 7/7/16.
@@ -19,7 +20,7 @@ public class DateEventAdapter extends FragmentStatePagerAdapter
     private Activity act;
     private int selectedposition;
 
-    public DateEventAdapter(Activity act,FragmentManager fm, CountryEventUnitModel countryEventUnitModel) {
+    public DateEventAdapter(Activity act, FragmentManager fm, CountryEventUnitModel countryEventUnitModel) {
         super(fm);
         this.act = act;
         this.mCountryEventUnitModel = countryEventUnitModel;

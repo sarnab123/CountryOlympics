@@ -96,7 +96,7 @@ public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycle
                         OlympicsPrefs.getInstance(null).setPrevTimeZone(newTimezone);
                         OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
 
-                        DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, null, null, true);
+                        DataCacheHelper.getInstance().getDataModel(null, null, true);
                     }
                     else if (appVersionData != null && !TextUtils.isEmpty(appVersionData.getCacheCountryChecksum())) {
                         if (!TextUtils.isEmpty(appVersionData.getOnDemandCountryAlias())) {
@@ -112,7 +112,7 @@ public class OlympicsLifeCyclecallbacks implements Application.ActivityLifecycle
                         } else if (!OlympicsPrefs.getInstance(null).getCacheChecksum().equalsIgnoreCase(appVersionData.getCacheCountryChecksum())) {
                             OlympicsPrefs.getInstance(null).setCacheChecksum(appVersionData.getCacheCountryChecksum());
 
-                            DataCacheHelper.getInstance().getDataModel(DataCacheHelper.CACHE_COUNTRY_MODEL, null, null, true);
+                            DataCacheHelper.getInstance().getDataModel(null, null, true);
                         }
                     }
                 }

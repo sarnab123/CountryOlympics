@@ -7,7 +7,6 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.android.volley.Response;
@@ -32,6 +31,8 @@ import com.olympics.olympicsandroid.utility.Logger;
 import com.olympics.olympicsandroid.utility.UtilityMethods;
 
 import java.util.HashMap;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by sarnab.poddar on 7/25/16.
